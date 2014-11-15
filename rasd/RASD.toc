@@ -96,3 +96,11 @@
 \contentsline {subsection}{\numberline {20.5}Portability}{61}{subsection.20.5}
 \contentsline {section}{\numberline {21}Other requirements}{61}{section.21}
 \contentsline {part}{IV\hspace {1em}Appendixes}{62}{part.4}
+\contentsline {section}{\numberline {22}Alloy}{62}{section.22}
+\contentsline {subsection}{\numberline {22.1}Alloy code}{62}{subsection.22.1}
+\contentsline {subsection}{\numberline {22.2}Alloy output}{62}{subsection.22.2}
+\contentsline {subsection}{\numberline {22.3}Worlds generated}{62}{subsection.22.3}
+\contentsline {subsubsection}{\numberline {22.3.1}General world}{62}{subsubsection.22.3.1}
+\contentsline {subsubsection}{\numberline {22.3.2}Minchia consistency}{62}{subsubsection.22.3.2}
+\contentsline {section}{\numberline {23}Worked hours}{62}{section.23}
+\contentsline {section}{\numberline {24}Used tools}{62}{section.24}

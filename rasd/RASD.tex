@@ -210,8 +210,8 @@ The software product will run on any operating system that supports the JVM and 
 \subsection{Memory}
 The minimum memory requirements are:
 \begin{itemize}
-\item Primary memory:
-\item Secondary memory:
+\item Primary memory: 2GB+
+\item Secondary memory: 40GB+
 \end{itemize}
 
 \subsection{Operations}
@@ -280,7 +280,7 @@ Functional requirements:
 \end{enumerate}
 Non-functional requirements:
 \begin{enumerate}[label = NFR \arabic*:]
-\item The displayed forecasts should be updated every XYZ time
+\item The displayed forecasts should be updated every 24 hours
 \item The system has to interface with a Meteo service to collect forecasts
 \end{enumerate}
 
@@ -1331,6 +1331,36 @@ errors, and instruct the user on what to do.
 
 \clearpage
 \part{Appendixes}
+
+\section{Alloy}
+TODO
+In this section we try to understand if our Class Diagram can be consistent using Alloy Analyzer.
+
+\subsection{Alloy code}
+
+\subsection{Alloy output}
+Figure X is the output of Alloy Analizer showing that our model is consistent.
+
+\subsection{Worlds generated}
+\subsubsection{General world}
+\subsubsection{Minchia consistency}
+
+\section{Worked hours}
+To produce this document we have worked X hours, so distributed:
+\begin{itemize}
+\item Andrea Celli:
+\item Stefano Cereda:
+\end{itemize}
+
+\section{Used tools}
+To create this document we have used to following tools:
+\begin{itemize}
+\item Office 365: to collaboratively redact the document and to keep track of the worked hours
+\item LaTeX: to format the document
+\item QUALCOSA: to create the UI sketches
+\item Visual Paradigm 11.2: to create the UML models
+\item Alloy Analyzer 4.2: to prove the model consistency
+\end{itemize}
 
 \clearpage
 \tableofcontents

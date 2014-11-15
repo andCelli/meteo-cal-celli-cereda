@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.11.5)  15 NOV 2014 13:55
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.11.5)  15 NOV 2014 14:16
 entering extended mode
 **RASD.tex
 
@@ -551,7 +551,7 @@ ut)
 \@outlinefile=\write4
 
 (C:\Users\stefano\Documents\NetBeansProjects\meteo-cal-celli-cereda\rasd\title.
-tex <./logo.png, id=395, 569.12625pt x 569.12625pt>
+tex <./logo.png, id=427, 569.12625pt x 569.12625pt>
 File: ./logo.png Graphic file (type png)
  <use ./logo.png>
 Package pdftex.def Info: ./logo.png used on input line 5.
@@ -573,7 +573,7 @@ been already used, duplicate ignored
                    \relax 
 l.53 \item S
             ynchronization with other calendars: MeteoCal will not support t...
-[1] [2] [3] <./UI_mockups/01-login.png, id=430, 965.6075pt x 635.37375pt>
+[1] [2] [3] <./UI_mockups/01-login.png, id=462, 965.6075pt x 635.37375pt>
 File: ./UI_mockups/01-login.png Graphic file (type png)
 
 <use ./UI_mockups/01-login.png>
@@ -584,7 +584,7 @@ Overfull \hbox (15.0pt too wide) in paragraph at lines 124--125
 [][] 
  []
 
-<./UI_mockups/02-about.png, id=431, 965.6075pt x 635.37375pt>
+<./UI_mockups/02-about.png, id=463, 965.6075pt x 635.37375pt>
 File: ./UI_mockups/02-about.png Graphic file (type png)
 
 <use ./UI_mockups/02-about.png>
@@ -599,7 +599,7 @@ Overfull \hbox (15.0pt too wide) in paragraph at lines 128--129
 
  <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/UI_mo
 ckups/01-login.png>]
-<./UI_mockups/03-register.png, id=437, 965.6075pt x 635.37375pt>
+<./UI_mockups/03-register.png, id=469, 965.6075pt x 635.37375pt>
 File: ./UI_mockups/03-register.png Graphic file (type png)
 
 <use ./UI_mockups/03-register.png>
@@ -610,7 +610,7 @@ Overfull \hbox (15.0pt too wide) in paragraph at lines 133--134
 [][] 
  []
 
-<./UI_mockups/04-registered_home.png, id=438, 1108.14pt x 726.715pt>
+<./UI_mockups/04-registered_home.png, id=470, 1108.14pt x 726.715pt>
 File: ./UI_mockups/04-registered_home.png Graphic file (type png)
 
 <use ./UI_mockups/04-registered_home.png>
@@ -625,7 +625,7 @@ Overfull \hbox (15.0pt too wide) in paragraph at lines 138--139
 [5 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/UI_
 mockups/02-about.png> <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-ce
 lli-cereda/rasd/UI_mockups/03-register.png>]
-<./UI_mockups/05-create_event.png, id=445, 1065.9825pt x 701.62125pt>
+<./UI_mockups/05-create_event.png, id=477, 1065.9825pt x 701.62125pt>
 File: ./UI_mockups/05-create_event.png Graphic file (type png)
 
 <use ./UI_mockups/05-create_event.png>
@@ -637,7 +637,7 @@ Overfull \hbox (15.0pt too wide) in paragraph at lines 144--145
 [][] 
  []
 
-<./UI_mockups/06-invite_received.png, id=446, 552.0625pt x 193.72375pt>
+<./UI_mockups/06-invite_received.png, id=478, 552.0625pt x 193.72375pt>
 File: ./UI_mockups/06-invite_received.png Graphic file (type png)
 
 <use ./UI_mockups/06-invite_received.png>
@@ -652,7 +652,7 @@ Overfull \hbox (15.0pt too wide) in paragraph at lines 149--150
 [6 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/UI_
 mockups/04-registered_home.png> <C:/Users/stefano/Documents/NetBeansProjects/me
 teo-cal-celli-cereda/rasd/UI_mockups/05-create_event.png>]
-<./UI_mockups/07-bad_weather_three_days.png, id=454, 552.0625pt x 263.98625pt>
+<./UI_mockups/07-bad_weather_three_days.png, id=486, 552.0625pt x 263.98625pt>
 File: ./UI_mockups/07-bad_weather_three_days.png Graphic file (type png)
 
 <use ./UI_mockups/07-bad_weather_three_days.png>
@@ -664,7 +664,7 @@ Overfull \hbox (15.0pt too wide) in paragraph at lines 154--155
 [][] 
  []
 
-<./UI_mockups/11-bad_weather_one_day.png, id=455, 552.0625pt x 193.72375pt>
+<./UI_mockups/11-bad_weather_one_day.png, id=487, 552.0625pt x 193.72375pt>
 File: ./UI_mockups/11-bad_weather_one_day.png Graphic file (type png)
 
 <use ./UI_mockups/11-bad_weather_one_day.png>
@@ -676,7 +676,7 @@ Overfull \hbox (15.0pt too wide) in paragraph at lines 158--159
 [][] 
  []
 
-<./UI_mockups/08-search.png, id=456, 1018.80624pt x 669.50125pt>
+<./UI_mockups/08-search.png, id=488, 1018.80624pt x 669.50125pt>
 File: ./UI_mockups/08-search.png Graphic file (type png)
 
 <use ./UI_mockups/08-search.png>
@@ -692,7 +692,7 @@ mockups/06-invite_received.png> <C:/Users/stefano/Documents/NetBeansProjects/me
 teo-cal-celli-cereda/rasd/UI_mockups/07-bad_weather_three_days.png> <C:/Users/s
 tefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/UI_mockups/11-bad
 _weather_one_day.png>]
-<./UI_mockups/09-other_calendar.png, id=464, 1094.0875pt x 718.685pt>
+<./UI_mockups/09-other_calendar.png, id=496, 1094.0875pt x 718.685pt>
 File: ./UI_mockups/09-other_calendar.png Graphic file (type png)
 
 <use ./UI_mockups/09-other_calendar.png>
@@ -704,7 +704,7 @@ Overfull \hbox (15.0pt too wide) in paragraph at lines 166--167
 [][] 
  []
 
-<./UI_mockups/10-settings.png, id=465, 956.57375pt x 628.3475pt>
+<./UI_mockups/10-settings.png, id=497, 956.57375pt x 628.3475pt>
 File: ./UI_mockups/10-settings.png Graphic file (type png)
 
 <use ./UI_mockups/10-settings.png>
@@ -729,7 +729,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 187.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [9 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/U
 I_mockups/10-settings.png>] [10] [11] [12] [13]
-<./UI_mockups/storyboard.png, id=522, 902.37125pt x 772.8875pt>
+<./UI_mockups/storyboard.png, id=554, 902.37125pt x 772.8875pt>
 File: ./UI_mockups/storyboard.png Graphic file (type png)
 
 <use ./UI_mockups/storyboard.png>
@@ -818,7 +818,7 @@ Overfull \hbox (48.88582pt too wide) in paragraph at lines 588--603
 [] 
  []
 
-[22] <./Uml/ClassDiagram.png, id=598, 1068.99374pt x 593.21625pt>
+[22] <./Uml/ClassDiagram.png, id=630, 1068.99374pt x 593.21625pt>
 File: ./Uml/ClassDiagram.png Graphic file (type png)
 
 <use ./Uml/ClassDiagram.png>
@@ -826,21 +826,21 @@ Package pdftex.def Info: ./Uml/ClassDiagram.png used on input line 608.
 (pdftex.def)             Requested size: 345.0pt x 191.45334pt.
  [23 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/U
 ml/ClassDiagram.png>]
-<./Uml/StateDiagram_invite.png, id=608, 193.47281pt x 240.9pt>
+<./Uml/StateDiagram_invite.png, id=640, 193.47281pt x 240.9pt>
 File: ./Uml/StateDiagram_invite.png Graphic file (type png)
 
 <use ./Uml/StateDiagram_invite.png>
 Package pdftex.def Info: ./Uml/StateDiagram_invite.png used on input line 619.
 (pdftex.def)             Requested size: 159.96243pt x 199.16928pt.
 
-<./Uml/StateDiagram_3day.png, id=610, 192.72pt x 233.37187pt>
+<./Uml/StateDiagram_3day.png, id=642, 192.72pt x 233.37187pt>
 File: ./Uml/StateDiagram_3day.png Graphic file (type png)
 
 <use ./Uml/StateDiagram_3day.png>
 Package pdftex.def Info: ./Uml/StateDiagram_3day.png used on input line 627.
 (pdftex.def)             Requested size: 164.48323pt x 199.16928pt.
 
-<./Uml/StateDiagram_badWeather_eventChanged.png, id=612, 80.55093pt x 180.675pt
+<./Uml/StateDiagram_badWeather_eventChanged.png, id=644, 80.55093pt x 180.675pt
 >
 File: ./Uml/StateDiagram_badWeather_eventChanged.png Graphic file (type png)
  <use ./Uml/StateDiagram_badWeather_eventChanged.png>
@@ -851,7 +851,7 @@ Package pdftex.def Info: ./Uml/StateDiagram_badWeather_eventChanged.png used on
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<./Uml/ActivityDiagram.png, id=614, 1033.8625pt x 658.46pt>
+<./Uml/ActivityDiagram.png, id=646, 1033.8625pt x 658.46pt>
 File: ./Uml/ActivityDiagram.png Graphic file (type png)
 
 <use ./Uml/ActivityDiagram.png>
@@ -860,7 +860,7 @@ Package pdftex.def Info: ./Uml/ActivityDiagram.png used on input line 644.
  [24 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/U
 ml/StateDiagram_invite.png> <C:/Users/stefano/Documents/NetBeansProjects/meteo-
 cal-celli-cereda/rasd/Uml/StateDiagram_3day.png>] <./Use_case/unlogged_usecase.
-png, id=626, 545.03625pt x 420.57124pt>
+png, id=658, 545.03625pt x 420.57124pt>
 File: ./Use_case/unlogged_usecase.png Graphic file (type png)
 
 <use ./Use_case/unlogged_usecase.png>
@@ -881,7 +881,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 693--693
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC001.png, id=640, 277.78781pt x 305.64188pt>
+<./Sequence_diag/USC001.png, id=672, 277.78781pt x 305.64188pt>
 File: ./Sequence_diag/USC001.png Graphic file (type png)
 
 <use ./Sequence_diag/USC001.png>
@@ -908,7 +908,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 728--728
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC002.png, id=657, 330.48468pt x 296.60812pt>
+<./Sequence_diag/USC002.png, id=689, 330.48468pt x 296.60812pt>
 File: ./Sequence_diag/USC002.png Graphic file (type png)
 
 <use ./Sequence_diag/USC002.png>
@@ -926,7 +926,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 ] [30 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
 Sequence_diag/USC002.png>]
-<./Use_case/logged_usecase_simple.png, id=678, 937.5025pt x 685.56125pt>
+<./Use_case/logged_usecase_simple.png, id=710, 937.5025pt x 685.56125pt>
 File: ./Use_case/logged_usecase_simple.png Graphic file (type png)
 
 <use ./Use_case/logged_usecase_simple.png>
@@ -934,7 +934,7 @@ Package pdftex.def Info: ./Use_case/logged_usecase_simple.png used on input lin
 e 744.
 (pdftex.def)             Requested size: 345.0pt x 252.28333pt.
 
-<./Use_case/logged_usecase.png, id=679, 1146.2825pt x 1287.81125pt>
+<./Use_case/logged_usecase.png, id=711, 1146.2825pt x 1287.81125pt>
 File: ./Use_case/logged_usecase.png Graphic file (type png)
 
 <use ./Use_case/logged_usecase.png>
@@ -962,7 +962,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 781--781
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC003.png, id=692, 336.50719pt x 177.66376pt>
+<./Sequence_diag/USC003.png, id=724, 336.50719pt x 177.66376pt>
 File: ./Sequence_diag/USC003.png Graphic file (type png)
 
 <use ./Sequence_diag/USC003.png>
@@ -989,7 +989,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 818--818
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC004.png, id=710, 308.65312pt x 233.37187pt>
+<./Sequence_diag/USC004.png, id=742, 308.65312pt x 233.37187pt>
 File: ./Sequence_diag/USC004.png Graphic file (type png)
 
 <use ./Sequence_diag/USC004.png>
@@ -1016,7 +1016,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 854--854
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC005.png, id=731, 245.41687pt x 183.68625pt>
+<./Sequence_diag/USC005.png, id=763, 245.41687pt x 183.68625pt>
 File: ./Sequence_diag/USC005.png Graphic file (type png)
 
 <use ./Sequence_diag/USC005.png>
@@ -1043,7 +1043,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 887--887
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC006.png, id=750, 385.44pt x 240.9pt>
+<./Sequence_diag/USC006.png, id=782, 385.44pt x 240.9pt>
 File: ./Sequence_diag/USC006.png Graphic file (type png)
 
 <use ./Sequence_diag/USC006.png>
@@ -1070,7 +1070,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 922--922
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC007.png, id=766, 368.87813pt x 238.64156pt>
+<./Sequence_diag/USC007.png, id=798, 368.87813pt x 238.64156pt>
 File: ./Sequence_diag/USC007.png Graphic file (type png)
 
 <use ./Sequence_diag/USC007.png>
@@ -1097,7 +1097,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 959--959
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC008.png, id=785, 752.8125pt x 596.2275pt>
+<./Sequence_diag/USC008.png, id=817, 752.8125pt x 596.2275pt>
 File: ./Sequence_diag/USC008.png Graphic file (type png)
 
 <use ./Sequence_diag/USC008.png>
@@ -1124,7 +1124,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1000--1000
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC009.png, id=805, 752.8125pt x 596.2275pt>
+<./Sequence_diag/USC009.png, id=837, 752.8125pt x 596.2275pt>
 File: ./Sequence_diag/USC009.png Graphic file (type png)
 
 <use ./Sequence_diag/USC009.png>
@@ -1151,7 +1151,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1037--1037
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC010.png, id=826, 531.9875pt x 361.35pt>
+<./Sequence_diag/USC010.png, id=858, 531.9875pt x 361.35pt>
 File: ./Sequence_diag/USC010.png Graphic file (type png)
 
 <use ./Sequence_diag/USC010.png>
@@ -1178,7 +1178,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1078--1078
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC011.png, id=847, 516.93124pt x 251.94125pt>
+<./Sequence_diag/USC011.png, id=879, 516.93124pt x 251.94125pt>
 File: ./Sequence_diag/USC011.png Graphic file (type png)
 
 <use ./Sequence_diag/USC011.png>
@@ -1205,7 +1205,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1119--1119
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC012.png, id=865, 629.35126pt x 566.115pt>
+<./Sequence_diag/USC012.png, id=897, 629.35126pt x 566.115pt>
 File: ./Sequence_diag/USC012.png Graphic file (type png)
 
 <use ./Sequence_diag/USC012.png>
@@ -1243,7 +1243,7 @@ Underfull \vbox (badness 10000) detected at line 1167
 
 [53
 
-] <./Sequence_diag/USC013.png, id=904, 760.8425pt x 610.28pt>
+] <./Sequence_diag/USC013.png, id=936, 760.8425pt x 610.28pt>
 File: ./Sequence_diag/USC013.png Graphic file (type png)
 
 <use ./Sequence_diag/USC013.png>
@@ -1260,7 +1260,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1206--1206
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC014.png, id=912, 684.5575pt x 506.89375pt>
+<./Sequence_diag/USC014.png, id=944, 684.5575pt x 506.89375pt>
 File: ./Sequence_diag/USC014.png Graphic file (type png)
 
 <use ./Sequence_diag/USC014.png>
@@ -1287,7 +1287,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1249--1249
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC015.png, id=933, 677.53125pt x 486.81876pt>
+<./Sequence_diag/USC015.png, id=965, 677.53125pt x 486.81876pt>
 File: ./Sequence_diag/USC015.png Graphic file (type png)
 
 <use ./Sequence_diag/USC015.png>
@@ -1314,7 +1314,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1291--1291
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC016.png, id=954, 700.6175pt x 398.48875pt>
+<./Sequence_diag/USC016.png, id=986, 700.6175pt x 398.48875pt>
 File: ./Sequence_diag/USC016.png Graphic file (type png)
 
 <use ./Sequence_diag/USC016.png>
@@ -1339,24 +1339,24 @@ oc [63
 
 ] [64])
 \tf@toc=\write5
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1337.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1367.
  [65]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1337.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1367.
 
 (C:\Users\stefano\Documents\NetBeansProjects\meteo-cal-celli-cereda\rasd\RASD.a
 ux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1337.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1337.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1367.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1367.
 
 Package rerunfilecheck Info: File `RASD.out' has not changed.
-(rerunfilecheck)             Checksum: 2D80E0E064E29A1AF9D1770B92790FDE;7475.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1337.
+(rerunfilecheck)             Checksum: CAC5F34D928B91212D207A6C6FEB0236;7996.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1367.
  ) 
 Here is how much of TeX's memory you used:
- 7122 strings out of 493921
- 103037 string characters out of 3147276
+ 7138 strings out of 493921
+ 103283 string characters out of 3147276
  188103 words of memory out of 3000000
- 9908 multiletter control sequences out of 15000+200000
+ 9916 multiletter control sequences out of 15000+200000
  9182 words of font info for 35 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  29i,9n,28p,940b,465s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1368,9 +1368,9 @@ onts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
 1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
 /amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
 s/cm/cmtt10.pfb>
-Output written on RASD.pdf (66 pages, 2135719 bytes).
+Output written on RASD.pdf (66 pages, 2141864 bytes).
 PDF statistics:
- 1202 PDF objects out of 1440 (max. 8388607)
- 395 named destinations out of 1000 (max. 500000)
- 970 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1245 PDF objects out of 1440 (max. 8388607)
+ 403 named destinations out of 1000 (max. 500000)
+ 1034 words of extra memory for PDF output out of 10000 (max. 10000000)
 
