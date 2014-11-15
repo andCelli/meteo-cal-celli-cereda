@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.11.5)  14 NOV 2014 22:31
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.11.5)  15 NOV 2014 13:55
 entering extended mode
 **RASD.tex
 
-("C:\Users\stefano\Documents\Università\7 - Software Engineering 2\progetto\ra
-sd\RASD.tex"
+(C:\Users\stefano\Documents\NetBeansProjects\meteo-cal-celli-cereda\rasd\RASD.t
+ex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -500,8 +500,8 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 
 Writing index file RASD.idx
 
-("C:\Users\stefano\Documents\Università\7 - Software Engineering 2\progetto\ra
-sd\RASD.aux")
+(C:\Users\stefano\Documents\NetBeansProjects\meteo-cal-celli-cereda\rasd\RASD.a
+ux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
 LaTeX Font Info:    ... okay on input line 21.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
@@ -544,23 +544,22 @@ LaTeX Info: Redefining \ref on input line 21.
 LaTeX Info: Redefining \pageref on input line 21.
 LaTeX Info: Redefining \nameref on input line 21.
 
-("C:\Users\stefano\Documents\Università\7 - Software Engineering 2\progetto\ra
-sd\RASD.out")
-("C:\Users\stefano\Documents\Università\7 - Software Engineering 2\progetto\ra
-sd\RASD.out")
+(C:\Users\stefano\Documents\NetBeansProjects\meteo-cal-celli-cereda\rasd\RASD.o
+ut)
+(C:\Users\stefano\Documents\NetBeansProjects\meteo-cal-celli-cereda\rasd\RASD.o
+ut)
 \@outlinefile=\write4
 
-("C:\Users\stefano\Documents\Università\7 - Software Engineering 2\progetto\ra
-sd\title.tex" <./logo.png, id=395, 569.12625pt x 569.12625pt>
+(C:\Users\stefano\Documents\NetBeansProjects\meteo-cal-celli-cereda\rasd\title.
+tex <./logo.png, id=395, 569.12625pt x 569.12625pt>
 File: ./logo.png Graphic file (type png)
  <use ./logo.png>
 Package pdftex.def Info: ./logo.png used on input line 5.
 (pdftex.def)             Requested size: 103.50105pt x 103.49777pt.
-
-[1
+ [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/stefano/Document
-s/Università/7 - Software Engineering 2/progetto/rasd/logo.png>])
+s/NetBeansProjects/meteo-cal-celli-cereda/rasd/logo.png>])
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 30.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
@@ -598,8 +597,8 @@ Overfull \hbox (15.0pt too wide) in paragraph at lines 128--129
 
 [4
 
- <C:/Users/stefano/Documents/Università/7 - Software Engineering 2/progetto/ra
-sd/UI_mockups/01-login.png>]
+ <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/UI_mo
+ckups/01-login.png>]
 <./UI_mockups/03-register.png, id=437, 965.6075pt x 635.37375pt>
 File: ./UI_mockups/03-register.png Graphic file (type png)
 
@@ -623,9 +622,9 @@ Overfull \hbox (15.0pt too wide) in paragraph at lines 138--139
 [][] 
  []
 
-[5 <C:/Users/stefano/Documents/Università/7 - Software Engineering 2/progetto/
-rasd/UI_mockups/02-about.png> <C:/Users/stefano/Documents/Università/7 - Softw
-are Engineering 2/progetto/rasd/UI_mockups/03-register.png>]
+[5 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/UI_
+mockups/02-about.png> <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-ce
+lli-cereda/rasd/UI_mockups/03-register.png>]
 <./UI_mockups/05-create_event.png, id=445, 1065.9825pt x 701.62125pt>
 File: ./UI_mockups/05-create_event.png Graphic file (type png)
 
@@ -650,9 +649,9 @@ Overfull \hbox (15.0pt too wide) in paragraph at lines 149--150
 [][] 
  []
 
-[6 <C:/Users/stefano/Documents/Università/7 - Software Engineering 2/progetto/
-rasd/UI_mockups/04-registered_home.png> <C:/Users/stefano/Documents/Università
-/7 - Software Engineering 2/progetto/rasd/UI_mockups/05-create_event.png>]
+[6 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/UI_
+mockups/04-registered_home.png> <C:/Users/stefano/Documents/NetBeansProjects/me
+teo-cal-celli-cereda/rasd/UI_mockups/05-create_event.png>]
 <./UI_mockups/07-bad_weather_three_days.png, id=454, 552.0625pt x 263.98625pt>
 File: ./UI_mockups/07-bad_weather_three_days.png Graphic file (type png)
 
@@ -688,11 +687,11 @@ Overfull \hbox (15.0pt too wide) in paragraph at lines 162--163
 [][] 
  []
 
-[7 <C:/Users/stefano/Documents/Università/7 - Software Engineering 2/progetto/
-rasd/UI_mockups/06-invite_received.png> <C:/Users/stefano/Documents/Università
-/7 - Software Engineering 2/progetto/rasd/UI_mockups/07-bad_weather_three_days.
-png> <C:/Users/stefano/Documents/Università/7 - Software Engineering 2/progett
-o/rasd/UI_mockups/11-bad_weather_one_day.png>]
+[7 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/UI_
+mockups/06-invite_received.png> <C:/Users/stefano/Documents/NetBeansProjects/me
+teo-cal-celli-cereda/rasd/UI_mockups/07-bad_weather_three_days.png> <C:/Users/s
+tefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/UI_mockups/11-bad
+_weather_one_day.png>]
 <./UI_mockups/09-other_calendar.png, id=464, 1094.0875pt x 718.685pt>
 File: ./UI_mockups/09-other_calendar.png Graphic file (type png)
 
@@ -716,9 +715,9 @@ Overfull \hbox (15.0pt too wide) in paragraph at lines 171--172
 [][] 
  []
 
-[8 <C:/Users/stefano/Documents/Università/7 - Software Engineering 2/progetto/
-rasd/UI_mockups/08-search.png> <C:/Users/stefano/Documents/Università/7 - Soft
-ware Engineering 2/progetto/rasd/UI_mockups/09-other_calendar.png>]
+[8 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/UI_
+mockups/08-search.png> <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-c
+elli-cereda/rasd/UI_mockups/09-other_calendar.png>]
 LaTeX Font Info:    Try loading font information for U+msa on input line 187.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
@@ -728,8 +727,8 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 187.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [9 <C:/Users/stefano/Documents/Università/7 - Software Engineering 2/progett
-o/rasd/UI_mockups/10-settings.png>] [10] [11] [12] [13]
+) [9 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/U
+I_mockups/10-settings.png>] [10] [11] [12] [13]
 <./UI_mockups/storyboard.png, id=522, 902.37125pt x 772.8875pt>
 File: ./UI_mockups/storyboard.png Graphic file (type png)
 
@@ -743,8 +742,8 @@ Overfull \hbox (48.88582pt too wide) in paragraph at lines 375--384
 
 [14
 
- <C:/Users/stefano/Documents/Università/7 - Software Engineering 2/progetto/ra
-sd/UI_mockups/storyboard.png>]
+ <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/UI_mo
+ckups/storyboard.png>]
 Overfull \hbox (48.88582pt too wide) in paragraph at lines 386--398
 [] 
  []
@@ -819,14 +818,14 @@ Overfull \hbox (48.88582pt too wide) in paragraph at lines 588--603
 [] 
  []
 
-[22] <./Uml/ClassDiagram.png, id=598, 1062.97125pt x 599.23875pt>
+[22] <./Uml/ClassDiagram.png, id=598, 1068.99374pt x 593.21625pt>
 File: ./Uml/ClassDiagram.png Graphic file (type png)
 
 <use ./Uml/ClassDiagram.png>
 Package pdftex.def Info: ./Uml/ClassDiagram.png used on input line 608.
-(pdftex.def)             Requested size: 345.0pt x 194.49426pt.
- [23 <C:/Users/stefano/Documents/Università/7 - Software Engineering 2/progett
-o/rasd/Uml/ClassDiagram.png>]
+(pdftex.def)             Requested size: 345.0pt x 191.45334pt.
+ [23 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/U
+ml/ClassDiagram.png>]
 <./Uml/StateDiagram_invite.png, id=608, 193.47281pt x 240.9pt>
 File: ./Uml/StateDiagram_invite.png Graphic file (type png)
 
@@ -858,21 +857,21 @@ File: ./Uml/ActivityDiagram.png Graphic file (type png)
 <use ./Uml/ActivityDiagram.png>
 Package pdftex.def Info: ./Uml/ActivityDiagram.png used on input line 644.
 (pdftex.def)             Requested size: 312.71677pt x 199.16928pt.
- [24 <C:/Users/stefano/Documents/Università/7 - Software Engineering 2/progett
-o/rasd/Uml/StateDiagram_invite.png> <C:/Users/stefano/Documents/Università/7 -
- Software Engineering 2/progetto/rasd/Uml/StateDiagram_3day.png>]
-<./Use_case/unlogged_usecase.png, id=626, 545.03625pt x 420.57124pt>
+ [24 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/U
+ml/StateDiagram_invite.png> <C:/Users/stefano/Documents/NetBeansProjects/meteo-
+cal-celli-cereda/rasd/Uml/StateDiagram_3day.png>] <./Use_case/unlogged_usecase.
+png, id=626, 545.03625pt x 420.57124pt>
 File: ./Use_case/unlogged_usecase.png Graphic file (type png)
 
 <use ./Use_case/unlogged_usecase.png>
 Package pdftex.def Info: ./Use_case/unlogged_usecase.png used on input line 661
 .
 (pdftex.def)             Requested size: 345.0pt x 266.21268pt.
- [25 <C:/Users/stefano/Documents/Università/7 - Software Engineering 2/progett
-o/rasd/Uml/StateDiagram_badWeather_eventChanged.png> <C:/Users/stefano/Document
-s/Università/7 - Software Engineering 2/progetto/rasd/Uml/ActivityDiagram.png>
-] [26 <C:/Users/stefano/Documents/Università/7 - Software Engineering 2/proget
-to/rasd/Use_case/unlogged_usecase.png>]
+ [25 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/U
+ml/StateDiagram_badWeather_eventChanged.png> <C:/Users/stefano/Documents/NetBea
+nsProjects/meteo-cal-celli-cereda/rasd/Uml/ActivityDiagram.png>] [26 <C:/Users/
+stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/Use_case/unlogge
+d_usecase.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 692--692
 []\OT1/cmr/m/n/10 Special re-quire-
  []
@@ -898,8 +897,8 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [27
 
-] [28 <C:/Users/stefano/Documents/Università/7 - Software Engineering 2/proget
-to/rasd/Sequence_diag/USC001.png>]
+] [28 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
+Sequence_diag/USC001.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 727--727
 []\OT1/cmr/m/n/10 Special re-quire-
  []
@@ -925,8 +924,8 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [29
 
-] [30 <C:/Users/stefano/Documents/Università/7 - Software Engineering 2/proget
-to/rasd/Sequence_diag/USC002.png>]
+] [30 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
+Sequence_diag/USC002.png>]
 <./Use_case/logged_usecase_simple.png, id=678, 937.5025pt x 685.56125pt>
 File: ./Use_case/logged_usecase_simple.png Graphic file (type png)
 
@@ -951,9 +950,9 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [31
 
- <C:/Users/stefano/Documents/Università/7 - Software Engineering 2/progetto/ra
-sd/Use_case/logged_usecase_simple.png>] [32 <C:/Users/stefano/Documents/Univers
-ità/7 - Software Engineering 2/progetto/rasd/Use_case/logged_usecase.png>]
+ <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/Use_c
+ase/logged_usecase_simple.png>] [32 <C:/Users/stefano/Documents/NetBeansProject
+s/meteo-cal-celli-cereda/rasd/Use_case/logged_usecase.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 780--780
 []\OT1/cmr/m/n/10 Special re-quire-
  []
@@ -979,8 +978,8 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [33
 
-] [34 <C:/Users/stefano/Documents/Università/7 - Software Engineering 2/proget
-to/rasd/Sequence_diag/USC003.png>]
+] [34 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
+Sequence_diag/USC003.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 817--817
 []\OT1/cmr/m/n/10 Special re-quire-
  []
@@ -1006,8 +1005,8 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [35
 
-] [36 <C:/Users/stefano/Documents/Università/7 - Software Engineering 2/proget
-to/rasd/Sequence_diag/USC004.png>]
+] [36 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
+Sequence_diag/USC004.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 853--853
 []\OT1/cmr/m/n/10 Special re-quire-
  []
@@ -1033,8 +1032,8 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [37
 
-] [38 <C:/Users/stefano/Documents/Università/7 - Software Engineering 2/proget
-to/rasd/Sequence_diag/USC005.png>]
+] [38 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
+Sequence_diag/USC005.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 886--886
 []\OT1/cmr/m/n/10 Special re-quire-
  []
@@ -1060,8 +1059,8 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [39
 
-] [40 <C:/Users/stefano/Documents/Università/7 - Software Engineering 2/proget
-to/rasd/Sequence_diag/USC006.png>]
+] [40 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
+Sequence_diag/USC006.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 921--921
 []\OT1/cmr/m/n/10 Special re-quire-
  []
@@ -1087,8 +1086,8 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [41
 
-] [42 <C:/Users/stefano/Documents/Università/7 - Software Engineering 2/proget
-to/rasd/Sequence_diag/USC007.png>]
+] [42 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
+Sequence_diag/USC007.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 958--958
 []\OT1/cmr/m/n/10 Special re-quire-
  []
@@ -1114,8 +1113,8 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [43
 
-] [44 <C:/Users/stefano/Documents/Università/7 - Software Engineering 2/proget
-to/rasd/Sequence_diag/USC008.png>]
+] [44 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
+Sequence_diag/USC008.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 999--999
 []\OT1/cmr/m/n/10 Special re-quire-
  []
@@ -1141,8 +1140,8 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [45
 
-] [46 <C:/Users/stefano/Documents/Università/7 - Software Engineering 2/proget
-to/rasd/Sequence_diag/USC009.png>]
+] [46 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
+Sequence_diag/USC009.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 1036--1036
 []\OT1/cmr/m/n/10 Special re-quire-
  []
@@ -1168,8 +1167,8 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [47
 
-] [48 <C:/Users/stefano/Documents/Università/7 - Software Engineering 2/proget
-to/rasd/Sequence_diag/USC010.png>]
+] [48 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
+Sequence_diag/USC010.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 1077--1077
 []\OT1/cmr/m/n/10 Special re-quire-
  []
@@ -1195,8 +1194,8 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [49
 
-] [50 <C:/Users/stefano/Documents/Università/7 - Software Engineering 2/proget
-to/rasd/Sequence_diag/USC011.png>]
+] [50 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
+Sequence_diag/USC011.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 1118--1118
 []\OT1/cmr/m/n/10 Special re-quire-
  []
@@ -1222,8 +1221,8 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [51
 
-] [52 <C:/Users/stefano/Documents/Università/7 - Software Engineering 2/proget
-to/rasd/Sequence_diag/USC012.png>]
+] [52 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
+Sequence_diag/USC012.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 1164--1164
 []|\OT1/cmr/m/n/10 Special re-quire-
  []
@@ -1250,8 +1249,8 @@ File: ./Sequence_diag/USC013.png Graphic file (type png)
 <use ./Sequence_diag/USC013.png>
 Package pdftex.def Info: ./Sequence_diag/USC013.png used on input line 1170.
 (pdftex.def)             Requested size: 345.0pt x 276.7373pt.
- [54 <C:/Users/stefano/Documents/Università/7 - Software Engineering 2/progett
-o/rasd/Sequence_diag/USC013.png>]
+ [54 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/S
+equence_diag/USC013.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 1205--1205
 []\OT1/cmr/m/n/10 Special re-quire-
  []
@@ -1277,8 +1276,8 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [55
 
-] [56 <C:/Users/stefano/Documents/Università/7 - Software Engineering 2/proget
-to/rasd/Sequence_diag/USC014.png>]
+] [56 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
+Sequence_diag/USC014.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 1248--1248
 []\OT1/cmr/m/n/10 Special re-quire-
  []
@@ -1304,8 +1303,8 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [57
 
-] [58 <C:/Users/stefano/Documents/Università/7 - Software Engineering 2/proget
-to/rasd/Sequence_diag/USC015.png>]
+] [58 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
+Sequence_diag/USC015.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 1290--1290
 []\OT1/cmr/m/n/10 Special re-quire-
  []
@@ -1331,12 +1330,12 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [59
 
-] [60 <C:/Users/stefano/Documents/Università/7 - Software Engineering 2/proget
-to/rasd/Sequence_diag/USC016.png>] [61] [62
+] [60 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
+Sequence_diag/USC016.png>] [61] [62
 
 ]
-("C:\Users\stefano\Documents\Università\7 - Software Engineering 2\progetto\ra
-sd\RASD.toc" [63
+(C:\Users\stefano\Documents\NetBeansProjects\meteo-cal-celli-cereda\rasd\RASD.t
+oc [63
 
 ] [64])
 \tf@toc=\write5
@@ -1344,8 +1343,8 @@ Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1337.
  [65]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 1337.
 
-("C:\Users\stefano\Documents\Università\7 - Software Engineering 2\progetto\ra
-sd\RASD.aux")
+(C:\Users\stefano\Documents\NetBeansProjects\meteo-cal-celli-cereda\rasd\RASD.a
+ux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1337.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1337.
 
@@ -1355,7 +1354,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1337.
  ) 
 Here is how much of TeX's memory you used:
  7122 strings out of 493921
- 103157 string characters out of 3147276
+ 103037 string characters out of 3147276
  188103 words of memory out of 3000000
  9908 multiletter control sequences out of 15000+200000
  9182 words of font info for 35 fonts, out of 3000000 for 9000
@@ -1369,7 +1368,7 @@ onts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
 1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
 /amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
 s/cm/cmtt10.pfb>
-Output written on RASD.pdf (66 pages, 2113932 bytes).
+Output written on RASD.pdf (66 pages, 2135719 bytes).
 PDF statistics:
  1202 PDF objects out of 1440 (max. 8388607)
  395 named destinations out of 1000 (max. 500000)
