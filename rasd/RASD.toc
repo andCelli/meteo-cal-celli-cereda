@@ -1,0 +1,98 @@
+\contentsline {part}{I\hspace {1em}Introduction}{1}{part.1}
+\contentsline {section}{\numberline {1}Purpose}{1}{section.1}
+\contentsline {section}{\numberline {2}Scope}{1}{section.2}
+\contentsline {section}{\numberline {3}Definitions and acronyms}{2}{section.3}
+\contentsline {subsection}{\numberline {3.1}Definitions}{2}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Acronyms and abbreviations}{3}{subsection.3.2}
+\contentsline {section}{\numberline {4}Reference documents}{3}{section.4}
+\contentsline {section}{\numberline {5}Overview}{3}{section.5}
+\contentsline {part}{II\hspace {1em}Overall Description}{4}{part.2}
+\contentsline {section}{\numberline {6}Product Perspective}{4}{section.6}
+\contentsline {subsection}{\numberline {6.1}System Interfaces}{4}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}User interfaces}{4}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Hardware interfaces}{9}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.4}Software interfaces}{9}{subsection.6.4}
+\contentsline {subsubsection}{\numberline {6.4.1}Database management system}{9}{subsubsection.6.4.1}
+\contentsline {subsubsection}{\numberline {6.4.2}Application server}{9}{subsubsection.6.4.2}
+\contentsline {subsubsection}{\numberline {6.4.3}Operating system}{10}{subsubsection.6.4.3}
+\contentsline {subsection}{\numberline {6.5}Communication interfaces}{10}{subsection.6.5}
+\contentsline {subsection}{\numberline {6.6}Memory}{10}{subsection.6.6}
+\contentsline {subsection}{\numberline {6.7}Operations}{10}{subsection.6.7}
+\contentsline {subsection}{\numberline {6.8}Site adaptation requirements}{10}{subsection.6.8}
+\contentsline {section}{\numberline {7}Product functions}{10}{section.7}
+\contentsline {subsection}{\numberline {7.1}General requirements}{10}{subsection.7.1}
+\contentsline {subsubsection}{\numberline {7.1.1}Managing users}{11}{subsubsection.7.1.1}
+\contentsline {subsubsection}{\numberline {7.1.2}Managing calendars}{11}{subsubsection.7.1.2}
+\contentsline {subsubsection}{\numberline {7.1.3}Managing weather forecasts}{12}{subsubsection.7.1.3}
+\contentsline {section}{\numberline {8}User characteristics}{12}{section.8}
+\contentsline {section}{\numberline {9}Constraints}{12}{section.9}
+\contentsline {subsection}{\numberline {9.1}Regulatory policies}{12}{subsection.9.1}
+\contentsline {subsection}{\numberline {9.2}Hardware limitations}{12}{subsection.9.2}
+\contentsline {subsection}{\numberline {9.3}Software limitations}{12}{subsection.9.3}
+\contentsline {subsection}{\numberline {9.4}Interfaces to other applications}{12}{subsection.9.4}
+\contentsline {subsection}{\numberline {9.5}Parallel operation}{12}{subsection.9.5}
+\contentsline {subsection}{\numberline {9.6}Audit functions}{13}{subsection.9.6}
+\contentsline {subsection}{\numberline {9.7}Control functions}{13}{subsection.9.7}
+\contentsline {subsection}{\numberline {9.8}Higher-order language requirements}{13}{subsection.9.8}
+\contentsline {subsection}{\numberline {9.9}Signal handshake protocols}{13}{subsection.9.9}
+\contentsline {subsection}{\numberline {9.10}Reliability requirements}{13}{subsection.9.10}
+\contentsline {subsection}{\numberline {9.11}Criticality of the application}{13}{subsection.9.11}
+\contentsline {subsection}{\numberline {9.12}Safety and security considerations}{13}{subsection.9.12}
+\contentsline {section}{\numberline {10}Assumptions and Dependencies}{13}{section.10}
+\contentsline {section}{\numberline {11}Apportioning of requirements}{13}{section.11}
+\contentsline {part}{III\hspace {1em}Specific Requirements}{14}{part.3}
+\contentsline {section}{\numberline {12}External interface requirements}{14}{section.12}
+\contentsline {subsection}{\numberline {12.1}User interfaces}{14}{subsection.12.1}
+\contentsline {subsection}{\numberline {12.2}Hardware interfaces}{14}{subsection.12.2}
+\contentsline {subsection}{\numberline {12.3}Software interfaces}{14}{subsection.12.3}
+\contentsline {subsection}{\numberline {12.4}Communications interfaces}{14}{subsection.12.4}
+\contentsline {section}{\numberline {13}Functional Requirements}{15}{section.13}
+\contentsline {subsection}{\numberline {13.1}Scenarios}{15}{subsection.13.1}
+\contentsline {subsubsection}{\numberline {13.1.1}Registering in the system }{15}{subsubsection.13.1.1}
+\contentsline {subsubsection}{\numberline {13.1.2}User logs into the system}{15}{subsubsection.13.1.2}
+\contentsline {subsubsection}{\numberline {13.1.3}User creates an event}{16}{subsubsection.13.1.3}
+\contentsline {subsubsection}{\numberline {13.1.4}User modifies an event}{16}{subsubsection.13.1.4}
+\contentsline {subsubsection}{\numberline {13.1.5}User views his calendar}{17}{subsubsection.13.1.5}
+\contentsline {subsubsection}{\numberline {13.1.6}User deletes an event}{17}{subsubsection.13.1.6}
+\contentsline {subsubsection}{\numberline {13.1.7}User invites another user to his event}{18}{subsubsection.13.1.7}
+\contentsline {subsubsection}{\numberline {13.1.8}Invited user accepts}{18}{subsubsection.13.1.8}
+\contentsline {subsubsection}{\numberline {13.1.9}User declines an event invite}{19}{subsubsection.13.1.9}
+\contentsline {subsubsection}{\numberline {13.1.10}User search the calendar of another user }{19}{subsubsection.13.1.10}
+\contentsline {subsubsection}{\numberline {13.1.11}A user looks through the calendar of another user}{20}{subsubsection.13.1.11}
+\contentsline {subsubsection}{\numberline {13.1.12}The user receives the bad weather alert}{20}{subsubsection.13.1.12}
+\contentsline {subsubsection}{\numberline {13.1.13}The system propose a sunny day to the user}{21}{subsubsection.13.1.13}
+\contentsline {subsubsection}{\numberline {13.1.14}A user gets notified that an event date has been changed}{22}{subsubsection.13.1.14}
+\contentsline {subsubsection}{\numberline {13.1.15}A user changes his data}{22}{subsubsection.13.1.15}
+\contentsline {subsubsection}{\numberline {13.1.16}The system updates the meteo forecasts}{23}{subsubsection.13.1.16}
+\contentsline {section}{\numberline {14}Analysis model}{23}{section.14}
+\contentsline {section}{\numberline {15}State chart model}{24}{section.15}
+\contentsline {section}{\numberline {16}Activity Model}{25}{section.16}
+\contentsline {section}{\numberline {17}Use case model}{25}{section.17}
+\contentsline {subsection}{\numberline {17.1}Unlogged User}{26}{subsection.17.1}
+\contentsline {subsubsection}{\numberline {17.1.1}User register to the system}{27}{subsubsection.17.1.1}
+\contentsline {subsubsection}{\numberline {17.1.2}A registered user logs into the system}{29}{subsubsection.17.1.2}
+\contentsline {subsection}{\numberline {17.2}Logged User}{31}{subsection.17.2}
+\contentsline {subsubsection}{\numberline {17.2.1}Logged user creates a new event}{33}{subsubsection.17.2.1}
+\contentsline {subsubsection}{\numberline {17.2.2}Logged user modifies an existing event}{35}{subsubsection.17.2.2}
+\contentsline {subsubsection}{\numberline {17.2.3}Logged user views the details of his events}{37}{subsubsection.17.2.3}
+\contentsline {subsubsection}{\numberline {17.2.4}Logged user deletes an event}{39}{subsubsection.17.2.4}
+\contentsline {subsubsection}{\numberline {17.2.5}Logged user invites another user to his event}{41}{subsubsection.17.2.5}
+\contentsline {subsubsection}{\numberline {17.2.6}Registered user accepts an invitation}{43}{subsubsection.17.2.6}
+\contentsline {subsubsection}{\numberline {17.2.7}Decline an event invite}{45}{subsubsection.17.2.7}
+\contentsline {subsubsection}{\numberline {17.2.8}Search the calendar of another user}{47}{subsubsection.17.2.8}
+\contentsline {subsubsection}{\numberline {17.2.9}Browse another user calendar}{49}{subsubsection.17.2.9}
+\contentsline {subsubsection}{\numberline {17.2.10}Receive bad weather alert}{51}{subsubsection.17.2.10}
+\contentsline {subsubsection}{\numberline {17.2.11}Propose a sunny day}{53}{subsubsection.17.2.11}
+\contentsline {subsubsection}{\numberline {17.2.12}Receive date changed notification}{55}{subsubsection.17.2.12}
+\contentsline {subsubsection}{\numberline {17.2.13}Change data}{57}{subsubsection.17.2.13}
+\contentsline {subsubsection}{\numberline {17.2.14}Update weather forecasts}{59}{subsubsection.17.2.14}
+\contentsline {section}{\numberline {18}Performance requirements}{60}{section.18}
+\contentsline {section}{\numberline {19}Design constraints}{60}{section.19}
+\contentsline {section}{\numberline {20}Software system attributes}{60}{section.20}
+\contentsline {subsection}{\numberline {20.1}Reliability}{60}{subsection.20.1}
+\contentsline {subsection}{\numberline {20.2}Availability}{60}{subsection.20.2}
+\contentsline {subsection}{\numberline {20.3}Security}{60}{subsection.20.3}
+\contentsline {subsection}{\numberline {20.4}Maintainability}{60}{subsection.20.4}
+\contentsline {subsection}{\numberline {20.5}Portability}{61}{subsection.20.5}
+\contentsline {section}{\numberline {21}Other requirements}{61}{section.21}
+\contentsline {part}{IV\hspace {1em}Appendixes}{62}{part.4}
