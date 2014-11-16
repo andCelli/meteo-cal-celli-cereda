@@ -40,12 +40,12 @@ The main objectives of MeteoCal are:
 \item In case of bad weather the system has to notify all the event's participants one day in advance
 \item Allow a user to define his calendar as public or private, if the calendar is public the other users will be able to see when the user is busy.
 \item Allow a user to define his events as public or private, if an event is public other users will be able to see its details.
-\item Three days before the event in case of bad weather the system will propose to the event creator the closest sunny day.
+\item Three days before the event in case of bad weather the system will propose to the event creator the closest sunny day. The user will be able to move the event to the proposed day.
 \end{itemize}
 MeteoCal will provide general functionalities for managing:
 \begin{itemize}
 \item Users: MeteoCal will manage personal data of the users. MeteoCal will manage registering, logging in/out and the modification of personal data.
-\item Calendar: MeteoCal will manage a calendar for each user. User will be able to create, update and delete an event and to see other people's events. MeteoCal will also manage event invitation.
+\item Calendar: MeteoCal will manage a calendar for each user. User will be able to create, update and delete an event and to see other people's events. MeteoCal will also manage event invitation and notifications for the event's update.
 \item Weather: MeteoCal will manage weather forecasts and send notifications to event's participants one day in advance in case of bad weather. It will also have to propose an alternative schedule to the event creator with three day of advance.
 \end{itemize}
 MeteoCal will have the following limitations (probably developed in future versions):
@@ -78,6 +78,10 @@ MeteoCal will have the following goals:
 \item Registered user: a user that has created an account on MeteoCal
 \item Logged user: a registered user that has performed the login process
 \item Unlogged user: either a non registered user or a registered user that is logged out of the system
+\item Participant: a participant to an event is either its creator or an invited user who accepted the invite
+\item Bad weather alert: the notification send to the user with one day of advance if weather forecasts for outdoor events on the next day are bad
+\item Date changed notification: the notification send to every participant if the event creator change the event date
+\item System: the MeteoCal system
 \end{itemize}
 
 \subsection{Acronyms and abbreviations}
@@ -90,11 +94,13 @@ MeteoCal will have the following goals:
 \item AS: Application server
 \item FR: Functional requirement
 \item NFR: Non-functional requirement
+\item BWA: Bad weather alert
+\item DCN: Date changed notification
 \end{itemize}
 
 \section{Reference documents}
 \begin{itemize}
-\item Alloy model file: MeteoCal.als
+\item Alloy model file: \url{./MeteoCal.als}
 \end{itemize}
 
 \section{Overview}
@@ -107,23 +113,23 @@ This document is organized as follows:
 \end{itemize}
 
 \clearpage
-\part{Overall Description}
+\part{Overall description}
 This section does not describe specific requirements, but puts the product into perspective and provides a background for specifying concrete requirements in the next section of this document.
 
-\section{Product Perspective}
+\section{Product perspective}
 The software product is a complete self-contained system and it is not part of any other larger system. However in the future it may offer external interfaces to other calendars.
 
-\subsection{System Interfaces}
+\subsection{System interfaces}
 The software product does not provide any external interface.
 
 \subsection{User interfaces}
 The software product will present the following page layouts as the user interface. These
 page layouts offer a minimalistic approach to design and navigation.
-This is the MeteoCal homepage:
+This is the MeteoCal homepage where the user has to login with his data:
 
 \vspace{2mm}\includegraphics[width={\linewidth}]{./UI_mockups/01-login.png}\vspace{3mm}
 
-Here the users can log into the system giving his data. The user can also navigate to the “about” page:
+The user can also navigate to the “about” page:
 
 \vspace{3mm}\includegraphics[width={\linewidth}]{./UI_mockups/02-about.png}\vspace{3mm}
 
@@ -157,7 +163,7 @@ This image is the one presented according to G8 (i.e. the one that proposes a di
 
 \vspace{3mm}\includegraphics[width={\linewidth}]{./UI_mockups/11-bad_weather_one_day}\vspace{3mm}
 
-From the “logged user homepage” the user can also search another user by his name and surname, then the system provides a list of possible matches:
+From the “logged user homepage” the user can also search another user by his name, surname or username then the system provides a list of possible matches:
 
 \vspace{3mm}\includegraphics[width={\linewidth}]{./UI_mockups/08-search.png}\vspace{3mm}
 
@@ -281,7 +287,7 @@ Functional requirements:
 Non-functional requirements:
 \begin{enumerate}[label = NFR \arabic*:]
 \item The displayed forecasts should be updated every 24 hours
-\item The system has to interface with a Meteo service to collect forecasts
+\item The system has to interface with a meteo service to collect forecasts
 \end{enumerate}
 
 \section{User characteristics}
@@ -329,7 +335,7 @@ The software product requires proper support for concurrent users.
 \subsection{Safety and security considerations}
 User data has to be stored and managed in a secure way.
 
-\section{Assumptions and Dependencies}
+\section{Assumptions and dependencies}
 The requirements in this document are grounded on the following assumptions:
 \begin{itemize}
 \item The JVM is already installed on the OS
@@ -346,12 +352,12 @@ Future releases of the software product may provide support for:
 \end{itemize}
 
 \clearpage
-\part{Specific Requirements}
+\part{Specific requirements}
 
 \section{External interface requirements}
 
 \subsection{User interfaces}
-The storyboard in figure \ref{fig:Storyboard} describes the workflow to get from the login page to the exploration of the calendar of another user.
+The storyboard in figure \ref{fig:Storyboard} describes the work flow to get from the login page to the exploration of the calendar of another user.
 \begin{figure}[h!]
 \centering
 \includegraphics[width=\linewidth]{./UI_mockups/storyboard.png}
@@ -378,7 +384,7 @@ The software product does not provide any communications interfaces.
 \hline Description & Describing how a user registers in the system \\
 \hline Goal        & \begin{itemize}\item G1: Allow the registration of new users\end{itemize}\\
 \hline Assumptions & \begin{enumerate} \item User is not registered \end{enumerate} \\
-\hline \multicolumn{2}{|p{13cm}|}{Valerio wants to find a way to manage the schedule of his outdoor workouts, he asks a friend and becomes aware of the existence of MeteoCal. He navigates to the MeteoCal website and decides to register, so he clicks on "Register" button. The system provides him a form to be filled with mandatory information: his username, password, email address, name and surname. At the end he can press the “Save” button or the “Cancel” button. He saves and then logs out since he has to go out running.}\\
+\hline \multicolumn{2}{|p{13cm}|}{Valerio wants to find a way to manage the schedule of his outdoor workouts, he asks a friend and becomes aware of the existence of MeteoCal. He navigates to the MeteoCal website and decides to register, so he clicks on "Register" button. The system provides him a form to be filled with mandatory information: his username, password, email address, name and surname. He also has to specify whether his calendar is public or private. At the end he can press the “Save” button or the “Cancel” button. He saves and then logs out since he has to go out running.}\\
 \hline
 \end{tabular}
 
@@ -637,7 +643,7 @@ Figure \ref{fig:badWeatherStateChart} depicts the evolution of the notification 
 \label{fig:badWeatherStateChart}
 \end{figure}
 
-\section{Activity Model}
+\section{Activity model}
 Since the main goal of the software product is to create new event, in figure \ref{fig:ActivityDiag} we introduce the activity model of the creation of a new event.
 \begin{figure}[h!]
 \centering
@@ -654,7 +660,7 @@ Below we separately present the use cases associated with our two actors:
 \end{itemize}
 
 
-\subsection{Unlogged User}
+\subsection{Unlogged user}
 Figure \ref{fig:Unlogged_usc} depicts the use cases of an unlogged user.
 \begin{figure}[h]
 \centering
@@ -736,7 +742,7 @@ Figure \ref{fig:Unlogged_usc} depicts the use cases of an unlogged user.
 \end{figure}
 
 \clearpage
-\subsection{Logged User}
+\subsection{Logged user}
 Figure \ref{fig:Logged_usc_simple} contains the simplified version of the logged user use case, while figure \ref{fig:Logged_usc} depicts the complete one.
 
 \begin{figure}[h!]
@@ -776,7 +782,11 @@ Figure \ref{fig:Logged_usc_simple} contains the simplified version of the logged
 \item The user fills the form and clicks on “Create”
 \item The system saves the event and shows a confirmation
 \end{enumerate}\\
-\hline Exceptions & If some data is missing the system shows an error \\
+\hline Exceptions & \begin{itemize}
+\item If some data is missing the system shows an error
+\item  If the beginning hour is before the ending hour the system shows an error
+\item In case of an outdoor event the use must indicate a place recognized by the meteo service
+\end{itemize}\\
 \hline Special requirements &  \\
 \hline Nonfunctional requirements &  \\
 \hline
@@ -795,7 +805,7 @@ Figure \ref{fig:Logged_usc_simple} contains the simplified version of the logged
 \hline \multicolumn{2}{|c|}{\textbf{Logged user modifies an existing event}} \\ 
 \hline Code & USC004 \\ 
 \hline Description & Describing how a logged user can modify the data of an event that he have created previously \\
-\hline Goal & G2: \\
+\hline Goal & G2: Allow users to view, create, update and delete events in their calendar\\
 \hline Assumptions  & \begin{enumerate}
 \item The user is logged
 \item The user tries to modify an event that he have created before
@@ -813,8 +823,11 @@ Figure \ref{fig:Logged_usc_simple} contains the simplified version of the logged
 \item The user modifies the data and clicks “Save”
 \item The system modifies the event data and show a confirmation
 \end{enumerate}\\
-\hline Exceptions & If some data are missing the system shows an error \\
-\hline Special requirements & \\
+\hline Exceptions &\begin{itemize}
+\item If some data is missing the system shows an error
+\item  If the beginning hour is before the ending hour the system shows an error
+\item In case of an outdoor event the use must indicate a place recognized by the meteo service
+\end{itemize} \\
 \hline Nonfunctional requirements &  \\
 \hline
 \end{tabular}
@@ -1260,7 +1273,7 @@ Figure \ref{fig:Logged_usc_simple} contains the simplified version of the logged
 \subsubsection{Update weather forecasts} 
 
 \begin{tabular}[h]{| p{3cm} | p{10cm} |} 
-\hline \multicolumn{2}{|c|}{\textbf{Use case name}} \\  
+\hline \multicolumn{2}{|c|}{\textbf{Update weather forecasts}} \\  
 \hline Code & USC016\\  
 \hline Description & MeteoCal asks an external meteo service for updated weather forecasts for all the scheduled events\\ 
 \hline Goal & \begin{itemize}
@@ -1308,8 +1321,7 @@ EJBs for the business logic.
 \section{Software system attributes}
 
 \subsection{Reliability}
-The software product does not any reliability factors because in case of malfunction it will
-cause minor inconveniences.
+The software product does not have any reliability related issue because malfunctioning would cause minor inconveniences.
 
 \subsection{Availability}
 The system shall be available 24 hours per day, 365 days per year.
@@ -1319,7 +1331,7 @@ The software product must provide secure storage of the passwords of its users. 
 achieved by using any cryptographic techniques.
 
 \subsection{Maintainability}
-The database must be backed up periodically, so that new connection and skill data is not lost
+The database must be backed up periodically, so that new events and users data are not lost
 in case of malfunction.
 
 \subsection{Portability}
@@ -1333,23 +1345,61 @@ errors, and instruct the user on what to do.
 \part{Appendixes}
 
 \section{Alloy}
-TODO
 In this section we try to understand if our Class Diagram can be consistent using Alloy Analyzer.
 
 \subsection{Alloy code}
+The alloy code can be seen in the attached file \url{./MeteoCal.als}
 
 \subsection{Alloy output}
-Figure X is the output of Alloy Analizer showing that our model is consistent.
+Figure \ref{fig:AlloyOut} is the output of Alloy Analyzer showing that our model is consistent.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\linewidth]{./Alloy/AlloyOutput.png}
+\caption[AlloyOut]{Alloy Analyzer output}
+\label{fig:AlloyOut}
+\end{figure}
 
 \subsection{Worlds generated}
-\subsubsection{General world}
-\subsubsection{Minchia consistency}
+Below we attach some worlds generated with our model in order to make understand that our model correctly describes the problem.
 
+Figure \ref{fig:AlloySimple} describes a really simple world.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\linewidth]{./Alloy/ShowSimple.png}
+\caption[Simple]{Alloy simple world}
+\label{fig:AlloySimple}
+\end{figure}
+
+Figure \ref{fig:AlloyInvite} describes a simple world with an invite notification.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\linewidth]{./Alloy/ShowInvite.png}
+\caption[Invite]{Alloy simple world with an invite}
+\label{fig:AlloyInvite}
+\end{figure}
+
+Figure \ref{fig:AlloyForecast} describes a simple world with a weather forecast.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\linewidth]{./Alloy/ShowForecast.png}
+\caption[Forecast]{Alloy simple world with a weather forecast}
+\label{fig:AlloyForecast}
+\end{figure}
+
+Figure \ref{fig:AlloyComplex} describes a rather complex world
+\begin{figure}[h!]
+\centering
+\includegraphics[width=9cm]{./Alloy/ShowComplex.png}
+\caption[Complex]{Alloy complex world}
+\label{fig:AlloyComplex}
+\end{figure}
+
+\clearpage
 \section{Worked hours}
-To produce this document we have worked X hours, so distributed:
+To produce this document we have worked 60 hours, so distributed:
 \begin{itemize}
-\item Andrea Celli:
-\item Stefano Cereda:
+\item Andrea Celli: 30 hours
+\item Stefano Cereda: 30 hours
 \end{itemize}
 
 \section{Used tools}
@@ -1357,12 +1407,12 @@ To create this document we have used to following tools:
 \begin{itemize}
 \item Office 365: to collaboratively redact the document and to keep track of the worked hours
 \item LaTeX: to format the document
-\item QUALCOSA: to create the UI sketches
-\item Visual Paradigm 11.2: to create the UML models
+\item Cacoo: to create the UI sketches
+\item StarUML 2.0.0: to create the use case diagram
+\item Visual Paradigm 11.2: to create the class diagram, the sequence diagrams and the state charts
 \item Alloy Analyzer 4.2: to prove the model consistency
 \end{itemize}
 
 \clearpage
 \tableofcontents
 \end{document}
-\sub

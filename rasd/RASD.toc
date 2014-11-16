@@ -6,9 +6,9 @@
 \contentsline {subsection}{\numberline {3.2}Acronyms and abbreviations}{3}{subsection.3.2}
 \contentsline {section}{\numberline {4}Reference documents}{3}{section.4}
 \contentsline {section}{\numberline {5}Overview}{3}{section.5}
-\contentsline {part}{II\hspace {1em}Overall Description}{4}{part.2}
-\contentsline {section}{\numberline {6}Product Perspective}{4}{section.6}
-\contentsline {subsection}{\numberline {6.1}System Interfaces}{4}{subsection.6.1}
+\contentsline {part}{II\hspace {1em}Overall description}{4}{part.2}
+\contentsline {section}{\numberline {6}Product perspective}{4}{section.6}
+\contentsline {subsection}{\numberline {6.1}System interfaces}{4}{subsection.6.1}
 \contentsline {subsection}{\numberline {6.2}User interfaces}{4}{subsection.6.2}
 \contentsline {subsection}{\numberline {6.3}Hardware interfaces}{9}{subsection.6.3}
 \contentsline {subsection}{\numberline {6.4}Software interfaces}{9}{subsection.6.4}
@@ -38,9 +38,9 @@
 \contentsline {subsection}{\numberline {9.10}Reliability requirements}{13}{subsection.9.10}
 \contentsline {subsection}{\numberline {9.11}Criticality of the application}{13}{subsection.9.11}
 \contentsline {subsection}{\numberline {9.12}Safety and security considerations}{13}{subsection.9.12}
-\contentsline {section}{\numberline {10}Assumptions and Dependencies}{13}{section.10}
+\contentsline {section}{\numberline {10}Assumptions and dependencies}{13}{section.10}
 \contentsline {section}{\numberline {11}Apportioning of requirements}{13}{section.11}
-\contentsline {part}{III\hspace {1em}Specific Requirements}{14}{part.3}
+\contentsline {part}{III\hspace {1em}Specific requirements}{14}{part.3}
 \contentsline {section}{\numberline {12}External interface requirements}{14}{section.12}
 \contentsline {subsection}{\numberline {12.1}User interfaces}{14}{subsection.12.1}
 \contentsline {subsection}{\numberline {12.2}Hardware interfaces}{14}{subsection.12.2}
@@ -66,12 +66,12 @@
 \contentsline {subsubsection}{\numberline {13.1.16}The system updates the meteo forecasts}{23}{subsubsection.13.1.16}
 \contentsline {section}{\numberline {14}Analysis model}{23}{section.14}
 \contentsline {section}{\numberline {15}State chart model}{24}{section.15}
-\contentsline {section}{\numberline {16}Activity Model}{25}{section.16}
+\contentsline {section}{\numberline {16}Activity model}{25}{section.16}
 \contentsline {section}{\numberline {17}Use case model}{25}{section.17}
-\contentsline {subsection}{\numberline {17.1}Unlogged User}{26}{subsection.17.1}
+\contentsline {subsection}{\numberline {17.1}Unlogged user}{26}{subsection.17.1}
 \contentsline {subsubsection}{\numberline {17.1.1}User register to the system}{27}{subsubsection.17.1.1}
 \contentsline {subsubsection}{\numberline {17.1.2}A registered user logs into the system}{29}{subsubsection.17.1.2}
-\contentsline {subsection}{\numberline {17.2}Logged User}{31}{subsection.17.2}
+\contentsline {subsection}{\numberline {17.2}Logged user}{31}{subsection.17.2}
 \contentsline {subsubsection}{\numberline {17.2.1}Logged user creates a new event}{33}{subsubsection.17.2.1}
 \contentsline {subsubsection}{\numberline {17.2.2}Logged user modifies an existing event}{35}{subsubsection.17.2.2}
 \contentsline {subsubsection}{\numberline {17.2.3}Logged user views the details of his events}{37}{subsubsection.17.2.3}
@@ -100,7 +100,5 @@
 \contentsline {subsection}{\numberline {22.1}Alloy code}{62}{subsection.22.1}
 \contentsline {subsection}{\numberline {22.2}Alloy output}{62}{subsection.22.2}
 \contentsline {subsection}{\numberline {22.3}Worlds generated}{62}{subsection.22.3}
-\contentsline {subsubsection}{\numberline {22.3.1}General world}{62}{subsubsection.22.3.1}
-\contentsline {subsubsection}{\numberline {22.3.2}Minchia consistency}{62}{subsubsection.22.3.2}
-\contentsline {section}{\numberline {23}Worked hours}{62}{section.23}
-\contentsline {section}{\numberline {24}Used tools}{62}{section.24}
+\contentsline {section}{\numberline {23}Worked hours}{66}{section.23}
+\contentsline {section}{\numberline {24}Used tools}{66}{section.24}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.11.5)  15 NOV 2014 14:16
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.11.5)  16 NOV 2014 23:00
 entering extended mode
 **RASD.tex
 
@@ -551,7 +551,7 @@ ut)
 \@outlinefile=\write4
 
 (C:\Users\stefano\Documents\NetBeansProjects\meteo-cal-celli-cereda\rasd\title.
-tex <./logo.png, id=427, 569.12625pt x 569.12625pt>
+tex <./logo.png, id=419, 569.12625pt x 569.12625pt>
 File: ./logo.png Graphic file (type png)
  <use ./logo.png>
 Package pdftex.def Info: ./logo.png used on input line 5.
@@ -571,27 +571,37 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.53 \item S
-            ynchronization with other calendars: MeteoCal will not support t...
-[1] [2] [3] <./UI_mockups/01-login.png, id=462, 965.6075pt x 635.37375pt>
+l.50 \end{itemize}
+                   [1] [2]
+LaTeX Font Info:    Try loading font information for U+msa on input line 103.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 103.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [3]
+<./UI_mockups/01-login.png, id=456, 965.6075pt x 635.37375pt>
 File: ./UI_mockups/01-login.png Graphic file (type png)
 
 <use ./UI_mockups/01-login.png>
-Package pdftex.def Info: ./UI_mockups/01-login.png used on input line 124.
+Package pdftex.def Info: ./UI_mockups/01-login.png used on input line 130.
 (pdftex.def)             Requested size: 345.0pt x 227.00865pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 124--125
+Overfull \hbox (15.0pt too wide) in paragraph at lines 130--131
 [][] 
  []
 
-<./UI_mockups/02-about.png, id=463, 965.6075pt x 635.37375pt>
+<./UI_mockups/02-about.png, id=457, 965.6075pt x 635.37375pt>
 File: ./UI_mockups/02-about.png Graphic file (type png)
 
 <use ./UI_mockups/02-about.png>
-Package pdftex.def Info: ./UI_mockups/02-about.png used on input line 128.
+Package pdftex.def Info: ./UI_mockups/02-about.png used on input line 134.
 (pdftex.def)             Requested size: 345.0pt x 227.00865pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 128--129
+Overfull \hbox (15.0pt too wide) in paragraph at lines 134--135
 [][] 
  []
 
@@ -599,91 +609,91 @@ Overfull \hbox (15.0pt too wide) in paragraph at lines 128--129
 
  <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/UI_mo
 ckups/01-login.png>]
-<./UI_mockups/03-register.png, id=469, 965.6075pt x 635.37375pt>
+<./UI_mockups/03-register.png, id=463, 965.6075pt x 635.37375pt>
 File: ./UI_mockups/03-register.png Graphic file (type png)
 
 <use ./UI_mockups/03-register.png>
-Package pdftex.def Info: ./UI_mockups/03-register.png used on input line 133.
+Package pdftex.def Info: ./UI_mockups/03-register.png used on input line 139.
 (pdftex.def)             Requested size: 345.0pt x 227.00865pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 133--134
+Overfull \hbox (15.0pt too wide) in paragraph at lines 139--140
 [][] 
  []
 
-<./UI_mockups/04-registered_home.png, id=470, 1108.14pt x 726.715pt>
+<./UI_mockups/04-registered_home.png, id=464, 1108.14pt x 726.715pt>
 File: ./UI_mockups/04-registered_home.png Graphic file (type png)
 
 <use ./UI_mockups/04-registered_home.png>
 Package pdftex.def Info: ./UI_mockups/04-registered_home.png used on input line
- 138.
+ 144.
 (pdftex.def)             Requested size: 345.0pt x 226.24403pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 138--139
+Overfull \hbox (15.0pt too wide) in paragraph at lines 144--145
 [][] 
  []
 
 [5 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/UI_
 mockups/02-about.png> <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-ce
 lli-cereda/rasd/UI_mockups/03-register.png>]
-<./UI_mockups/05-create_event.png, id=477, 1065.9825pt x 701.62125pt>
+<./UI_mockups/05-create_event.png, id=471, 1065.9825pt x 701.62125pt>
 File: ./UI_mockups/05-create_event.png Graphic file (type png)
 
 <use ./UI_mockups/05-create_event.png>
-Package pdftex.def Info: ./UI_mockups/05-create_event.png used on input line 14
-4.
+Package pdftex.def Info: ./UI_mockups/05-create_event.png used on input line 15
+0.
 (pdftex.def)             Requested size: 345.0pt x 227.07138pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 144--145
+Overfull \hbox (15.0pt too wide) in paragraph at lines 150--151
 [][] 
  []
 
-<./UI_mockups/06-invite_received.png, id=478, 552.0625pt x 193.72375pt>
+<./UI_mockups/06-invite_received.png, id=472, 552.0625pt x 193.72375pt>
 File: ./UI_mockups/06-invite_received.png Graphic file (type png)
 
 <use ./UI_mockups/06-invite_received.png>
 Package pdftex.def Info: ./UI_mockups/06-invite_received.png used on input line
- 149.
+ 155.
 (pdftex.def)             Requested size: 345.0pt x 121.06816pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 149--150
+Overfull \hbox (15.0pt too wide) in paragraph at lines 155--156
 [][] 
  []
 
 [6 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/UI_
 mockups/04-registered_home.png> <C:/Users/stefano/Documents/NetBeansProjects/me
 teo-cal-celli-cereda/rasd/UI_mockups/05-create_event.png>]
-<./UI_mockups/07-bad_weather_three_days.png, id=486, 552.0625pt x 263.98625pt>
+<./UI_mockups/07-bad_weather_three_days.png, id=480, 552.0625pt x 263.98625pt>
 File: ./UI_mockups/07-bad_weather_three_days.png Graphic file (type png)
 
 <use ./UI_mockups/07-bad_weather_three_days.png>
 Package pdftex.def Info: ./UI_mockups/07-bad_weather_three_days.png used on inp
-ut line 154.
+ut line 160.
 (pdftex.def)             Requested size: 345.0pt x 164.97891pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 154--155
+Overfull \hbox (15.0pt too wide) in paragraph at lines 160--161
 [][] 
  []
 
-<./UI_mockups/11-bad_weather_one_day.png, id=487, 552.0625pt x 193.72375pt>
+<./UI_mockups/11-bad_weather_one_day.png, id=481, 552.0625pt x 193.72375pt>
 File: ./UI_mockups/11-bad_weather_one_day.png Graphic file (type png)
 
 <use ./UI_mockups/11-bad_weather_one_day.png>
 Package pdftex.def Info: ./UI_mockups/11-bad_weather_one_day.png used on input 
-line 158.
+line 164.
 (pdftex.def)             Requested size: 345.0pt x 121.06816pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 158--159
+Overfull \hbox (15.0pt too wide) in paragraph at lines 164--165
 [][] 
  []
 
-<./UI_mockups/08-search.png, id=488, 1018.80624pt x 669.50125pt>
+<./UI_mockups/08-search.png, id=482, 1018.80624pt x 669.50125pt>
 File: ./UI_mockups/08-search.png Graphic file (type png)
 
 <use ./UI_mockups/08-search.png>
-Package pdftex.def Info: ./UI_mockups/08-search.png used on input line 162.
+Package pdftex.def Info: ./UI_mockups/08-search.png used on input line 168.
 (pdftex.def)             Requested size: 345.0pt x 226.71822pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 162--163
+Overfull \hbox (15.0pt too wide) in paragraph at lines 168--169
 [][] 
  []
 
@@ -692,51 +702,42 @@ mockups/06-invite_received.png> <C:/Users/stefano/Documents/NetBeansProjects/me
 teo-cal-celli-cereda/rasd/UI_mockups/07-bad_weather_three_days.png> <C:/Users/s
 tefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/UI_mockups/11-bad
 _weather_one_day.png>]
-<./UI_mockups/09-other_calendar.png, id=496, 1094.0875pt x 718.685pt>
+<./UI_mockups/09-other_calendar.png, id=490, 1094.0875pt x 718.685pt>
 File: ./UI_mockups/09-other_calendar.png Graphic file (type png)
 
 <use ./UI_mockups/09-other_calendar.png>
 Package pdftex.def Info: ./UI_mockups/09-other_calendar.png used on input line 
-166.
+172.
 (pdftex.def)             Requested size: 345.0pt x 226.62822pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 166--167
+Overfull \hbox (15.0pt too wide) in paragraph at lines 172--173
 [][] 
  []
 
-<./UI_mockups/10-settings.png, id=497, 956.57375pt x 628.3475pt>
+<./UI_mockups/10-settings.png, id=491, 956.57375pt x 628.3475pt>
 File: ./UI_mockups/10-settings.png Graphic file (type png)
 
 <use ./UI_mockups/10-settings.png>
-Package pdftex.def Info: ./UI_mockups/10-settings.png used on input line 171.
+Package pdftex.def Info: ./UI_mockups/10-settings.png used on input line 177.
 (pdftex.def)             Requested size: 345.0pt x 226.6172pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 171--172
+Overfull \hbox (15.0pt too wide) in paragraph at lines 177--178
 [][] 
  []
 
 [8 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/UI_
 mockups/08-search.png> <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-c
-elli-cereda/rasd/UI_mockups/09-other_calendar.png>]
-LaTeX Font Info:    Try loading font information for U+msa on input line 187.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 187.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [9 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/U
-I_mockups/10-settings.png>] [10] [11] [12] [13]
-<./UI_mockups/storyboard.png, id=554, 902.37125pt x 772.8875pt>
+elli-cereda/rasd/UI_mockups/09-other_calendar.png>] [9 <C:/Users/stefano/Docume
+nts/NetBeansProjects/meteo-cal-celli-cereda/rasd/UI_mockups/10-settings.png>]
+[10] [11] [12] [13]
+<./UI_mockups/storyboard.png, id=547, 902.37125pt x 772.8875pt>
 File: ./UI_mockups/storyboard.png Graphic file (type png)
 
 <use ./UI_mockups/storyboard.png>
-Package pdftex.def Info: ./UI_mockups/storyboard.png used on input line 357.
+Package pdftex.def Info: ./UI_mockups/storyboard.png used on input line 363.
 (pdftex.def)             Requested size: 345.0pt x 295.49287pt.
 
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 375--384
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 381--390
 [] 
  []
 
@@ -744,151 +745,151 @@ Overfull \hbox (48.88582pt too wide) in paragraph at lines 375--384
 
  <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/UI_mo
 ckups/storyboard.png>]
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 386--398
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 392--404
 [] 
  []
 
 
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 400--411
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 406--417
 [] 
  []
 
 [15]
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 413--425
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 419--431
 [] 
  []
 
 
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 427--439
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 433--445
 [] 
  []
 
 [16]
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 441--453
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 447--459
 [] 
  []
 
 
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 455--469
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 461--475
 [] 
  []
 
 [17]
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 471--484
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 477--490
 [] 
  []
 
 
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 486--498
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 492--504
 [] 
  []
 
 [18]
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 500--512
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 506--518
 [] 
  []
 
 
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 514--526
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 520--532
 [] 
  []
 
 [19]
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 528--541
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 534--547
 [] 
  []
 
 
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 543--557
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 549--563
 [] 
  []
 
 [20]
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 559--572
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 565--578
 [] 
  []
 
 [21]
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 574--586
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 580--592
 [] 
  []
 
 
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 588--603
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 594--609
 [] 
  []
 
-[22] <./Uml/ClassDiagram.png, id=630, 1068.99374pt x 593.21625pt>
+[22] <./Uml/ClassDiagram.png, id=623, 1055.945pt x 570.13pt>
 File: ./Uml/ClassDiagram.png Graphic file (type png)
 
 <use ./Uml/ClassDiagram.png>
-Package pdftex.def Info: ./Uml/ClassDiagram.png used on input line 608.
-(pdftex.def)             Requested size: 345.0pt x 191.45334pt.
+Package pdftex.def Info: ./Uml/ClassDiagram.png used on input line 614.
+(pdftex.def)             Requested size: 345.0pt x 186.27309pt.
  [23 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/U
 ml/ClassDiagram.png>]
-<./Uml/StateDiagram_invite.png, id=640, 193.47281pt x 240.9pt>
+<./Uml/StateDiagram_invite.png, id=633, 193.47281pt x 240.9pt>
 File: ./Uml/StateDiagram_invite.png Graphic file (type png)
 
 <use ./Uml/StateDiagram_invite.png>
-Package pdftex.def Info: ./Uml/StateDiagram_invite.png used on input line 619.
+Package pdftex.def Info: ./Uml/StateDiagram_invite.png used on input line 625.
 (pdftex.def)             Requested size: 159.96243pt x 199.16928pt.
 
-<./Uml/StateDiagram_3day.png, id=642, 192.72pt x 233.37187pt>
+<./Uml/StateDiagram_3day.png, id=635, 192.72pt x 233.37187pt>
 File: ./Uml/StateDiagram_3day.png Graphic file (type png)
 
 <use ./Uml/StateDiagram_3day.png>
-Package pdftex.def Info: ./Uml/StateDiagram_3day.png used on input line 627.
+Package pdftex.def Info: ./Uml/StateDiagram_3day.png used on input line 633.
 (pdftex.def)             Requested size: 164.48323pt x 199.16928pt.
 
-<./Uml/StateDiagram_badWeather_eventChanged.png, id=644, 80.55093pt x 180.675pt
+<./Uml/StateDiagram_badWeather_eventChanged.png, id=637, 80.55093pt x 180.675pt
 >
 File: ./Uml/StateDiagram_badWeather_eventChanged.png Graphic file (type png)
  <use ./Uml/StateDiagram_badWeather_eventChanged.png>
 Package pdftex.def Info: ./Uml/StateDiagram_badWeather_eventChanged.png used on
- input line 635.
+ input line 641.
 (pdftex.def)             Requested size: 63.42682pt x 142.26378pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<./Uml/ActivityDiagram.png, id=646, 1033.8625pt x 658.46pt>
+<./Uml/ActivityDiagram.png, id=639, 1033.8625pt x 658.46pt>
 File: ./Uml/ActivityDiagram.png Graphic file (type png)
 
 <use ./Uml/ActivityDiagram.png>
-Package pdftex.def Info: ./Uml/ActivityDiagram.png used on input line 644.
+Package pdftex.def Info: ./Uml/ActivityDiagram.png used on input line 650.
 (pdftex.def)             Requested size: 312.71677pt x 199.16928pt.
  [24 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/U
 ml/StateDiagram_invite.png> <C:/Users/stefano/Documents/NetBeansProjects/meteo-
 cal-celli-cereda/rasd/Uml/StateDiagram_3day.png>] <./Use_case/unlogged_usecase.
-png, id=658, 545.03625pt x 420.57124pt>
+png, id=651, 545.03625pt x 337.26pt>
 File: ./Use_case/unlogged_usecase.png Graphic file (type png)
 
 <use ./Use_case/unlogged_usecase.png>
-Package pdftex.def Info: ./Use_case/unlogged_usecase.png used on input line 661
+Package pdftex.def Info: ./Use_case/unlogged_usecase.png used on input line 667
 .
-(pdftex.def)             Requested size: 345.0pt x 266.21268pt.
+(pdftex.def)             Requested size: 345.0pt x 213.47842pt.
  [25 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/U
 ml/StateDiagram_badWeather_eventChanged.png> <C:/Users/stefano/Documents/NetBea
 nsProjects/meteo-cal-celli-cereda/rasd/Uml/ActivityDiagram.png>] [26 <C:/Users/
 stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/Use_case/unlogge
 d_usecase.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 692--692
+Underfull \hbox (badness 10000) in paragraph at lines 698--698
 []\OT1/cmr/m/n/10 Special re-quire-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 693--693
+Underfull \hbox (badness 10000) in paragraph at lines 699--699
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC001.png, id=672, 277.78781pt x 305.64188pt>
+<./Sequence_diag/USC001.png, id=665, 277.78781pt x 305.64188pt>
 File: ./Sequence_diag/USC001.png Graphic file (type png)
 
 <use ./Sequence_diag/USC001.png>
-Package pdftex.def Info: ./Sequence_diag/USC001.png used on input line 698.
+Package pdftex.def Info: ./Sequence_diag/USC001.png used on input line 704.
 (pdftex.def)             Requested size: 345.0pt x 379.59827pt.
 
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 669--702
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 675--708
 []
  []
 
@@ -899,23 +900,23 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 ] [28 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
 Sequence_diag/USC001.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 727--727
+Underfull \hbox (badness 10000) in paragraph at lines 733--733
 []\OT1/cmr/m/n/10 Special re-quire-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 728--728
+Underfull \hbox (badness 10000) in paragraph at lines 734--734
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC002.png, id=689, 330.48468pt x 296.60812pt>
+<./Sequence_diag/USC002.png, id=682, 330.48468pt x 296.60812pt>
 File: ./Sequence_diag/USC002.png Graphic file (type png)
 
 <use ./Sequence_diag/USC002.png>
-Package pdftex.def Info: ./Sequence_diag/USC002.png used on input line 733.
+Package pdftex.def Info: ./Sequence_diag/USC002.png used on input line 739.
 (pdftex.def)             Requested size: 345.0pt x 309.64641pt.
 
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 706--737
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 712--743
 []
  []
 
@@ -926,22 +927,22 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 ] [30 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
 Sequence_diag/USC002.png>]
-<./Use_case/logged_usecase_simple.png, id=710, 937.5025pt x 685.56125pt>
+<./Use_case/logged_usecase_simple.png, id=703, 937.5025pt x 685.56125pt>
 File: ./Use_case/logged_usecase_simple.png Graphic file (type png)
 
 <use ./Use_case/logged_usecase_simple.png>
 Package pdftex.def Info: ./Use_case/logged_usecase_simple.png used on input lin
-e 744.
+e 750.
 (pdftex.def)             Requested size: 345.0pt x 252.28333pt.
 
-<./Use_case/logged_usecase.png, id=711, 1146.2825pt x 1287.81125pt>
+<./Use_case/logged_usecase.png, id=704, 1146.2825pt x 1287.81125pt>
 File: ./Use_case/logged_usecase.png Graphic file (type png)
 
 <use ./Use_case/logged_usecase.png>
-Package pdftex.def Info: ./Use_case/logged_usecase.png used on input line 751.
+Package pdftex.def Info: ./Use_case/logged_usecase.png used on input line 757.
 (pdftex.def)             Requested size: 455.24408pt x 511.4604pt.
 
-Overfull \hbox (110.24408pt too wide) in paragraph at lines 751--752
+Overfull \hbox (110.24408pt too wide) in paragraph at lines 757--758
  [][] 
  []
 
@@ -953,23 +954,23 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
  <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/Use_c
 ase/logged_usecase_simple.png>] [32 <C:/Users/stefano/Documents/NetBeansProject
 s/meteo-cal-celli-cereda/rasd/Use_case/logged_usecase.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 780--780
+Underfull \hbox (badness 10000) in paragraph at lines 790--790
 []\OT1/cmr/m/n/10 Special re-quire-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 781--781
+Underfull \hbox (badness 10000) in paragraph at lines 791--791
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC003.png, id=724, 336.50719pt x 177.66376pt>
+<./Sequence_diag/USC003.png, id=717, 336.50719pt x 177.66376pt>
 File: ./Sequence_diag/USC003.png Graphic file (type png)
 
 <use ./Sequence_diag/USC003.png>
-Package pdftex.def Info: ./Sequence_diag/USC003.png used on input line 786.
+Package pdftex.def Info: ./Sequence_diag/USC003.png used on input line 796.
 (pdftex.def)             Requested size: 345.0pt x 182.14989pt.
 
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 759--790
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 765--800
 []
  []
 
@@ -980,23 +981,18 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 ] [34 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
 Sequence_diag/USC003.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 817--817
-[]\OT1/cmr/m/n/10 Special re-quire-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 818--818
+Underfull \hbox (badness 10000) in paragraph at lines 831--831
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC004.png, id=742, 308.65312pt x 233.37187pt>
+<./Sequence_diag/USC004.png, id=735, 308.65312pt x 233.37187pt>
 File: ./Sequence_diag/USC004.png Graphic file (type png)
 
 <use ./Sequence_diag/USC004.png>
-Package pdftex.def Info: ./Sequence_diag/USC004.png used on input line 823.
+Package pdftex.def Info: ./Sequence_diag/USC004.png used on input line 836.
 (pdftex.def)             Requested size: 345.0pt x 260.87616pt.
 
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 794--827
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 804--840
 []
  []
 
@@ -1007,23 +1003,23 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 ] [36 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
 Sequence_diag/USC004.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 853--853
+Underfull \hbox (badness 10000) in paragraph at lines 866--866
 []\OT1/cmr/m/n/10 Special re-quire-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 854--854
+Underfull \hbox (badness 10000) in paragraph at lines 867--867
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC005.png, id=763, 245.41687pt x 183.68625pt>
+<./Sequence_diag/USC005.png, id=756, 245.41687pt x 183.68625pt>
 File: ./Sequence_diag/USC005.png Graphic file (type png)
 
 <use ./Sequence_diag/USC005.png>
-Package pdftex.def Info: ./Sequence_diag/USC005.png used on input line 859.
+Package pdftex.def Info: ./Sequence_diag/USC005.png used on input line 872.
 (pdftex.def)             Requested size: 345.0pt x 258.22963pt.
 
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 831--863
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 844--876
 []
  []
 
@@ -1034,23 +1030,23 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 ] [38 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
 Sequence_diag/USC005.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 886--886
+Underfull \hbox (badness 10000) in paragraph at lines 899--899
 []\OT1/cmr/m/n/10 Special re-quire-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 887--887
+Underfull \hbox (badness 10000) in paragraph at lines 900--900
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC006.png, id=782, 385.44pt x 240.9pt>
+<./Sequence_diag/USC006.png, id=775, 378.66469pt x 225.84375pt>
 File: ./Sequence_diag/USC006.png Graphic file (type png)
 
 <use ./Sequence_diag/USC006.png>
-Package pdftex.def Info: ./Sequence_diag/USC006.png used on input line 892.
-(pdftex.def)             Requested size: 345.0pt x 215.62436pt.
+Package pdftex.def Info: ./Sequence_diag/USC006.png used on input line 905.
+(pdftex.def)             Requested size: 345.0pt x 205.76624pt.
 
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 867--896
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 880--909
 []
  []
 
@@ -1061,23 +1057,23 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 ] [40 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
 Sequence_diag/USC006.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 921--921
+Underfull \hbox (badness 10000) in paragraph at lines 934--934
 []\OT1/cmr/m/n/10 Special re-quire-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 922--922
+Underfull \hbox (badness 10000) in paragraph at lines 935--935
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC007.png, id=798, 368.87813pt x 238.64156pt>
+<./Sequence_diag/USC007.png, id=791, 399.74344pt x 286.82156pt>
 File: ./Sequence_diag/USC007.png Graphic file (type png)
 
 <use ./Sequence_diag/USC007.png>
-Package pdftex.def Info: ./Sequence_diag/USC007.png used on input line 927.
-(pdftex.def)             Requested size: 345.0pt x 223.19426pt.
+Package pdftex.def Info: ./Sequence_diag/USC007.png used on input line 940.
+(pdftex.def)             Requested size: 345.0pt x 247.55453pt.
 
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 900--931
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 913--944
 []
  []
 
@@ -1088,23 +1084,23 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 ] [42 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
 Sequence_diag/USC007.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 958--958
+Underfull \hbox (badness 10000) in paragraph at lines 971--971
 []\OT1/cmr/m/n/10 Special re-quire-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 959--959
+Underfull \hbox (badness 10000) in paragraph at lines 972--972
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC008.png, id=817, 752.8125pt x 596.2275pt>
+<./Sequence_diag/USC008.png, id=810, 752.8125pt x 596.2275pt>
 File: ./Sequence_diag/USC008.png Graphic file (type png)
 
 <use ./Sequence_diag/USC008.png>
-Package pdftex.def Info: ./Sequence_diag/USC008.png used on input line 964.
+Package pdftex.def Info: ./Sequence_diag/USC008.png used on input line 977.
 (pdftex.def)             Requested size: 345.0pt x 273.24904pt.
 
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 935--968
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 948--981
 []
  []
 
@@ -1115,23 +1111,23 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 ] [44 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
 Sequence_diag/USC008.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 999--999
+Underfull \hbox (badness 10000) in paragraph at lines 1012--1012
 []\OT1/cmr/m/n/10 Special re-quire-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1000--1000
+Underfull \hbox (badness 10000) in paragraph at lines 1013--1013
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC009.png, id=837, 752.8125pt x 596.2275pt>
+<./Sequence_diag/USC009.png, id=830, 752.8125pt x 596.2275pt>
 File: ./Sequence_diag/USC009.png Graphic file (type png)
 
 <use ./Sequence_diag/USC009.png>
-Package pdftex.def Info: ./Sequence_diag/USC009.png used on input line 1005.
+Package pdftex.def Info: ./Sequence_diag/USC009.png used on input line 1018.
 (pdftex.def)             Requested size: 345.0pt x 273.24904pt.
 
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 972--1009
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 985--1022
 []
  []
 
@@ -1142,23 +1138,23 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 ] [46 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
 Sequence_diag/USC009.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1036--1036
+Underfull \hbox (badness 10000) in paragraph at lines 1049--1049
 []\OT1/cmr/m/n/10 Special re-quire-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1037--1037
+Underfull \hbox (badness 10000) in paragraph at lines 1050--1050
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC010.png, id=858, 531.9875pt x 361.35pt>
+<./Sequence_diag/USC010.png, id=851, 531.9875pt x 361.35pt>
 File: ./Sequence_diag/USC010.png Graphic file (type png)
 
 <use ./Sequence_diag/USC010.png>
-Package pdftex.def Info: ./Sequence_diag/USC010.png used on input line 1042.
+Package pdftex.def Info: ./Sequence_diag/USC010.png used on input line 1055.
 (pdftex.def)             Requested size: 345.0pt x 234.3454pt.
 
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 1013--1046
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 1026--1059
 []
  []
 
@@ -1169,23 +1165,23 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 ] [48 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
 Sequence_diag/USC010.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1077--1077
+Underfull \hbox (badness 10000) in paragraph at lines 1090--1090
 []\OT1/cmr/m/n/10 Special re-quire-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1078--1078
+Underfull \hbox (badness 10000) in paragraph at lines 1091--1091
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC011.png, id=879, 516.93124pt x 251.94125pt>
+<./Sequence_diag/USC011.png, id=872, 516.93124pt x 251.94125pt>
 File: ./Sequence_diag/USC011.png Graphic file (type png)
 
 <use ./Sequence_diag/USC011.png>
-Package pdftex.def Info: ./Sequence_diag/USC011.png used on input line 1083.
+Package pdftex.def Info: ./Sequence_diag/USC011.png used on input line 1096.
 (pdftex.def)             Requested size: 345.0pt x 168.15007pt.
 
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 1050--1087
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 1063--1100
 []
  []
 
@@ -1196,23 +1192,23 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 ] [50 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
 Sequence_diag/USC011.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1118--1118
+Underfull \hbox (badness 10000) in paragraph at lines 1131--1131
 []\OT1/cmr/m/n/10 Special re-quire-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1119--1119
+Underfull \hbox (badness 10000) in paragraph at lines 1132--1132
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC012.png, id=897, 629.35126pt x 566.115pt>
+<./Sequence_diag/USC012.png, id=890, 629.35126pt x 566.115pt>
 File: ./Sequence_diag/USC012.png Graphic file (type png)
 
 <use ./Sequence_diag/USC012.png>
-Package pdftex.def Info: ./Sequence_diag/USC012.png used on input line 1124.
+Package pdftex.def Info: ./Sequence_diag/USC012.png used on input line 1137.
 (pdftex.def)             Requested size: 345.0pt x 310.33626pt.
 
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 1091--1128
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 1104--1141
 []
  []
 
@@ -1223,51 +1219,51 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 ] [52 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
 Sequence_diag/USC012.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1164--1164
+Underfull \hbox (badness 10000) in paragraph at lines 1177--1177
 []|\OT1/cmr/m/n/10 Special re-quire-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1165--1165
+Underfull \hbox (badness 10000) in paragraph at lines 1178--1178
 []|\OT1/cmr/m/n/10 Nonfunctional
  []
 
 
-Overfull \hbox (48.88582pt too wide) in alignment at lines 1132--1167
+Overfull \hbox (48.88582pt too wide) in alignment at lines 1145--1180
  [] [] 
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1167
+Underfull \vbox (badness 10000) detected at line 1180
  []
 
 [53
 
-] <./Sequence_diag/USC013.png, id=936, 760.8425pt x 610.28pt>
+] <./Sequence_diag/USC013.png, id=929, 760.8425pt x 610.28pt>
 File: ./Sequence_diag/USC013.png Graphic file (type png)
 
 <use ./Sequence_diag/USC013.png>
-Package pdftex.def Info: ./Sequence_diag/USC013.png used on input line 1170.
+Package pdftex.def Info: ./Sequence_diag/USC013.png used on input line 1183.
 (pdftex.def)             Requested size: 345.0pt x 276.7373pt.
  [54 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/S
 equence_diag/USC013.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1205--1205
+Underfull \hbox (badness 10000) in paragraph at lines 1218--1218
 []\OT1/cmr/m/n/10 Special re-quire-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1206--1206
+Underfull \hbox (badness 10000) in paragraph at lines 1219--1219
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC014.png, id=944, 684.5575pt x 506.89375pt>
+<./Sequence_diag/USC014.png, id=937, 684.5575pt x 506.89375pt>
 File: ./Sequence_diag/USC014.png Graphic file (type png)
 
 <use ./Sequence_diag/USC014.png>
-Package pdftex.def Info: ./Sequence_diag/USC014.png used on input line 1211.
+Package pdftex.def Info: ./Sequence_diag/USC014.png used on input line 1224.
 (pdftex.def)             Requested size: 345.0pt x 255.46497pt.
 
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 1178--1215
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 1191--1228
 []
  []
 
@@ -1278,23 +1274,23 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 ] [56 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
 Sequence_diag/USC014.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1248--1248
+Underfull \hbox (badness 10000) in paragraph at lines 1261--1261
 []\OT1/cmr/m/n/10 Special re-quire-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1249--1249
+Underfull \hbox (badness 10000) in paragraph at lines 1262--1262
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC015.png, id=965, 677.53125pt x 486.81876pt>
+<./Sequence_diag/USC015.png, id=958, 677.53125pt x 486.81876pt>
 File: ./Sequence_diag/USC015.png Graphic file (type png)
 
 <use ./Sequence_diag/USC015.png>
-Package pdftex.def Info: ./Sequence_diag/USC015.png used on input line 1254.
+Package pdftex.def Info: ./Sequence_diag/USC015.png used on input line 1267.
 (pdftex.def)             Requested size: 345.0pt x 247.89543pt.
 
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 1219--1258
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 1232--1271
 []
  []
 
@@ -1305,23 +1301,23 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 ] [58 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
 Sequence_diag/USC015.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1290--1290
+Underfull \hbox (badness 10000) in paragraph at lines 1303--1303
 []\OT1/cmr/m/n/10 Special re-quire-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1291--1291
+Underfull \hbox (badness 10000) in paragraph at lines 1304--1304
 []\OT1/cmr/m/n/10 Nonfunctional
  []
 
-<./Sequence_diag/USC016.png, id=986, 700.6175pt x 398.48875pt>
+<./Sequence_diag/USC016.png, id=979, 700.6175pt x 398.48875pt>
 File: ./Sequence_diag/USC016.png Graphic file (type png)
 
 <use ./Sequence_diag/USC016.png>
-Package pdftex.def Info: ./Sequence_diag/USC016.png used on input line 1296.
+Package pdftex.def Info: ./Sequence_diag/USC016.png used on input line 1309.
 (pdftex.def)             Requested size: 345.0pt x 196.22798pt.
 
-Overfull \hbox (48.88582pt too wide) in paragraph at lines 1262--1300
+Overfull \hbox (48.88582pt too wide) in paragraph at lines 1275--1313
 []
  []
 
@@ -1331,32 +1327,91 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [59
 
 ] [60 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/
-Sequence_diag/USC016.png>] [61] [62
+Sequence_diag/USC016.png>] [61]
+<./Alloy/AlloyOutput.png, id=1004, 423.08063pt x 177.66376pt>
+File: ./Alloy/AlloyOutput.png Graphic file (type png)
+
+<use ./Alloy/AlloyOutput.png>
+Package pdftex.def Info: ./Alloy/AlloyOutput.png used on input line 1357.
+(pdftex.def)             Requested size: 345.0pt x 144.88007pt.
+
+<./Alloy/ShowSimple.png, id=1006, 399.4925pt x 424.58624pt>
+File: ./Alloy/ShowSimple.png Graphic file (type png)
+
+<use ./Alloy/ShowSimple.png>
+Package pdftex.def Info: ./Alloy/ShowSimple.png used on input line 1368.
+(pdftex.def)             Requested size: 345.0pt x 366.68546pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<./Alloy/ShowInvite.png, id=1008, 637.38126pt x 420.57124pt>
+File: ./Alloy/ShowInvite.png Graphic file (type png)
+
+<use ./Alloy/ShowInvite.png>
+Package pdftex.def Info: ./Alloy/ShowInvite.png used on input line 1376.
+(pdftex.def)             Requested size: 345.0pt x 227.64415pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<./Alloy/ShowForecast.png, id=1010, 542.025pt x 430.60875pt>
+File: ./Alloy/ShowForecast.png Graphic file (type png)
+
+<use ./Alloy/ShowForecast.png>
+Package pdftex.def Info: ./Alloy/ShowForecast.png used on input line 1384.
+(pdftex.def)             Requested size: 345.0pt x 274.09056pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<./Alloy/ShowComplex.png, id=1012, 451.6875pt x 1149.29375pt>
+File: ./Alloy/ShowComplex.png Graphic file (type png)
+
+<use ./Alloy/ShowComplex.png>
+Package pdftex.def Info: ./Alloy/ShowComplex.png used on input line 1392.
+(pdftex.def)             Requested size: 256.0748pt x 651.5969pt.
+
+
+LaTeX Warning: Float too large for page by 77.54134pt on input line 1395.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[62
+
+ <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/Alloy
+/AlloyOutput.png>] [63 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-c
+elli-cereda/rasd/Alloy/ShowSimple.png>] [64 <C:/Users/stefano/Documents/NetBean
+sProjects/meteo-cal-celli-cereda/rasd/Alloy/ShowInvite.png> <C:/Users/stefano/D
+ocuments/NetBeansProjects/meteo-cal-celli-cereda/rasd/Alloy/ShowForecast.png>] 
+[65 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/rasd/Al
+loy/ShowComplex.png>] [66
 
 ]
 (C:\Users\stefano\Documents\NetBeansProjects\meteo-cal-celli-cereda\rasd\RASD.t
-oc [63
+oc [67
 
-] [64])
+] [68])
 \tf@toc=\write5
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1367.
- [65]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1367.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1418.
+ [69]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1418.
 
 (C:\Users\stefano\Documents\NetBeansProjects\meteo-cal-celli-cereda\rasd\RASD.a
 ux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1367.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1367.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1418.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1418.
 
 Package rerunfilecheck Info: File `RASD.out' has not changed.
-(rerunfilecheck)             Checksum: CAC5F34D928B91212D207A6C6FEB0236;7996.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1367.
+(rerunfilecheck)             Checksum: 297F8B8AA5D4907D248A5839B0FF4371;7836.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1418.
  ) 
 Here is how much of TeX's memory you used:
- 7138 strings out of 493921
- 103283 string characters out of 3147276
- 188103 words of memory out of 3000000
- 9916 multiletter control sequences out of 15000+200000
+ 7174 strings out of 493921
+ 103990 string characters out of 3147276
+ 188263 words of memory out of 3000000
+ 9939 multiletter control sequences out of 15000+200000
  9182 words of font info for 35 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  29i,9n,28p,940b,465s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1368,9 +1423,9 @@ onts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
 1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
 /amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
 s/cm/cmtt10.pfb>
-Output written on RASD.pdf (66 pages, 2141864 bytes).
+Output written on RASD.pdf (70 pages, 2354965 bytes).
 PDF statistics:
- 1245 PDF objects out of 1440 (max. 8388607)
- 403 named destinations out of 1000 (max. 500000)
- 1034 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1275 PDF objects out of 1440 (max. 8388607)
+ 410 named destinations out of 1000 (max. 500000)
+ 1043 words of extra memory for PDF output out of 10000 (max. 10000000)
 
