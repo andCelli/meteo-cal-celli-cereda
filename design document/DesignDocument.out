@@ -1,0 +1,22 @@
+\BOOKMARK [0][-]{part.1}{I Architecture description}{}% 1
+\BOOKMARK [1][-]{section.1}{JEE architecture overview}{part.1}% 2
+\BOOKMARK [1][-]{section.2}{Identifying sub-systems}{part.1}% 3
+\BOOKMARK [0][-]{part.2}{II Persistent data management}{}% 4
+\BOOKMARK [1][-]{section.3}{Conceptual design}{part.2}% 5
+\BOOKMARK [1][-]{section.4}{Logical design}{part.2}% 6
+\BOOKMARK [2][-]{subsection.4.1}{ER restructuration}{section.4}% 7
+\BOOKMARK [2][-]{subsection.4.2}{Translation to logical model}{section.4}% 8
+\BOOKMARK [0][-]{part.3}{III User Experience}{}% 9
+\BOOKMARK [1][-]{section.5}{UX1}{part.3}% 10
+\BOOKMARK [1][-]{section.6}{UX...n}{part.3}% 11
+\BOOKMARK [0][-]{part.4}{IV BCE diagrams}{}% 12
+\BOOKMARK [1][-]{section.7}{Entity overview}{part.4}% 13
+\BOOKMARK [1][-]{section.8}{BCE 1}{part.4}% 14
+\BOOKMARK [1][-]{section.9}{BCE...n}{part.4}% 15
+\BOOKMARK [1][-]{section.10}{User}{part.4}% 16
+\BOOKMARK [2][-]{subsection.10.1}{BCE u1}{section.10}% 17
+\BOOKMARK [2][-]{subsection.10.2}{BCE u...n}{section.10}% 18
+\BOOKMARK [0][-]{part.5}{V Sequence diagrams}{}% 19
+\BOOKMARK [1][-]{section.11}{SD1}{part.5}% 20
+\BOOKMARK [1][-]{section.12}{SD..n}{part.5}% 21
+\BOOKMARK [0][-]{part.6}{VI Final considerations}{}% 22

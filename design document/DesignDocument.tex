@@ -1,0 +1,60 @@
+\documentclass[10pt,a4paper,titlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage[hidelinks]{hyperref}
+
+%this is a command used in the title template
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+%questo fa in modo che le liste numerate siano allineate come le altre
+\setenumerate{leftmargin=*, labelindent=\parindent}
+
+%questo genera il toc, ricorda di eseguire due volte
+\makeindex
+
+\begin{document}
+\input{title.tex}
+
+\part{Architecture description}
+\section{JEE architecture overview}
+\section{Identifying sub-systems}
+
+\clearpage
+\part{Persistent data management}
+\section{Conceptual design}
+\section{Logical design}
+\subsection{ER restructuration}
+RESTRUCTURATION IN INGLESE NON ESISTE
+\subsection{Translation to logical model}
+
+\clearpage
+\part{User Experience}
+\section{UX1}
+\section{UX...n}
+
+\clearpage
+\part{BCE diagrams}
+\section{Entity overview}
+\section{BCE 1}
+\section{BCE...n}
+\section{User}
+\subsection{BCE u1}
+\subsection{BCE u...n}
+
+\clearpage
+\part{Sequence diagrams}
+\section{SD1}
+\section{SD..n}
+
+\clearpage
+\part{Final considerations}
+
+\clearpage
+\tableofcontents
+\end{document}
