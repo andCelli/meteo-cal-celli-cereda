@@ -22,6 +22,22 @@
 \input{title.tex}
 
 \part{Architecture description}
+Before focusing on our application's architecture we want to briefly explain the JEE architecture.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{./JEE-arch}
+\caption[JEE architecture]{JEE achitecture}
+\label{fig:JEE-arch}
+\end{figure}
+
+As shown in figure \ref{fig:JEE-arch} JEE is divided in four tier:
+\begin{itemize}
+\item Client tier: containing Application Client and Web Pages it is the layer that directly interacts with the actors. As our project will be a web application the client will use a web browser to access pages.
+\item Web tier: it contains the dynamic web pages that needs to be elaborated. This tier receives the requests from the client tier and forwards the pieces of data collected to the business tier waiting for processed data to be sent (eventually formatted) to the client tier.
+\item Business tier: it contains the Java Beans, which are the elements that control the business logic of the application.
+\item EIS tier: it contains the data source. In our case it is the database allowed to store all the relevant data and to retrieve them.
+\end{itemize}
 \section{JEE architecture overview}
 \section{Identifying sub-systems}
 

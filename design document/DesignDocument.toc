@@ -1,22 +1,22 @@
 \contentsline {part}{I\hspace {1em}Architecture description}{1}{part.1}
-\contentsline {section}{\numberline {1}JEE architecture overview}{1}{section.1}
-\contentsline {section}{\numberline {2}Identifying sub-systems}{1}{section.2}
-\contentsline {part}{II\hspace {1em}Persistent data management}{2}{part.2}
-\contentsline {section}{\numberline {3}Conceptual design}{2}{section.3}
-\contentsline {section}{\numberline {4}Logical design}{2}{section.4}
-\contentsline {subsection}{\numberline {4.1}ER restructuration}{2}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Translation to logical model}{2}{subsection.4.2}
-\contentsline {part}{III\hspace {1em}User Experience}{3}{part.3}
-\contentsline {section}{\numberline {5}UX1}{3}{section.5}
-\contentsline {section}{\numberline {6}UX...n}{3}{section.6}
-\contentsline {part}{IV\hspace {1em}BCE diagrams}{4}{part.4}
-\contentsline {section}{\numberline {7}Entity overview}{4}{section.7}
-\contentsline {section}{\numberline {8}BCE 1}{4}{section.8}
-\contentsline {section}{\numberline {9}BCE...n}{4}{section.9}
-\contentsline {section}{\numberline {10}User}{4}{section.10}
-\contentsline {subsection}{\numberline {10.1}BCE u1}{4}{subsection.10.1}
-\contentsline {subsection}{\numberline {10.2}BCE u...n}{4}{subsection.10.2}
-\contentsline {part}{V\hspace {1em}Sequence diagrams}{5}{part.5}
-\contentsline {section}{\numberline {11}SD1}{5}{section.11}
-\contentsline {section}{\numberline {12}SD..n}{5}{section.12}
-\contentsline {part}{VI\hspace {1em}Final considerations}{6}{part.6}
+\contentsline {section}{\numberline {1}JEE architecture overview}{2}{section.1}
+\contentsline {section}{\numberline {2}Identifying sub-systems}{2}{section.2}
+\contentsline {part}{II\hspace {1em}Persistent data management}{3}{part.2}
+\contentsline {section}{\numberline {3}Conceptual design}{3}{section.3}
+\contentsline {section}{\numberline {4}Logical design}{3}{section.4}
+\contentsline {subsection}{\numberline {4.1}ER restructuration}{3}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Translation to logical model}{3}{subsection.4.2}
+\contentsline {part}{III\hspace {1em}User Experience}{4}{part.3}
+\contentsline {section}{\numberline {5}UX1}{4}{section.5}
+\contentsline {section}{\numberline {6}UX...n}{4}{section.6}
+\contentsline {part}{IV\hspace {1em}BCE diagrams}{5}{part.4}
+\contentsline {section}{\numberline {7}Entity overview}{5}{section.7}
+\contentsline {section}{\numberline {8}BCE 1}{5}{section.8}
+\contentsline {section}{\numberline {9}BCE...n}{5}{section.9}
+\contentsline {section}{\numberline {10}User}{5}{section.10}
+\contentsline {subsection}{\numberline {10.1}BCE u1}{5}{subsection.10.1}
+\contentsline {subsection}{\numberline {10.2}BCE u...n}{5}{subsection.10.2}
+\contentsline {part}{V\hspace {1em}Sequence diagrams}{6}{part.5}
+\contentsline {section}{\numberline {11}SD1}{6}{section.11}
+\contentsline {section}{\numberline {12}SD..n}{6}{section.12}
+\contentsline {part}{VI\hspace {1em}Final considerations}{7}{part.6}
