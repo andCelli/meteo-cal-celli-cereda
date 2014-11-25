@@ -1,0 +1,18 @@
+#IGNORED FILES
+
+#LATEX Design Document
+DesignDocument.aux
+DesignDocument.idx
+DesignDocument.log
+DesignDocument.out
+DesignDocument.synctex.gz
+DesignDocument.toc
+
+#LATEX rasd
+RASD.aux
+RASD.idx
+RASD.log
+RASD.out
+RASD.synctex.gz
+RASD.toc
+RASD.log
