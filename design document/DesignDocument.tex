@@ -22,11 +22,12 @@
 \input{title.tex}
 
 \part{Architecture description}
+\section{JEE architecture overview}
 Before focusing on our application's architecture we want to briefly explain the JEE architecture.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=\linewidth]{./JEE-arch}
+\includegraphics[width=\linewidth]{./images/JEE-arch}
 \caption[JEE architecture]{JEE achitecture}
 \label{fig:JEE-arch}
 \end{figure}
@@ -38,8 +39,43 @@ As shown in figure \ref{fig:JEE-arch} JEE is divided in four tier:
 \item Business tier: it contains the Java Beans, which are the elements that control the business logic of the application.
 \item EIS tier: it contains the data source. In our case it is the database allowed to store all the relevant data and to retrieve them.
 \end{itemize}
-\section{JEE architecture overview}
+
 \section{Identifying sub-systems}
+At this phase of the project we adopt a top-down approach to identify the main components of the system, once identified the sub-systems we will use a bottom-up approach to create more reusable components. We start by diving our system into smaller sub systems in order to better identify the various groups of functionalities and their interactions.
+
+As depicted in figure \ref{fig:subsystems} the system is divided into three main packages, each with his own sub systems:
+\begin{itemize}
+\item User interface:
+\begin{itemize}
+\item Login page
+\item Sign up page
+\item Calendar page
+\item Search page
+\item Notification viewer
+\end{itemize}
+
+\item Business logic:
+\begin{itemize}
+\item Login manager
+\item Sign up manager
+\item Calendar manager
+\item Search manager
+\item Notification manager
+\item Forecast manager
+\end{itemize}
+
+\item Persistence:
+\begin{itemize}
+\item Entity manager
+\end{itemize}
+\end{itemize}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{./images/sub-systems}
+\caption[Subsystems]{System's packages and main components}
+\label{fig:subsystems}
+\end{figure}
 
 \clearpage
 \part{Persistent data management}
