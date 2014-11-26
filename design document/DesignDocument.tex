@@ -188,92 +188,37 @@ Logged and unlogged users access directly the User UI package and submit request
 \label{fig:basic-package}
 \end{figure}
 
-QUESTO è VECCHIO
-\part{Architecture description}
-\section{JEE architecture overview}
-Before focusing on our application's architecture we want to briefly explain the JEE architecture.
+\subsubsection{Detailed package design}
+Given the functional requirements identified we can encapsulate them within specific components in the package diagram as follows:
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=\linewidth]{./images/JEE-arch}
-\caption[JEE architecture]{JEE achitecture}
-\label{fig:JEE-arch}
-\end{figure}
-
-As shown in figure \ref{fig:JEE-arch} JEE is divided in four tier:
+\paragraph{User UI}
+These set of sub packages are responsible for encapsulating the user actions and forwarding information requests to the Business logic sub packages.
 \begin{itemize}
-\item Client tier: containing Application Client and Web Pages it is the layer that directly interacts with the actors. As our project will be a web application the client will use a web browser to access pages.
-\item Web tier: it contains the dynamic web pages that needs to be elaborated. This tier receives the requests from the client tier and forwards the pieces of data collected to the business tier waiting for processed data to be sent (eventually formatted) to the client tier.
-\item Business tier: it contains the Java Beans, which are the elements that control the business logic of the application.
-\item EIS tier: it contains the data source. In our case it is the database allowed to store all the relevant data and to retrieve them.
+\item \emph{Login page:} this package implements FR2
+\item \emph{Sign up page:} this package implements FR1
+\item \emph{Calendar page:} this package implements FR7-FR11
+\item \emph{Search page:} this package implements FR12, FR14, FR15
+\item \emph{Notification viewer:} this package implements FR13, FR16
 \end{itemize}
 
-\section{Identifying sub-systems}
-At this phase of the project we adopt a top-down approach to identify the main components of the system, once identified the sub-systems we will use a bottom-up approach to create more reusable components. We start by diving our system into smaller sub systems in order to better identify the various groups of functionalities and their interactions.
-
-As depicted in figure \ref{fig:subsystems} the system is divided into three main packages, each with his own sub systems:
+\paragraph{Business logic}
+These set of sub packages are responsible for handling requests from the User UI package, processing them and send back a response. These packages may access the Persistence package.
 \begin{itemize}
-\item User interface:
-\begin{itemize}
-\item Login page
-\item Sign up page
-\item Calendar page
-\item Search page
-\item Notification viewer
+\item \emph{Login manager:} this package implements FR2
+\item \emph{Sign up manager:} this package implements FR1
+\item \emph{Calendar manager:} this package implements FR7-FR11
+\item \emph{Search manager:} this package implements FR12, FR14, FR15
+\item \emph{Notification manager:} this package implements FR13, FR16
+\item \emph{Forecast manager:} this package implements FR17, FR18
 \end{itemize}
-
-\item Business logic:
-\begin{itemize}
-\item Login manager
-\item Sign up manager
-\item Calendar manager
-\item Search manager
-\item Notification manager
-\item Forecast manager
-\end{itemize}
-
-\item Persistence:
-\begin{itemize}
-\item Entity manager
-\end{itemize}
-\end{itemize}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=\linewidth]{./images/sub-systems}
-\caption[Subsystems]{System's packages and main components}
-\label{fig:subsystems}
-\end{figure}
 
 \clearpage
-\part{Persistent data management}
+\part{Design considerations}
+
+\clearpage
+\part{Software architecture}
 \section{Conceptual design}
-\section{Logical design}
-\subsection{ER restructuration}
-RESTRUCTURATION IN INGLESE NON ESISTE
-\subsection{Translation to logical model}
-
-\clearpage
-\part{User Experience}
-\section{UX1}
-\section{UX...n}
-
-\clearpage
-\part{BCE diagrams}
-\section{Entity overview}
-\section{BCE 1}
-\section{BCE...n}
-\section{User}
-\subsection{BCE u1}
-\subsection{BCE u...n}
-
-\clearpage
-\part{Sequence diagrams}
-\section{SD1}
-\section{SD..n}
-
-\clearpage
-\part{Final considerations}
+\subsection{Database}
 
 \clearpage
 \tableofcontents
