@@ -237,8 +237,21 @@ WHERE ARE THE ASSUMPTIONS??
 \begin{tabular}{| p{0.3\linewidth} | p{0.7\linewidth} |}
 \hline	\emph{Dependency}	&	\emph{Impact}	\\
 \hline	Java virtual machine that supports JEE7 is already installed on the OS. & MeteoCal only runs on operating systems that support the JEE7 platform.	\\
-\hline	The supported browsers will be Firefox and Chrome & SWIMv2 outputs XHTML code that requires browsers that support most of the web standards, elsewhere the UI experience will be affected.	\\
-\hline	A JEE7 AS is required on the server side	&	SWIMv2 cannot operate if there is no AS that supports the JEE7 standard	\\
+\hline	The supported browsers will be Firefox and Chrome & MeteoCal outputs XHTML code that requires browsers that support most of the web standards, elsewhere the UI experience will be affected.	\\
+\hline	A JEE7 AS is required on the server side	&	MeteoCal cannot operate if there is no AS that supports the JEE7 standard	\\
+\hline
+\end{tabular}
+
+\section{General constraints}
+This section describes the NFRs and the QoS details related to the design of the software product.
+
+\noindent\begin{tabular}{| p{0.3\linewidth} | p{0.7\linewidth} |}
+\hline	\emph{Element}	&	\emph{Requirement}	\\
+\hline	Memory			&	2 GB+				\\
+\hline	Database server	&	MySQL				\\
+\hline	Network			&	Internet access, HTTP protocol	\\
+\hline	Security		&	User data will be encrypted. SSL is not supported	\\
+\hline	Hard disk space	&	40 GB+				\\
 \hline
 \end{tabular}
 
