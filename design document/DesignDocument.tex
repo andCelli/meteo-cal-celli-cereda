@@ -228,6 +228,20 @@ This sub package contains the data model for the system. It accepts requests fro
 
 \clearpage
 \part{Design considerations}
+This section encompasses the design considerations taken into account in the MeteoCal system design. Assumptions, dependencies, general constraints and performance requirements are clearly stated.
+
+\section{Assumptions}
+WHERE ARE THE ASSUMPTIONS??
+
+\section{Dependencies}
+\begin{tabular}{| p{0.3\linewidth} | p{0.7\linewidth} |}
+\hline	\emph{Dependency}	&	\emph{Impact}	\\
+\hline	Java virtual machine that supports JEE7 is already installed on the OS. & MeteoCal only runs on operating systems that support the JEE7 platform.	\\
+\hline	The supported browsers will be Firefox and Chrome & SWIMv2 outputs XHTML code that requires browsers that support most of the web standards, elsewhere the UI experience will be affected.	\\
+\hline	A JEE7 AS is required on the server side	&	SWIMv2 cannot operate if there is no AS that supports the JEE7 standard	\\
+\hline
+\end{tabular}
+
 
 \clearpage
 \part{Detailed software design}
