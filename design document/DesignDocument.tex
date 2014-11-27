@@ -255,6 +255,24 @@ This section describes the NFRs and the QoS details related to the design of the
 \hline
 \end{tabular}
 
+\section{Performance requirements}
+\subsection{Standard compliance}
+The software product does not have to meet any standard compliance.
+
+\subsection{Reliability}
+For assuring the reliability of the software product, it is mandatory to back up the database periodically.
+
+\subsection{Availability}
+An AS is used to guarantee the availability of the software product. In a real scenario some redundancy in the AS instances is recommended, however here we will assume that all the tiers run on the same physical server.
+
+\subsection{Security}
+The software product does not support SSL in AS. It supports the hashing of the user password according to sha5 algorithm in the database. It supports authorization according JAAS.
+
+\subsection{Maintainability}
+The architectural style and the component definition described contribute to low coupling and high cohesion of the software product.
+
+\subsection{Portability}
+The software product will be developed using the Java language and related dependent technologies. Java is specifically designed to have as few implementation dependencies as possible. Meaning that code that runs on one platform does not need to be recompiled to run on another.
 
 \clearpage
 \part{Detailed software design}
