@@ -22,6 +22,7 @@
 \input{title.tex}
 
 \part{Introduction}
+\label{part:introduction}
 
 \section{Purpose of this document}
 This document describes the general and specific architecture of MeteoCal, the project of the course of Software Engineering 2 at Politecnico di Milano.
@@ -80,16 +81,17 @@ The design was guided by a top-down process approach and the document structure 
 
 The document is organized as follows:
 \begin{itemize}
-\item \emph{Part 1, Introduction:} provides a synopsis of the architectural descriptions.
-\item \emph{Part 2, Design Overview:} provides a general description of MeteoCal including its functionality and matters related to the overall system and its design.
-\item \emph{Part 3, Design Considerations:} describes the design assumptions and constrains of MeteoCal.
-\item \emph{Part 4, Software Architecture:} specifies the general architecture, describes the basic structure and interactions of the main subsystems.
-\item \emph{Part 5, Detailed System Design:} specifies in detail the components of the system through different architectural views.
-\item \emph{Part 6, Appendixes:} provides supporting information and additional material.
+\item \emph{Part \ref{part:introduction}, Introduction:} provides a synopsis of the architectural descriptions.
+\item \emph{Part \ref{part:design-overview}, Design Overview:} provides a general description of MeteoCal including its functionality and matters related to the overall system and its design.
+\item \emph{Part \ref{part:design-considerations}, Design Considerations:} describes the design assumptions and constrains of MeteoCal.
+\item \emph{Part \ref{part:software-architecture}, Software Architecture:} specifies the general architecture, describes the basic structure and interactions of the main subsystems.
+\item \emph{Part \ref{part:detailed-software-design}, Detailed System Design:} specifies in detail the components of the system through different architectural views.
+\item \emph{Part \ref{part:appendixes}, Appendixes:} provides supporting information and additional material.
 \end{itemize}
 
 \clearpage
 \part{Design overview}
+\label{part:design-overview}
 This section provides a general description of the software system including its functionality and concerns related to the overall system and its design.
 
 \section{Design context}
@@ -228,6 +230,7 @@ This sub package contains the data model for the system. It accepts requests fro
 
 \clearpage
 \part{Design considerations}
+\label{part:design-considerations}
 This section encompasses the design considerations taken into account in the MeteoCal system design. Assumptions, dependencies, general constraints and performance requirements are clearly stated.
 
 \section{Assumptions}
@@ -274,10 +277,17 @@ The architectural style and the component definition described contribute to low
 \subsection{Portability}
 The software product will be developed using the Java language and related dependent technologies. Java is specifically designed to have as few implementation dependencies as possible. Meaning that code that runs on one platform does not need to be recompiled to run on another.
 
+\clearpage
+\part{Software architecture}
+\label{part:software-architecture}
+MeteoCal will be developed using a 3-tier JEE architecture. We have identified the components of each tier. Section \ref{sec:conceptual-design} gives a brief description of the architecture we will adopt to develop MeteoCal and a small description for each component. A detailed description will be provided in part \ref{part:detailed-software-design}.
 
+\section{Conceptual design}
+\label{sec:conceptual-design}
 
 \clearpage
 \part{Detailed software design}
+\label{part:detailed-software-design}
 \section{Database model}
 \subsection{Conceptual Design}
 We developed the entity-relationship diagram following what we specified in the class diagram presented in the RASD. 
@@ -297,6 +307,7 @@ A notification has to have at least one receiver and it concerns exactly one eve
 
 \clearpage
 \part{Appendixes}
+\label{part:appendixes}
 \section{RASD modifications}
 \subsection{Alloy model}
 In the alloy model we stated that in our database we only keep track of one forecast per place (the most recent one). This fact is not true according to the database design and has to be removed. In fact we can have different events in the same place but on different days, so we need to have different forecast.
