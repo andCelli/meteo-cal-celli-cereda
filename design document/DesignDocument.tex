@@ -194,22 +194,23 @@ Given the functional requirements identified we can encapsulate them within spec
 \paragraph{User UI}
 These set of sub packages are responsible for encapsulating the user actions and forwarding information requests to the Business logic sub packages.
 \begin{itemize}
-\item \emph{Login page:} this package implements FR2
+\item \emph{Login page:} this package implements FR2, FR5
 \item \emph{Sign up page:} this package implements FR1
-\item \emph{Calendar page:} this package implements FR7-FR11
-\item \emph{Search page:} this package implements FR12, FR14, FR15
-\item \emph{Notification viewer:} this package implements FR13, FR16
+\item \emph{Calendar page:} this package implements FR3, FR7-FR12, FR14, FR15, FR19
+
+\item \emph{Notification viewer:} this package implements FR13, FR16-FR18
+\item \emph{User profile page:} this package implements FR4-FR6
 \end{itemize}
 
 \paragraph{Business logic}
 These set of sub packages are responsible for handling requests from the User UI package, processing them and send back a response. These packages may access the Persistence package.
 \begin{itemize}
-\item \emph{Login manager:} this package implements FR2
-\item \emph{Sign up manager:} this package implements FR1
-\item \emph{Calendar manager:} this package implements FR7-FR11
+\item \emph{Login manager:} this package implements FR2, FR3
+\item \emph{User profile manager:} this package implements FR1, FR4-6
+\item \emph{Calendar manager:} this package implements FR7-FR11, FR14, FR15
 \item \emph{Search manager:} this package implements FR12, FR14, FR15
-\item \emph{Notification manager:} this package implements FR13, FR16
-\item \emph{Forecast manager:} this package implements FR17, FR18
+\item \emph{Notification manager:} this package implements FR13,FR16-FR19
+\item \emph{Forecast manager:} this package implements FR17-FR19
 \end{itemize}
 
 \paragraph{Persistence}
