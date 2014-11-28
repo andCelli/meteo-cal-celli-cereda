@@ -248,7 +248,7 @@ WHERE ARE THE ASSUMPTIONS??
 \section{General constraints}
 This section describes the NFRs and the QoS details related to the design of the software product.
 
-\noindent\begin{tabular}{| p{0.3\linewidth} | p{0.7\linewidth} |}
+\noindent\begin{tabular}{| l | l |}
 \hline	\emph{Element}	&	\emph{Requirement}	\\
 \hline	Memory			&	2 GB+				\\
 \hline	Database server	&	MySQL				\\
@@ -294,10 +294,38 @@ MeteoCal will be developed using a 3-tier JEE architecture. We have identified t
 The diagram represented in figure \ref{fig:general-architecture} represents our conceptual design of MeteoCal. This diagram depicts all the components of the designed software, by clarifying the logical separation between the tiers (Although we will build our application based on the 3-tier architecture).
 It is clear that the user will interact with the XHTML pages, which in their side are implemented with beans to manage user interaction. This web interaction is then supported by the business tier, which holds on the information provided by the persistence layer. The persistence layer is the one in charge of the connection to the database and managing all the queries needed from the above layers.
 
+\subsection{Client tier}
+The client tier is composed of the XHTML pages that the system user will see. Actually this is strictly related to the Web Tier, so they will be described together in the subsection \ref{subsec:WebComponent} it is detailed together with the Web Tier.
+
+\subsection{Web tier}
+Web Tier is composed of the web beans. This tier receives requests from the user, interacts with the beans in the Business Logic tier and display data according to the user requests. Since we will be using JSF these beans are called Managed Beans.
+
+\subsection{Business logic tier}
+The business logic tier is composed of all the logic underlying our application; it is responsible of communicating with Web Tier and Persistence Tier. Its components are the EJB Beans.
+
+\subsection{Pesistence tier}
+The persistence tier is composed of the entity beans which represent the entities depicted from our RASD document and then further endorsed in our conceptual design. These entities are fundamental as they represent the connection to our database. Since in JEE we are interested in working in an object oriented environment, they represent a high level object view of the database of the application, which from its side connects to the Database Tier.
+
+\subsection{Database}
+The database is the tier that fiscally stores the information needed by our system. It's structure will be further explained in section \ref{sec:DatabaseModel}.
+
+\section{System specifications}
+The following table displays the technologies we will use during implementation. All of the technologies are free source technologies.
+
+\noindent\begin{tabular}{| l | l |}
+\hline	\emph{Component name}	&	\emph{Technology}	\\
+\hline	Client tier \& Web tier	&	XHTML integrated with JSF	\\
+\hline	Business tier			&	JEE with GlashFish AS	\\
+\hline	Persistence tier \& Database tier	&	MySQL	\\
+\hline
+\end{tabular}
+
 \clearpage
 \part{Detailed software design}
 \label{part:detailed-software-design}
+
 \section{Database model}
+\label{sec:DatabaseModel}
 \subsection{Conceptual Design}
 We developed the entity-relationship diagram following what we specified in the class diagram presented in the RASD. 
 \paragraph{Notes}
