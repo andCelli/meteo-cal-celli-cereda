@@ -335,8 +335,12 @@ Our system is composed by 3 main components, which will be implemented during im
 \end{itemize}
 In this section we describe all the subcomponents in a ``vertical way'', i.e. starting from a web component we will show how it interacts with the business logic component to achieve what it need, and how the business logic interacts with the persistence component.
 
-\subsection{Login}
-\subsection{Sign up}
+\subsection{Login-Sign up}
+This BCE diagram describes the main features of the login and registration functionalities. It displays all the parts of the MeteoCal system involved in carrying out this tasks. 
+The login involves a Login Boundary to manage the interaction with the user, a controller that has to check the validity of the input data and the User Entity which clearly provide the necessary information. 
+After the login has been successfully accomplished the controller calls the Home boundary (taking the user to its homepage) and activates the NotificationManager that will check for pending notifications.
+The registration involves a controller that takes care of checking and storing user data in the User Entity. If the user sign-ups correctly he’s taken to his homepage.  In this case the system doesn’t perform  (quite clearly) any notifications control.
+The UserHome boundary (and its related controllers) and the NotificationManager will be presented in another diagram so here we just show their roles in the login-registration functionalities.
 \subsection{Notification}
 \subsection{Calendar browsing}
 \subsection{User profile}
