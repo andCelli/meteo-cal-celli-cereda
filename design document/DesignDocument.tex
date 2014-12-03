@@ -342,7 +342,7 @@ Figure \ref{fig:global_bce} represents the complete BCE diagram of our applicati
 \label{fig:global_bce}
 \end{figure}
 
-\subsection{Login-Sign up}
+\subsection{Login and sign up}
 The BCE diagram in figure \ref{fig:login_bce} describes the main features of the login and registration functionalities. It displays all the parts of the MeteoCal system involved in carrying out this tasks.
 
 The login involves a Login Boundary to manage the interaction with the user, a controller that has to check the validity of the input data and the User Entity which clearly provide the necessary information. 
@@ -357,7 +357,20 @@ The UserHome boundary (and its related controllers) and the NotificationManager 
 \label{fig:login_bce}
 \end{figure}
 
-\subsection{Notification}
+\subsection{Notification and forecasts managing}
+TODO: IN NOTIFICATION MANAGER AGGIUNGERE DELETE-NOTIFICATION
+The BCE diagram in figure \ref{fig:notification_bce} describes how the system manages the notifications and the weather forecasts.
+
+The Notification viewer is a component that is used to show the pending notifications. The Notification viewer basically calls the Notification manager to obtain the list of pending notifications. Then it shows them to the user and eventually asks for a response that is given back to the manager. The notification manager can use the calendar manager to take care of the user response (for example if the user accepts an event invitation it will save the event in the user's calendar). Once viewed a notification can be deleted from the system.
+
+A notification can be created by the calendar manager (for example if I create an event with some invitations the calendar manager will take care of creating the needed notifications) or by the forecast manager. The forecast manager has a periodical task that takes care of keeping updated forecasts for all the events, when it is necessary it creates the needed notifications (for example if one day before the event the system detects bad weather it will create a bad weather notify).
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\linewidth]{./bce/notification_bce}
+\caption[notification bce]{Notifications and forecasts BCE diagram}
+\label{fig:notification_bce}
+\end{figure}
+
 \subsection{Calendar browsing}
 \subsection{User profile}
 
