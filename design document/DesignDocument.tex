@@ -371,6 +371,21 @@ A notification can be created by the calendar manager (for example if I create a
 \end{figure}
 
 \subsection{Calendar browsing}
+Figure \ref{fig:calendar_bce} contains the simplified BCE of calendar browsing (entities are not represented as they are visible in the global bce and further explained in section \ref{sec:DatabaseModel}).
+
+The system has two similar boundaries for calendar browsing: one that shows the calendar of the actual user and one that is used to see the calendar of other users. They have some visual differences but they access the same controller as their task is quite similar.
+
+The login manager is simply used to allow the user to log out of the system.
+When browsing a calendar the boundaries access the calendar manager to obtain the needed informations on the events, and eventually to modify them.
+When visualizing the details of an event the boundaries access the forecast manager to obtain the weather forecast for the event.
+The search manager is used for searching another user (this can be done in order to view the user's calendar or to invite the user to an event).
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\linewidth]{./bce/calendar_bce}
+\caption[calendar bce]{Calendar BCE diagram}
+\label{fig:calendar_bce}
+\end{figure}
+
 \subsection{User profile}
 
 \section{Database model}
