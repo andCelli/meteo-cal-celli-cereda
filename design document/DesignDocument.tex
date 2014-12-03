@@ -358,7 +358,6 @@ The UserHome boundary (and its related controllers) and the NotificationManager 
 \end{figure}
 
 \subsection{Notification and forecasts managing}
-TODO: IN NOTIFICATION MANAGER AGGIUNGERE DELETE-NOTIFICATION
 The BCE diagram in figure \ref{fig:notification_bce} describes how the system manages the notifications and the weather forecasts.
 
 The Notification viewer is a component that is used to show the pending notifications. The Notification viewer basically calls the Notification manager to obtain the list of pending notifications. Then it shows them to the user and eventually asks for a response that is given back to the manager. The notification manager can use the calendar manager to take care of the user response (for example if the user accepts an event invitation it will save the event in the user's calendar). Once viewed a notification can be deleted from the system.
