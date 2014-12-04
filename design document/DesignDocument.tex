@@ -386,7 +386,16 @@ The Home screen is marked with the dollar symbol because it’s reachable from a
 When an Event screen compartment is open a user can delete the selected event of modify it. In the first situation the compartment disappears as well as the deleted event preview (the user is back to the “simple” Homepage). 
 On the other hand if the user decides to modify the event a new screen compartment substitutes the Event compartment. The new compartment, called EventManager, allows the user to modify all the event information using an input form. When the user submits updated event details the systems checks them: if they are correct the user is taken back to the Homepage, otherwise the EventManager compartment shows the errors. 
 The same procedure involving the EventManager is used when the user, from his Homepage, wants to create a new event.  The EventManager is, again, an optional compartment since the Homepage doesn’t always display it.
-While the user is on his Homepage he can receive Notifications. When the system detects a pending notification it shows it to the user displaying a Notification screen compartment. Once the user has replied the notification compartment disappears and the user is back to his Homepage.
+\
+Using the search tool which is displayed in the top bar a User can perform searches.  The search is performed using an input form where the “searcher” user can specify the details of the “searched” user. After a search the user is always taken to the SearchResults page. If the input wasn’t correct there won’t be any result displayed. Otherwise results are presented using user previews that shows user’s basic information. The “searcher” can go through the results scrolling the lateral bar (represented as the methods Prev, Next). 
+If the search results are not satisfactory the User can perform another search (therefore remaining on the same screen). Otherwise the “searcher” can select the user he was looking for to check his calendar.
+\
+The UserPage screen shows user’s information and its calendar. The Calendar screen compartment has the same structure of the one used in the Home screen. The main difference is that events visualization may be restricted by privacy settings. Moreover events can’t be modified or deleted from another user’s calendar. For these reasons the event details are displayed using a specific screen compartment that manages displayed data accordingly to the event and calendar privacy and doesn’t allow changes.
+\
+The User can reach the settings page from each screen of this section (using the top bar). In this screen the user can revise his personal data and, eventually, change mail and/or password. Moreover he’s able to modify the privacy settings of his personal calendar. Changes are performed using an input form. 
+When a user updates his personal information the system checks them. If it detects some mistakes  it shows an error message on the setting page. Otherwise the user is taken back to his Homepage.
+\
+User may receive notifications while he’s on his Homepage, on the SearchResult screen or on the UserPage screen. When the system detects a pending notification it shows it to the user displaying a Notification screen compartment. Once the user has replied the notification compartment disappears and the user is back to the page he was browsing.
 
 \section{BCE diagrams}
 Our system is composed by 3 main components, which will be implemented during implementation phase.
