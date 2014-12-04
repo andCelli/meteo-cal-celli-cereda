@@ -373,13 +373,19 @@ The Notification table contains all the different type of notification. The type
 
 \section{UX diagrams}
 \label{sec:UXdiagrams}
+
 \subsection{Unlogged user UX}
 The following UX diagram describes the user experience related to the “first” part of the interaction with the user. Its focus is on how the user may accomplish the following actions: login, registration, logout. These actions refer respectively to functional requirements FR2, FR1 and FR3 (section “Managing User”).
 The first page shown to the user is the Login Page, represented by the Login Screen. We marked it with the dollar symbol because this page is reachable from all the others. On the one hand, if the user hasn’t already performed the login, he is able to get back to the Login page from all the other pages accessible at that time (About page and Registration page). On the other if a logged user performs the logout he’s taken back to the login page. 
 The Login screen has an input form where the user can insert username and password. If they are correct the user is taken to his Homepage (discussed in the second UX diagram), otherwise an error message will appear on the same page. From the Login page the user can reach the About page and the Register page.
 The About page has the only function of explaining the purpose of MeteoCal system. Therefore it just shows some static text and allows the user to reach the Register page or to go back to the login.
 The Register page contains an input form that allows the user to register into the MeteoCal system. When a user send a registration request his data are checked. If the system doesn’t detect any problem the registration is completed successfully. Personal data are stored and the user is taken to his homepage. If some data are missing or wrong the user remains on the Register page where an error message is shown.
-
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{./images/UX_unlogged}
+\caption[Unlogged ux]{Unlogged user UX diagram}
+\label{fig:UX_unlogged}
+\end{figure}
 
 \section{BCE diagrams}
 Our system is composed by 3 main components, which will be implemented during implementation phase.
