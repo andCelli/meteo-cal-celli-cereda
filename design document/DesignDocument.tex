@@ -26,7 +26,6 @@ TODO:
 3 - LOGIN MODIFICA INVITA (andrea)
 
 - UX: DESCRIZIONE E INSERIRE (andrea)
-- DB: INSERIRE FOTO (ste)
 - DIAGRAMMA DEPLOY (ste)
 \input{title.tex}
 
@@ -409,7 +408,6 @@ Emails can already be changed and thus weren't a suitable choice for the primary
 \item Places have an ID as primary key. It's the id that identifies the specified city in Open Weather Map (the external service used to get forecasts). In this way it will be simpler to manage places and forecasts according to the external service.   
 \end{itemize}
 
-\subsubsection{ER diagram description}
 The User entity contains all the  user's personal information. A user has exactly one calendar. A user can create events and he may receive notifications.\
 Calendar is a weak entity with respect to User because if a user is deleted from the database's records then there's no need  to keep track of its calendar. A calendar contains 0 or more events.\
 An event is created by exactly one user and it's contained in at least one calendar (the one belonging to its creator). Events can generate notifications. An event is held in one Place (that may be unspecified) and has a related forecast, if available.\
@@ -424,7 +422,7 @@ A notification has to have at least one receiver and it concerns exactly one eve
 \end{figure}
 
 
-\subsubsection{Logical design}
+\subsection{Logical design}
 The logical design of the database represent its final representation. The diagram shows the different tables required to store MeteoCal data. Every attribute is a column of the table in which is declared. Every table may involve foreign keys. These are attributes that refer to another entity in the database, which is specified through its primary key. 
 The LD diagram is derived from the ER diagram. Thus it presents the same structure for information. The relations specified in the ER are commonly specified in the LD diagram using foreign keys.\
 We decided to remove the entity calendar. Conceptually it was useful but in practice, given that the relation with the user is 1:1 it can be omitted without any loss. A calendar table wouldn’t be reasonable because it would not contain enough information. We included the privacy setting of the calendar in the User table and connected directly users and the events their events.\
@@ -440,6 +438,20 @@ The Notification table contains all the different type of notification. The type
 \caption[Logic view]{Logic view diagram}
 \label{fig:Logic_view}
 \end{figure}
+
+\section{Runtime view}
+The diagram in figure \ref{fig:runtime_view} is the runtime view of MeteoCal project. The software will be released as a .ear so that it will be deployed on a JEE AS.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.5\linewidth]{./images/runtime_view}
+\caption[runtime view]{Runtime view diagram}
+\label{fig:runtime_view}
+\end{figure}
+
+
+\section{Deployment view}
+
+\section{Module view}
 
 
 \clearpage
