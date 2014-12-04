@@ -19,15 +19,6 @@
 \makeindex
 
 \begin{document}
-TODO:
-- SEQUENCE:
-1 - AGGIORNA METEO, MANDA NOTIFICA  (ste)
-2 - SIGNUP AGGIUNGI EVENTO (il primo che non ha un cazzo da fare)
-3 - LOGIN MODIFICA INVITA (andrea)
-
-- UX: DESCRIZIONE E INSERIRE (andrea)
-
-Possibile modifica ultima parte: database, ux, bce, sequence, cagate
 \input{title.tex}
 
 \part{Introduction}
@@ -193,7 +184,7 @@ Since each tier is broken into components and each component is responsible for 
 
 Logged and unlogged users access directly the User UI package and submit requests to accomplish their tasks.
 
-\begin{figure}[h!]
+\begin{figure}[h]
 \centering
 \includegraphics[width=\linewidth]{./images/basic-package}
 \caption[Basic package]{Basic package diagram}
@@ -290,7 +281,7 @@ MeteoCal will be developed using a 3-tier JEE architecture. We have identified t
 
 \section{Conceptual design}
 \label{sec:conceptual-design}
-\begin{figure}[h!]
+\begin{figure}[htp]
 \centering
 \includegraphics[width=\linewidth]{./images/general_architecture_design}
 \caption[General architecture]{General architecture design}
@@ -331,80 +322,6 @@ The following table displays the technologies we will use during implementation.
 \label{part:detailed-software-design}
 In this part we provide a detailed description of the system architecture and intended implementation according the general structure already described in section \ref{sec:conceptual-design}.
 
-\section{Implementation components}
-Our system is composed by 3 main components, which will be implemented during implementation phase.
-\begin{itemize}
-\item Web component
-\item Business logic component
-\item Persistence component
-\end{itemize}
-In this section we describe all the subcomponents in a ``vertical way'', i.e. starting from a web component we will show how it interacts with the business logic component to achieve what it needs, and how the business logic interacts with the persistence component.
-
-Figure \ref{fig:global_bce} represents the complete BCE diagram of our application. Each area of the application will be further explained in the following subsections.
-\begin{figure}[h!]
-\centering
-\includegraphics[width=\linewidth]{./bce/global_bce}
-\caption[global bce]{Global BCE diagram}
-\label{fig:global_bce}
-\end{figure}
-\clearpage
-
-\subsection{User profiles managing}
-The BCE diagram in figure \ref{fig:userProfile_bce} describes the main features of the user profiles managing (registration, login and data modifications). It displays all the parts of the MeteoCal system involved in carrying out this tasks.
-
-The registration involves a controller that takes care of checking and storing user data in the User Entity. If the user sign-ups correctly he's taken to his homepage.  In this case the system doesn't perform  (quite clearly) any notifications control.
-
-The login involves a Login Boundary to manage the interaction with the user, a controller that has to check the validity of the input data and the User Entity which clearly provide the necessary information. 
-After the login has been successfully accomplished the controller calls the Home boundary (taking the user to its homepage) and activates the NotificationManager that will check for pending notifications.
-
-From his homepage an user can reach his User Profile page, where he can update his data. That page uses the UserProfileManager to get the user data, shows them to user and waits for eventual modifications. When the user chooses to save the new data the boundary forwards them to the controller, that updates the underlying entity. 
-
-\begin{figure}[h!]
-\centering
-\includegraphics[width=\linewidth]{./bce/userProfile_bce}
-\caption[user profile bce]{Signup, login and data update BCE diagram}
-\label{fig:userProfile_bce}
-\end{figure}
-
-\subsection{Notification and forecasts managing}
-The BCE diagram in figure \ref{fig:notification_bce} describes how the system manages the notifications and the weather forecasts.
-
-The Notification viewer is a component that is used to show the pending notifications. The Notification viewer basically calls the Notification manager to obtain the list of pending notifications. Then it shows them to the user and eventually asks for a response that is given back to the manager. The notification manager can use the calendar manager to take care of the user response (for example if the user accepts an event invitation it will save the event in the user's calendar). Once viewed a notification can be deleted from the system.
-
-A notification can be created by the calendar manager (for example if I create an event with some invitations the calendar manager will take care of creating the needed notifications) or by the forecast manager. The forecast manager has a periodical task that takes care of keeping updated forecasts for all the events, when it is necessary it creates the needed notifications (for example if one day before the event the system detects bad weather it will create a bad weather notify).
-\begin{figure}[h!]
-\centering
-\includegraphics[width=\linewidth]{./bce/notification_bce}
-\caption[notification bce]{Notifications and forecasts BCE diagram}
-\label{fig:notification_bce}
-\end{figure}
-
-\subsection{Calendar browsing}
-Figure \ref{fig:calendar_bce} contains the simplified BCE of calendar browsing (entities are not represented as they are visible in the global bce and further explained in section \ref{sec:DatabaseModel}).
-
-The system has two similar boundaries for calendar browsing: one that shows the calendar of the actual user and one that is used to see the calendar of other users. They have some visual differences but they access the same controller as their task is quite similar.
-
-The login manager is simply used to allow the user to log out of the system.
-When browsing a calendar the boundaries access the calendar manager to obtain the needed informations on the events, and eventually to modify them.
-When visualizing the details of an event the boundaries access the forecast manager to obtain the weather forecast for the event.
-The search manager is used for searching another user (this can be done in order to view the user's calendar or to invite the user to an event).
-\begin{figure}[h!]
-\centering
-\includegraphics[width=\linewidth]{./bce/calendar_bce}
-\caption[calendar bce]{Calendar BCE diagram}
-\label{fig:calendar_bce}
-\end{figure}
-
-
-\section{UX diagrams}
-\label{sec:UXdiagrams}
-\subsection{Unlogged user UX}
-The following UX diagram describes the user experience related to the “first” part of the interaction with the user. Its focus is on how the user may accomplish the following actions: login, registration, logout. These actions refer respectively to functional requirements FR2, FR1 and FR3 (section “Managing User”).
-The first page shown to the user is the Login Page, represented by the Login Screen. We marked it with the dollar symbol because this page is reachable from all the others. On the one hand, if the user hasn’t already performed the login, he is able to get back to the Login page from all the other pages accessible at that time (About page and Registration page). On the other if a logged user performs the logout he’s taken back to the login page. 
-The Login screen has an input form where the user can insert username and password. If they are correct the user is taken to his Homepage (discussed in the second UX diagram), otherwise an error message will appear on the same page. From the Login page the user can reach the About page and the Register page.
-The About page has the only function of explaining the purpose of MeteoCal system. Therefore it just shows some static text and allows the user to reach the Register page or to go back to the login.
-The Register page contains an input form that allows the user to register into the MeteoCal system. When a user send a registration request his data are checked. If the system doesn’t detect any problem the registration is completed successfully. Personal data are stored and the user is taken to his homepage. If some data are missing or wrong the user remains on the Register page where an error message is shown. 
-
 \section{Database model}
 \label{sec:DatabaseModel}
 \subsection{Conceptual Design}
@@ -422,7 +339,7 @@ An event is created by exactly one user and it's contained in at least one calen
 A Place is the location of at least one Event. It can also be the object of some weather forecasts.\
 Forecast is a weak entity with respect to Place because forecasts referring to places that are not in the DataBase make no sense. A forecast has to be used by at least one event, otherwise it would be useless.\
 A notification has to have at least one receiver and it concerns exactly one event. ECN, BWA, SDP and Invite are heir classes of Notification because they share the basic structure but have to be managed in different ways.
-\begin{figure}[h!]
+\begin{figure}[p]
 \centering
 \includegraphics[width=\linewidth]{./images/ER}
 \caption[ER]{Entity-Relationship diagram}
@@ -440,16 +357,106 @@ The Event table contains alle the tuples representing events. Each tuple has a u
 The Forecast table has an integer primary key generated by the dbms. It has a foreign key that links the forecast to a specific place ID. 
 The Place table has an integer primary key which is the city code used in the Open Weather Map. Therefore it has to be set by MeteoCal system and not automatically by the database.\
 The Notification table contains all the different type of notification. The type is specified in the NotificationType attribute. We decided to store all the types in a single table because it simplifies the process of searching pending notifications for a given user. A notification has a primary key composed by the notification ID and a user ID. The notification ID is an integer generated by the database. The notification ID alone is not enough to identify a single notification because the same notification can be sent to multiple user and each of them may reply in a different way to it.\
-\begin{figure}[h!]
+\begin{figure}[p]
 \centering
 \includegraphics[width=\linewidth]{./images/Logic_view}
 \caption[Logic view]{Logic view diagram}
 \label{fig:Logic_view}
 \end{figure}
 
+\section{UX diagrams}
+\label{sec:UXdiagrams}
+\subsection{Unlogged user UX}
+The following UX diagram describes the user experience related to the “first” part of the interaction with the user. Its focus is on how the user may accomplish the following actions: login, registration, logout. These actions refer respectively to functional requirements FR2, FR1 and FR3 (section “Managing User”).
+The first page shown to the user is the Login Page, represented by the Login Screen. We marked it with the dollar symbol because this page is reachable from all the others. On the one hand, if the user hasn’t already performed the login, he is able to get back to the Login page from all the other pages accessible at that time (About page and Registration page). On the other if a logged user performs the logout he’s taken back to the login page. 
+The Login screen has an input form where the user can insert username and password. If they are correct the user is taken to his Homepage (discussed in the second UX diagram), otherwise an error message will appear on the same page. From the Login page the user can reach the About page and the Register page.
+The About page has the only function of explaining the purpose of MeteoCal system. Therefore it just shows some static text and allows the user to reach the Register page or to go back to the login.
+The Register page contains an input form that allows the user to register into the MeteoCal system. When a user send a registration request his data are checked. If the system doesn’t detect any problem the registration is completed successfully. Personal data are stored and the user is taken to his homepage. If some data are missing or wrong the user remains on the Register page where an error message is shown.
+
+
+\section{BCE diagrams}
+Our system is composed by 3 main components, which will be implemented during implementation phase.
+\begin{itemize}
+\item Web component
+\item Business logic component
+\item Persistence component
+\end{itemize}
+In this section we describe all the subcomponents in a ``vertical way'', i.e. starting from a web component we will show how it interacts with the business logic component to achieve what it needs, and how the business logic interacts with the persistence component.
+
+Figure \ref{fig:global_bce} represents the complete BCE diagram of our application. Each area of the application will be further explained in the following subsections.
+\begin{figure}[p]
+\centering
+\includegraphics[width=\linewidth]{./bce/global_bce}
+\caption[global bce]{Global BCE diagram}
+\label{fig:global_bce}
+\end{figure}
+\clearpage
+
+\subsection{User profiles managing}
+The BCE diagram in figure \ref{fig:userProfile_bce} describes the main features of the user profiles managing (registration, login and data modifications). It displays all the parts of the MeteoCal system involved in carrying out this tasks.
+
+The registration involves a controller that takes care of checking and storing user data in the User Entity. If the user sign-ups correctly he's taken to his homepage.  In this case the system doesn't perform  (quite clearly) any notifications control.
+
+The login involves a Login Boundary to manage the interaction with the user, a controller that has to check the validity of the input data and the User Entity which clearly provide the necessary information. 
+After the login has been successfully accomplished the controller calls the Home boundary (taking the user to its homepage) and activates the NotificationManager that will check for pending notifications.
+
+From his homepage an user can reach his User Profile page, where he can update his data. That page uses the UserProfileManager to get the user data, shows them to user and waits for eventual modifications. When the user chooses to save the new data the boundary forwards them to the controller, that updates the underlying entity. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{./bce/userProfile_bce}
+\caption[user profile bce]{Signup, login and data update BCE diagram}
+\label{fig:userProfile_bce}
+\end{figure}
+
+\subsection{Notification and forecasts managing}
+The BCE diagram in figure \ref{fig:notification_bce} describes how the system manages the notifications and the weather forecasts.
+
+The Notification viewer is a component that is used to show the pending notifications. The Notification viewer basically calls the Notification manager to obtain the list of pending notifications. Then it shows them to the user and eventually asks for a response that is given back to the manager. The notification manager can use the calendar manager to take care of the user response (for example if the user accepts an event invitation it will save the event in the user's calendar). Once viewed a notification can be deleted from the system.
+
+A notification can be created by the calendar manager (for example if I create an event with some invitations the calendar manager will take care of creating the needed notifications) or by the forecast manager. The forecast manager has a periodical task that takes care of keeping updated forecasts for all the events, when it is necessary it creates the needed notifications (for example if one day before the event the system detects bad weather it will create a bad weather notify).
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{./bce/notification_bce}
+\caption[notification bce]{Notifications and forecasts BCE diagram}
+\label{fig:notification_bce}
+\end{figure}
+
+\subsection{Calendar browsing}
+Figure \ref{fig:calendar_bce} contains the simplified BCE of calendar browsing (entities are not represented as they are visible in the global bce and further explained in section \ref{sec:DatabaseModel}).
+
+The system has two similar boundaries for calendar browsing: one that shows the calendar of the actual user and one that is used to see the calendar of other users. They have some visual differences but they access the same controller as their task is quite similar.
+
+The login manager is simply used to allow the user to log out of the system.
+When browsing a calendar the boundaries access the calendar manager to obtain the needed informations on the events, and eventually to modify them.
+When visualizing the details of an event the boundaries access the forecast manager to obtain the weather forecast for the event.
+The search manager is used for searching another user (this can be done in order to view the user's calendar or to invite the user to an event).
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{./bce/calendar_bce}
+\caption[calendar bce]{Calendar BCE diagram}
+\label{fig:calendar_bce}
+\end{figure}
+
+\section{Sequence diagrams}
+TODO
+In this section we provide some sequence diagrams that help understand how the system components work together in order to fulfill the functional requirements. We won't make a diagram for each functionality but will group them together in a sort of scenarios.
+
+\subsection{Forecasts update and consequent notifications}
+Figure \ref{fig:sequence_forecasts} contains the sequence diagram of a forecast update. The forecast manager has a periodical task that checks for weather updates, it searches for all the outdoor events that still have to take place, then it searches the places where these events take place and retrieve a forecast for each of them. Once updated the forecasts the manager look for the forecasts that went bad and eventually creates the needed notifications (the ones that have to be sent one day in advance and the ones that have to be sent three days in advance).
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{./images/sequence_forecast_update}
+\caption[forecast update]{Forecasts update and conseqeunt notifications sequence diagram}
+\label{fig:sequence_forecasts}
+\end{figure}
+
+\subsection{Signup and event creation}
+\subsection{Login and event modification with an invite}
+
 \section{Runtime view}
 The diagram in figure \ref{fig:runtime_view} is the runtime view of MeteoCal project. The software will be released as a .ear so that it will be deployed on a JEE AS.
-\begin{figure}[h!]
+\begin{figure}[h]
 \centering
 \includegraphics[width=0.5\linewidth]{./images/runtime_view}
 \caption[runtime view]{Runtime view diagram}
@@ -458,7 +465,7 @@ The diagram in figure \ref{fig:runtime_view} is the runtime view of MeteoCal pro
 
 \section{Deployment view}
 The diagram in figure \ref{fig:deployment_view} represents how the components of the system will be deployed.
-\begin{figure}[h!]
+\begin{figure}[h]
 \centering
 \includegraphics[width=\linewidth]{./images/deployment_view}
 \caption[deploy]{Deployment view}
