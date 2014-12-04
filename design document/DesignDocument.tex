@@ -138,7 +138,14 @@ Functional requirements:
 \end{enumerate}
 
 \subsection{System technologies}
-MeteoCal will be designed considering the client-server 3-tier distributed architectural style. Each tier requires specific technologies as depicted below:
+MeteoCal will be designed considering the client-server 3-tier distributed architectural style as depicted in figure \ref{fig:JEE_arch}. Each tier requires specific technologies as depicted below.
+\begin{figure}[ph]
+\centering
+\includegraphics[width=\linewidth]{./images/JEE-arch}
+\caption[jee arch]{JEE architecture}
+\label{fig:JEE_arch}
+\end{figure}
+
 
 \subsubsection{Web tier}
 \begin{itemize}
@@ -146,14 +153,14 @@ MeteoCal will be designed considering the client-server 3-tier distributed archi
 \item Web components developed with Java Server Faces technology, which is a user interface component framework for web applications.
 \end{itemize}
 
-\subsection{Business logic tier}
+\subsubsection{Business logic tier}
 \begin{itemize}
 \item Java Enterprise Edition 7(JEE7) platform supports applications that provide enterprise services in the Java language. It is the common foundation for the various kinds of components in Java.
 \item Enterprise Java Beans (EJB) 3.1, business components that capture the logic that solves or meets the needs of a particular business domain and persistence entities.
 \item GlassFish 4.1, a server that provides services such as security, data services, transaction support, load balancing, and management of distributed applications and supports the JEE7 platform.
 \end{itemize}
 
-\subsection{Persistence tier}
+\subsubsection{Persistence tier}
 \begin{itemize}
 \item MySQL Server 5.6.21, a RDBMS
 \end{itemize}
