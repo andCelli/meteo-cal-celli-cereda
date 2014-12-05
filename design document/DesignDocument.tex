@@ -352,7 +352,7 @@ A notification has to have at least one receiver and it concerns exactly one eve
 \label{fig:ER}
 \end{figure}
 
-
+\clearpage
 \subsection{Logical design}
 The logical design of the database represent its final representation. The diagram shows the different tables required to store MeteoCal data. Every attribute is a column of the table in which is declared. Every table may involve foreign keys. These are attributes that refer to another entity in the database, which is specified through its primary key. 
 The LD diagram is derived from the ER diagram. Thus it presents the same structure for information. The relations specified in the ER are commonly specified in the LD diagram using foreign keys.\
@@ -370,6 +370,7 @@ The Notification table contains all the different type of notification. The type
 \label{fig:Logic_view}
 \end{figure}
 
+\clearpage
 \section{UX diagrams}
 \label{sec:UXdiagrams}
 
@@ -410,6 +411,7 @@ User may receive notifications while he’s on his Homepage, on the SearchResult
 \label{fig:UX_logged}
 \end{figure}
 
+\clearpage
 \section{BCE diagrams}
 Our system is composed by 3 main components, which will be implemented during implementation phase.
 \begin{itemize}
@@ -418,6 +420,15 @@ Our system is composed by 3 main components, which will be implemented during im
 \item Persistence component
 \end{itemize}
 In this section we describe all the subcomponents in a ``vertical way'', i.e. starting from a web component we will show how it interacts with the business logic component to achieve what it needs, and how the business logic interacts with the persistence component.
+
+In order to achieve a better readability we first present a BCE with the entities only, their connections won't be showed in the further diagrams.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\linewidth]{./bce/entities_bce}
+\caption[Entities BCE]{BCE diagram of the entities}
+\label{fig:entities_bce}
+\end{figure}
+ 
 
 Figure \ref{fig:global_bce} represents the complete BCE diagram of our application. Each area of the application will be further explained in the following subsections.
 \begin{figure}[p]
@@ -474,6 +485,7 @@ The search manager is used for searching another user (this can be done in order
 \label{fig:calendar_bce}
 \end{figure}
 
+\clearpage
 \section{Sequence diagrams}
 TODO
 In this section we provide some sequence diagrams that help understand how the system components work together in order to fulfill the functional requirements. We won't make a diagram for each functionality but will group them together in a sort of scenarios.
