@@ -108,14 +108,13 @@ Functional requirements:
 \item Login
 \item Logout
 \item Modify password
-\item Recover password
 \item Update personal data
 \end{enumerate}
 
 \subsubsection{Managing calendars}
 Functional Requirements:
 \begin{enumerate}[label = FR \arabic*:]
-\setcounter{enumi}{6}
+\setcounter{enumi}{5}
 \item Add a new event
 \item Modify an existing event
 \item Delete an existing event
@@ -131,7 +130,7 @@ Functional Requirements:
 \subsubsection{Managing weather forecasts}
 Functional requirements:
 \begin{enumerate}[label = FR \arabic*:]
-\setcounter{enumi}{16}
+\setcounter{enumi}{15}
 \item Send a notification the day before an event in case of bad weather to all the event's participants
 \item Propose an alternative schedule three days before an event in case of bad weather to the event creator
 \item Show the weather forecasts for the scheduled events 
@@ -206,26 +205,26 @@ These set of sub packages are responsible for encapsulating the user actions and
 \begin{itemize}
 \item \emph{Login page:} this package implements FR2, FR5
 \item \emph{Sign up page:} this package implements FR1
-\item \emph{Calendar page:} this package implements FR3, FR7-FR12, FR14, FR15, FR19
-\item \emph{Notification viewer:} this package implements FR13, FR16-FR18
-\item \emph{User profile page:} this package implements FR4-FR6
+\item \emph{Calendar page:} this package implements FR3, FR6-FR11, FR13, FR15, FR18
+\item \emph{Notification viewer:} this package implements FR12, FR15-FR17
+\item \emph{User profile page:} this package implements FR4-FR5
 \end{itemize}
 
 \paragraph{Business logic}
 These set of sub packages are responsible for handling requests from the User UI package, processing them and send back a response. These packages may access the Persistence package.
 \begin{itemize}
 \item \emph{Login manager:} this package implements FR2, FR3
-\item \emph{User profile manager:} this package implements FR1, FR4-6
-\item \emph{Calendar manager:} this package implements FR7-FR11, FR14, FR15
-\item \emph{Search manager:} this package implements FR12, FR14, FR15
-\item \emph{Notification manager:} this package implements FR13,FR16-FR19
-\item \emph{Forecast manager:} this package implements FR17-FR19
+\item \emph{User profile manager:} this package implements FR1, FR4-5
+\item \emph{Calendar manager:} this package implements FR6-FR10, FR13, FR14
+\item \emph{Search manager:} this package implements FR11, FR13, FR14
+\item \emph{Notification manager:} this package implements FR12,FR15-FR18
+\item \emph{Forecast manager:} this package implements FR16-FR18
 \end{itemize}
 
 \paragraph{Persistence}
 This sub package contains the data model for the system. It accepts requests from the Business Logic package.
 \begin{itemize}
-\item \emph{Entity manager:} This package implements FR1-FR19
+\item \emph{Entity manager:} This package implements FR1-FR18
 \end{itemize}
 
 \begin{figure}[h!]
