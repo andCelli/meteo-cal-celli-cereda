@@ -345,6 +345,7 @@ An event is created by exactly one user and it's contained in at least one calen
 A Place is the location of at least one Event. It can also be the object of some weather forecasts.\
 Forecast is a weak entity with respect to Place because forecasts referring to places that are not in the DataBase make no sense. A forecast has to be used by at least one event, otherwise it would be useless.\
 A notification has to have at least one receiver and it concerns exactly one event. ECN, BWA, SDP and Invite are heir classes of Notification because they share the basic structure but have to be managed in different ways.
+In the ER diagram we didn't report all the attributes as it would have became rather confusing.
 \begin{figure}[p]
 \centering
 \includegraphics[width=\linewidth]{./images/ER}
@@ -373,7 +374,7 @@ The Notification table contains all the different type of notification. The type
 \clearpage
 \section{UX diagrams}
 \label{sec:UXdiagrams}
-In this paragraph we want to describe the User Experience (UX) given by our system to its users. We used a Class Diagram with appropriate stereotypes <<screen>>, <<screen compartment>> and <<input form>>s and normal Classes to let understand how our Experience was thought. While <<screen>> represents pages, <<screen compartment>> represents parts of the page that can be shared with others. <<input form>>, eventually, represents some input fields that can be fulfilled by a user (this information will be submitted to the system clicking on a button).
+In this paragraph we want to describe the User Experience (UX) given by our system to its users. We used a Class Diagram with appropriate stereotypes \ll screen\gg, \ll screen compartment\gg and \ll input form\ggs and normal Classes to let understand how our Experience was thought. While \ll screen\gg represents pages, \ll screen compartment\gg represents parts of the page that can be shared with others. \ll input form\gg, eventually, represents some input fields that can be fulfilled by a user (this information will be submitted to the system clicking on a button).
 Figure \ref{fig:ux} represents the general UX, while more detailed diagrams are presented in the following subsections.
 \begin{figure}[h]
 \centering
