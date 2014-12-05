@@ -373,6 +373,14 @@ The Notification table contains all the different type of notification. The type
 \clearpage
 \section{UX diagrams}
 \label{sec:UXdiagrams}
+In this paragraph we want to describe the User Experience (UX) given by our system to its users. We used a Class Diagram with appropriate stereotypes <<screen>>, <<screen compartment>> and <<input form>>s and normal Classes to let understand how our Experience was thought. While <<screen>> represents pages, <<screen compartment>> represents parts of the page that can be shared with others. <<input form>>, eventually, represents some input fields that can be fulfilled by a user (this information will be submitted to the system clicking on a button).
+Figure \ref{fig:ux} represents the general UX, while more detailed diagrams are presented in the following subsections.
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{./images/ux}
+\caption[Ux]{General UX diagram}
+\label{fig:ux}
+\end{figure}
 
 \subsection{Unlogged user UX}
 The following UX diagram describes the user experience related to the “first” part of the interaction with the user. Its focus is on how the user may accomplish the following actions: login, registration, logout. These actions refer respectively to functional requirements FR2, FR1 and FR3 (section “Managing User”).
