@@ -26,7 +26,7 @@
 
 \section{Purpose of this document}
 This document describes the general and specific architecture of MeteoCal, the project of the course of Software Engineering 2 at Politecnico di Milano.
-The document will explain the architectural decisions and trade offs chosen in the design process and its justifications.
+The document will explain the architectural decisions and trade offs chosen in the design process and their justifications.
 
 \section{Scope}
 The architectural descriptions provided concern the functional view, module view, deployment view, data layer, business logic and the user interface of the RASD.
@@ -69,6 +69,7 @@ Hence the architecture will consider the following functionalities offered by Me
 \item \emph{BWA:} Bad weather alert
 \item \emph{DCN,ECN:} Date-Event changed notification
 \item \emph{SDP:} Sunny day proposal 
+\item \emph{JSF:} Java server faces
 \end{itemize}
 
 \section{References}
@@ -243,7 +244,7 @@ This section encompasses the design considerations taken into account in the Met
 \begin{tabular}{| p{0.3\linewidth} | p{0.7\linewidth} |}
 \hline	\emph{Dependency}	&	\emph{Impact}	\\
 \hline	Java virtual machine that supports JEE7 is already installed on the OS. & MeteoCal only runs on operating systems that support the JEE7 platform.	\\
-\hline	The supported browsers will be Firefox and Chrome & MeteoCal outputs XHTML code that requires browsers that support most of the web standards, elsewhere the UI experience will be affected.	\\
+\hline	The supported browsers will be Firefox, Chrome and Explorer & MeteoCal outputs XHTML code that requires browsers that support most of the web standards, elsewhere the UI experience will be affected.	\\
 \hline	A JEE7 AS is required on the server side	&	MeteoCal cannot operate if there is no AS that supports the JEE7 standard	\\
 \hline
 \end{tabular}
@@ -272,7 +273,7 @@ For assuring the reliability of the software product, it is mandatory to back up
 An AS is used to guarantee the availability of the software product. In a real scenario some redundancy in the AS instances is recommended, however here we will assume that all the tiers run on the same physical server.
 
 \subsection{Security}
-The software product does not support SSL in AS. It supports the hashing of the user password according to sha5 algorithm in the database. It supports authorization according JAAS.
+The software product does not support SSL in AS. It supports the hashing of the user password according to MD5 algorithm in the database. It supports authorization according JAAS.
 
 \subsection{Maintainability}
 The architectural style and the component definition described contribute to low coupling and high cohesion of the software product.
@@ -367,14 +368,14 @@ The Notification table contains all the different type of notification. The type
 \begin{figure}[p]
 \centering
 \includegraphics[width=\linewidth]{./images/Logic_view}
-\caption[Logic view]{Logic view diagram}
+\caption[Logical design view]{Logical design diagram}
 \label{fig:Logic_view}
 \end{figure}
 
 \clearpage
 \section{UX diagrams}
 \label{sec:UXdiagrams}
-In this paragraph we want to describe the User Experience (UX) given by our system to its users. We used a Class Diagram with appropriate stereotypes \ll screen\gg, \ll screen compartment\gg and \ll input form\ggs and normal Classes to let understand how our Experience was thought. While \ll screen\gg represents pages, \ll screen compartment\gg represents parts of the page that can be shared with others. \ll input form\gg, eventually, represents some input fields that can be fulfilled by a user (this information will be submitted to the system clicking on a button).
+In this paragraph we want to describe the User Experience (UX) given by our system to its users. We used a Class Diagram with appropriate stereotypes $\ll$screen$\gg$, $\ll$screen compartment$\gg$ and $\ll$input form$\gg$s and normal Classes to let understand how our Experience was thought. While $\ll$screen$\gg$ represents pages, $\ll$screen compartment$\gg$ represents parts of the page that can be shared with others. $\ll$input form$\gg$, eventually, represents some input fields that can be fulfilled by a user (this information will be submitted to the system clicking on a button).
 Figure \ref{fig:ux} represents the general UX, while more detailed diagrams are presented in the following subsections.
 \begin{figure}[h]
 \centering
@@ -504,7 +505,7 @@ Figure \ref{fig:sequence_forecasts} contains the sequence diagram of a forecast 
 \begin{figure}[h]
 \centering
 \includegraphics[width=\linewidth]{./images/sequence_forecast_update}
-\caption[forecast update]{Forecasts update and conseqeunt notifications sequence diagram}
+\caption[forecast update]{Sequence diagram of forecasts update and consequent notifications}
 \label{fig:sequence_forecasts}
 \end{figure}
 
@@ -538,7 +539,7 @@ In the alloy model we stated that in our database we only keep track of one fore
 \subsection{UI mockups}
 In the mockup of the registration pages there should be a link to the login page. 
 \subsection{Password recovery}
-We had identified the password recovery as a functional requirement, as it seems rather complicate to implement we have decided to leave it aside for a further version.
+We had identified the password recovery as a functional requirement, as it seems rather complicate to implement and it is not a core function we have decided to leave it aside for a further version.
 
 \section{Worked hours}
 TODO
