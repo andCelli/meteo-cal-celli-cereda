@@ -510,7 +510,11 @@ Figure \ref{fig:sequence_forecasts} contains the sequence diagram of a forecast 
 \end{figure}
 
 \subsection{Signup and event creation}
-\subsection{Login and event modification with an invite}
+\subsection{Login}
+The following sequence diagram shows how the system manages a user login.
+
+When the user submits his username and password (through the Access boundary) the login manager checks the input data. If they are “admissible” the Login manager retrieves the User information using his username as the key for the search. If the specified username doesn’t exist the system shows an error message on the login page. Otherwise it checks the correspondence of the password. If it’s correct the user is redirected to his homepage. Otherwise an error message is shown.
+\subsection{Event modification and invite}
 
 \section{Runtime view}
 The diagram in figure \ref{fig:runtime_view} is the runtime view of MeteoCal project. The software will be released as a .ear so that it will be deployed on a JEE AS.
