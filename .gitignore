@@ -10,7 +10,6 @@ DesignDocument.log
 DesignDocument.out
 DesignDocument.synctex.gz
 DesignDocument.toc
-DesignDocument.pdf
 
 #LATEX rasd
 RASD.aux
@@ -21,4 +20,3 @@ RASD.synctex.gz
 RASD.toc
 RASD.log
 title.log
-RASD.pdf
