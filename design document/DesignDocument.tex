@@ -244,7 +244,7 @@ This section encompasses the design considerations taken into account in the Met
 \begin{tabular}{| p{0.3\linewidth} | p{0.7\linewidth} |}
 \hline	\emph{Dependency}	&	\emph{Impact}	\\
 \hline	Java virtual machine that supports JEE7 is already installed on the OS. & MeteoCal only runs on operating systems that support the JEE7 platform.	\\
-\hline	The supported browsers will be Firefox, Chrome and Explorer & MeteoCal outputs XHTML code that requires browsers that support most of the web standards, elsewhere the UI experience will be affected.	\\
+\hline	The supported browsers will be Firefox and Chrome & MeteoCal outputs XHTML code that requires browsers that support most of the web standards, elsewhere the UI experience will be affected.	\\
 \hline	A JEE7 AS is required on the server side	&	MeteoCal cannot operate if there is no AS that supports the JEE7 standard	\\
 \hline
 \end{tabular}
@@ -273,7 +273,7 @@ For assuring the reliability of the software product, it is mandatory to back up
 An AS is used to guarantee the availability of the software product. In a real scenario some redundancy in the AS instances is recommended, however here we will assume that all the tiers run on the same physical server.
 
 \subsection{Security}
-The software product does not support SSL in AS. It supports the hashing of the user password according to MD5 algorithm in the database. It supports authorization according JAAS.
+The software product does not support SSL in AS. It supports the hashing of the user password according to MD5 algorithm in the database. It supports authorization according to JAAS.
 
 \subsection{Maintainability}
 The architectural style and the component definition described contribute to low coupling and high cohesion of the software product.
@@ -335,7 +335,7 @@ In this part we provide a detailed description of the system architecture and in
 We developed the entity-relationship diagram following what we specified in the class diagram presented in the RASD. 
 \paragraph{Notes}
 \begin{itemize}
-\item In the future the possibility of changing the user name could be implemented. Therefore we used an integer ID as the User primary key instead of the user name.In this way it will be simpler to manage future changes in how the system manages user data. 
+\item In the future the possibility of changing the user name could be implemented. Therefore we used an integer ID as the User primary key instead of the user name. In this way it will be simpler to manage future changes in how the system manages user data. 
 Emails can already be changed and thus weren't a suitable choice for the primary key.
 \item Places have an ID as primary key. It's the id that identifies the specified city in Open Weather Map (the external service used to get forecasts). In this way it will be simpler to manage places and forecasts according to the external service.   
 \end{itemize}
@@ -352,6 +352,7 @@ Forecast is a weak entity with respect to Place because forecasts referring to p
 
 A notification has to have at least one receiver and it concerns exactly one event. ECN, BWA, SDP and Invite are heir classes of Notification because they share the basic structure but have to be managed in different ways.
 
+\vspace{1em}
 In the ER diagram we didn't report all the attributes as it would have became rather confusing.
 
 \begin{figure}[p]
@@ -390,7 +391,7 @@ The Notification table contains all the different type of notification. The type
 \clearpage
 \section{UX diagrams}
 \label{sec:UXdiagrams}
-In this paragraph we want to describe the User Experience (UX) given by our system to its users. We used a Class Diagram with appropriate stereotypes $\ll$screen$\gg$, $\ll$screen compartment$\gg$ and $\ll$input form$\gg$s and normal Classes to let understand how our Experience was thought. While $\ll$screen$\gg$ represents pages, $\ll$screen compartment$\gg$ represents parts of the page that can be shared with others. $\ll$input form$\gg$, eventually, represents some input fields that can be fulfilled by a user (this information will be submitted to the system clicking on a button).
+In this paragraph we want to describe the User Experience (UX) given by our system to its users. We used a Class Diagram with appropriate stereotypes $\ll$screen$\gg$, $\ll$screen compartment$\gg$ and $\ll$input form$\gg$ and normal Classes to let understand how our User Experience was thought. While $\ll$screen$\gg$ represents pages, $\ll$screen compartment$\gg$ represents parts of the page that can be shared with others. $\ll$input form$\gg$, eventually, represents some input fields that can be fulfilled by a user (this information will be submitted to the system clicking on a button).
 
 \subsection{Unlogged user UX}
 The following UX diagram describes the user experience related to the “first” part of the interaction with the user. Its focus is on how the user may accomplish the following actions: login, registration, logout. These actions refer respectively to functional requirements FR2, FR1 and FR3 (section “Managing User”).
@@ -402,6 +403,7 @@ The Login screen has an input form where the user can insert username and passwo
 The About page has the only function of explaining the purpose of MeteoCal system. Therefore it just shows some static text and allows the user to reach the Register page or to go back to the login.
 
 The Register page contains an input form that allows the user to register into the MeteoCal system. When a user send a registration request his data are checked. If the system doesn’t detect any problem the registration is completed successfully. Personal data are stored and the user is taken to his homepage. If some data are missing or wrong the user remains on the Register page where an error message is shown.
+\clearpage
 
 \begin{figure}[h]
 \centering
@@ -413,7 +415,7 @@ The Register page contains an input form that allows the user to register into t
 \subsection{Logged User}
 The following UX diagram describes the user experience after the login. When the login or the registration are successfully performed the user is taken to his Homepage, which is represented by the Home screen. The Login page is reachable from all the screens of this UX through the “logout” method. If a user performs the Logout it has to login again to reach his Homepage and the other pages of this UX.
 
-The Home screen is marked with the dollar symbol because it’s reachable from all the pages accessible by a logged user (using the Top bar). The Homepage always displays the user calendar. This screen compartment may show the preview of some events (if some events are scheduled).  A user can select which type of “calendar view” he wants to use (such as daily schedule, weekly schedule ecc..). By clicking on one of these events on the right of the calendar the event details appear. Details are contained in a screen compartment which is optional: a single Homepage can show the details of zero or maximum one event per time. 
+The Home screen is marked with the dollar symbol because it’s reachable from all the pages accessible by a logged user (using the Top bar). The Homepage always displays the user calendar. This screen compartment may show the preview of some events (if some events are scheduled).  A user can select which type of “calendar view” he wants to use (such as daily schedule, weekly schedule ecc...). By clicking on one of the event previews, on the right of the calendar the event details appear. Details are contained in a screen compartment which is optional: a single Homepage can show the details of zero or maximum one event per time. 
 
 When an Event screen compartment is open a user can delete the selected event of modify it. In the first situation the compartment disappears as well as the deleted event preview (the user is back to the “simple” Homepage). 
 On the other hand if the user decides to modify the event a new screen compartment substitutes the Event compartment. The new compartment, called EventManager, allows the user to modify all the event information using an input form. When the user submits updated event details the systems checks them: if they are correct the user is taken back to the Homepage, otherwise the EventManager compartment shows the errors. 
@@ -446,6 +448,7 @@ Our system is composed by 3 main components, which will be implemented during im
 \end{itemize}
 In this section we describe all the subcomponents in a ``vertical way'', i.e. starting from a web component we will show how it interacts with the business logic component to achieve what it needs, and how the business logic interacts with the persistence component.
 
+\vspace{1em}
 In order to achieve a better readability we first present a BCE with the entities only, their connections won't be showed in the further diagrams.
 \begin{figure}[h!]
 \centering
@@ -456,7 +459,7 @@ In order to achieve a better readability we first present a BCE with the entitie
  
 
 Figure \ref{fig:global_bce} represents the complete BCE diagram of our application. Each area of the application will be further explained in the following subsections.
-\begin{figure}[p]
+\begin{figure}[h]
 \centering
 \includegraphics[width=\linewidth]{./bce/global_bce}
 \caption[global bce]{Global BCE diagram}
@@ -513,10 +516,10 @@ The search manager is used for searching another user (this can be done in order
 
 \clearpage
 \section{Sequence diagrams}
-In this section we provide some sequence diagrams that help understand how the system components work together in order to fulfill the functional requirements. We won't make a diagram for each functionality but will group them together in a sort of scenarios.
+In this section we provide some sequence diagrams that help understand how the system components work together in order to fulfill the functional requirements. We will present a diagram for each basic functionality.
 
 \subsection{Forecasts update and consequent notifications}
-Figure \ref{fig:sequence_forecasts} contains the sequence diagram of a forecast update. The forecast manager has a periodical task that checks for weather updates, it searches for all the outdoor events that still have to take place, then it searches the places where these events take place and retrieve a forecast for each of them. Once updated the forecasts the manager look for the forecasts that went bad and eventually creates the needed notifications (the ones that have to be sent one day in advance and the ones that have to be sent three days in advance).
+Figure \ref{fig:sequence_forecasts} contains the sequence diagram of a forecast update. The forecast manager has a periodical task that checks for weather updates, it searches for all the outdoor events that still have to take place, then it searches the places where these events take place and retrieve a forecast for each of them. Once updated the forecasts the manager look for the forecasts that changed from good to bad weather and eventually creates the needed notifications (the ones that have to be sent one day in advance and the ones that have to be sent three days in advance).
 \begin{figure}[h!]
 \centering
 \includegraphics[width=\linewidth]{./images/sequence_forecast_update}
@@ -605,11 +608,10 @@ In the mockup of the registration pages there should be a link to the login page
 We had identified the password recovery as a functional requirement, as it seems rather complicate to implement and it is not a core function we have decided to leave it aside for a further version.
 
 \section{Worked hours}
-TODO
-To produce this document we have worked X hours, so distributed:
+To produce this document we have worked 65 hours, so distributed:
 \begin{itemize}
-\item Andrea Celli: Y hours
-\item Stefano Cereda: Z hours
+\item Andrea Celli: 30 hours
+\item Stefano Cereda: 35 hours
 \end{itemize}
 
 \clearpage
