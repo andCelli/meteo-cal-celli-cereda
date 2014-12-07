@@ -391,13 +391,6 @@ The Notification table contains all the different type of notification. The type
 \section{UX diagrams}
 \label{sec:UXdiagrams}
 In this paragraph we want to describe the User Experience (UX) given by our system to its users. We used a Class Diagram with appropriate stereotypes $\ll$screen$\gg$, $\ll$screen compartment$\gg$ and $\ll$input form$\gg$s and normal Classes to let understand how our Experience was thought. While $\ll$screen$\gg$ represents pages, $\ll$screen compartment$\gg$ represents parts of the page that can be shared with others. $\ll$input form$\gg$, eventually, represents some input fields that can be fulfilled by a user (this information will be submitted to the system clicking on a button).
-Figure \ref{fig:ux} represents the general UX, while more detailed diagrams are presented in the following subsections.
-\begin{figure}[h]
-\centering
-\includegraphics[width=\linewidth]{./images/ux}
-\caption[Ux]{General UX diagram}
-\label{fig:ux}
-\end{figure}
 
 \subsection{Unlogged user UX}
 The following UX diagram describes the user experience related to the “first” part of the interaction with the user. Its focus is on how the user may accomplish the following actions: login, registration, logout. These actions refer respectively to functional requirements FR2, FR1 and FR3 (section “Managing User”).
@@ -509,7 +502,8 @@ The system has two similar boundaries for calendar browsing: one that shows the 
 The login manager is simply used to allow the user to log out of the system.
 When browsing a calendar the boundaries access the calendar manager to obtain the needed informations on the events, and eventually to modify them.
 When visualizing the details of an event the boundaries access the forecast manager to obtain the weather forecast for the event.
-The search manager is used for searching another user (this can be done in order to view the user's calendar or to invite the user to an event).
+
+The search manager is used for searching another user (this can be done in order to view the user's calendar or to invite the user to an event). Once the results are retrieved they are shown to the user with the viewSearchResults methods, this method will take care of creating a page where the user will be able to see them and select the wanted user. With a proper parameter this method will also be able to create a drop-down menu instead of a complete page. Therefore this method actually is the implementation of the SearchResults screen presented in the UX.
 \begin{figure}[h]
 \centering
 \includegraphics[width=\linewidth]{./bce/calendar_bce}
@@ -519,23 +513,50 @@ The search manager is used for searching another user (this can be done in order
 
 \clearpage
 \section{Sequence diagrams}
-TODO
 In this section we provide some sequence diagrams that help understand how the system components work together in order to fulfill the functional requirements. We won't make a diagram for each functionality but will group them together in a sort of scenarios.
 
 \subsection{Forecasts update and consequent notifications}
 Figure \ref{fig:sequence_forecasts} contains the sequence diagram of a forecast update. The forecast manager has a periodical task that checks for weather updates, it searches for all the outdoor events that still have to take place, then it searches the places where these events take place and retrieve a forecast for each of them. Once updated the forecasts the manager look for the forecasts that went bad and eventually creates the needed notifications (the ones that have to be sent one day in advance and the ones that have to be sent three days in advance).
-\begin{figure}[h]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=\linewidth]{./images/sequence_forecast_update}
 \caption[forecast update]{Sequence diagram of forecasts update and consequent notifications}
 \label{fig:sequence_forecasts}
 \end{figure}
 
-\subsection{Signup and event creation}
+\clearpage
+\subsection{Sign up}
+Figure \ref{fig:signup_sequence} contains the sequence diagram of the sign up. The user starts the process accessing to the registration page, he fills the form and submits the data. The access boundary calls the UserProfileManager to check the data validity. If there is a problem with the data an error is shown to the user, otherwise the system creates a new User entity.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\linewidth]{./images/signup_sequence}
+\caption[Signup sequence]{Signup sequence diagram}
+\label{fig:signup_sequence}
+\end{figure}
+
+\clearpage
+\subsection{Event creation}
+Figure \ref{fig:createEvent_sequence} contains a sequence diagram that describes the process of creating an event. From his homepage a user decides to create an event, the UserHomePage boundary provides a form to be filled and then the user submits the data. Given that the system does not have to perform checks on the data (the system does not check for overlapping events) the boundary directly tells to the CalendarManager to create a new Event entity.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\linewidth]{./images/createEvent_sequence}
+\caption[Event creation sd]{Event creation sequence diagram}
+\label{fig:createEvent_sequence}
+\end{figure}
+
+\clearpage
 \subsection{Login}
 The following sequence diagram shows how the system manages a user login.
 
 When the user submits his username and password (through the Access boundary) the login manager checks the input data. If they are “admissible” the Login manager retrieves the User information using his username as the key for the search. If the specified username doesn’t exist the system shows an error message on the login page. Otherwise it checks the correspondence of the password. If it’s correct the user is redirected to his homepage. Otherwise an error message is shown.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\linewidth]{./images/Login_sequence}
+\caption[login sequence]{Login sequence diagram}
+\label{fig:Login_sequence}
+\end{figure}
+
+\clearpage
 \subsection{Event modification and invite}
 The following sequence diagram shows how the system allows the creator of an event to invite other users to it. 
 
@@ -546,6 +567,14 @@ The creator is now able to add new participants to his event. To do so he search
 The creator can now decide wether to invite te searched user or not. If the user is invited the CalendarManager activates the NotificationManager in order to create a new notification for the invited user.
 
 The process can be repeated until the creator is satisfied.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\linewidth]{./images/modify+invite_sequence}
+\caption[Invite sequence]{Modify event and send invite}
+\label{fig:modify+invite_sequence}
+\end{figure}
+
+\clearpage
 \section{Runtime view}
 The diagram in figure \ref{fig:runtime_view} is the runtime view of MeteoCal project. The software will be released as a .ear so that it will be deployed on a JEE AS.
 \begin{figure}[h]
