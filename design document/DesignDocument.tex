@@ -502,7 +502,8 @@ The system has two similar boundaries for calendar browsing: one that shows the 
 The login manager is simply used to allow the user to log out of the system.
 When browsing a calendar the boundaries access the calendar manager to obtain the needed informations on the events, and eventually to modify them.
 When visualizing the details of an event the boundaries access the forecast manager to obtain the weather forecast for the event.
-The search manager is used for searching another user (this can be done in order to view the user's calendar or to invite the user to an event).
+
+The search manager is used for searching another user (this can be done in order to view the user's calendar or to invite the user to an event). Once the results are retrieved they are shown to the user with the viewSearchResults methods, this method will take care of creating a page where the user will be able to see them and select the wanted user. With a proper parameter this method will also be able to create a drop-down menu instead of a complete page. Therefore this method actually is the implementation of the SearchResults screen presented in the UX.
 \begin{figure}[h]
 \centering
 \includegraphics[width=\linewidth]{./bce/calendar_bce}
