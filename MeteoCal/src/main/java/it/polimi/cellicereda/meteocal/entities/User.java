@@ -5,7 +5,7 @@
  */
 package it.polimi.cellicereda.meteocal.entities;
 
-import it.polimi.cellicereda.businesslogic.PasswordEncrypter;
+import it.polimi.cellicereda.meteocal.businesslogic.PasswordEncrypter;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Entity;
