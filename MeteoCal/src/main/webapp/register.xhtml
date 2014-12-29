@@ -4,7 +4,10 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-
+<!--
+Registration page
+@author Andrea
+-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
@@ -29,6 +32,7 @@ and open the template in the editor.
         <h:form id="registrationform"> 
             <p:panel header="Insert your data here">
                 <h:panelGrid columns="3" id="regGrid">
+                    <!--Personal information-->
                     <h:outputLabel for="username">
                         Username
                     </h:outputLabel>
@@ -73,11 +77,12 @@ and open the template in the editor.
                     </h:outputLabel>
                     <p:password id="pwd2" label="Confirm Password"/> 
                 </h:panelGrid>
+               <!-- Privacy settings-->
                 <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
                      <p:outputLabel for="privacy" value="Calendar privacy" />
-                          <p:selectOneRadio id="privacy" >
+                     <p:selectOneRadio id="privacy" value="#{registrationBean.user.publicCalendar}" >
                                <f:selectItem itemLabel="Public" itemValue="Public" />
-                               <f:selectItem itemLabel="Private" itemValue="Private+" />
+                               <f:selectItem itemLabel="Private" itemValue="Private" />
                           </p:selectOneRadio>
                 </h:panelGrid>
                 <p:commandButton id="submit" value="Register" update="regGrid"
