@@ -88,6 +88,11 @@ Registration page
                 </h:panelGrid>
                 <p:commandButton id="submit" value="Register" update="regGrid"
                                  action="#{registrationBean.register()}" />
+                <!--links-->
+                <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                    <p:link outcome="login" value="Login" />
+                    <p:link outcome="about" value="About" />
+                </h:panelGrid>   
             </p:panel>
         </h:form>    
         </center>
