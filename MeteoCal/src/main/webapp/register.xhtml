@@ -83,6 +83,7 @@ Registration page
                      <p:selectOneRadio id="privacy" value="#{registrationBean.user.publicCalendar}" >
                                <f:selectItem itemLabel="Public" itemValue="Public" />
                                <f:selectItem itemLabel="Private" itemValue="Private" />
+                               <f:converter converterId="privacyConverter" />
                           </p:selectOneRadio>
                 </h:panelGrid>
                 <p:commandButton id="submit" value="Register" update="regGrid"
