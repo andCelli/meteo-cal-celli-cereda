@@ -4,13 +4,55 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
+<!--
+About page
+@author Andrea
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>About</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
+        <style>
+            h2{
+                color:blue;
+                font-family: arial;
+                font-size: 160%
+            }
+        </style>
+    </h:head>
     <body>
-        <div>TODO write content</div>
+       <p:layout fullPage="true">
+       <p:layoutUnit position="north" size="300">         
+                 <h1>
+                     About MeteoCal
+                 </h1>  
+       </p:layoutUnit>
+           
+       <p:layoutUnit position="south" size="100">
+           <!--links--> 
+           <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                    <p:link outcome="login" value="Login" />
+                    <p:link outcome="register" value="Register" />
+           </h:panelGrid> 
+       </p:layoutUnit>
+           
+       <p:layoutUnit position="west" size="300"/>
+       <p:layoutUnit position="east" size="200"/>
+             
+       <p:layoutUnit position="center">
+             
+                 MeteoCal is a new weather based online calendar for helping people scheduling their personal events avoiding bad weather conditions. Suppose you planned a football match with your friend on the next Sunday. MeteoCal will help you avoiding a match in the middle of a storm. 
+
+                 Registered users can create, delete and update events. An event should contain information about when and where the event will take place and whether the event will be indoor or outdoor. During event creation, any number of registered users can be invited. 
+
+Join MeteoCal now. Don’t let the weather give you bad surprises!
+            
+       </p:layoutUnit>
+</p:layout>
     </body>
 </html>
