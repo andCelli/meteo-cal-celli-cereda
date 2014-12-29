@@ -21,42 +21,48 @@ About page
             h1{
                 color:blue;
                 font-family: arial;
-                font-size: 180%;
-                vertical-align: bottom
+                font-size: 300%;
+                vertical-align: middle
             }
             .ui-layout-unit{
                 border:none
+            }
+            .ui-panel-content{
+                border: none;
             }
         </style>
     </h:head>
     <body>
        <p:layout fullPage="true">
-       <p:layoutUnit position="north" size="300">         
+       <p:layoutUnit position="north" size="150">         
+           <p:outputLabel>
            <center>
-           <h1>
+            <h1>
                About MeteoCal
            </h1> 
            </center>  
+           </p:outputLabel>
        </p:layoutUnit>
            
-       <p:layoutUnit position="south" size="100">
+       <p:layoutUnit position="south" size="300">
            <!--links--> 
+           <center>
            <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
                     <p:link outcome="login" value="Login" />
                     <p:link outcome="register" value="Register" />
            </h:panelGrid> 
+           </center>   
        </p:layoutUnit>
            
        <p:layoutUnit position="west" size="300"/>
-       <p:layoutUnit position="east" size="200"/>
+       <p:layoutUnit position="east" size="300"/>
              
-       <p:layoutUnit position="center">
+       <p:layoutUnit position="center" resizable="true">
            <p:panel id="MeteoCalDescription">
-                 MeteoCal is a new weather based online calendar for helping people scheduling their personal events avoiding bad weather conditions. Suppose you planned a football match with your friend on the next Sunday. MeteoCal will help you avoiding a match in the middle of a storm. 
-
-                 Registered users can create, delete and update events. An event should contain information about when and where the event will take place and whether the event will be indoor or outdoor. During event creation, any number of registered users can be invited. 
-
-Join MeteoCal now. Don’t let the weather give you bad surprises!
+                 MeteoCal is a new weather based online calendar developed to help people scheduling their personal events avoiding bad weather conditions.
+                 <BR/>Suppose you planned a football match with your friend on the next Sunday. MeteoCal will help you avoiding a match in the middle of a storm.
+                 <BR/>Registered users can create, delete and update events. An event should contain information about when and where the event will take place and whether the event will be indoor or outdoor. During event creation, any number of registered users can be invited.
+                 <BR/>Join MeteoCal now. Don’t let the weather give you bad surprises!
            </p:panel>
        </p:layoutUnit>
 </p:layout>
