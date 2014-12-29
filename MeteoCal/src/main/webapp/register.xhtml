@@ -4,10 +4,12 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Registration</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -69,9 +71,17 @@ and open the template in the editor.
                     <h:outputLabel for="pwd2">
                         Confirm Password
                     </h:outputLabel>
-                    <p:password id="pwd2" label="Confirm Password"/>
-                    
+                    <p:password id="pwd2" label="Confirm Password"/> 
                 </h:panelGrid>
+                <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                     <p:outputLabel for="privacy" value="Calendar privacy" />
+                          <p:selectOneRadio id="privacy" >
+                               <f:selectItem itemLabel="Public" itemValue="Public" />
+                               <f:selectItem itemLabel="Private" itemValue="Private+" />
+                          </p:selectOneRadio>
+                </h:panelGrid>
+                <p:commandButton id="submit" value="Register" update="regGrid"
+                                 action="#{registrationBean.register()}" />
             </p:panel>
         </h:form>    
         </center>
