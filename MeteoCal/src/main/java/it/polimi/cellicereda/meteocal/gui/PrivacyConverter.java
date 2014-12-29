@@ -40,8 +40,18 @@ public class PrivacyConverter implements Converter{
 
     //from model to view
     @Override
-    public String getAsString(FacesContext context, UIComponent component, Object value) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getAsString(FacesContext context, UIComponent component, Object value) throws ConverterException{
+     
+        if(value==null){
+            throw new ConverterException("privacy value cant be null");
+        }
+        
+        if(value.equals(true)){
+            return "Public";
+        }
+        
+        return "Private";
+        
     }
 
    
