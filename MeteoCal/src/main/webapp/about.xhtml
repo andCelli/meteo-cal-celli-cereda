@@ -18,19 +18,25 @@ About page
         <title>About</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <style>
-            h2{
+            h1{
                 color:blue;
                 font-family: arial;
-                font-size: 160%
+                font-size: 180%;
+                vertical-align: bottom
+            }
+            .ui-layout-unit{
+                border:none
             }
         </style>
     </h:head>
     <body>
        <p:layout fullPage="true">
        <p:layoutUnit position="north" size="300">         
-                 <h1>
-                     About MeteoCal
-                 </h1>  
+           <center>
+           <h1>
+               About MeteoCal
+           </h1> 
+           </center>  
        </p:layoutUnit>
            
        <p:layoutUnit position="south" size="100">
@@ -45,13 +51,13 @@ About page
        <p:layoutUnit position="east" size="200"/>
              
        <p:layoutUnit position="center">
-             
+           <p:panel id="MeteoCalDescription">
                  MeteoCal is a new weather based online calendar for helping people scheduling their personal events avoiding bad weather conditions. Suppose you planned a football match with your friend on the next Sunday. MeteoCal will help you avoiding a match in the middle of a storm. 
 
                  Registered users can create, delete and update events. An event should contain information about when and where the event will take place and whether the event will be indoor or outdoor. During event creation, any number of registered users can be invited. 
 
 Join MeteoCal now. Don’t let the weather give you bad surprises!
-            
+           </p:panel>
        </p:layoutUnit>
 </p:layout>
     </body>
