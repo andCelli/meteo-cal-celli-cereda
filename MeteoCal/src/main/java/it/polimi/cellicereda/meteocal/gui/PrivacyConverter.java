@@ -24,7 +24,8 @@ public class PrivacyConverter implements Converter{
     //from view to model
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) throws ConverterException{
-      Boolean publicCalendar=null; 
+      
+        Boolean publicCalendar=null; 
       
       if(value=="Public"){
           publicCalendar=true;

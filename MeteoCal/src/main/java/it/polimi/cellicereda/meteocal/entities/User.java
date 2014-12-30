@@ -66,7 +66,7 @@ public class User implements Serializable {
      * Specifies if the user's calendar is public
      */
     @NotNull(message = "May not be empty")
-    private boolean publicCalendar;
+    private Boolean publicCalendar;
 
     public String getUsername() {
         return username;
@@ -116,11 +116,11 @@ public class User implements Serializable {
         this.groupName = groupName;
     }
 
-    public boolean isPublicCalendar() {
+    public Boolean isPublicCalendar() {
         return publicCalendar;
     }
 
-    public void setPublicCalendar(boolean publicCalendar) {
+    public void setPublicCalendar(Boolean publicCalendar) {
         this.publicCalendar = publicCalendar;
     }
 
