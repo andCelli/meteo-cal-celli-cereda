@@ -81,9 +81,8 @@ Registration page
                 <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
                      <p:outputLabel for="privacy" value="Calendar privacy" />
                      <p:selectOneRadio id="privacy" value="#{registrationBean.user.publicCalendar}" >
-                               <f:selectItem itemLabel="Public" itemValue="Public" />
-                               <f:selectItem itemLabel="Private" itemValue="Private" />
-                               <f:converter converterId="privacyConverter" />
+                               <f:selectItem itemLabel="Public" itemValue="#{true}" />
+                               <f:selectItem itemLabel="Private" itemValue="#{false}" />
                           </p:selectOneRadio>
                 </h:panelGrid>
                 <p:commandButton id="submit" value="Register" update="regGrid"
