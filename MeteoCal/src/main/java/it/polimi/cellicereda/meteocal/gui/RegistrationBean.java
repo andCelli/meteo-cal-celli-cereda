@@ -41,6 +41,6 @@ public class RegistrationBean {
     public String register(){
         userManager.save(user);
         //?????
-        return "user/home?faces-redirect=true";
+        return "logged/home?faces-redirect=true";
     }
 }
