@@ -7,9 +7,13 @@ package it.polimi.cellicereda.meteocal.entities;
 
 import it.polimi.cellicereda.meteocal.businesslogic.PasswordEncrypter;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -68,6 +72,12 @@ public class User implements Serializable {
     @NotNull(message = "May not be empty")
     private boolean publicCalendar;
 
+    @ManyToMany
+    @JoinTable(name = "PARTICIPATES",
+            joinColumns = @JoinColumn(name = "USER"),
+            inverseJoinColumns = @JoinColumn(name = "EVENT"))
+    private Collection<Event> events;
+
     public String getUsername() {
         return username;
     }
@@ -122,6 +132,14 @@ public class User implements Serializable {
 
     public void setPublicCalendar(boolean publicCalendar) {
         this.publicCalendar = publicCalendar;
+    }
+
+    public Collection getEvents() {
+        return events;
+    }
+
+    public void setEvents(Collection events) {
+        this.events = events;
     }
 
     @Override
