@@ -116,7 +116,7 @@ public class User implements Serializable {
         this.groupName = groupName;
     }
 
-    public boolean isPublicCalendar() {
+    public boolean getPublicCalendar() {
         return publicCalendar;
     }
 

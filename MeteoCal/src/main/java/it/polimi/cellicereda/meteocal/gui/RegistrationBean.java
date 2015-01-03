@@ -17,7 +17,7 @@ import javax.inject.Named;
  */
 @Named
 @RequestScoped
-public class RegistrationBean {
+public class RegistrationBean{
     
     @EJB 
     private UserManager userManager;
