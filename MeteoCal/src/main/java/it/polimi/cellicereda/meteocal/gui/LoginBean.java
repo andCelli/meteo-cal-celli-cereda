@@ -20,18 +20,18 @@ import javax.servlet.http.HttpServletRequest;
 @RequestScoped
 public class LoginBean {
     
-    private String username;
+    private String email;
     private String password;
     
     public LoginBean(){
     }
     
-    public String getUsername(){
-        return this.username;
+    public String getEmail(){
+        return this.email;
     }
     
-    public void setUsername(String username){
-        this.username=username;
+    public void setEmail(String email){
+        this.email=email;
     }
     
     public String getPassword(){
@@ -54,10 +54,10 @@ public class LoginBean {
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
         
         try{
-            request.login(this.username,this.password);
+            request.login(this.email,this.password);
         }catch(ServletException e){
             context.addMessage(null, new FacesMessage("Login failed."));
-            return "login";
+            return "login?error=true";
         }
         //login OK
         return "/logged/home";
