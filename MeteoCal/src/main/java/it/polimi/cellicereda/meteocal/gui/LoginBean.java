@@ -5,7 +5,9 @@
  */
 package it.polimi.cellicereda.meteocal.gui;
 
+import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
@@ -17,8 +19,8 @@ import javax.servlet.http.HttpServletRequest;
  * @author Andrea
  */
 @Named
-@RequestScoped
-public class LoginBean {
+@SessionScoped
+public class LoginBean implements Serializable{
     
     private String email;
     private String password;
