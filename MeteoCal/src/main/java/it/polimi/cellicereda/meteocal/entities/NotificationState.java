@@ -5,6 +5,8 @@
  */
 package it.polimi.cellicereda.meteocal.entities;
 
+import java.io.Serializable;
+
 /**
  * A notification goes through the following state: - Pending: when created and
  * still not shown to the user - Readed: when the interested user has seen the
@@ -13,7 +15,7 @@ package it.polimi.cellicereda.meteocal.entities;
  *
  * @author stefano
  */
-public enum NotificationState {
+public enum NotificationState{
 
     PENDING, READED, ANSWERED;
 }

@@ -5,10 +5,12 @@
  */
 package it.polimi.cellicereda.meteocal.entities;
 
+import java.io.Serializable;
+
 /**
  *
  * @author stefano
  */
-public enum NotificationType {
+public enum NotificationType{
     EVENT_CHANGED, BAD_WEATHER_ALERT, SUNNY_DAY_PROPOSAL, EVENT_INVITE
 }

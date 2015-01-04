@@ -16,40 +16,37 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 /**
+ *
  * @author stefano
  */
 @Entity
-public class Event implements Serializable {
-
+public class Forecast implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    @NotNull(message = "May not be empty")
-    private Timestamp starting;
-
-    @NotNull(message = "May not be empty")
-    private Timestamp ending;
-
-    /**
-     * The location where the event takes place (can be null when the event is
-     * indoor)
-     */
-    private Place eventLocation;
     
-    /**The forecast for the event, if any*/
-    @ManyToOne
-    @JoinColumn(name = "FORECAST")
-    private Forecast forecast;
-
-    @NotNull(message = "May not be empty")
-    private Boolean publicEvent;
-
+    /**The referred place*/
     @NotNull(message = "May not be empty")
     @ManyToOne
-    @JoinColumn(name = "CREATOR")
-    private User creator;
+    @JoinColumn(name = "PLACE")
+    private Place place;
+    
+    /**The starting validity hour*/
+    @NotNull(message = "May not be empty")
+    private Timestamp startingValidity;
+    
+    /**The ending validity hour*/
+    @NotNull(message = "May not be empty")
+    private Timestamp endingValidity;
+    
+    /**The time when the forecast was made*/
+    @NotNull(message = "May not be empty")
+    private Timestamp makingTime;
+    
+    /**The weather id (see http://openweathermap.org/weather-conditions)*/
+    @NotNull(message = "May not be empty")
+    private int weatherId;
 
     public Long getId() {
         return id;
@@ -59,38 +56,48 @@ public class Event implements Serializable {
         this.id = id;
     }
 
-    public Timestamp getStarting() {
-        return starting;
+    public Place getPlace() {
+        return place;
     }
 
-    public void setStarting(Timestamp starting) {
-        this.starting = starting;
+    public void setPlace(Place place) {
+        this.place = place;
     }
 
-    public Timestamp getEnding() {
-        return ending;
+    public Timestamp getStartingValidity() {
+        return startingValidity;
     }
 
-    public void setEnding(Timestamp ending) {
-        this.ending = ending;
+    public void setStartingValidity(Timestamp startingValidity) {
+        this.startingValidity = startingValidity;
     }
 
-    public Boolean getPublicEvent() {
-        return publicEvent;
+    public Timestamp getEndingValidity() {
+        return endingValidity;
     }
 
-    public void setPublicEvent(Boolean publicEvent) {
-        this.publicEvent = publicEvent;
+    public void setEndingValidity(Timestamp endingValidity) {
+        this.endingValidity = endingValidity;
     }
 
-    public User getCreator() {
-        return creator;
+    public Timestamp getMakingTime() {
+        return makingTime;
     }
 
-    public void setCreator(User creator) {
-        this.creator = creator;
+    public void setMakingTime(Timestamp makingTime) {
+        this.makingTime = makingTime;
     }
 
+    public int getWeatherId() {
+        return weatherId;
+    }
+
+    public void setWeatherId(int weatherId) {
+        this.weatherId = weatherId;
+    }
+
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -101,10 +108,10 @@ public class Event implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Event)) {
+        if (!(object instanceof Forecast)) {
             return false;
         }
-        Event other = (Event) object;
+        Forecast other = (Forecast) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -113,7 +120,7 @@ public class Event implements Serializable {
 
     @Override
     public String toString() {
-        return "it.polimi.cellicereda.meteocal.entities.Event[ id=" + id + " ]";
+        return "it.polimi.cellicereda.meteocal.entities.Forecast[ id=" + id + " ]";
     }
-
+    
 }
