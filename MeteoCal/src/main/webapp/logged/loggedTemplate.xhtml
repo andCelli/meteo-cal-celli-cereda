@@ -23,17 +23,25 @@ The template defines: 1) the basic layout that will be used in all the logged-us
             .ui-menubar{
                 background-color: orange;
                 color: orange;
+                padding:5px;
+                border:0px;
+                margin: 0px;    
+            }
+            .ui-link {
+                font-family: arial;
+                color:royalblue;
             }
         </style>    
     </h:head>
     <body>
        <p:layout fullPage="true">
            <!--This will contain the top bar--> 
-           <p:layoutUnit position="north" size="50" resizable="true">
+           <p:layoutUnit position="north" size="55" resizable="true">
                <p:menubar>
                <f:facet name="options">
                    <p:inputText style="margin-right:10px" placeholder="Search"/>
-                   <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+                   <p:link style="margin-right:10px" value="Settings"/>
+                   <p:link value="Logout"/>
                </f:facet>
                </p:menubar>    
             </p:layoutUnit>
