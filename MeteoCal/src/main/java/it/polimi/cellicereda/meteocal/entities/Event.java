@@ -43,10 +43,10 @@ public class Event implements Serializable, ScheduleEvent {
     private String description;
 
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date starting;
+    private Date startingDate;
 
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date ending;
+    private Date endingDate;
 
     /**
      * The location where the event takes place (can be null when the event is
@@ -116,12 +116,12 @@ public class Event implements Serializable, ScheduleEvent {
 
     @Override
     public Date getStartDate() {
-        return starting;
+        return startingDate;
     }
 
     @Override
     public Date getEndDate() {
-        return ending;
+        return endingDate;
     }
 
     @Override
@@ -172,11 +172,11 @@ public class Event implements Serializable, ScheduleEvent {
     }
 
     public void setStartingDate(Date starting) {
-        this.starting = starting;
+        this.startingDate = starting;
     }
 
     public void setEndingDate(Date ending) {
-        this.ending = ending;
+        this.endingDate = ending;
     }
 
     public Place getEventLocation() {
