@@ -44,13 +44,18 @@ public class CalendarManager {
         return em.find(Event.class, id);
     }
 
-    public List<Event> getAll() {
+    public List<Event> getAllEvents() {
         return em.createNamedQuery("event.findAll").getResultList();
     }
 
-    public List<Event> getByCreator(User creator) {
+    public List<Event> getEventsByCreator(User creator) {
         return em.createNamedQuery("Event.findByCreator").
                 setParameter("creator", creator).getResultList();
+    }
+
+    public List<Event> getEventsByParticipant(User participant) {
+        return em.createNamedQuery("User.getParticipationList").
+                setParameter("participant", participant).getResultList();
     }
 
 }

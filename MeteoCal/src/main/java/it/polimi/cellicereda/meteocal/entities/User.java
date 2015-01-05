@@ -34,7 +34,9 @@ import javax.validation.constraints.Pattern;
     @NamedQuery(name = "User.findByUsername",
             query = "SELECT u FROM User u WHERE u.username = :username"),
     @NamedQuery(name = "User.findBySurname",
-            query = "SELECT u FROM User u WHERE u.surname = :surname"),})
+            query = "SELECT u FROM User u WHERE u.surname = :surname"),
+    @NamedQuery(name = "User.getParticipationList",
+            query = "SELECT e FROM User u JOIN u.events e WHERE u.email = :email")})
 
 public class User implements Serializable {
 

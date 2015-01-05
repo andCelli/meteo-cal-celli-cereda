@@ -28,7 +28,9 @@ import org.primefaces.model.ScheduleEvent;
     @NamedQuery(name = "Event.findAll",
             query = "SELECT e FROM Event e"),
     @NamedQuery(name = "Event.findByCreator",
-            query = "SELECT e FROM Event e WHERE e.creator = :creator")})
+            query = "SELECT e FROM Event e WHERE e.creator = :creator")
+
+})
 
 public class Event implements Serializable, ScheduleEvent {
 
