@@ -30,23 +30,27 @@ The template defines: 1) the basic layout that will be used in all the logged-us
                 font-family: arial;
                 color:royalblue;
             }
+            
         </style>    
     </h:head>
     <body>
        <p:layout fullPage="true">
            <!--This will contain the top bar--> 
-           <p:layoutUnit position="north" size="55" resizable="true">
-               <p:menubar>     
+           <p:layoutUnit position="north" size="55px" resizable="false">  
+               <p:menubar>
                <f:facet name="options">
                    <p:inputText style="margin-right:10px" placeholder="Search"/>
                    <p:link style="margin-right:10px" value="settings" outcome="settings"/>
+                   <h:form>
                    <p:commandLink action="#{loginBean.logout()}" value="logout"/>
-               </f:facet>
+                   </h:form>
+               </f:facet> 
                </p:menubar>    
             </p:layoutUnit>
 
             <p:layoutUnit position="west" size="250"  resizable="true">
                 <h:outputText value="Left unit content." />
+                <p:commandLink action="#{loginBean.logout()}" value="logout"/>
             </p:layoutUnit>
 
             <p:layoutUnit position="east" size="450" resizable="true">

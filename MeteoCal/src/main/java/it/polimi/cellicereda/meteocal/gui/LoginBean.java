@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Named
 @RequestScoped
-public class LoginBean {
+public class LoginBean{
     
     private String email;
     private String password;
