@@ -23,7 +23,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "Place.findAll",
-            query = "SELECT p FROM PLACE p"),})
+            query = "SELECT p FROM Place p"),})
 public class Place implements Serializable {
 
     private static final long serialVersionUID = 1L;

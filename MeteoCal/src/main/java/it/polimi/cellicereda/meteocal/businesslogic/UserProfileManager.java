@@ -29,6 +29,8 @@ public class UserProfileManager {
 
     /**
      * Save into the DB the given user
+     *
+     * @param user The user to be saved
      */
     public void save(User user) {
         user.setGroupName(Group.USERS);

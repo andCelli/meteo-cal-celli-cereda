@@ -24,17 +24,17 @@ import javax.validation.constraints.Pattern;
  *
  * @author stefano
  */
-@Entity(name = "USERS")
+@Entity
 
 @NamedQueries({
     @NamedQuery(name = "User.findAll",
-            query = "SELECT u FROM USERS u"),
+            query = "SELECT u FROM User u"),
     @NamedQuery(name = "User.findByName",
-            query = "SELECT u FROM USERS u WHERE u.name = :name"),
+            query = "SELECT u FROM User u WHERE u.name = :name"),
     @NamedQuery(name = "User.findByUsername",
-            query = "SELECT u FROM USERS u WHERE u.username = :username"),
+            query = "SELECT u FROM User u WHERE u.username = :username"),
     @NamedQuery(name = "User.findBySurname",
-            query = "SELECT u FROM USERS u WHERE u.surname = :surname"),})
+            query = "SELECT u FROM User u WHERE u.surname = :surname"),})
 
 public class User implements Serializable {
 

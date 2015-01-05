@@ -13,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -20,31 +22,45 @@ import javax.validation.constraints.NotNull;
  * @author stefano
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "Forecast.findAll",
+            query = "SELECT f FROM Forecast f"),})
 public class Forecast implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
-    /**The referred place*/
+
+    /**
+     * The referred place
+     */
     @NotNull(message = "May not be empty")
     @ManyToOne
     @JoinColumn(name = "PLACE")
     private Place place;
-    
-    /**The starting validity hour*/
+
+    /**
+     * The starting validity hour
+     */
     @NotNull(message = "May not be empty")
     private Timestamp startingValidity;
-    
-    /**The ending validity hour*/
+
+    /**
+     * The ending validity hour
+     */
     @NotNull(message = "May not be empty")
     private Timestamp endingValidity;
-    
-    /**The time when the forecast was made*/
+
+    /**
+     * The time when the forecast was made
+     */
     @NotNull(message = "May not be empty")
     private Timestamp makingTime;
-    
-    /**The weather id (see http://openweathermap.org/weather-conditions)*/
+
+    /**
+     * The weather id (see http://openweathermap.org/weather-conditions)
+     */
     @NotNull(message = "May not be empty")
     private int weatherId;
 
@@ -96,8 +112,6 @@ public class Forecast implements Serializable {
         this.weatherId = weatherId;
     }
 
-    
-    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -122,5 +136,5 @@ public class Forecast implements Serializable {
     public String toString() {
         return "it.polimi.cellicereda.meteocal.entities.Forecast[ id=" + id + " ]";
     }
-    
+
 }
