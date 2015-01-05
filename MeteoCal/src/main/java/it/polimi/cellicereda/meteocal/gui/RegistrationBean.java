@@ -5,7 +5,7 @@
  */
 package it.polimi.cellicereda.meteocal.gui;
 
-import it.polimi.cellicereda.meteocal.businesslogic.UserManager;
+import it.polimi.cellicereda.meteocal.businesslogic.UserProfileManager;
 import it.polimi.cellicereda.meteocal.entities.User;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
@@ -20,7 +20,7 @@ import javax.inject.Named;
 public class RegistrationBean{
     
     @EJB 
-    private UserManager userManager;
+    private UserProfileManager userManager;
     
     private User user;
     
