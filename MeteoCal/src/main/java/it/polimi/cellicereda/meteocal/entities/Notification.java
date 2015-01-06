@@ -142,4 +142,18 @@ public class Notification implements Serializable {
         return "it.polimi.cellicereda.meteocal.entities.Notification[ id=" + id + " ]";
     }
 
+    /**
+     * Constructor, by default sets the state to Pending
+     *
+     * @param type The type of notification
+     * @param recipient The user that will receive the notification
+     * @param event The event referred by the notification
+     */
+    public Notification(NotificationType type, User recipient, Event event) {
+        this.notificationState = NotificationState.PENDING;
+        this.notificationType = type;
+        this.recipient = recipient;
+        this.referredEvent = event;
+    }
+
 }

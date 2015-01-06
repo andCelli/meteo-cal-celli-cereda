@@ -99,8 +99,8 @@ public class NotificationManager {
         proposal.setNotificationAnswer(answer);
         proposal.setNotificationState(NotificationState.ANSWERED);
 
-        if (answer){
-            cm.TODO
+        if (answer) {
+            cm.TODO //DOVE LA SPOSTO???
         }
     }
 }

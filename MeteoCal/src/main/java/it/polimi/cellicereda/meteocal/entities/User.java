@@ -36,10 +36,14 @@ import javax.validation.constraints.Pattern;
     @NamedQuery(name = "User.findBySurname",
             query = "SELECT u FROM USERS u WHERE u.surname = :surname"),
     @NamedQuery(name = "User.getParticipationList",
-            query = "SELECT e FROM USERS u JOIN u.events e WHERE u.email = :email")})
+            query = "SELECT e FROM USERS u JOIN u.events e WHERE u.email = :email"),
+    @NamedQuery(name = "User.getEventParticipants",
+            query = "SELECT e FROM USERS u JOIN u.events e WHERE e = :event")
+
+})
 
 public class User implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
 
     /**
@@ -86,88 +90,88 @@ public class User implements Serializable {
      */
     @NotNull(message = "May not be empty")
     private boolean publicCalendar;
-    
+
     @ManyToMany
     @JoinTable(name = "PARTICIPATES",
             joinColumns = @JoinColumn(name = "USER"),
             inverseJoinColumns = @JoinColumn(name = "EVENT"))
     private Collection<Event> events;
-    
+
     public String getUsername() {
         return username;
     }
-    
+
     public void setUsername(String username) {
         this.username = username;
     }
-    
+
     public String getName() {
         return name;
     }
-    
+
     public void setName(String name) {
         this.name = name;
     }
-    
+
     public String getSurname() {
         return surname;
     }
-    
+
     public void setSurname(String surname) {
         this.surname = surname;
     }
-    
+
     public String getEmail() {
         return email;
     }
-    
+
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
     public String getPassword() {
         return password;
     }
-    
+
     public void setPassword(String password) {
         this.password = PasswordEncrypter.encryptPassword(password);
     }
-    
+
     public String getGroupName() {
         return groupName;
     }
-    
+
     public void setGroupName(String groupName) {
         this.groupName = groupName;
     }
-    
+
     public boolean getPublicCalendar() {
         return publicCalendar;
     }
-    
+
     public void setPublicCalendar(boolean publicCalendar) {
         this.publicCalendar = publicCalendar;
     }
-    
+
     public Collection getEvents() {
         return events;
     }
-    
+
     public void setEvents(Collection events) {
         this.events = events;
     }
-    
+
     public void addEvent(Event event) {
         events.add(event);
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (email != null ? email.hashCode() : 0);
         return hash;
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -179,10 +183,10 @@ public class User implements Serializable {
         final User other = (User) obj;
         return Objects.equals(this.email, other.email);
     }
-    
+
     @Override
     public String toString() {
         return "User[ email = " + email + " ]";
     }
-    
+
 }
