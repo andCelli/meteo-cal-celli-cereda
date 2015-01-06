@@ -32,10 +32,11 @@ public class CalendarManager {
     }
 
     /**
-     * Delete from the DB the given event
+     * Delete from the DB the given event (should not be used)
      *
      * @param e The event to remove
      */
+    @Deprecated
     public void delete(Event e) {
         em.remove(e);
     }
@@ -56,6 +57,18 @@ public class CalendarManager {
     public List<Event> getEventsByParticipant(User participant) {
         return em.createNamedQuery("User.getParticipationList").
                 setParameter("participant", participant).getResultList();
+    }
+
+    /**
+     * This method adds the user to the list of participants of the event
+     * Usually this method is used by the notification manager when an user
+     * answer to an event invite
+     *
+     * @param newParticipant The user to add to the list of participants
+     * @param event The event where the user will participate
+     */
+    public void addAnUserToAnEventParticipants(User newParticipant, Event event) {
+        newParticipant.addEvent(event);
     }
 
 }

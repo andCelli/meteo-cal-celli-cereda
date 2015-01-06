@@ -7,8 +7,10 @@ package it.polimi.cellicereda.meteocal.businesslogic;
 
 import it.polimi.cellicereda.meteocal.entities.Notification;
 import it.polimi.cellicereda.meteocal.entities.NotificationState;
+import it.polimi.cellicereda.meteocal.entities.NotificationType;
 import it.polimi.cellicereda.meteocal.entities.User;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -21,7 +23,10 @@ import javax.persistence.PersistenceContext;
 public class NotificationManager {
 
     @PersistenceContext
-    EntityManager em;
+    private EntityManager em;
+
+    @EJB
+    private CalendarManager cm;
 
     /**
      * Persist the given notification
@@ -33,7 +38,7 @@ public class NotificationManager {
     }
 
     /**
-     * Delete the given notification from the db (this method shouldn't be used
+     * Delete the given notification from the db (this method shouldn't be used)
      *
      * @param n The notification to delete
      */
@@ -54,5 +59,26 @@ public class NotificationManager {
         return em.createNamedQuery("Notification.findPendingForUser").
                 setParameter("recipient", recipient).
                 setParameter("state", NotificationState.PENDING).getResultList();
+    }
+
+    /**
+     * Answer to an event invite, set the new state for the notification and
+     * manage the calendar according to the answer
+     *
+     * @param invite The event invite notification
+     * @param answer The answer to the invite
+     */
+    public void answerToAnInvite(Notification invite, Boolean answer) {
+        if ((invite.getNotificationType() != NotificationType.EVENT_INVITE)
+                || (invite.getNotificationState() != NotificationState.PENDING)) {
+            throw new IllegalArgumentException();
+        }
+
+        invite.setNotificationAnswer(answer);
+        invite.setNotificationState(NotificationState.ANSWERED);
+
+        if (answer) {
+            cm.addAnUserToAnEventParticipants(invite.getRecipient(), invite.getReferredEvent());
+        }
     }
 }
