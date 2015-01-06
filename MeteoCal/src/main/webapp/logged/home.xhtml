@@ -17,7 +17,7 @@ This is the logged-user homepage.
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     
     <ui:define name="content">
-       <h:form>
+     <h:form>
          <p:schedule value="#{ScheduleBean.model}"  widgetVar="myschedule">
              <!--<p:ajax event="dateSelect" listener="#{bean.onDateSelect}" update="eventDetails" oncomplete="eventDialog.show()" />
                  <p:ajax event="eventSelect" listener="#{bean.onEventSelect}"-->
@@ -41,7 +41,7 @@ This is the logged-user homepage.
                            oncomplete="PF('myschedule').update();PF('eventDialog').hide();"/>
            </h:panelGrid>
         </p:dialog>-->
-       </h:form>
+       </h:form> 
    </ui:define>
 </ui:composition>
 
