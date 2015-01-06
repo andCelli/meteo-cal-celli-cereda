@@ -25,8 +25,8 @@ import javax.validation.constraints.NotNull;
 @NamedQueries({
     @NamedQuery(name = "Notification.findAll",
             query = "SELECT n FROM Notification n"),
-    @NamedQuery(name = "Notification.findPendingForUser",
-            query = "SELECT n FROM Notification n WHERE n.recipient = :user")
+    @NamedQuery(name = "Notification.findForUserAndState",
+            query = "SELECT n FROM Notification n WHERE n.recipient = :user AND n.notificationState = :state")
 })
 public class Notification implements Serializable {
 

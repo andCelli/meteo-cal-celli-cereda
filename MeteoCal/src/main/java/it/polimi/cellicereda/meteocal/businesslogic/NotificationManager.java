@@ -23,16 +23,36 @@ public class NotificationManager {
     @PersistenceContext
     EntityManager em;
 
+    /**
+     * Persist the given notification
+     *
+     * @param n The notification to persist
+     */
     public void save(Notification n) {
         em.persist(n);
     }
 
+    /**
+     * Delete the given notification from the db (this method shouldn't be used
+     *
+     * @param n The notification to delete
+     */
+    @Deprecated
     public void delete(Notification n) {
         em.remove(n);
     }
 
+    /**
+     * Get the notifications that a user still have to see
+     *
+     * @param recipient The user that is the recipient of the search
+     * notifications
+     * @return The notifications that have the given user as recipient and
+     * pending as state
+     */
     public List<Notification> getPendingNotificationForUser(User recipient) {
         return em.createNamedQuery("Notification.findPendingForUser").
-                setParameter("recipient", recipient).getResultList();
+                setParameter("recipient", recipient).
+                setParameter("state", NotificationState.PENDING).getResultList();
     }
 }
