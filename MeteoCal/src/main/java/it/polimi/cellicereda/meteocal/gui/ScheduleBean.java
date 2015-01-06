@@ -29,16 +29,19 @@ public class ScheduleBean {
     CalendarManager calendarManager;
     @EJB
     UserProfileManager userProfileManager;
-    
+   
     //this will contain the list of events to be displayed
     private ScheduleModel model;
     private User currentUser;
     
     public ScheduleBean(){
         currentUser=userProfileManager.getLoggedUser();
-
+        //find all the events in which the user will partecipate 
         model=new DefaultScheduleModel((List<ScheduleEvent>) calendarManager.getEventsByParticipant(currentUser));
     }        
-     
+    
+    public ScheduleModel getModel() {
+        return model; 
+    }
     
 }

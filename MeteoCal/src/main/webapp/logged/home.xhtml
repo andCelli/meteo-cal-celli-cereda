@@ -13,11 +13,36 @@ This is the logged-user homepage.
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     
     <ui:define name="content">
-         <p>Here goes your view-specific content.</p>
-     </ui:define>
+       <h:form>
+         <p:schedule value="#{ScheduleBean.model}"  widgetVar="myschedule">
+             <!--<p:ajax event="dateSelect" listener="#{bean.onDateSelect}" update="eventDetails" oncomplete="eventDialog.show()" />
+                 <p:ajax event="eventSelect" listener="#{bean.onEventSelect}"-->
+        </p:schedule>
+        <!--<p:dialog widgetVar="eventDialog" header="Event Details">
+           <h:panelGrid id="eventDetails" columns="2">
+              <h:outputLabel for="title" value="Title:" />
+              <h:inputText id="title" value="#{bean.event.title}" required="true"/>
+              <h:outputLabel for="from" value="From:" />
+              <p:inputMask id="from" value="#{bean.event.startDate}" mask="99/99/9999">
+                   <f:convertDateTime pattern="dd/MM/yyyy" />
+              </p:inputMask>
+              <h:outputLabel for="to" value="To:" />
+              <p:inputMask id="to" value="#{bean.event.endDate}" mask="99/99/9999">
+                  <f:convertDateTime pattern="dd/MM/yyyy" />
+              </p:inputMask>
+              <h:outputLabel for="allDay" value="All Day:" />
+              <h:selectBooleanCheckbox id="allDay" value="#{bean.event.allDay}" />
+              <p:commandButton type="reset" value="Reset" />
+              <p:commandButton value="Save" actionListener="#{bean.addEvent}"
+                           oncomplete="PF('myschedule').update();PF('eventDialog').hide();"/>
+           </h:panelGrid>
+        </p:dialog>-->
+       </h:form>
+   </ui:define>
 </ui:composition>
 
 
