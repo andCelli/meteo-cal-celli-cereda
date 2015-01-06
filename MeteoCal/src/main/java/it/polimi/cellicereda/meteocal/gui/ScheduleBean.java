@@ -9,9 +9,13 @@ import it.polimi.cellicereda.meteocal.businesslogic.CalendarManager;
 import it.polimi.cellicereda.meteocal.businesslogic.UserProfileManager;
 import it.polimi.cellicereda.meteocal.entities.Event;
 import it.polimi.cellicereda.meteocal.entities.User;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.annotation.ManagedBean;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 import org.primefaces.event.SelectEvent;
@@ -23,10 +27,9 @@ import org.primefaces.model.ScheduleModel;
  * Backing bean for the schedule holding user events.
  * @author Andrea
  */
-@Named
-//quale conviene mettere?
-@ViewScoped
-public class ScheduleBean {
+@ManagedBean
+@SessionScoped
+public class ScheduleBean implements Serializable{
     
     @EJB
     CalendarManager calendarManager;
@@ -38,7 +41,8 @@ public class ScheduleBean {
     private User currentUser;
     private Event event=new Event();
     
-    public ScheduleBean(){
+    @PostConstruct
+    public void init(){
         currentUser=userProfileManager.getLoggedUser();
         //find all the events in which the user will partecipate 
         model=new DefaultScheduleModel((List<ScheduleEvent>) calendarManager.getEventsByParticipant(currentUser));
