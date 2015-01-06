@@ -11,6 +11,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import org.primefaces.model.ScheduleEvent;
 
 /**
  *
@@ -44,16 +45,16 @@ public class CalendarManager {
         return em.find(Event.class, id);
     }
 
-    public List<Event> getAllEvents() {
+    public List<? extends ScheduleEvent> getAllEvents() {
         return em.createNamedQuery("event.findAll").getResultList();
     }
 
-    public List<Event> getEventsByCreator(User creator) {
+    public List<? extends ScheduleEvent> getEventsByCreator(User creator) {
         return em.createNamedQuery("Event.findByCreator").
                 setParameter("creator", creator).getResultList();
     }
 
-    public List<Event> getEventsByParticipant(User participant) {
+    public List<? extends ScheduleEvent> getEventsByParticipant(User participant) {
         return em.createNamedQuery("User.getParticipationList").
                 setParameter("participant", participant).getResultList();
     }
