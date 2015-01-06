@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -19,6 +21,13 @@ import javax.validation.constraints.NotNull;
  * @author stefano
  */
 @Entity
+
+@NamedQueries({
+    @NamedQuery(name = "Notification.findAll",
+            query = "SELECT n FROM Notification n"),
+    @NamedQuery(name = "Notification.findPendingForUser",
+            query = "SELECT n FROM Notification n WHERE n.recipient = :user")
+})
 public class Notification implements Serializable {
 
     private static final long serialVersionUID = 1L;

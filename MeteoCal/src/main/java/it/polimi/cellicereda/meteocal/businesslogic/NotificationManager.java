@@ -30,4 +30,9 @@ public class NotificationManager {
     public void delete(Notification n) {
         em.remove(n);
     }
+
+    public List<Notification> getPendingNotificationForUser(User recipient) {
+        return em.createNamedQuery("Notification.findPendingForUser").
+                setParameter("recipient", recipient).getResultList();
+    }
 }
