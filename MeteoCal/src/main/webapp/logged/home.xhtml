@@ -19,15 +19,16 @@ This is the logged-user homepage.
     <ui:define name="content">
      <h:form>
          <p:schedule value="#{ScheduleBean.model}"  widgetVar="myschedule">
-             <!--<p:ajax event="dateSelect" listener="#{bean.onDateSelect}" update="eventDetails" oncomplete="eventDialog.show()" />
-                 <p:ajax event="eventSelect" listener="#{bean.onEventSelect}"-->
+                 <p:ajax event="dateSelect" listener="#{ScheduleBean.onDateSelect}" update="eventDetails" oncomplete="eventDialog.show()" />
+                 <p:ajax event="eventSelect" listener="#{ScheduleBean.onEventSelect}"/>
         </p:schedule>
-        <!--<p:dialog widgetVar="eventDialog" header="Event Details">
+         
+        <p:dialog widgetVar="eventDialog" header="Event Details">
            <h:panelGrid id="eventDetails" columns="2">
               <h:outputLabel for="title" value="Title:" />
-              <h:inputText id="title" value="#{bean.event.title}" required="true"/>
+              <h:inputText id="title" value="#{ScheduleBean.event.title}" required="true"/>
               <h:outputLabel for="from" value="From:" />
-              <p:inputMask id="from" value="#{bean.event.startDate}" mask="99/99/9999">
+             <!-- <p:inputMask id="from" value="#{bean.event.startDate}" mask="99/99/9999">
                    <f:convertDateTime pattern="dd/MM/yyyy" />
               </p:inputMask>
               <h:outputLabel for="to" value="To:" />
@@ -38,9 +39,9 @@ This is the logged-user homepage.
               <h:selectBooleanCheckbox id="allDay" value="#{bean.event.allDay}" />
               <p:commandButton type="reset" value="Reset" />
               <p:commandButton value="Save" actionListener="#{bean.addEvent}"
-                           oncomplete="PF('myschedule').update();PF('eventDialog').hide();"/>
+                           oncomplete="PF('myschedule').update();PF('eventDialog').hide();"/>-->
            </h:panelGrid>
-        </p:dialog>-->
+        </p:dialog>
        </h:form> 
    </ui:define>
 </ui:composition>
