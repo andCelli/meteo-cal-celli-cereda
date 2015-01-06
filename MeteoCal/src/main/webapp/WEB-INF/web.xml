@@ -39,7 +39,7 @@
         <web-resource-collection>
             <web-resource-name>Logged User</web-resource-name>
             <description/>
-            <url-pattern>/user/*</url-pattern>
+            <url-pattern>/logged/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>USERS</role-name>
