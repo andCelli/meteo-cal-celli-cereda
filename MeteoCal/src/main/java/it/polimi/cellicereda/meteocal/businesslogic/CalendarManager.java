@@ -60,15 +60,27 @@ public class CalendarManager {
     }
 
     /**
-     * This method adds the user to the list of participants of the event
+     * This method adds the user to the list of participants of the event.
      * Usually this method is used by the notification manager when an user
-     * answer to an event invite
+     * answer to an event invite.
      *
      * @param newParticipant The user to add to the list of participants
      * @param event The event where the user will participate
      */
     public void addAnUserToAnEventParticipants(User newParticipant, Event event) {
         newParticipant.addEvent(event);
+    }
+    
+    private void generateEventChangedNotifications(Event event){
+        TODO
+    }
+
+    /**
+     * Change the title of the event and generate the consequent notifications
+     */
+    public void changeEventTitle(Event event, String newTitle) {
+        event.setTitle(newTitle);
+        generateEventChangedNotifications(event);
     }
 
 }

@@ -81,4 +81,26 @@ public class NotificationManager {
             cm.addAnUserToAnEventParticipants(invite.getRecipient(), invite.getReferredEvent());
         }
     }
+
+    /**
+     * Answer to a SunnyDayProposal notification, set the new state for the
+     * notification and change the event details, the calendar manager will take
+     * care of generate the right EventChanged notifications
+     *
+     * @param proposal The answered notification
+     * @param answer True if the user accepts the proposal
+     */
+    public void answerToASunnyDayProposal(Notification proposal, Boolean answer) {
+        if ((proposal.getNotificationType() != NotificationType.SUNNY_DAY_PROPOSAL)
+                || (proposal.getNotificationState() != NotificationState.PENDING)) {
+            throw new IllegalArgumentException();
+        }
+
+        proposal.setNotificationAnswer(answer);
+        proposal.setNotificationState(NotificationState.ANSWERED);
+
+        if (answer){
+            cm.TODO
+        }
+    }
 }
