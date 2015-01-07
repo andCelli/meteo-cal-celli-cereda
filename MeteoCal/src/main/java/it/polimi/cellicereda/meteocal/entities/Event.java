@@ -69,7 +69,7 @@ public class Event implements Serializable, ScheduleEvent {
     private Boolean publicEvent;
 
     @NotNull(message = "May not be empty")
-    private Boolean isAllDay;
+    private Boolean isAllDay = false;
 
     @NotNull(message = "May not be empty")
     @ManyToOne

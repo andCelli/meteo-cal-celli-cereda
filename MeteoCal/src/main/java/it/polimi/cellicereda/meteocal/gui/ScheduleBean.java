@@ -16,6 +16,7 @@ import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ViewScoped;
+import javax.inject.Named;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DefaultScheduleModel;
 import org.primefaces.model.ScheduleEvent;
@@ -27,6 +28,7 @@ import org.primefaces.model.ScheduleModel;
  */
 @ManagedBean
 @ViewScoped
+@Named
 public class ScheduleBean implements Serializable{
     
     @EJB
