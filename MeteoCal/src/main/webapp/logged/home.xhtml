@@ -14,8 +14,7 @@ This is the logged-user homepage.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:pe="http://primefaces.org/ui/extensions" />
+      xmlns:f="http://xmlns.jcp.org/jsf/core"/>
     
     <ui:define name="contentCenter">
      <h:form>
@@ -51,9 +50,7 @@ This is the logged-user homepage.
               
               <h:outputLabel for="location" value="Location:"/>
               <h:inputText id="location" value="#{scheduleBean.event.eventLocation}"/>
-              
-          
-              
+             
               <h:outputLabel id="forecast" value="Forecast:"/>
               <h:outputLabel id="prova" value="Prova"/>  
                <p:commandButton type="reset" value="Reset" />
