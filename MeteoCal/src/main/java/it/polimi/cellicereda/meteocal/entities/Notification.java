@@ -156,4 +156,11 @@ public class Notification implements Serializable {
         this.referredEvent = event;
     }
 
+    /**
+     * The default constructor is used by JEE, we should prefer the complete one
+     */
+    @Deprecated
+    public Notification() {
+    }
+
 }

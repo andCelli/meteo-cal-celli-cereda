@@ -5,10 +5,12 @@
  */
 package it.polimi.cellicereda.meteocal.businesslogic;
 
+import it.polimi.cellicereda.meteocal.entities.Event;
 import it.polimi.cellicereda.meteocal.entities.Notification;
 import it.polimi.cellicereda.meteocal.entities.NotificationState;
 import it.polimi.cellicereda.meteocal.entities.NotificationType;
 import it.polimi.cellicereda.meteocal.entities.User;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -85,12 +87,17 @@ public class NotificationManager {
     /**
      * Answer to a SunnyDayProposal notification, set the new state for the
      * notification and change the event details, the calendar manager will take
-     * care of generate the right EventChanged notifications
+     * care of generate the right EventChanged notifications. If the user
+     * accepts the proposal you have to provide in the paarmeters the new
+     * starting date chosen by the user, the ending date will be set
+     * automagically so taht the event duration remains the same.
      *
      * @param proposal The answered notification
      * @param answer True if the user accepts the proposal
+     * @param newStartingDate The new starting date (null if the user didn't
+     * accept the proposal)
      */
-    public void answerToASunnyDayProposal(Notification proposal, Boolean answer) {
+    public void answerToASunnyDayProposal(Notification proposal, Boolean answer, Date newStartingDate) {
         if ((proposal.getNotificationType() != NotificationType.SUNNY_DAY_PROPOSAL)
                 || (proposal.getNotificationState() != NotificationState.PENDING)) {
             throw new IllegalArgumentException();
@@ -100,7 +107,13 @@ public class NotificationManager {
         proposal.setNotificationState(NotificationState.ANSWERED);
 
         if (answer) {
-            cm.TODO //DOVE LA SPOSTO???
+            Event e = proposal.getReferredEvent();
+
+            //new ending = oldEnding + (newstart - oldstart)
+            Date newEnding = new Date();
+            newEnding.setTime(e.getEndDate().getTime() + newStartingDate.getTime() - e.getStartDate().getTime());
+            
+            cm.changeEventTiming(e, newStartingDate, newEnding);
         }
     }
 }

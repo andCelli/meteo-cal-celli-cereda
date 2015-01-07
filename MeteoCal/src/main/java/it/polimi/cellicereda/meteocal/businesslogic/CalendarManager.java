@@ -159,20 +159,11 @@ public class CalendarManager {
     }
 
     /**
-     * Change the starting date of the event and generate the consequent
-     * notifications
+     * Change the starting/ending date of the event and generate the consequent
+     * notifications. You have to provide both the date even if only one changes
      */
-    public void changeEventStarting(Event event, Date newStarting) {
+    public void changeEventTiming(Event event, Date newStarting, Date newEnding) {
         event.setStartingDate(newStarting);
-        generateEventChangedNotifications(event);
-
-    }
-
-    /**
-     * Change the ending date of the event and generate the consequent
-     * notifications
-     */
-    public void changeEventEnding(Event event, Date newEnding) {
         event.setEndingDate(newEnding);
         generateEventChangedNotifications(event);
 
