@@ -21,7 +21,7 @@ The template defines: 1) the basic layout that will be used in all the logged-us
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <style>
             .ui-menubar{
-                background-color:orange;
+                background-color:orangered;
                 padding:5px;
                 border:0px;
                 border-style: solid;
@@ -52,11 +52,11 @@ The template defines: 1) the basic layout that will be used in all the logged-us
             </p:layoutUnit>
 
             <p:layoutUnit position="east" size="450" resizable="true">
-                <h:outputText value="Right unit content." />
+               <ui:insert name="contentLeft">Put default content here, if any.</ui:insert>
             </p:layoutUnit>
 
             <p:layoutUnit position="center">
-                <ui:insert name="content">Put default content here, if any.</ui:insert>
+                <ui:insert name="contentCenter">Put default content here, if any.</ui:insert>
             </p:layoutUnit>
         </p:layout>
     </body>

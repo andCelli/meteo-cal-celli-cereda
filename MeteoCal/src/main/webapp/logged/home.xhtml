@@ -16,7 +16,7 @@ This is the logged-user homepage.
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     
-    <ui:define name="content">
+    <ui:define name="contentCenter">
      <h:form>
          <p:growl id="messages" showDetail="true" />
          <p:schedule value="#{scheduleBean.model}"  widgetVar="myschedule" timeZone="GMT+2">
@@ -60,9 +60,8 @@ This is the logged-user homepage.
                               oncomplete="PF('myschedule').update();PF('eventDialog').hide();"/>
            </h:panelGrid>
         </p:dialog>
-      
        </h:form> 
-   </ui:define>
+   </ui:define>  
 </ui:composition>
 
 
