@@ -197,6 +197,10 @@ public class Event implements Serializable, ScheduleEvent {
         this.forecast = forecast;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     @Override
     /**
      * @return The event's forecast

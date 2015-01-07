@@ -24,7 +24,7 @@ import javax.validation.constraints.Pattern;
  *
  * @author stefano
  */
-@Entity(name="USERS")
+@Entity(name = "USERS")
 
 @NamedQueries({
     @NamedQuery(name = "User.findAll",
@@ -36,7 +36,11 @@ import javax.validation.constraints.Pattern;
     @NamedQuery(name = "User.findBySurname",
             query = "SELECT u FROM USERS u WHERE u.surname = :surname"),
     @NamedQuery(name = "User.getParticipationList",
-            query = "SELECT e FROM USERS u JOIN u.events e WHERE u.email = :email")})
+            query = "SELECT e FROM USERS u JOIN u.events e WHERE u.email = :email"),
+    @NamedQuery(name = "User.getEventParticipants",
+            query = "SELECT e FROM USERS u JOIN u.events e WHERE e = :event")
+
+})
 
 public class User implements Serializable {
 
@@ -155,6 +159,10 @@ public class User implements Serializable {
 
     public void setEvents(Collection events) {
         this.events = events;
+    }
+
+    public void addEvent(Event event) {
+        events.add(event);
     }
 
     @Override
