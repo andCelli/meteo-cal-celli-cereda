@@ -44,6 +44,14 @@ This is the logged-user homepage.
               <h:outputLabel for="allDay" value="All Day:" />
               <h:selectBooleanCheckbox id="allDay" value="#{scheduleBean.event.allDay}" />
               
+              <h:outputLabel for="location" value="Location:"/>
+              <h:inputText id="location" value="#{scheduleBean.event.eventLocation}"/>
+              
+          
+              
+              <h:outputLabel for="forecast" value="Forecast:"/>
+              <h:outputLabel for="prova" value="Prova"/>
+              
               <p:commandButton type="reset" value="Reset" />
               <p:commandButton value="Save" actionListener="#{scheduleBean.addEvent}"
                            oncomplete="PF('myschedule').update();PF('eventDialog').hide();"/>
