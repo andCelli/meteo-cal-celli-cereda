@@ -15,8 +15,12 @@ import java.util.List;
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import org.primefaces.event.ScheduleEntryMoveEvent;
+import org.primefaces.event.ScheduleEntryResizeEvent;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DefaultScheduleModel;
 import org.primefaces.model.ScheduleEvent;
@@ -78,4 +82,23 @@ public class ScheduleBean implements Serializable{
              event = new Event();
              event.setStartingDate(date);
     }
+    
+     //aggiungere l'aggiornamento dell'evento nel db
+     public void onEventMove(ScheduleEntryMoveEvent event) {  
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Event moved", 
+                "Day delta: " + event.getDayDelta() + ", Minute delta: " + event.getMinuteDelta());
+         
+        addMessage(message);
+    }
+     //aggiungere l'aggiornamento dell'evento nel db
+    public void onEventResize(ScheduleEntryResizeEvent event) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO,
+                "Event resized", "Day delta:" + event.getDayDelta() + ", Minute delta:" + event.getMinuteDelta());
+         
+        addMessage(message);
+    } 
+     
+    private void addMessage(FacesMessage message) {
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    } 
 }
