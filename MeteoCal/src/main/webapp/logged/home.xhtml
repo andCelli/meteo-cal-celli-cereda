@@ -19,8 +19,8 @@ This is the logged-user homepage.
     <ui:define name="content">
      <h:form>
          <p:schedule value="#{scheduleBean.model}"  widgetVar="myschedule" timeZone="GMT+2">
-                 <p:ajax event="dateSelect" listener="#{scheduleBean.onDateSelect}" update="eventDetails" oncomplete="eventDialog.show();" />
-                 <p:ajax event="eventSelect" listener="#{scheduleBean.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();"/>
+                <p:ajax event="dateSelect" listener="#{scheduleBean.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();;" />
+                <p:ajax event="eventSelect" listener="#{scheduleBean.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();"/>
         </p:schedule>
            <p:dialog widgetVar="eventDialog" header="Event Details">
            <h:panelGrid id="eventDetails" columns="2">
