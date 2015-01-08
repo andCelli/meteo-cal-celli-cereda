@@ -5,18 +5,18 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition template="/logged/loggedTemplate.xhtml"
+      xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </h:head>
-    <body>
+    
+    <ui:define name="contentCenter">
         <h:form>
-        <p:commandLink action="#{loginBean.logout()}" value="logout"/>
+        
+            <h:outputLabel id="title" value="Settings" style="color:chartreuse  ;font-family: arial;font-size:350%"/>
+        
         </h:form>
-    </body>
-</html>
+    </ui:define>
+</ui:composition>

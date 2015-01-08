@@ -61,8 +61,10 @@ This is the logged-user homepage.
               <h:outputLabel id="forecast" value="Forecast:"/>
               <h:outputLabel id="prova" value="Prova"/>  
               <p:commandButton type="reset" value="Reset" />
+              <h:form>
               <p:commandButton id="addButton" value="Save" actionListener="#{scheduleBean.addEvent}"
                               oncomplete="PF('myschedule').update();PF('eventDialog').hide();"/>
+              </h:form>
            </h:panelGrid>
         </p:dialog>
        </h:form> 
