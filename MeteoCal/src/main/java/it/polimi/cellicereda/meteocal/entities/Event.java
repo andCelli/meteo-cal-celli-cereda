@@ -157,7 +157,7 @@ public class Event implements Serializable, ScheduleEvent {
         description = desc;
     }
 
-    public Boolean isPublicEvent() {
+    public Boolean getPublicEvent() {
         return publicEvent;
     }
 

@@ -39,7 +39,7 @@ public class ScheduleBean implements Serializable{
     CalendarManager calendarManager;
     @EJB
     UserProfileManager userProfileManager;
-   
+    
     //this will contain the list of events to be displayed
     private ScheduleModel model;
     private User currentUser;
@@ -65,14 +65,27 @@ public class ScheduleBean implements Serializable{
     }
     
     public void addEvent() {
-        if(event.getId() == null)
+        //check if the model already contains the event
+        if(modelContains(event)){
              model.addEvent(event);
+        }
        else
              model.updateEvent(event);
-       //reset the dialog form
+       calendarManager.save(event);
+       //reset the dialog form   
        event = new Event();
     }
-       
+     
+    //check if the model already contains the event
+    private boolean modelContains(Event e1){
+        for (ScheduleEvent e2: this.model.getEvents()){
+            if(e1.equals(e2)){
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public void onEventSelect(SelectEvent e) {
        event = (Event) (ScheduleEvent) e.getObject();
     }

@@ -14,7 +14,7 @@ This is the logged-user homepage.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"/>
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     
     <ui:define name="contentCenter">
      <h:form>
@@ -26,7 +26,7 @@ This is the logged-user homepage.
                 <p:ajax event="eventResize" listener="#{scheduleBean.onEventResize}" update="messages" />
         </p:schedule>
         
-         <p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip">
+        <p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip">
            <h:panelGrid id="eventDetails" columns="2">
               
               <h:outputLabel for="title" value="Title:" />
@@ -50,11 +50,18 @@ This is the logged-user homepage.
               
               <h:outputLabel for="location" value="Location:"/>
               <h:inputText id="location" value="#{scheduleBean.event.eventLocation}"/>
+              
+              <h:outputLabel for="privacy" value="Privacy:"/>
+              <p:selectOneRadio id="privacy" value="#{scheduleBean.event.publicEvent}">
+                               <f:selectItem itemLabel="Public" itemValue="#{true}" />
+                               <f:selectItem itemLabel="Private" itemValue="#{false}" />
+              </p:selectOneRadio>
+             
              
               <h:outputLabel id="forecast" value="Forecast:"/>
               <h:outputLabel id="prova" value="Prova"/>  
-               <p:commandButton type="reset" value="Reset" />
-               <p:commandButton id="addButton" value="Save" actionListener="#{scheduleBean.addEvent}"
+              <p:commandButton type="reset" value="Reset" />
+              <p:commandButton id="addButton" value="Save" actionListener="#{scheduleBean.addEvent}"
                               oncomplete="PF('myschedule').update();PF('eventDialog').hide();"/>
            </h:panelGrid>
         </p:dialog>
