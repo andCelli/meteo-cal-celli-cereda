@@ -66,11 +66,14 @@ public class ScheduleBean implements Serializable{
     
     public void addEvent() {
         //check if the model already contains the event
-        if(modelContains(event)){
-             model.addEvent(event);
-        }
-       else
-             model.updateEvent(event);
+        //if(modelContains(event)){
+          //   model.addEvent(event);
+        //}
+       //else
+         //    model.updateEvent(event);
+       event.setCreator(currentUser);
+       System.out.println(event.toString());
+       model.addEvent(event);
        calendarManager.save(event);
        //reset the dialog form   
        event = new Event();
@@ -93,7 +96,7 @@ public class ScheduleBean implements Serializable{
      public void onDateSelect(SelectEvent e) {
              Date date = (Date) e.getObject();
              event = new Event();
-             event.setStartingDate(date);
+             //event.setStartingDate(date);
     }
     
      //aggiungere l'aggiornamento dell'evento nel db
