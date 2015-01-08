@@ -50,6 +50,17 @@ public class CalendarManager {
     }
 
     /**
+     * Create and persist a new Event
+     *
+     * @return The created Event
+     */
+    public Event createNewEvent() {
+        Event e = new Event();
+        save(e);
+        return e;
+    }
+
+    /**
      * Search an event by the id
      *
      * @param id The event id to serach for
