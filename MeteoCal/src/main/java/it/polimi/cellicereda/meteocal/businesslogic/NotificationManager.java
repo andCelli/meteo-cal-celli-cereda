@@ -23,10 +23,10 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class NotificationManager {
-
+    
     @PersistenceContext
     private EntityManager em;
-
+    
     @EJB
     private CalendarManager cm;
 
@@ -75,10 +75,10 @@ public class NotificationManager {
                 || (invite.getNotificationState() != NotificationState.PENDING)) {
             throw new IllegalArgumentException();
         }
-
+        
         invite.setNotificationAnswer(answer);
         invite.setNotificationState(NotificationState.ANSWERED);
-
+        
         if (answer) {
             cm.addAnUserToAnEventParticipants(invite.getRecipient(), invite.getReferredEvent());
         }
@@ -102,10 +102,10 @@ public class NotificationManager {
                 || (proposal.getNotificationState() != NotificationState.PENDING)) {
             throw new IllegalArgumentException();
         }
-
+        
         proposal.setNotificationAnswer(answer);
         proposal.setNotificationState(NotificationState.ANSWERED);
-
+        
         if (answer) {
             Event e = proposal.getReferredEvent();
 
@@ -115,5 +115,24 @@ public class NotificationManager {
             
             cm.changeEventTiming(e, newStartingDate, newEnding);
         }
+    }
+
+    /**
+     * Create an event invite notification
+     *
+     * @param event The event that you are inviting for
+     * @param invited The user you want to invite
+     */
+    public void sendAnInvite(Event event, User invited) {
+        Notification n = new Notification(NotificationType.EVENT_INVITE, invited, event);
+        em.persist(n);
+    }
+
+    /**
+     * Read a notification, use this method when you want to set the
+     * notification state to readed
+     */
+    public void readNotification(Notification n) {
+        n.setNotificationState(NotificationState.READED);
     }
 }
