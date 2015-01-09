@@ -27,15 +27,19 @@ This is the logged-user homepage.
        </h:form>
    </ui:define>  
    <ui:define name="contentRight">
-        <h:form>
-            
+        
+       <h:form>     
         <p:growl id="messages" showDetail="true" />
         
         <p:commandButton value="New Event" id="newEvent" onclick="PF('modifyEventDialog').show();"/>
+       
+        <!--<p:commandButton value="New Event" id="newEvent" update="modifyEventDetails" onclick="#{scheduleBean.setRenderModifyForm()}"/>-->
         
         <p:dialog widgetVar="modifyEventDialog" header="Event Details" showEffect="clip" hideEffect="clip" position="right">
-           <h:panelGrid id="modifyEventDetails" columns="2">
-              
+       
+           <!-- <h:panelGrid id="modifyEventDetails" columns="2" rendered="#{scheduleBean.modifyForm}">-->
+           <h:panelGrid id="modifyEventDetails" columns="2"  style="width:410px;height:600px; ">
+     
               <h:outputLabel for="title" value="Title:" />
               <h:inputText id="title" value="#{scheduleBean.title}"/>
               
@@ -66,10 +70,10 @@ This is the logged-user homepage.
               <p:commandButton type="reset" value="Reset" />
               <p:commandButton id="addButton" value="Save" actionListener="#{scheduleBean.saveEvent}"
                               oncomplete="PF('myschedule').update();PF('modifyEventDialog').hide();"/>
-             
            </h:panelGrid>
-        </p:dialog>
-        </h:form>
+     
+       </p:dialog>
+       </h:form>
     </ui:define> 
 </ui:composition>
 

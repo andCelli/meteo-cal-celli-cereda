@@ -40,6 +40,8 @@ public class ScheduleBean implements Serializable{
     @EJB
     UserProfileManager userProfileManager;
     
+    //this flag determines whether the modification form is displayed or not
+    private boolean modifyForm;
     //this will contain the list of events to be displayed
     private ScheduleModel model;
     private User currentUser;
@@ -58,7 +60,8 @@ public class ScheduleBean implements Serializable{
     
     
     @PostConstruct
-    public void init(){     
+    public void init(){   
+        modifyForm=false;
         currentUser=userProfileManager.getLoggedUser();
         //find all the events in which the user will partecipate 
         model=new DefaultScheduleModel((List<ScheduleEvent>) calendarManager.getEventsByParticipant(currentUser));
@@ -92,7 +95,7 @@ public class ScheduleBean implements Serializable{
             calendarManager.changeEventDescription(event, description);
             calendarManager.changeEventTiming(event, startingDate, endingDate);
             //correggere
-            calendarManager.changeEventLocation(event, endingDate);
+            calendarManager.changeEventLocation(event, startingDate);
             event.setPublicEvent(isPublic);
             event.setIsAllDay(allDay);
             event.setCreator(currentUser);
@@ -103,11 +106,12 @@ public class ScheduleBean implements Serializable{
             calendarManager.changeEventDescription(event, description);
             calendarManager.changeEventTiming(event, startingDate, endingDate);
             //correggere
-            calendarManager.changeEventLocation(event, endingDate);
+            calendarManager.changeEventLocation(event, startingDate);
             event.setPublicEvent(isPublic);
             event.setIsAllDay(allDay);
         }
         model.addEvent(event);
+        modifyForm=false;
         event=new Event();
     }
     
@@ -155,6 +159,15 @@ public class ScheduleBean implements Serializable{
     }
     public void setAllDay(boolean allDay){
         this.allDay=allDay;
+    }
+    public String getModifyForm(){
+        if(modifyForm)
+            return "true";
+        return "false";
+    }
+    //set the reder of the form to true
+    public void setRenderModifyForm(){
+        modifyForm=true;
     }
     /*public void addEvent(){
         //check if the model already contains the event
