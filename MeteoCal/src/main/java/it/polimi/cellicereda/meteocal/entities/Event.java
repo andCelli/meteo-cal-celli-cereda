@@ -66,7 +66,7 @@ public class Event implements Serializable, ScheduleEvent {
     private Forecast forecast;
 
     @NotNull(message = "May not be empty")
-    private Boolean publicEvent;
+    private boolean publicEvent;
 
     @NotNull(message = "May not be empty")
     private Boolean isAllDay = false;
