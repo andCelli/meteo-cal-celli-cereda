@@ -21,7 +21,7 @@ This is the logged-user homepage.
          <p:schedule value="#{scheduleBean.model}"  widgetVar="myschedule" timeZone="GMT+2">
                 <p:ajax event="eventSelect" listener="#{scheduleBean.onEventSelect}" update="eventDetails" oncomplete="PF('eventDetailsDialog').show();"/>
          </p:schedule>
-         
+        <!--Event details--> 
          <p:dialog widgetVar="eventDetailsDialog" header="Event Details" showEffect="clip" hideEffect="clip">
              <p:panelGrid id="eventDetails" columns="2">
                  <h:outputLabel for="title" value="Title:"/>
@@ -41,8 +41,10 @@ This is the logged-user homepage.
                  <h:outputLabel for="forecast" value="Forecast:"/>
                  <h:outputLabel id="forecast" value="TODO"/>
                  
-                 <p:commandButton id="modifyButton" value="Modify"/>
-                 <p:commandButton id="deleteButton" value="Delete"/>
+                 <p:commandButton id="modifyButton" value="Modify" 
+                                  onclick="PF('modifyEventDialog').show();PF('eventDetailsDialog').hide();"/>
+                 <p:commandButton id="deleteButton" value="Delete" 
+                                  onclick="#{scheduleBean.delete()};PF('eventDetailsDialog').hide();PF('myschedule').update();" />
              </p:panelGrid> 
          </p:dialog>
      </h:form>
@@ -84,7 +86,7 @@ This is the logged-user homepage.
                
               <p:commandButton type="reset" value="Reset" />
               <p:commandButton id="addButton" value="Save" actionListener="#{scheduleBean.saveEvent}"
-                              oncomplete="PF('myschedule').update();PF('modifyEventDialog').hide();"/>
+                              onclick="PF('myschedule').update();PF('modifyEventDialog').hide();"/>
            </h:panelGrid>
        </p:dialog>
        </h:form>

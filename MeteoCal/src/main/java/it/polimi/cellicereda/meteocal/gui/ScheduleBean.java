@@ -39,9 +39,7 @@ public class ScheduleBean implements Serializable{
     CalendarManager calendarManager;
     @EJB
     UserProfileManager userProfileManager;
-    
-    //this flag determines whether the modification form is displayed or not
-    //private boolean modifyForm;
+ 
     //this will contain the list of events to be displayed
     private ScheduleModel model;
     private User currentUser;
@@ -60,8 +58,7 @@ public class ScheduleBean implements Serializable{
     
     
     @PostConstruct
-    public void init(){   
-        //modifyForm=false;
+    public void init(){  
         currentUser=userProfileManager.getLoggedUser();
         //find all the events in which the user will partecipate 
         model=new DefaultScheduleModel((List<ScheduleEvent>) calendarManager.getEventsByParticipant(currentUser));
@@ -120,8 +117,16 @@ public class ScheduleBean implements Serializable{
     */
     public void onEventSelect(SelectEvent e) {
        event = (Event) (ScheduleEvent) e.getObject();
+    } 
+    /*
+    This method deletes the selected event
+    */
+    public void delete(){
+        model.deleteEvent(event);
+        calendarManager.delete(event);
+        event=new Event();
     }
-     
+    
     public String getTitle(){
         return title;
     }
@@ -160,41 +165,4 @@ public class ScheduleBean implements Serializable{
     public void setAllDay(boolean allDay){
         this.allDay=allDay;
     }
-   /* public String getModifyForm(){
-        if(modifyForm)
-            return "true";
-        return "false";
-    }
-    //set the reder of the form to true
-    public void setRenderModifyForm(){
-        modifyForm=true;
-    }
-    /*public void addEvent(){
-        //check if the model already contains the event
-        //if(modelContains(event)){
-          //   model.addEvent(event);
-        //}
-       //else
-         //    model.updateEvent(event);
-       event.setCreator(currentUser);
-       System.out.println(event.toString());
-       model.addEvent(event);
-       calendarManager.save(event);
-       //reset the dialog form   
-       event = new Event();
-    }
-     
-    //check if the model already contains the event
-    private boolean modelContains(Event e1){
-        for (ScheduleEvent e2: this.model.getEvents()){
-            if(e1.equals(e2)){
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    public void onEventSelect(SelectEvent e) {
-       event = (Event) (ScheduleEvent) e.getObject();
-    }*/
 }
