@@ -30,6 +30,9 @@ The template defines: 1) the basic layout that will be used in all the logged-us
                 font-family: arial;
                 color:royalblue;
             }
+            .ui-layout-unit{
+                border:none;
+            }
         </style>    
     </h:head>
     <body>
@@ -47,12 +50,12 @@ The template defines: 1) the basic layout that will be used in all the logged-us
                </p:menubar>    
             </p:layoutUnit>
 
-            <p:layoutUnit position="west" size="250"  resizable="true">
+            <p:layoutUnit position="west" size="250"  resizable="false">
                 <h:outputText value="Left unit content." />
             </p:layoutUnit>
 
-            <p:layoutUnit position="east" size="450" resizable="true">
-                <ui:insert name="contentLeft">Put default content here, if any.</ui:insert>
+            <p:layoutUnit position="east" size="450" resizable="false">
+                <ui:insert name="contentRight">Put default content here, if any.</ui:insert>
             </p:layoutUnit>
 
             <p:layoutUnit position="center">
