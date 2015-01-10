@@ -23,7 +23,9 @@ import javax.validation.constraints.NotNull;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "Place.findAll",
-            query = "SELECT p FROM Place p"),})
+            query = "SELECT p FROM Place p"),
+    @NamedQuery(name = "Place.deleteAll",
+            query = "DELETE FROM Place")})
 public class Place implements Serializable {
 
     private static final long serialVersionUID = 1L;
