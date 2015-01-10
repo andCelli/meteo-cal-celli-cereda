@@ -7,6 +7,7 @@ package it.polimi.cellicereda.meteocal.entities;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Temporal;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -44,19 +46,22 @@ public class Forecast implements Serializable {
      * The starting validity hour
      */
     @NotNull(message = "May not be empty")
-    private Timestamp startingValidity;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date startingValidity;
 
     /**
      * The ending validity hour
      */
     @NotNull(message = "May not be empty")
-    private Timestamp endingValidity;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date endingValidity;
 
     /**
      * The time when the forecast was made
      */
     @NotNull(message = "May not be empty")
-    private Timestamp makingTime;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date makingTime;
 
     /**
      * The weather id (see http://openweathermap.org/weather-conditions)
@@ -80,27 +85,27 @@ public class Forecast implements Serializable {
         this.place = place;
     }
 
-    public Timestamp getStartingValidity() {
+    public Date getStartingValidity() {
         return startingValidity;
     }
 
-    public void setStartingValidity(Timestamp startingValidity) {
+    public void setStartingValidity(Date startingValidity) {
         this.startingValidity = startingValidity;
     }
 
-    public Timestamp getEndingValidity() {
+    public Date getEndingValidity() {
         return endingValidity;
     }
 
-    public void setEndingValidity(Timestamp endingValidity) {
+    public void setEndingValidity(Date endingValidity) {
         this.endingValidity = endingValidity;
     }
 
-    public Timestamp getMakingTime() {
+    public Date getMakingTime() {
         return makingTime;
     }
 
-    public void setMakingTime(Timestamp makingTime) {
+    public void setMakingTime(Date makingTime) {
         this.makingTime = makingTime;
     }
 
