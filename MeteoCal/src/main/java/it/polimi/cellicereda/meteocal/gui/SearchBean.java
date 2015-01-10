@@ -5,6 +5,7 @@
  */
 package it.polimi.cellicereda.meteocal.gui;
 
+import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import it.polimi.cellicereda.meteocal.businesslogic.UserProfileManager;
 import it.polimi.cellicereda.meteocal.entities.User;
 import java.io.Serializable;
@@ -35,6 +36,7 @@ public class SearchBean implements Serializable {
     
     @PostConstruct
     public void init(){
+        setSearchKey(new String());
         currentUser=userManager.getLoggedUser();
     }
     
@@ -42,48 +44,70 @@ public class SearchBean implements Serializable {
     This method is called when a search is performed
     */
     public String search(){
-         return "/logged/search?faces-redirect=true";
+        try{
+        if( getSearchKey().length()==0){
+            return "/logged/home?faces-redirect=true";
+        }
+        return "/logged/search?faces-redirect=true";
+        }catch(Exception e){
+            printStackTrace();
+            System.err.println("problem in search() Search key: "+getSearchKey());
+        }
+        return "/logged/home?faces-redirect=true";
     }
     
     /**
      * This method return the list of results
      * At the end the searchKey is resetted
      * 
-     * criteria of search: 1) username 2) surname and name 3) surname 4) name
-     * 
      * @return List<User> 
      */
     public List<User> getSearchResults(){
         List<User> results=new ArrayList<User>();
         
+        try{ 
         //search for username
         //user can't search for his calendar
         if(!currentUser.getUsername().equals(searchKey)){
-            results.addAll(userManager.getByUsername(searchKey));
+            results.addAll(userManager.getByUsername(getSearchKey()));
         }
         //search for (name + surmane) (and check that the user is not already in the list
-        for(User u:userManager.getBySurname(searchKey))
+        for(User u:userManager.getBySurname(getSearchKey()))
             /**
              * CHECK (se metto più di uno spazio?)
              */
-            if(!results.contains(u) && searchKey.equals(u.getName()+" "+u.getSurname()))
+            if(!results.contains(u) && getSearchKey().equals(u.getName()+" "+u.getSurname()))
                 results.add(u);
        //search for surname
-        for(User u:userManager.getBySurname(searchKey))
+        for(User u:userManager.getBySurname(getSearchKey()))
             if(!results.contains(u))
                 results.add(u);
        //search for name
-        for(User u:userManager.getByName(searchKey))
+        for(User u:userManager.getByName(getSearchKey()))
             if(!results.contains(u))
                 results.add(u);
+            System.out.println("Search key: "+getSearchKey());
+        }catch(Exception e){
+            printStackTrace();
+            System.err.println("Problems in the user search. Search key: "+getSearchKey());
+        }
         
         return results;
     }
-    
-    public String getSearchKey(){
+
+    /**
+     * @return the searchKey
+     */
+    public String getSearchKey() {
         return searchKey;
     }
-    public void setSearchKey(String searchKey){
-        this.searchKey=searchKey;
+
+    /**
+     * @param searchKey the searchKey to set
+     */
+    public void setSearchKey(String searchKey) {
+        this.searchKey = searchKey;
     }
+    
+   
 }

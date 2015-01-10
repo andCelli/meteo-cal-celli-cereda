@@ -5,6 +5,7 @@
  */
 package it.polimi.cellicereda.meteocal.gui;
 
+import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import it.polimi.cellicereda.meteocal.entities.User;
 import java.util.List;
@@ -31,15 +32,26 @@ public class SearchScrollerBean {
   
     private List<User> users;
     
+    //the message shown in the header
+    private String header;
+    
     @PostConstruct
     public void init(){
-        context=FacesContext.getCurrentInstance();
+        header="Search Results";
+        context=FacesContext.getCurrentInstance();           
         searchBean=(SearchBean) context.getApplication().evaluateExpressionGet(context, "#{searchBean}", SearchBean.class);
         users=searchBean.getSearchResults();
+        //userNotFound
+        if(users.size()==0){
+            header="No results found";
+        }
     }
     
     public List<User> getUsers(){
         return users;
     }
     
+    public String getHeader(){
+        return header;
+    }
 }

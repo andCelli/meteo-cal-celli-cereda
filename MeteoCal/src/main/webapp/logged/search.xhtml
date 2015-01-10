@@ -14,7 +14,7 @@ and open the template in the editor.-->
     <ui:define name="contentCenter">
         <p:dataScroller value="#{searchScrollerBean.users}" var="user" chunkSize="10">
             <f:facet name ="header">
-                Search results
+                #{searchScrollerBean.header}
             </f:facet>
             
             <h:panelGrid columns="2">
