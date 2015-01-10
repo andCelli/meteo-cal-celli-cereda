@@ -60,7 +60,7 @@ public class LoginBean{
             return "login?error=true";
         }
         //login OK
-        return "/logged/home";
+        return "/logged/home?faces-redirect=true";
     }
     
     /*

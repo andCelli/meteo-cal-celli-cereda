@@ -8,6 +8,7 @@ package it.polimi.cellicereda.meteocal.businesslogic;
 import it.polimi.cellicereda.meteocal.entities.Event;
 import it.polimi.cellicereda.meteocal.entities.Notification;
 import it.polimi.cellicereda.meteocal.entities.NotificationType;
+import it.polimi.cellicereda.meteocal.entities.Place;
 import it.polimi.cellicereda.meteocal.entities.User;
 import java.util.Date;
 import java.util.List;
@@ -185,9 +186,8 @@ public class CalendarManager {
     /**
      * Change the event locationt and generate the consequent notifications
      */
-    public void changeEventLocation(Event event, Date newEnding) {
-        event.setEndingDate(newEnding);
+    public void changeEventLocation(Event event, Place newPlace) {
+        event.setEventLocation(newPlace);
         generateEventChangedNotifications(event);
-
     }
 }

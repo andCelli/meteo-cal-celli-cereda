@@ -29,30 +29,39 @@ The template defines: 1) the basic layout that will be used in all the logged-us
             .ui-link {
                 font-family: arial;
                 color:royalblue;
+                margin-right:10px;
+                background-color:mediumspringgreen;
+                border: none;
+            }
+            .ui-layout-unit{
+                border:none;
             }
         </style>    
     </h:head>
     <body>
        <p:layout fullPage="true">
            <!--This will contain the top bar--> 
-           <p:layoutUnit position="north" size="55px" resizable="false">  
-               <p:menubar>
-               <f:facet name="options">
-                   <p:inputText style="margin-right:10px" placeholder="Search"/>
-                   <p:link style="margin-right:10px" value="settings" outcome="settings"/>
+           <p:layoutUnit position="north" size="55px" resizable="false" >  
+ 
+                   <p:panelGrid id="commandGrid" columns="5" 
+                                style="background-color:mediumspringgreen;border: none;height: 54px;">
+                   <p:inputText  placeholder="Search"
+                                style="margin-right:10px; background-color:mediumspringgreen;border: none;"
+                                value="#{searchBean.searchKey}"/>
+                   <p:commandButton id="searchButton" value="Search" action="#{searchBean.search()}"/>
+                   <p:link  value="home" outcome="home"/>
+                   <p:link  value="settings" outcome="settings"/>
                    <h:form>
                    <p:commandLink action="#{loginBean.logout()}" value="logout"/>
                    </h:form>
-               </f:facet> 
-               </p:menubar>    
+                   </p:panelGrid>
+              
             </p:layoutUnit>
 
-            <p:layoutUnit position="west" size="250"  resizable="true">
-                <h:outputText value="Left unit content." />
-            </p:layoutUnit>
-
-            <p:layoutUnit position="east" size="450" resizable="true">
-                <ui:insert name="contentLeft">Put default content here, if any.</ui:insert>
+            <p:layoutUnit position="west" size="250"  resizable="false"/>
+              
+            <p:layoutUnit position="east" size="450" resizable="false">
+                <ui:insert name="contentRight">Put default content here, if any.</ui:insert>
             </p:layoutUnit>
 
             <p:layoutUnit position="center">

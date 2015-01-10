@@ -18,57 +18,79 @@ This is the logged-user homepage.
     
     <ui:define name="contentCenter">
      <h:form>
-         <p:growl id="messages" showDetail="true" />
          <p:schedule value="#{scheduleBean.model}"  widgetVar="myschedule" timeZone="GMT+2">
-                <p:ajax event="dateSelect" listener="#{scheduleBean.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();;" />
-                <p:ajax event="eventSelect" listener="#{scheduleBean.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();"/>
-                <p:ajax event="eventMove" listener="#{scheduleBean.onEventMove}" update="messages" />
-                <p:ajax event="eventResize" listener="#{scheduleBean.onEventResize}" update="messages" />
-        </p:schedule>
+                <p:ajax event="eventSelect" listener="#{scheduleBean.onEventSelect}" update="eventDetails" oncomplete="PF('eventDetailsDialog').show();"/>
+         </p:schedule>
+        <!--Event details--> 
+         <p:dialog widgetVar="eventDetailsDialog" header="Event Details" showEffect="clip" hideEffect="clip">
+             <p:panelGrid id="eventDetails" columns="2">
+                 <h:outputLabel for="title" value="Title:"/>
+                 <h:outputLabel id="title" value="#{scheduleBean.event.title}"/>
+                 <h:outputLabel for="description" value="Description:"/>
+                 <h:outputLabel id="description" value="#{scheduleBean.event.description}"/>
+                 <h:outputLabel for="startingTime" value="From:" />
+                 <p:calendar id="startingTime" value="#{scheduleBean.event.startDate}" readonly="true" pattern="MM/dd/yyyy HH:mm:ss" />
+                 <h:outputLabel for="endingTime" value="To:" />
+                 <p:calendar id="endingTime" value="#{scheduleBean.event.endDate}" readonly="true" pattern="MM/dd/yyyy HH:mm:ss" />
+                 <!--LOCATION-->
+                 <h:outputLabel for="privacy" value="Privacy:"/>
+                 <p:selectOneRadio id="privacy" value="#{scheduleBean.event.publicEvent}" disabled="true">
+                               <f:selectItem itemLabel="Public" itemValue="#{true}" />
+                               <f:selectItem itemLabel="Private" itemValue="#{false}" />
+                 </p:selectOneRadio>
+                 <h:outputLabel for="forecast" value="Forecast:"/>
+                 <h:outputLabel id="forecast" value="TODO"/>
+                 
+                 <p:commandButton id="modifyButton" value="Modify" 
+                                  onclick="PF('modifyEventDialog').show();PF('eventDetailsDialog').hide();"/>
+                 <p:commandButton id="deleteButton" value="Delete" 
+                                  onclick="#{scheduleBean.delete()};PF('eventDetailsDialog').hide();PF('myschedule').update();" />
+             </p:panelGrid> 
+         </p:dialog>
+     </h:form>
+   </ui:define> 
+   <!--Right--> 
+   <ui:define name="contentRight">  
+       <h:form>     
+        <p:growl id="messages" showDetail="true" />
         
-        <p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip">
-           <h:panelGrid id="eventDetails" columns="2">
-              
+        <p:commandButton value="New Event" id="newEvent" onclick="PF('modifyEventDialog').show();"/>
+   
+        <p:dialog widgetVar="modifyEventDialog" header="Event Details" showEffect="clip" hideEffect="clip" position="right" draggable="false">
+      
+           <h:panelGrid id="modifyEventDetails" columns="2"  style="width:410px;height:560px; ">
+     
               <h:outputLabel for="title" value="Title:" />
-              <h:inputText id="title" value="#{scheduleBean.event.title}" required="true"/>
+              <h:inputText id="title" value="#{scheduleBean.title}" required="true"/>
               
               <h:outputLabel for="description" value="Description:" />
-              <h:inputText id="description" value="#{scheduleBean.event.description}" required="false"/>
+              <h:inputText id="description" value="#{scheduleBean.description}" required="false"/>
               
               <h:outputLabel for="from" value="From:" />
-              <p:inputMask id="from" value="#{scheduleBean.event.startDate}" mask="99/99/9999">
-                  <f:convertDateTime pattern="dd/MM/yyyy"  timeZone="GMT+2"/>
-              </p:inputMask>
+              <p:calendar id="from" value="#{scheduleBean.startingDate}" pattern="MM/dd/yyyy HH:mm:ss" />
               
               <h:outputLabel for="to" value="To:" />
-              <p:inputMask id="to" value="#{scheduleBean.event.endDate}" mask="99/99/9999">
-                  <f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT+2"/>
-              </p:inputMask>
+              <p:calendar id="to" value="#{scheduleBean.endingDate}" pattern="MM/dd/yyyy HH:mm:ss" />
               
               <h:outputLabel for="allDay" value="All Day:" />
-              <h:selectBooleanCheckbox id="allDay" value="#{scheduleBean.event.allDay}" />
+              <h:selectBooleanCheckbox id="allDay" value="#{scheduleBean.allDay}" />
               
               <h:outputLabel for="location" value="Location:"/>
-              <h:inputText id="location" value="#{scheduleBean.event.eventLocation}"/>
+              <h:inputText id="location" value="#{scheduleBean.location}"/>
               
               <h:outputLabel for="privacy" value="Privacy:"/>
-              <p:selectOneRadio id="privacy" value="#{scheduleBean.event.publicEvent}">
+              <p:selectOneRadio id="privacy" value="#{scheduleBean.isPublic}">
                                <f:selectItem itemLabel="Public" itemValue="#{true}" />
                                <f:selectItem itemLabel="Private" itemValue="#{false}" />
               </p:selectOneRadio>
-             
-             
-              <h:outputLabel id="forecast" value="Forecast:"/>
-              <h:outputLabel id="prova" value="Prova"/>  
+               
               <p:commandButton type="reset" value="Reset" />
-              <h:form>
-              <p:commandButton id="addButton" value="Save" actionListener="#{scheduleBean.addEvent}"
-                              oncomplete="PF('myschedule').update();PF('eventDialog').hide();"/>
-              </h:form>
+              <p:commandButton id="addButton" value="Save" actionListener="#{scheduleBean.saveEvent}"
+                              onclick="PF('myschedule').update();PF('modifyEventDialog').hide();"/>
            </h:panelGrid>
-        </p:dialog>
-       </h:form> 
-   </ui:define>  
+       </p:dialog>
+       </h:form>
+    </ui:define> 
 </ui:composition>
 
 
