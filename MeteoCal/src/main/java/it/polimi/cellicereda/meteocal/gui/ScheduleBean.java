@@ -119,7 +119,7 @@ public class ScheduleBean implements Serializable{
               calendarManager.changeEventTiming(event, getStartingDate(), getEndingDate());
               System.out.println("the start date is: "+ getStartingDate().toString());
               //correggere
-              calendarManager.changeEventLocation(event, new Place());
+              calendarManager.changeEventLocation(event, null);
               event.setPublicEvent(isIsPublic());
               event.setIsAllDay(isAllDay());
               event.setCreator(currentUser);
