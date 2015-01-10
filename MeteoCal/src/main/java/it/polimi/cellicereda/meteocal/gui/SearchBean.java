@@ -26,7 +26,7 @@ import javax.inject.Named;
 public class SearchBean implements Serializable {
     
     @EJB
-    UserProfileManager userManager;
+    private UserProfileManager userManager;
     
     private User currentUser;
     

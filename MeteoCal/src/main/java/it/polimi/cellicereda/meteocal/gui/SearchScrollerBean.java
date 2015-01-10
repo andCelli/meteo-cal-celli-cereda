@@ -8,6 +8,8 @@ package it.polimi.cellicereda.meteocal.gui;
 import it.polimi.cellicereda.meteocal.entities.User;
 import java.util.List;
 import javax.annotation.ManagedBean;
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 
@@ -20,6 +22,18 @@ import javax.inject.Named;
 @Named
 public class SearchScrollerBean {
     
+    @EJB
+    private SearchBean searchBean;
+    
     private List<User> users;
+    
+    @PostConstruct
+    public void init(){
+        users=searchBean.getSearchResults();
+    }
+    
+    public List<User> getUsers(){
+        return users;
+    }
     
 }
