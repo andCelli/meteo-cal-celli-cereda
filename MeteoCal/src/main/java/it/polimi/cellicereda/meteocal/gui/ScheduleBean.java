@@ -58,20 +58,29 @@ public class ScheduleBean implements Serializable{
     private boolean isPublic;
     private boolean allDay;
     
+    //states whether a user is creating a new event or modifying an existing one
     private boolean newEvent;
+    /*
+    states whether the user is the creator or a partecipant 
+    the buttons in the detail dialog will be rendered accordingly to this flag
+    (a partecipant can't modify the event)
+    normally is true, the modification of an event makes it false
+    */
+    private boolean isCreator;
     
     @PostConstruct
     public void init(){
-        newEvent=false;
-        title=new String();
-        description=new String();
-        startingDate=new Date();
-        endingDate=new Date();
-        location=new String();
+        setNewEvent(true);
+        setTitle(new String());
+        setDescription(new String());
+        setStartingDate(new Date());
+        setEndingDate(new Date());
+        setLocation(new String());
         try{
           currentUser=userProfileManager.getLoggedUser();
           //find all the events in which the user will partecipate 
           model=new DefaultScheduleModel((List<ScheduleEvent>) calendarManager.getEventsByParticipant(currentUser));
+          model=new DefaultScheduleModel((List<ScheduleEvent>) calendarManager.getEventsByCreator(currentUser));
         }catch(Exception e){
            printStackTrace();
            System.err.println("Problems durig init of scheduleBean"); 
@@ -100,16 +109,19 @@ public class ScheduleBean implements Serializable{
     */
     public void saveEvent(){
         //check
-        if(true){
+        System.out.println("the newEvent flag is: "+newEvent);
+        if(newEvent){
            try{
               //set info (va bene farlo prima che venga aggiunto??)
-              calendarManager.changeEventTitle(event, title);
-              calendarManager.changeEventDescription(event, description);
-              calendarManager.changeEventTiming(event, startingDate, endingDate);
+              calendarManager.changeEventTitle(event, getTitle());
+              System.out.println("the title is: "+getTitle());
+              calendarManager.changeEventDescription(event, getDescription());
+              calendarManager.changeEventTiming(event, getStartingDate(), getEndingDate());
+              System.out.println("the start date is: "+ getStartingDate().toString());
               //correggere
               calendarManager.changeEventLocation(event, new Place());
-              event.setPublicEvent(isPublic);
-              event.setIsAllDay(allDay);
+              event.setPublicEvent(isIsPublic());
+              event.setIsAllDay(isAllDay());
               event.setCreator(currentUser);
            }catch(Exception e){
                 printStackTrace();
@@ -123,15 +135,15 @@ public class ScheduleBean implements Serializable{
             }
         }else{
             //@TODO refactor
-            calendarManager.changeEventTitle(event, title);
-            calendarManager.changeEventDescription(event, description);
-            calendarManager.changeEventTiming(event, startingDate, endingDate);
+            calendarManager.changeEventTitle(event, getTitle());
+            calendarManager.changeEventDescription(event, getDescription());
+            calendarManager.changeEventTiming(event, getStartingDate(), getEndingDate());
             //correggere
             calendarManager.changeEventLocation(event, new Place());
-            event.setPublicEvent(isPublic);
-            event.setIsAllDay(allDay);
+            event.setPublicEvent(isIsPublic());
+            event.setIsAllDay(isAllDay());
         }
-        newEvent=false;
+        setNewEvent(true);
         model.addEvent(event);
         event=new Event();
     }
@@ -151,44 +163,16 @@ public class ScheduleBean implements Serializable{
         event=new Event();
     }
     
-    public String getTitle(){
-        return title;
+    /**
+     * This method set the newEvent to false when the user decides to modify
+     * an existing event. 
+     * 
+     * Called by the modify button
+     */
+    public void modify(){
+        setNewEvent(false);
     }
-    public void setTitle(String title){
-        this.title=title;
-    }
-    public String getDescription(){
-        return description;
-    }
-    public void setDescription(String description){
-        this.description=description;
-    }public Date getStartingDate(){
-        return startingDate;
-    }
-    public void setStartingDate(Date startingDate){
-        this.startingDate=startingDate;
-    }public Date getEndingDate(){
-        return endingDate;
-    }
-    public void setEndingDate(Date endingDate){
-        this.endingDate=endingDate;
-    }public String getLocation(){
-        return location;
-    }
-    public void setLocation(String location){
-        this.location=location;
-    }public boolean getIsPublic(){
-        return isPublic;
-    }
-    public void setIsPublic(boolean isPublic){
-        this.isPublic=isPublic;
-    }
-    public boolean getAllDay(){
-        return allDay;
-    }
-    public void setAllDay(boolean allDay){
-        this.allDay=allDay;
-    }
+
 
     /**
      * @return the newEvent
@@ -202,5 +186,103 @@ public class ScheduleBean implements Serializable{
      */
     public void setNewEvent(boolean newEvent) {
         this.newEvent = newEvent;
+    }
+
+    /**
+     * @return the title
+     */
+    public String getTitle() {
+        return title;
+    }
+
+    /**
+     * @param title the title to set
+     */
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    /**
+     * @return the description
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * @param description the description to set
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    /**
+     * @return the startingDate
+     */
+    public Date getStartingDate() {
+        return startingDate;
+    }
+
+    /**
+     * @param startingDate the startingDate to set
+     */
+    public void setStartingDate(Date startingDate) {
+        this.startingDate = startingDate;
+    }
+
+    /**
+     * @return the endingDate
+     */
+    public Date getEndingDate() {
+        return endingDate;
+    }
+
+    /**
+     * @param endingDate the endingDate to set
+     */
+    public void setEndingDate(Date endingDate) {
+        this.endingDate = endingDate;
+    }
+
+    /**
+     * @return the location
+     */
+    public String getLocation() {
+        return location;
+    }
+
+    /**
+     * @param location the location to set
+     */
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    /**
+     * @return the isPublic
+     */
+    public boolean isIsPublic() {
+        return isPublic;
+    }
+
+    /**
+     * @param isPublic the isPublic to set
+     */
+    public void setIsPublic(boolean isPublic) {
+        this.isPublic = isPublic;
+    }
+
+    /**
+     * @return the allDay
+     */
+    public boolean isAllDay() {
+        return allDay;
+    }
+
+    /**
+     * @param allDay the allDay to set
+     */
+    public void setAllDay(boolean allDay) {
+        this.allDay = allDay;
     }
 }
