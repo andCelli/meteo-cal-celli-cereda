@@ -43,10 +43,12 @@ The template defines: 1) the basic layout that will be used in all the logged-us
            <!--This will contain the top bar--> 
            <p:layoutUnit position="north" size="55px" resizable="false" >  
  
-                   <p:panelGrid id="commandGrid" columns="4" 
+                   <p:panelGrid id="commandGrid" columns="5" 
                                 style="background-color:mediumspringgreen;border: none;height: 54px;">
                    <p:inputText  placeholder="Search"
-                                style="margin-right:10px; background-color:mediumspringgreen;border: none;"/>
+                                style="margin-right:10px; background-color:mediumspringgreen;border: none;"
+                                value="#{searchBean.searchKey}"/>
+                   <p:commandButton id="searchButton" value="Search" action="#{searchBean.search()}"/>
                    <p:link  value="home" outcome="home"/>
                    <p:link  value="settings" outcome="settings"/>
                    <h:form>
