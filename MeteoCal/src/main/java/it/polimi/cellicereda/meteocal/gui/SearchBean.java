@@ -59,7 +59,7 @@ public class SearchBean implements Serializable {
         //search for username
         //user can't search for his calendar
         if(!currentUser.getUsername().equals(searchKey)){
-            results.add((User) userManager.getByUsername(searchKey));
+            results.addAll(userManager.getByUsername(searchKey));
         }
         //search for (name + surmane) (and check that the user is not already in the list
         for(User u:userManager.getBySurname(searchKey))
