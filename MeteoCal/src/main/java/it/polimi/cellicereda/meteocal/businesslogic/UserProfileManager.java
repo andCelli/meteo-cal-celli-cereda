@@ -60,15 +60,15 @@ public class UserProfileManager {
     }
 
     public List<User> getByName(String name) {
-        return em.createNamedQuery("user.findByName").setParameter("name", name).getResultList();
+        return em.createNamedQuery("User.findByName").setParameter("name", name).getResultList();
     }
 
     public List<User> getByUsername(String username) {
-        return em.createNamedQuery("user.findByUsername").setParameter("username", username).getResultList();
+        return em.createNamedQuery("User.findByUsername").setParameter("username", username).getResultList();
     }
 
     public List<User> getBySurname(String surname) {
-        return em.createNamedQuery("user.findBySurname").setParameter("surname", surname).getResultList();
+        return em.createNamedQuery("User.findBySurname").setParameter("surname", surname).getResultList();
     }
 
 }
