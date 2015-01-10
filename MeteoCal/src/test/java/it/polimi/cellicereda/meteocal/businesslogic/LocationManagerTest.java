@@ -7,10 +7,12 @@ package it.polimi.cellicereda.meteocal.businesslogic;
 
 import it.polimi.cellicereda.meteocal.entities.Place;
 import javax.persistence.EntityManager;
+import org.eclipse.persistence.exceptions.PersistenceUnitLoadingException;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 import static org.mockito.Mockito.*;
 
 /**
@@ -35,9 +37,7 @@ public class LocationManagerTest {
     @Test
     public void initializePlaceList() {
         lm.initializePlaceList();
-        //TODO
-        //this is failing, but stepping with the debugger shows it's workig well...mhhh
-        verify(lm.em).persist(any(Place.class));
+        verify(lm.em, times(74071)).persist(any());
     }
 
 }
