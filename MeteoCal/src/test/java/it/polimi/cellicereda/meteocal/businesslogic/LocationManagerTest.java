@@ -5,14 +5,10 @@
  */
 package it.polimi.cellicereda.meteocal.businesslogic;
 
-import it.polimi.cellicereda.meteocal.entities.Place;
 import javax.persistence.EntityManager;
-import org.eclipse.persistence.exceptions.PersistenceUnitLoadingException;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 import static org.mockito.Mockito.*;
 
 /**
