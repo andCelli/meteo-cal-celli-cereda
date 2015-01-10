@@ -6,6 +6,7 @@
 package it.polimi.cellicereda.meteocal.businesslogic;
 
 import it.polimi.cellicereda.meteocal.entities.Place;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
@@ -21,14 +22,12 @@ public class LocationManager {
     EntityManager em;
 
     public void initializePlaceList() {
-        em.createNamedQuery("Place.deleteAll").executeUpdate();
-
         try {
             String placesList = URLConnectionReader.getText("http://openweathermap.org/help/city_list.txt");
-            String places[] = placesList.split("\\r?\\n");
+            String places[] = placesList.split("\\n");
 
             //the first line is descriptive
-            for (int i = 1; i <= places.length; i++) {
+            for (int i = 1; i < places.length; i++) {
                 String values[] = places[i].split("\\t");
 
                 Place p = new Place();
@@ -43,6 +42,9 @@ public class LocationManager {
         } catch (Exception ex) {
             Logger.getLogger(LocationManager.class.getName()).log(Level.SEVERE, "Error while creating the places list", ex);
         }
+    }
 
+    public List<Place> getAllPlaces() {
+        return em.createNamedQuery("Place.findAll").getResultList();
     }
 }
