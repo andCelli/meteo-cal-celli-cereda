@@ -5,9 +5,11 @@
  */
 package it.polimi.cellicereda.meteocal.gui;
 
+import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import it.polimi.cellicereda.meteocal.businesslogic.CalendarManager;
 import it.polimi.cellicereda.meteocal.businesslogic.UserProfileManager;
 import it.polimi.cellicereda.meteocal.entities.Event;
+import it.polimi.cellicereda.meteocal.entities.Place;
 import it.polimi.cellicereda.meteocal.entities.User;
 import java.io.Serializable;
 import java.util.Date;
@@ -56,12 +58,24 @@ public class ScheduleBean implements Serializable{
     private boolean isPublic;
     private boolean allDay;
     
+    private boolean newEvent;
     
     @PostConstruct
-    public void init(){  
-        currentUser=userProfileManager.getLoggedUser();
-        //find all the events in which the user will partecipate 
-        model=new DefaultScheduleModel((List<ScheduleEvent>) calendarManager.getEventsByParticipant(currentUser));
+    public void init(){
+        newEvent=false;
+        title=new String();
+        description=new String();
+        startingDate=new Date();
+        endingDate=new Date();
+        location=new String();
+        try{
+          currentUser=userProfileManager.getLoggedUser();
+          //find all the events in which the user will partecipate 
+          model=new DefaultScheduleModel((List<ScheduleEvent>) calendarManager.getEventsByParticipant(currentUser));
+        }catch(Exception e){
+           printStackTrace();
+           System.err.println("Problems durig init of scheduleBean"); 
+        }
     }        
     
     public ScheduleModel getModel() {
@@ -86,29 +100,39 @@ public class ScheduleBean implements Serializable{
     */
     public void saveEvent(){
         //check
-        if(event.getTitle().equals(null)){
-            //set info (va bene farlo prima che venga aggiunto??)
-            calendarManager.changeEventTitle(event, title);
-            calendarManager.changeEventDescription(event, description);
-            calendarManager.changeEventTiming(event, startingDate, endingDate);
-            //correggere
-            //calendarManager.changeEventLocation(event, startingDate);
-            event.setPublicEvent(isPublic);
-            event.setIsAllDay(allDay);
-            event.setCreator(currentUser);
-            calendarManager.save(event);
+        if(true){
+           try{
+              //set info (va bene farlo prima che venga aggiunto??)
+              calendarManager.changeEventTitle(event, title);
+              calendarManager.changeEventDescription(event, description);
+              calendarManager.changeEventTiming(event, startingDate, endingDate);
+              //correggere
+              calendarManager.changeEventLocation(event, new Place());
+              event.setPublicEvent(isPublic);
+              event.setIsAllDay(allDay);
+              event.setCreator(currentUser);
+           }catch(Exception e){
+                printStackTrace();
+                System.err.println("Problems while updating the event");
+           }
+            try{
+                calendarManager.save(event);
+            }catch(Exception e){
+                printStackTrace();
+                System.err.println("Problems while saving the event");
+            }
         }else{
             //@TODO refactor
             calendarManager.changeEventTitle(event, title);
             calendarManager.changeEventDescription(event, description);
             calendarManager.changeEventTiming(event, startingDate, endingDate);
             //correggere
-            //calendarManager.changeEventLocation(event, startingDate);
+            calendarManager.changeEventLocation(event, new Place());
             event.setPublicEvent(isPublic);
             event.setIsAllDay(allDay);
         }
+        newEvent=false;
         model.addEvent(event);
-       // modifyForm=false;
         event=new Event();
     }
     
@@ -164,5 +188,19 @@ public class ScheduleBean implements Serializable{
     }
     public void setAllDay(boolean allDay){
         this.allDay=allDay;
+    }
+
+    /**
+     * @return the newEvent
+     */
+    public boolean isNewEvent() {
+        return newEvent;
+    }
+
+    /**
+     * @param newEvent the newEvent to set
+     */
+    public void setNewEvent(boolean newEvent) {
+        this.newEvent = newEvent;
     }
 }

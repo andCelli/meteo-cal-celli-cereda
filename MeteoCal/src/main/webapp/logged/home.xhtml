@@ -54,7 +54,7 @@ This is the logged-user homepage.
        <h:form>     
         <p:growl id="messages" showDetail="true" />
         
-        <p:commandButton value="New Event" id="newEvent" onclick="PF('modifyEventDialog').show();"/>
+        <p:commandButton value="New Event" id="newEvent" onclick="PF('modifyEventDialog').show();#{scheduleBean.setNewEvent(true)}"/>
    
         <p:dialog widgetVar="modifyEventDialog" header="Event Details" showEffect="clip" hideEffect="clip" position="right" draggable="false">
       
