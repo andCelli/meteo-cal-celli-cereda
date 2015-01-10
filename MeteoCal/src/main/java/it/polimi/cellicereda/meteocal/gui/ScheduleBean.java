@@ -92,7 +92,7 @@ public class ScheduleBean implements Serializable{
             calendarManager.changeEventDescription(event, description);
             calendarManager.changeEventTiming(event, startingDate, endingDate);
             //correggere
-            calendarManager.changeEventLocation(event, startingDate);
+            //calendarManager.changeEventLocation(event, startingDate);
             event.setPublicEvent(isPublic);
             event.setIsAllDay(allDay);
             event.setCreator(currentUser);
@@ -103,7 +103,7 @@ public class ScheduleBean implements Serializable{
             calendarManager.changeEventDescription(event, description);
             calendarManager.changeEventTiming(event, startingDate, endingDate);
             //correggere
-            calendarManager.changeEventLocation(event, startingDate);
+            //calendarManager.changeEventLocation(event, startingDate);
             event.setPublicEvent(isPublic);
             event.setIsAllDay(allDay);
         }
