@@ -17,6 +17,7 @@ import java.util.List;
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -33,7 +34,7 @@ import org.primefaces.model.ScheduleModel;
  * @author Andrea
  */
 @ManagedBean
-@ViewScoped
+@SessionScoped
 @Named
 public class ScheduleBean implements Serializable{
     
@@ -41,11 +42,13 @@ public class ScheduleBean implements Serializable{
     CalendarManager calendarManager;
     @EJB
     UserProfileManager userProfileManager;
+    
+    DetailsEventBean detailsEventBean;
  
     //this will contain the list of events to be displayed
     private ScheduleModel model;
     private User currentUser;
-    private Event event;
+  
   
     /*
     states whether the user is the creator or a partecipant 
@@ -54,11 +57,11 @@ public class ScheduleBean implements Serializable{
     normally is true, the modification of an event makes it false
     */
     private boolean isCreator;
-    private boolean newEvent;
+   
+    private FacesContext context;
     
     @PostConstruct
     public void init(){
-        event=new Event();
         try{
           currentUser=userProfileManager.getLoggedUser();
           //find all the events in which the user will partecipate 
@@ -71,6 +74,12 @@ public class ScheduleBean implements Serializable{
            printStackTrace();
            System.err.println("Problems durig init of scheduleBean"); 
         }
+        try{
+             context=FacesContext.getCurrentInstance();           
+             detailsEventBean=(DetailsEventBean) context.getApplication().evaluateExpressionGet(context, "#{detailsEventBean}", DetailsEventBean.class);
+        }catch(Exception e){
+            System.err.println("error in the ScheduleBean init while retrieving the DetailsEventBean");
+        }
     }        
     
     public ScheduleModel getModel() {
@@ -79,54 +88,19 @@ public class ScheduleBean implements Serializable{
     public void setModel(ScheduleModel model){
         this.model=model;
     }
-    public Event getEvent(){
-        return event;
-    }
-    public void setEvent(Event event){
-        this.event = event; 
-    }
+   
     private void addMessage(FacesMessage message) {
         FacesContext.getCurrentInstance().addMessage(null, message);
     } 
     
-    /*
-    This methods gets the selected event 
-    */
+    /**
+     * This method get the selected event, sets the creator flag in the details bean
+     * and set to the selected event the details 
+     * @param SelectEvent
+     */
     public void onEventSelect(SelectEvent e) {
-       setEvent((Event) (ScheduleEvent) e.getObject());
-    } 
-    /*
-    This method deletes the selected event
-    */
-    public void delete(){
-        model.deleteEvent(getEvent());
-        calendarManager.delete(getEvent());
-        setEvent(new Event());
-    }
-    
-    /**
-     * This method set the newEvent to false when the user decides to modify
-     * an existing event. 
-     * 
-     * Called by the modify button
-     */
-    public void modify(){
-        setNewEvent(false);
-    }
-
-    /**
-     * @return the newEvent
-     */
-    public boolean isNewEvent() {
-        return newEvent;
-    }
-
-    /**
-     * @param newEvent the newEvent to set
-     */
-    public void setNewEvent(boolean newEvent) {
-        this.newEvent = newEvent;
-    }
-
-    
+       Event event=(Event)e.getObject();
+       detailsEventBean.setEvent(event);
+       detailsEventBean.setIsCreator(event.getCreator().equals(currentUser));
+       } 
 }

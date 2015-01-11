@@ -27,27 +27,28 @@ This is the logged-user homepage.
         <!--Event details--> 
          <p:dialog widgetVar="eventDetailsDialog" header="Event Details" showEffect="clip" hideEffect="clip">
              <p:panelGrid id="eventDetails" columns="2">
-                 <h:outputLabel for="title" value="Title:"/>
-                 <h:outputLabel id="title" value="#{scheduleBean.event.title}"/>
-                 <h:outputLabel for="description" value="Description:"/>
-                 <h:outputLabel id="description" value="#{scheduleBean.event.description}"/>
-                 <h:outputLabel for="startingTime" value="From:" />
-                 <p:calendar id="startingTime" value="#{scheduleBean.event.startDate}" readonly="true" pattern="MM/dd/yyyy HH:mm:ss" />
-                 <h:outputLabel for="endingTime" value="To:" />
-                 <p:calendar id="endingTime" value="#{scheduleBean.event.endDate}" readonly="true" pattern="MM/dd/yyyy HH:mm:ss" />
-                 <!--LOCATION-->
-                 <h:outputLabel for="privacy" value="Privacy:"/>
-                 <p:selectOneRadio id="privacy" value="#{scheduleBean.event.publicEvent}" disabled="true">
+                 <h:outputLabel for="titleDet" value="Title:"/>
+                 <p:outputLabel id="titleDet" value="#{detailsEventBean.event.title}"/>
+                 <h:outputLabel for="descriptionDet" value="Description:"/>
+                 <p:outputLabel id="descriptionDet" value="#{detailsEventBean.event.description}"/>
+                 <h:outputLabel for="startingTimeDet" value="From:" />
+                 <p:calendar id="startingTimeDet" value="#{detailsEventBean.event.startDate}" readonly="true" pattern="MM/dd/yyyy HH:mm:ss" />
+                 <h:outputLabel for="endingTimeDet" value="To:" />
+                 <p:calendar id="endingTimeDet" value="#{detailsEventBean.event.endDate}" readonly="true" pattern="MM/dd/yyyy HH:mm:ss" />
+                 <h:outputLabel for="locationDet" value="Location: "/>
+                 <p:outputLabel id="locationDet" value="#{detailsEventBean.event.eventLocation}"/>
+                 <h:outputLabel for="privacyDet" value="Privacy:"/>
+                 <p:selectOneRadio id="privacyDet" value="#{detailsEventBean.event.publicEvent}" disabled="true">
                                <f:selectItem itemLabel="Public" itemValue="#{true}" />
                                <f:selectItem itemLabel="Private" itemValue="#{false}" />
                  </p:selectOneRadio>
-                 <h:outputLabel for="forecast" value="Forecast:"/>
-                 <h:outputLabel id="forecast" value="TODO"/>
+                 <h:outputLabel for="forecastDet" value="Forecast:"/>
+                 <p:outputLabel id="forecastDet" value="TODO"/>
                  
                  <p:commandButton id="modifyButton" value="Modify" 
                                   onclick="PF('modifyEventDialog').show();PF('eventDetailsDialog').hide();"/>
-                 <p:commandButton id="deleteButton" value="Delete" 
-                                  onclick="#{scheduleBean.delete()};PF('eventDetailsDialog').hide();PF('myschedule').update();" />
+                <!-- <p:commandButton id="deleteButton" value="Delete" 
+                                  onclick="#{detailsEventBean.delete()};PF('eventDetailsDialog').hide();PF('myschedule').update();" />-->
              </p:panelGrid> 
          </p:dialog>
      </h:form>
@@ -92,10 +93,7 @@ This is the logged-user homepage.
               <p:commandButton type="reset" value="Reset" />
               
               <p:commandButton id="addButton" value="Save" 
-                               onclick="#{modifyEventBean.saveEvent()};PF('myschedule').update();PF('modifyEventDialog').hide();">
-                  <f:ajax event="click"/>
-              </p:commandButton>
-              
+                               onclick="#{modifyEventBean.saveEvent()};PF('myschedule').update();PF('modifyEventDialog').hide();"/>
            </h:panelGrid>
        </p:dialog>
        </h:form>
