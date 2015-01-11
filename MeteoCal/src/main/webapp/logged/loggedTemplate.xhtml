@@ -38,6 +38,10 @@ The template defines: 1) the basic layout that will be used in all the logged-us
             }
             #commandGrid{
                 border:none !important;
+                background-color: mediumspringgreen;
+            }
+            #topDivision{
+                background-color: mediumspringgreen;
             }
         </style>    
     </h:head>
@@ -45,7 +49,8 @@ The template defines: 1) the basic layout that will be used in all the logged-us
        <p:layout fullPage="true">
            <!--This will contain the top bar--> 
            <p:layoutUnit position="north" size="55px" resizable="false" >  
- 
+               <p:layout id="topDivision">
+                   <p:layoutUnit position="east">
                    <p:panelGrid id="commandGrid" columns="5">    
                        <h:form>
                        <p:inputText id="searchKey"  value="#{searchBean.searchKey}" 
@@ -58,6 +63,9 @@ The template defines: 1) the basic layout that will be used in all the logged-us
                       <p:commandLink action="#{loginBean.logout()}" value="logout"/>
                    </h:form>
                    </p:panelGrid>
+                   </p:layoutUnit>
+                   <p:layoutUnit position="center"/>
+               </p:layout>   
             </p:layoutUnit>
 
             <p:layoutUnit position="west" size="250"  resizable="false"/>

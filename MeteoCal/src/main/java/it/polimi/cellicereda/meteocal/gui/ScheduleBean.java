@@ -122,12 +122,13 @@ public class ScheduleBean implements Serializable{
               calendarManager.changeEventLocation(event, null);
               event.setPublicEvent(isIsPublic());
               event.setIsAllDay(isAllDay());
-              event.setCreator(currentUser);
+              event.setCreator(userProfileManager.getByEmail(currentUser.getEmail()));
            }catch(Exception e){
                 printStackTrace();
                 System.err.println("Problems while updating the event");
            }
             try{
+                System.out.println("user id: "+event.getCreator().getEmail());
                 calendarManager.save(event);
             }catch(Exception e){
                 printStackTrace();
