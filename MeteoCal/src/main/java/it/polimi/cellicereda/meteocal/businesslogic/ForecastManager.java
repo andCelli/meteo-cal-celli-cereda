@@ -136,7 +136,7 @@ public class ForecastManager {
             if (num == 5) {
                 num = 4;
             }
-            url += "0" + num + ".png";
+            url += "0" + num + "d.png";
         }
 
         return url;
@@ -154,8 +154,8 @@ public class ForecastManager {
      */
     public boolean isGoodWeather(int weatherID) {
         String icon = getUrlOfWeatherIcon(weatherID);
-        //remove ".png" and go to the first number
-        int beginning = icon.length() - 6;
+        //remove "d.png" and go to the first number
+        int beginning = icon.length() - 7;
         int num = Integer.parseInt(icon.substring(beginning, beginning + 2));
 
         if (num <= 4) {

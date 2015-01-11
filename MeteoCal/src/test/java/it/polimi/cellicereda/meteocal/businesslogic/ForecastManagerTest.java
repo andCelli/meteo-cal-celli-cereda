@@ -8,6 +8,7 @@ package it.polimi.cellicereda.meteocal.businesslogic;
 import it.polimi.cellicereda.meteocal.entities.Place;
 import javax.persistence.EntityManager;
 import org.junit.After;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
@@ -56,6 +57,24 @@ public class ForecastManagerTest {
     @Test
     public void isGoodWeather() {
         assertTrue(fm.isGoodWeather(800));
+        assertTrue(fm.isGoodWeather(801));
+        assertTrue(fm.isGoodWeather(802));
+        assertTrue(fm.isGoodWeather(803));
+        assertTrue(fm.isGoodWeather(804));
+
+        assertFalse(fm.isGoodWeather(200));
+        assertFalse(fm.isGoodWeather(232));
+        assertFalse(fm.isGoodWeather(300));
+        assertFalse(fm.isGoodWeather(321));
+        assertFalse(fm.isGoodWeather(500));
+        assertFalse(fm.isGoodWeather(511));
+        assertFalse(fm.isGoodWeather(520));
+        assertFalse(fm.isGoodWeather(531));
+        assertFalse(fm.isGoodWeather(600));
+        assertFalse(fm.isGoodWeather(622));
+        assertFalse(fm.isGoodWeather(701));
+        assertFalse(fm.isGoodWeather(781));
+
     }
 
 }
