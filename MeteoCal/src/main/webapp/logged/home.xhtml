@@ -46,7 +46,7 @@ This is the logged-user homepage.
                  <p:outputLabel id="forecastDet" value="TODO"/>
                  
                  <p:commandButton id="modifyButton" value="Modify" 
-                                  onclick="PF('modifyEventDialog').show();PF('eventDetailsDialog').hide();"/>
+                                  onclick="#{detailsEventBean.modify()};PF('modifyEventDialog').show();PF('eventDetailsDialog').hide();"/>
                 <!-- <p:commandButton id="deleteButton" value="Delete" 
                                   onclick="#{detailsEventBean.delete()};PF('eventDetailsDialog').hide();PF('myschedule').update();" />-->
              </p:panelGrid> 
@@ -89,11 +89,11 @@ This is the logged-user homepage.
                                <f:selectItem itemLabel="Public" itemValue="#{true}" />
                                <f:selectItem itemLabel="Private" itemValue="#{false}" />
               </p:selectOneRadio>
-               
-              <p:commandButton type="reset" value="Reset" />
               
+              <p:commandButton type="reset" value="Reset" />
               <p:commandButton id="addButton" value="Save" 
                                onclick="#{modifyEventBean.saveEvent()};PF('myschedule').update();PF('modifyEventDialog').hide();"/>
+              
            </h:panelGrid>
        </p:dialog>
        </h:form>

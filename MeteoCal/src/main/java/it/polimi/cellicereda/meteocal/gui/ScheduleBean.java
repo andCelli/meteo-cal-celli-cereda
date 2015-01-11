@@ -62,6 +62,7 @@ public class ScheduleBean implements Serializable{
     
     @PostConstruct
     public void init(){
+        System.out.println("Parto: ScheduleBean");
         try{
           currentUser=userProfileManager.getLoggedUser();
           //find all the events in which the user will partecipate 

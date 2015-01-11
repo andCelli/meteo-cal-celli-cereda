@@ -69,6 +69,7 @@ public class ModifyEventBean implements Serializable{
         setEndingDate(new Date());
         setLocation(new String());
         currentUser=userProfileManager.getLoggedUser();
+        System.out.println("Parto: ScheduleBean");
     }
     /*
     This method checks whether the user is modifying an existing event or he's creating
