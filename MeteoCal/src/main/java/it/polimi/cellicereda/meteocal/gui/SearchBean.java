@@ -80,11 +80,11 @@ public class SearchBean implements Serializable {
                 results.add(u);*/
        //search for surname
         for(User u:userManager.getBySurname(getSearchKey()))
-            if(!results.contains(u))
+            if(!results.contains(u) && !u.equals(currentUser))
                 results.add(u);
        //search for name
         for(User u:userManager.getByName(getSearchKey()))
-            if(!results.contains(u))
+            if(!results.contains(u) && !u.equals(currentUser))
                 results.add(u);
             System.out.println("Search key: "+getSearchKey());
         }catch(Exception e){
