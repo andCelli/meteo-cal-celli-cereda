@@ -25,7 +25,11 @@ import javax.validation.constraints.NotNull;
     @NamedQuery(name = "Place.findAll",
             query = "SELECT p FROM Place p"),
     @NamedQuery(name = "Place.deleteAll",
-            query = "DELETE FROM Place")})
+            query = "DELETE FROM Place"),
+    @NamedQuery(name = "Place.findByID",
+            query = "SELECT p FROM Place p WHERE p.id = :ID"),
+    @NamedQuery(name = "Place.findByName",
+            query = "SELECT p FROM Place p WHERE p.name = :name"),})
 
 public class Place implements Serializable {
 
@@ -123,7 +127,7 @@ public class Place implements Serializable {
 
     @Override
     public String toString() {
-        return "it.polimi.cellicereda.meteocal.entities.Place[ id=" + id + " ]";
+        return name + " (" + country + ")";
     }
 
 }

@@ -26,8 +26,8 @@ public class LocationManager {
      * be called only once, at the startup of the system
      */
     public void initializePlaceList() {
+        em.createNamedQuery("Place.deleteAll").executeUpdate();
 
-       em.createNamedQuery("Place.deleteAll").executeUpdate();
         try {
             String placesList = URLConnectionReader.getText("http://openweathermap.org/help/city_list.txt");
             String places[] = placesList.split("\\n");
@@ -50,7 +50,34 @@ public class LocationManager {
         }
     }
 
+    /**
+     * Return the list of all the places in the DB
+     *
+     * @return All the places
+     */
     public List<Place> getAllPlaces() {
         return em.createNamedQuery("Place.findAll").getResultList();
+    }
+
+    /**
+     * Search a place by its ID
+     *
+     * @param id The searched ID
+     * @return The place that has that ID (or null)
+     */
+    public Place getPlaceByID(Long id) {
+        return (Place) em.createNamedQuery("Place.findByID").
+                setParameter("ID", id).getSingleResult();
+    }
+
+    /**
+     * Search a place by the name
+     *
+     * @param name The wanted name
+     * @return All the places with that name
+     */
+    public List<Place> getPlaceByName(String name) {
+        return em.createNamedQuery("Place.findByName").
+                setParameter("name", name).getResultList();
     }
 }
