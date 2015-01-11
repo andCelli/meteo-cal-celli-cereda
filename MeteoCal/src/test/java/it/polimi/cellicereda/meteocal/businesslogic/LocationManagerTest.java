@@ -6,9 +6,12 @@
 package it.polimi.cellicereda.meteocal.businesslogic;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import static org.mockito.Mockito.*;
 
 /**
@@ -19,10 +22,16 @@ public class LocationManagerTest {
 
     private LocationManager lm;
 
+    @Mock
+    private Query query;
+
     @Before
     public void setUp() {
         lm = new LocationManager();
         lm.em = mock(EntityManager.class);
+        query = mock(Query.class);
+
+        Mockito.when(lm.em.createNamedQuery("Place.deleteAll")).thenReturn(query);
     }
 
     @After

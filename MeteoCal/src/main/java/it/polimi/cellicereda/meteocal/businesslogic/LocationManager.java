@@ -21,7 +21,13 @@ public class LocationManager {
     @PersistenceContext
     EntityManager em;
 
+    /**
+     * This method downloads the luist of places from openweathermap, it should
+     * be called only once, at the startup of the system
+     */
     public void initializePlaceList() {
+
+       em.createNamedQuery("Place.deleteAll").executeUpdate();
         try {
             String placesList = URLConnectionReader.getText("http://openweathermap.org/help/city_list.txt");
             String places[] = placesList.split("\\n");
