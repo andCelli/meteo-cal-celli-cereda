@@ -45,7 +45,7 @@ public class ScheduleBean implements Serializable{
     //this will contain the list of events to be displayed
     private ScheduleModel model;
     private User currentUser;
-    private Event event=new Event();
+    private Event event;
   
     /*
     states whether the user is the creator or a partecipant 
@@ -58,11 +58,15 @@ public class ScheduleBean implements Serializable{
     
     @PostConstruct
     public void init(){
+        event=new Event();
         try{
           currentUser=userProfileManager.getLoggedUser();
           //find all the events in which the user will partecipate 
-          model=new DefaultScheduleModel((List<ScheduleEvent>) calendarManager.getEventsByParticipant(currentUser));
+          //created events
           model=new DefaultScheduleModel((List<ScheduleEvent>) calendarManager.getEventsByCreator(currentUser));
+          //partecipating events
+          for(Event e:(List<Event>)calendarManager.getEventsByParticipant(currentUser))
+              model.addEvent(e);
         }catch(Exception e){
            printStackTrace();
            System.err.println("Problems durig init of scheduleBean"); 

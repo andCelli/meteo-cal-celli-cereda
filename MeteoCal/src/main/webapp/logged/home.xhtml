@@ -9,13 +9,16 @@ This is the logged-user homepage.
 @author Andrea
 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition template="/logged/loggedTemplate.xhtml"
-      xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    
+    <h:head>
+        <title>meteoCal</title>
+    </h:head>
+ <h:body>
+   <ui:composition template="/logged/loggedTemplate.xhtml" >   
     <ui:define name="contentCenter">
      <h:form>
          <p:schedule value="#{scheduleBean.model}"  widgetVar="myschedule" timeZone="GMT+2">
@@ -87,12 +90,18 @@ This is the logged-user homepage.
               </p:selectOneRadio>
                
               <p:commandButton type="reset" value="Reset" />
+              
               <p:commandButton id="addButton" value="Save" 
-                              onclick="#{modifyEventBean.saveEvent()};PF('myschedule').update();PF('modifyEventDialog').hide();"/>
+                               onclick="#{modifyEventBean.saveEvent()};PF('myschedule').update();PF('modifyEventDialog').hide();">
+                  <f:ajax event="click"/>
+              </p:commandButton>
+              
            </h:panelGrid>
        </p:dialog>
        </h:form>
     </ui:define> 
 </ui:composition>
+</h:body>
+</html> 
 
 
