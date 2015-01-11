@@ -8,13 +8,13 @@ package it.polimi.cellicereda.meteocal.businesslogic;
 import it.polimi.cellicereda.meteocal.entities.Place;
 import javax.persistence.EntityManager;
 import org.junit.After;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 import static org.mockito.Matchers.any;
 import org.mockito.Mockito;
 import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 /**
@@ -49,8 +49,13 @@ public class ForecastManagerTest {
 
     @Test
     public void getNewForecastsByCityID() {
-        fm.getNewForecastsByCityID((long) 524901);
+        fm.persistNewForecastsByCityID((long) 524901);
         verify(fm.em, atLeast(10)).persist(any());
+    }
+
+    @Test
+    public void isGoodWeather() {
+        assertTrue(fm.isGoodWeather(800));
     }
 
 }

@@ -26,7 +26,9 @@ import javax.validation.constraints.NotNull;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "Forecast.findAll",
-            query = "SELECT f FROM Forecast f"),})
+            query = "SELECT f FROM Forecast f"),
+    @NamedQuery(name = "Forecast.findByPlaceAndTime",
+            query = "SELECT f FROM Forecast f WHERE f.id = :id AND f.startingValidity <= :time AND f.endingValidity >= :time")})
 public class Forecast implements Serializable {
 
     private static final long serialVersionUID = 1L;

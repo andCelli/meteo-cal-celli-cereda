@@ -5,11 +5,9 @@
  */
 package it.polimi.cellicereda.meteocal.businesslogic;
 
+import it.polimi.cellicereda.meteocal.entities.Event;
 import it.polimi.cellicereda.meteocal.entities.Forecast;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
+import it.polimi.cellicereda.meteocal.entities.Place;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -37,21 +35,16 @@ public class ForecastManager {
      * Download from openweathermap the forecasts for the given city, the
      * forecast have a time span of 5 days with data every 3 hours
      */
-    private String downloadForecastsByCityID(Long cityID) {
-        try {
-            String url = "http://api.openweathermap.org/data/2.5/forecast?id=" + cityID;
-            return URLConnectionReader.getText(url);
-        } catch (Exception e) {
-            Logger.getLogger(ForecastManager.class.getName()).log(Level.SEVERE, "Unable to download forecasts", e);
-            return null;
-        }
+    private String downloadForecastsByCityID(Long cityID) throws Exception {
+        String url = "http://api.openweathermap.org/data/2.5/forecast?id=" + cityID;
+        return URLConnectionReader.getText(url);
     }
 
     /**
      * Given a cityID this method queries openweathermap to obtain the updated
-     * forecast, which are then returned as a list
+     * forecast, which are then persisted in the database.
      */
-    public List<Forecast> getNewForecastsByCityID(Long cityID) {
+    public void persistNewForecastsByCityID(Long cityID) {
         try {
             JSONObject entireForecast = new JSONObject(downloadForecastsByCityID(cityID));
             JSONArray forecastList = entireForecast.getJSONArray("list");
@@ -67,7 +60,7 @@ public class ForecastManager {
                 //SET THE PLACE
                 forecast.setPlace(lm.getPlaceByID(cityID));
 
-                //TODO:SET THE STARTING/ENDING VALIDITY TIME (time coverage = 3 hours)
+                //SET THE STARTING/ENDING VALIDITY TIME (time coverage = 3 hours)
                 Date starting = new Date(forecastJson.getLong("dt") * 1000);
                 Date ending = new Date(starting.getTime() + (3 * 60 * 60 * 1000));
                 forecast.setStartingValidity(starting);
@@ -83,11 +76,91 @@ public class ForecastManager {
                 em.persist(forecast);
             }
 
-        } catch (JSONException ex) {
-            Logger.getLogger(ForecastManager.class.getName()).log(Level.SEVERE, "Unable to download forecasts", ex);
-            return null;
+        } catch (Exception ex) {
+            Logger.getLogger(ForecastManager.class
+                    .getName()).log(Level.SEVERE, "Unable to download forecasts", ex);
+        }
+    }
+
+    /**
+     * Given an event search for a forecast that is related to the same place of
+     * the event and has a temporal validity that includes the beginning of the
+     * given event. The value returned is the weather id of the obtained
+     * forecast. For a list of the weather id see
+     * http://openweathermap.org/weather-conditions If no forecast is available
+     * the reruned value is 0
+     *
+     * @param e The event to search a forecast for
+     * @return The weather id or 0 if no forecast is available
+     */
+    public int getWeatherForEvent(Event e) {
+        Place location = e.getEventLocation();
+        Date time = e.getStartDate();
+
+        Forecast f = (Forecast) em.createNamedQuery("Forecast.findByPlaceAndTime").
+                setParameter("id", location.getId()).
+                setParameter("time", time).getSingleResult();
+
+        if (f != null) {
+            return f.getWeatherId();
+        }
+        return 0;
+    }
+
+    /**
+     * Given a weather id search for the icon that represents the weather
+     * according to http://openweathermap.org/weather-conditions
+     *
+     * @param weatherID An openweathermap weather id
+     * @return The path of the icon representing the weather
+     */
+    public String getUrlOfWeatherIcon(int weatherID) {
+        String url = "http://openweathermap.org/img/w/";
+
+        if (isBetween(weatherID, 200, 232)) {
+            url += "11d.png";
+        } else if (isBetween(weatherID, 300, 321)) {
+            url += "09d.png";
+        } else if (isBetween(weatherID, 500, 504)) {
+            url += "10d.png";
+        } else if (weatherID == 511) {
+            url += "13d.png";
+        } else if (isBetween(weatherID, 520, 531)) {
+            url += "09d.png";
+        } else if (isBetween(weatherID, 600, 622)) {
+            url += "13d.png";
+        } else if (isBetween(weatherID, 700, 781)) {
+            url += "50d.png";
+        } else if (isBetween(weatherID, 800, 804)) {
+            Integer num = (weatherID % 10) + 1;
+            if (num == 5) {
+                num = 4;
+            }
+            url += "0" + num + ".png";
         }
 
-        return null;
+        return url;
+    }
+
+    private boolean isBetween(int num, int min, int max) {
+        return (min <= num && num <= max);
+    }
+
+    /**
+     * Given a weather id check if it represents a "good" weather. The check is
+     * done according to the weather icon
+     * (http://openweathermap.org/weather-conditions) icon from 1 to 4 are
+     * considered "good weather", the other "bad weather"
+     */
+    public boolean isGoodWeather(int weatherID) {
+        String icon = getUrlOfWeatherIcon(weatherID);
+        //remove ".png" and go to the first number
+        int beginning = icon.length() - 6;
+        int num = Integer.parseInt(icon.substring(beginning, beginning + 2));
+
+        if (num <= 4) {
+            return true;
+        }
+        return false;
     }
 }
