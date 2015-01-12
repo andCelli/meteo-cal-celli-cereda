@@ -45,10 +45,10 @@ This is the logged-user homepage.
                  <h:outputLabel for="forecastDet" value="Forecast:"/>
                  <p:outputLabel id="forecastDet" value="TODO"/>
                  
-                 <p:commandButton id="modifyButton" value="Modify" 
-                                  onclick="#{detailsEventBean.modify()};PF('modifyEventDialog').show();PF('eventDetailsDialog').hide();"/>
-                <!-- <p:commandButton id="deleteButton" value="Delete" 
-                                  onclick="#{detailsEventBean.delete()};PF('eventDetailsDialog').hide();PF('myschedule').update();" />-->
+                 <p:commandButton id="modifyButton" value="Modify" action="#{detailsEventBean.modify()}"
+                                  onclick="PF('modifyEventDialog').show();PF('eventDetailsDialog').hide();"/>
+                <p:commandButton id="deleteButton" value="Delete" action="#{detailsEventBean.delete()}"
+                                  onclick="PF('eventDetailsDialog').hide();PF('myschedule').update();" />
              </p:panelGrid> 
          </p:dialog>
      </h:form>

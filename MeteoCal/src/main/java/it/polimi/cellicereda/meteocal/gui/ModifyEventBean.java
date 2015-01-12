@@ -19,13 +19,14 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
  * This bean manages the modification of an event 
  * @author Andrea
  */
-@ManagedBean
+
 @SessionScoped
 @Named
 public class ModifyEventBean implements Serializable{
@@ -36,7 +37,7 @@ public class ModifyEventBean implements Serializable{
     @EJB
     UserProfileManager userProfileManager;
     
-    
+    @Inject
     ScheduleBean scheduleBean;
     
     private User currentUser;
@@ -69,7 +70,14 @@ public class ModifyEventBean implements Serializable{
         setEndingDate(new Date());
         setLocation(new String());
         currentUser=userProfileManager.getLoggedUser();
-        System.out.println("Parto: ScheduleBean");
+        System.out.println("Parto: ModifyEvent");
+        try{
+        scheduleBean.getDetailsEventBean().setModifyEventBean(this);
+            System.out.println("ho settato modifyBean in DetailsBean");
+        }catch(Exception e){
+            printStackTrace();
+            System.err.println("error while retrieving detailsEventBean in the init of ModifyEventBean");
+        }
     }
     /*
     This method checks whether the user is modifying an existing event or he's creating
@@ -116,7 +124,7 @@ public class ModifyEventBean implements Serializable{
         setNewEvent(true);
         try{
             context=FacesContext.getCurrentInstance();           
-            scheduleBean=(ScheduleBean) context.getApplication().evaluateExpressionGet(context, "#{scheduleBean}", ScheduleBean.class);
+            //scheduleBean=(ScheduleBean) context.getApplication().evaluateExpressionGet(context, "#{scheduleBean}", ScheduleBean.class);
             scheduleBean.getModel().addEvent(getEvent());
         }catch(Exception e){
             System.err.println("Error while trying to retrieve the schedule bean in the modifyEventBean");

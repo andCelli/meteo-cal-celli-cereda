@@ -12,7 +12,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 /**
- * This Servlet manages the registration of a new user.
+ * This bean manages the registration of a new user.
  * @author Andrea
  */
 @Named

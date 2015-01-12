@@ -5,6 +5,7 @@
  */
 package it.polimi.cellicereda.meteocal.gui;
 
+import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import it.polimi.cellicereda.meteocal.businesslogic.CalendarManager;
 import it.polimi.cellicereda.meteocal.businesslogic.UserProfileManager;
 import it.polimi.cellicereda.meteocal.entities.Event;
@@ -15,13 +16,14 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.view.facelets.FaceletContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
  * This bean manages the vizualization of an event's details
  * @author Andrea
  */
-@ManagedBean
+
 @SessionScoped
 @Named
 public class DetailsEventBean implements Serializable {
@@ -31,8 +33,10 @@ public class DetailsEventBean implements Serializable {
     //Used to choose which buttons to be rendered
     private boolean isCreator;
     private Event event;
+    
     private ScheduleBean scheduleBean;
     private FacesContext context;
+   
     private ModifyEventBean modifyEventBean;
     
     @EJB
@@ -46,8 +50,8 @@ public class DetailsEventBean implements Serializable {
         System.out.println("Parto: DetailsEventBean");
         try{
              context=FacesContext.getCurrentInstance();           
-             scheduleBean=(ScheduleBean) context.getApplication().evaluateExpressionGet(context, "#{scheduleBean}", ScheduleBean.class);
-             modifyEventBean=(ModifyEventBean)context.getApplication().evaluateExpressionGet(context, "#{modifyEventBean}", ModifyEventBean.class);
+             //scheduleBean=(ScheduleBean) context.getApplication().evaluateExpressionGet(context, "#{scheduleBean}", ScheduleBean.class);
+             //modifyEventBean=(ModifyEventBean)context.getApplication().evaluateExpressionGet(context, "#{modifyEventBean}", ModifyEventBean.class);
         }catch(Exception e){
             System.err.println("error in the DetailsEventBean init while retrieving the ScheduleBean and ModifyEventBean");
         }
@@ -58,7 +62,7 @@ public class DetailsEventBean implements Serializable {
      * remove from db
      */
     public void delete(){
-        scheduleBean.getModel().deleteEvent(event);
+        getScheduleBean().getModel().deleteEvent(event);
         calendarManager.delete(event);
     }
     
@@ -67,7 +71,7 @@ public class DetailsEventBean implements Serializable {
      * @TODO
      */
     public void removeFromPartecipants(){
-       scheduleBean.getModel().deleteEvent(event);
+        getScheduleBean().getModel().deleteEvent(event);
        /**
         * @TODO rimuovere dalla lista dell'utente
         */
@@ -79,16 +83,21 @@ public class DetailsEventBean implements Serializable {
      * (the flag states that the event is not a new one)
      */
     public void modify(){
-        modifyEventBean.setEvent(event);
-        modifyEventBean.setNewEvent(false);
+        try{
+            getModifyEventBean().setEvent(event);
+            getModifyEventBean().setNewEvent(false);
         //set the ModifyEventBean vars
-        modifyEventBean.setTitle(event.getTitle());
-        modifyEventBean.setDescription(event.getDescription());
-        modifyEventBean.setStartingDate(event.getStartDate());
-        modifyEventBean.setEndingDate(event.getEndDate());
-        modifyEventBean.setLocation(event.getEventLocation().toString());
-        modifyEventBean.setIsPublic(event.getPublicEvent());
-        modifyEventBean.setAllDay(event.isAllDay());
+            getModifyEventBean().setTitle(event.getTitle());
+            getModifyEventBean().setDescription(event.getDescription());
+            getModifyEventBean().setStartingDate(event.getStartDate());
+            getModifyEventBean().setEndingDate(event.getEndDate());
+            getModifyEventBean().setLocation(event.getEventLocation().toString());
+            getModifyEventBean().setIsPublic(event.getPublicEvent());
+            getModifyEventBean().setAllDay(event.isAllDay());
+        }catch(Exception e){
+            e.printStackTrace();
+            System.err.println("Error in modify (DetailsEventBean)");
+        }
     }
     
     /**
@@ -117,6 +126,34 @@ public class DetailsEventBean implements Serializable {
      */
     public void setEvent(Event event) {
         this.event = event;
+    }
+
+    /**
+     * @return the scheduleBean
+     */
+    public ScheduleBean getScheduleBean() {
+        return scheduleBean;
+    }
+
+    /**
+     * @param scheduleBean the scheduleBean to set
+     */
+    public void setScheduleBean(ScheduleBean scheduleBean) {
+        this.scheduleBean = scheduleBean;
+    }
+
+    /**
+     * @return the modifyEventBean
+     */
+    public ModifyEventBean getModifyEventBean() {
+        return modifyEventBean;
+    }
+
+    /**
+     * @param modifyEventBean the modifyEventBean to set
+     */
+    public void setModifyEventBean(ModifyEventBean modifyEventBean) {
+        this.modifyEventBean = modifyEventBean;
     }
     
 }

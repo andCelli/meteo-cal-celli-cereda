@@ -13,7 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * This Servlet manages the login functionality of the Login page. 
+ * This bean manages the login functionality of the Login page. 
  * @author Andrea
  */
 @Named

@@ -21,6 +21,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 import org.primefaces.event.ScheduleEntryMoveEvent;
 import org.primefaces.event.ScheduleEntryResizeEvent;
@@ -33,7 +34,7 @@ import org.primefaces.model.ScheduleModel;
  * Backing bean for the schedule holding user events.
  * @author Andrea
  */
-@ManagedBean
+
 @SessionScoped
 @Named
 public class ScheduleBean implements Serializable{
@@ -42,9 +43,9 @@ public class ScheduleBean implements Serializable{
     CalendarManager calendarManager;
     @EJB
     UserProfileManager userProfileManager;
-    
-    DetailsEventBean detailsEventBean;
- 
+    @Inject
+    private DetailsEventBean detailsEventBean;
+
     //this will contain the list of events to be displayed
     private ScheduleModel model;
     private User currentUser;
@@ -71,13 +72,18 @@ public class ScheduleBean implements Serializable{
           //partecipating events
           for(Event e:(List<Event>)calendarManager.getEventsByParticipant(currentUser))
               model.addEvent(e);
+          
+          
+          detailsEventBean.setScheduleBean(this);
+          
+          
         }catch(Exception e){
            printStackTrace();
            System.err.println("Problems durig init of scheduleBean"); 
         }
         try{
              context=FacesContext.getCurrentInstance();           
-             detailsEventBean=(DetailsEventBean) context.getApplication().evaluateExpressionGet(context, "#{detailsEventBean}", DetailsEventBean.class);
+             //detailsEventBean=(DetailsEventBean) context.getApplication().evaluateExpressionGet(context, "#{detailsEventBean}", DetailsEventBean.class);
         }catch(Exception e){
             System.err.println("error in the ScheduleBean init while retrieving the DetailsEventBean");
         }
@@ -101,7 +107,14 @@ public class ScheduleBean implements Serializable{
      */
     public void onEventSelect(SelectEvent e) {
        Event event=(Event)e.getObject();
-       detailsEventBean.setEvent(event);
-       detailsEventBean.setIsCreator(event.getCreator().equals(currentUser));
+        getDetailsEventBean().setEvent(event);
+        getDetailsEventBean().setIsCreator(event.getCreator().equals(currentUser));
        } 
+
+    /**
+     * @return the detailsEventBean
+     */
+    public DetailsEventBean getDetailsEventBean() {
+        return detailsEventBean;
+    }
 }
