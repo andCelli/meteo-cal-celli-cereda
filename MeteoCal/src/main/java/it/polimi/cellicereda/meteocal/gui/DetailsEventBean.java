@@ -84,16 +84,18 @@ public class DetailsEventBean implements Serializable {
      */
     public void modify(){
         try{
-            getModifyEventBean().setEvent(event);
+            getModifyEventBean().setEvent(event);         
             getModifyEventBean().setNewEvent(false);
+            
         //set the ModifyEventBean vars
-            getModifyEventBean().setTitle(event.getTitle());
+            getModifyEventBean().setTitle(event.getTitle());          
             getModifyEventBean().setDescription(event.getDescription());
             getModifyEventBean().setStartingDate(event.getStartDate());
             getModifyEventBean().setEndingDate(event.getEndDate());
-            getModifyEventBean().setLocation(event.getEventLocation().toString());
+            getModifyEventBean().setLocation(null);
             getModifyEventBean().setIsPublic(event.getPublicEvent());
             getModifyEventBean().setAllDay(event.isAllDay());
+        
         }catch(Exception e){
             e.printStackTrace();
             System.err.println("Error in modify (DetailsEventBean)");
