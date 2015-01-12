@@ -44,7 +44,7 @@ public class ModifyEventBean implements Serializable{
     
     private Event event=new Event();
     
-    private FacesContext context;
+   
     
     /*
     these are the attributes that are used to decouple the gui from the entities
@@ -63,12 +63,7 @@ public class ModifyEventBean implements Serializable{
     
     @PostConstruct
     public void init(){
-        setNewEvent(true);
-        setTitle(new String());
-        setDescription(new String());
-        setStartingDate(new Date());
-        setEndingDate(new Date());
-        setLocation(new String());
+        resetUtilityVariables();
         currentUser=userProfileManager.getLoggedUser();
         System.out.println("Parto: ModifyEvent");
         try{
@@ -93,6 +88,7 @@ public class ModifyEventBean implements Serializable{
               calendarManager.changeEventTitle(getEvent(), getTitle());
               System.out.println("the title is: "+getTitle());
               calendarManager.changeEventDescription(getEvent(), getDescription());
+               System.out.println("the description is: "+description);
               calendarManager.changeEventTiming(getEvent(), getStartingDate(), getEndingDate());
               System.out.println("the start date is: "+ getStartingDate().toString());
               //correggere
@@ -112,6 +108,7 @@ public class ModifyEventBean implements Serializable{
                 System.err.println("Problems while saving the event");
             }
         }else{
+            try{
             //@TODO refactor
             calendarManager.changeEventTitle(getEvent(), getTitle());
             calendarManager.changeEventDescription(getEvent(), getDescription());
@@ -120,16 +117,18 @@ public class ModifyEventBean implements Serializable{
             calendarManager.changeEventLocation(getEvent(), new Place());
             getEvent().setPublicEvent(isIsPublic());
             getEvent().setIsAllDay(isAllDay());
+            }catch(Exception e){
+                e.printStackTrace();
+                System.err.println("error while updating the event (save() in ModifyBean)");
+            }
         }
-        setNewEvent(true);
         try{
-            context=FacesContext.getCurrentInstance();           
-            //scheduleBean=(ScheduleBean) context.getApplication().evaluateExpressionGet(context, "#{scheduleBean}", ScheduleBean.class);
             scheduleBean.getModel().addEvent(getEvent());
         }catch(Exception e){
-            System.err.println("Error while trying to retrieve the schedule bean in the modifyEventBean");
+            System.err.println("Error while trying to add the event to the model in the modifyEventBean");
         }
         setEvent(new Event());
+        resetUtilityVariables();
     }
     
     /**
@@ -256,5 +255,15 @@ public class ModifyEventBean implements Serializable{
      */
     public void setEvent(Event event) {
         this.event = event;
+    }
+
+    //set all the utility variables to the default value (null)
+    private void resetUtilityVariables() {
+        setNewEvent(true);
+        setTitle(new String());
+        setDescription(new String());
+        setStartingDate(new Date());
+        setEndingDate(new Date());
+        setLocation(new String());
     }
 }

@@ -59,30 +59,27 @@ This is the logged-user homepage.
         <p:growl id="messages" showDetail="true" />
         <p:commandButton value="New Event" id="newEvent" onclick="PF('modifyEventDialog').show();"/>
         <p:dialog widgetVar="modifyEventDialog" header="Event Details" showEffect="clip" hideEffect="clip" position="right" draggable="false">
-           <h:panelGrid id="modifyEventDetails" columns="2"  style="width:410px;height:560px; ">
+           <h:panelGrid id="modifyEventDetails" columns="2"  style="width:410px;height:560px;">
               <h:outputLabel for="title" value="Title:" />
-              <h:form>
-                  <p:inputText id="title" value="#{modifyEventBean.title}"/>
-              </h:form>
+              <p:inputText id="title" value="#{modifyEventBean.title}"/>
+       
               
               <h:outputLabel for="description" value="Description:" />
-              <h:form id="insertDescription">
-                 <p:inputText id="description" value="#{modifyEventBean.description}" required="false"/>
-              </h:form>
+              <p:inputText id="description" value="#{modifyEventBean.description}"/>
+             
               
               <h:outputLabel for="from" value="From:" />
-              <p:calendar id="from" value="#{modifyEventBean.startingDate}" pattern="MM/dd/yyyy HH:mm:ss" />
+              <p:calendar id="from" value="#{modifyEventBean.startingDate}" pattern="MM/dd/yyyy HH:mm:ss"/>
               
               <h:outputLabel for="to" value="To:" />
-              <p:calendar id="to" value="#{modifyEventBean.endingDate}" pattern="MM/dd/yyyy HH:mm:ss" />
+              <p:calendar id="to" value="#{modifyEventBean.endingDate}" pattern="MM/dd/yyyy HH:mm:ss"/>
               
               <h:outputLabel for="allDay" value="All Day:" />
               <h:selectBooleanCheckbox id="allDay" value="#{modifyEventBean.allDay}" />
               
               <h:outputLabel for="location" value="Location:"/>
-              <h:form id="insertLocation">
-                 <p:inputText id="location" value="#{modifyEventBean.location}"/>
-              </h:form>
+              <p:inputText id="location" value="#{modifyEventBean.location}"/>
+              
               
               <h:outputLabel for="privacy" value="Privacy:"/>
               <p:selectOneRadio id="privacy" value="#{modifyEventBean.isPublic}">
@@ -90,9 +87,9 @@ This is the logged-user homepage.
                                <f:selectItem itemLabel="Private" itemValue="#{false}" />
               </p:selectOneRadio>
               
-              <p:commandButton type="reset" value="Reset" />
-              <p:commandButton id="addButton" value="Save" action="#{modifyEventBean.saveEvent()}"
-                               onclick="PF('myschedule').update();PF('modifyEventDialog').hide();"/>
+              <p:commandButton type="reset" value="Reset"/>
+              <p:commandButton id="addButton" value="Save" action="#{modifyEventBean.saveEvent()}" 
+                               oncomplete="PF('myschedule').update()" onclick="PF('modifyEventDialog').hide()"/>
               
            </h:panelGrid>
        </p:dialog>
