@@ -21,7 +21,7 @@ import javax.inject.Named;
  * This bean manages the user searches for other users
  * @author Andrea
  */
-@ManagedBean
+
 @SessionScoped
 @Named
 public class SearchBean implements Serializable {

@@ -21,7 +21,7 @@ This is the logged-user homepage.
    <ui:composition template="/logged/loggedTemplate.xhtml" >   
     <ui:define name="contentCenter">
      <h:form>
-         <p:schedule value="#{scheduleBean.model}"  widgetVar="myschedule" timeZone="GMT+2">
+         <p:schedule value="#{scheduleBean.model}"  widgetVar="myschedule" timeZone="GMT+1">
                 <p:ajax event="eventSelect" listener="#{scheduleBean.onEventSelect}" update="eventDetails" oncomplete="PF('eventDetailsDialog').show();"/>
          </p:schedule>
         <!--Event details--> 
@@ -48,7 +48,7 @@ This is the logged-user homepage.
                  <p:commandButton id="modifyButton" value="Modify" action="#{detailsEventBean.modify()}"
                                   onclick="PF('modifyEventDialog').show();PF('eventDetailsDialog').hide();"/>
                 <p:commandButton id="deleteButton" value="Delete" action="#{detailsEventBean.delete()}"
-                                  onclick="PF('eventDetailsDialog').hide();PF('myschedule').update();" />
+                                  onclick="PF('eventDetailsDialog').hide()" oncomplete="PF('myschedule').update()" />
              </p:panelGrid> 
          </p:dialog>
      </h:form>

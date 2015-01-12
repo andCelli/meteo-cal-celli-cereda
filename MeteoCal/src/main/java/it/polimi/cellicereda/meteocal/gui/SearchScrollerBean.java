@@ -20,7 +20,7 @@ import javax.inject.Named;
  * This bean shows search results
  * @author Andrea
  */
-@ManagedBean
+
 @ViewScoped
 @Named
 public class SearchScrollerBean {

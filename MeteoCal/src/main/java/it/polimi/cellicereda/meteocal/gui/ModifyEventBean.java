@@ -107,6 +107,11 @@ public class ModifyEventBean implements Serializable{
                 printStackTrace();
                 System.err.println("Problems while saving the event");
             }
+            try{
+              scheduleBean.getModel().addEvent(getEvent());
+            }catch(Exception e){
+            System.err.println("Error while trying to add the event to the model in the modifyEventBean");
+        }
         }else{
             try{
             //@TODO refactor
@@ -122,11 +127,7 @@ public class ModifyEventBean implements Serializable{
                 System.err.println("error while updating the event (save() in ModifyBean)");
             }
         }
-        try{
-            scheduleBean.getModel().addEvent(getEvent());
-        }catch(Exception e){
-            System.err.println("Error while trying to add the event to the model in the modifyEventBean");
-        }
+        
         setEvent(new Event());
         resetUtilityVariables();
     }
