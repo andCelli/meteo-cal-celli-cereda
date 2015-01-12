@@ -44,10 +44,10 @@ public class Event implements Serializable, ScheduleEvent {
 
     private String description;
 
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date startingDate;
 
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date endingDate;
 
     /**

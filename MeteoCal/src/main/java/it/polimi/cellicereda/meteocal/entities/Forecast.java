@@ -6,7 +6,6 @@
 package it.polimi.cellicereda.meteocal.entities;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -48,21 +47,21 @@ public class Forecast implements Serializable {
      * The starting validity hour
      */
     @NotNull(message = "May not be empty")
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date startingValidity;
 
     /**
      * The ending validity hour
      */
     @NotNull(message = "May not be empty")
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date endingValidity;
 
     /**
      * The time when the forecast was made
      */
     @NotNull(message = "May not be empty")
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date makingTime;
 
     /**

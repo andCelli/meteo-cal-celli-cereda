@@ -137,6 +137,8 @@ public class ForecastManager {
                 num = 4;
             }
             url += "0" + num + "d.png";
+        } else {
+            url += "04d.png";
         }
 
         return url;
