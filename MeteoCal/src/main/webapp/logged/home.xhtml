@@ -88,7 +88,7 @@ This is the logged-user homepage.
               </p:selectOneRadio>
               <p:outputLabel for="invite" value="Invite: "/>
               <p:autoComplete id="invite" value="#{userInviteBean.searchKey}" completeMethod="#{userInviteBean.autoCompleteSearch}"
-                              required="true" placeholder="Insert username" queryDelay="100">
+                               placeholder="Insert username" queryDelay="100">
                     <p:ajax event="itemSelect" listener="#{userInviteBean.onUserSelect}" />
               </p:autoComplete>
               <p:commandButton type="reset" value="Reset"/>

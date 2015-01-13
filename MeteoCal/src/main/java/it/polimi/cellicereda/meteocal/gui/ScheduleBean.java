@@ -9,22 +9,16 @@ import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import it.polimi.cellicereda.meteocal.businesslogic.CalendarManager;
 import it.polimi.cellicereda.meteocal.businesslogic.UserProfileManager;
 import it.polimi.cellicereda.meteocal.entities.Event;
-import it.polimi.cellicereda.meteocal.entities.Place;
 import it.polimi.cellicereda.meteocal.entities.User;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
-import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import org.primefaces.event.ScheduleEntryMoveEvent;
-import org.primefaces.event.ScheduleEntryResizeEvent;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DefaultScheduleModel;
 import org.primefaces.model.ScheduleEvent;
@@ -80,12 +74,6 @@ public class ScheduleBean implements Serializable{
         }catch(Exception e){
            printStackTrace();
            System.err.println("Problems durig init of scheduleBean"); 
-        }
-        try{
-             context=FacesContext.getCurrentInstance();           
-             //detailsEventBean=(DetailsEventBean) context.getApplication().evaluateExpressionGet(context, "#{detailsEventBean}", DetailsEventBean.class);
-        }catch(Exception e){
-            System.err.println("error in the ScheduleBean init while retrieving the DetailsEventBean");
         }
     }        
     

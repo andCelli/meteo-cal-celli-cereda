@@ -10,13 +10,9 @@ import it.polimi.cellicereda.meteocal.businesslogic.CalendarManager;
 import it.polimi.cellicereda.meteocal.businesslogic.UserProfileManager;
 import it.polimi.cellicereda.meteocal.entities.Event;
 import java.io.Serializable;
-import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.context.FacesContext;
-import javax.faces.view.facelets.FaceletContext;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -35,8 +31,7 @@ public class DetailsEventBean implements Serializable {
     private Event event;
     
     private ScheduleBean scheduleBean;
-    private FacesContext context;
-   
+    
     private ModifyEventBean modifyEventBean;
     
     @EJB
@@ -48,13 +43,6 @@ public class DetailsEventBean implements Serializable {
     public void init(){
         event=new Event();
         System.out.println("Parto: DetailsEventBean");
-        try{
-             context=FacesContext.getCurrentInstance();           
-             //scheduleBean=(ScheduleBean) context.getApplication().evaluateExpressionGet(context, "#{scheduleBean}", ScheduleBean.class);
-             //modifyEventBean=(ModifyEventBean)context.getApplication().evaluateExpressionGet(context, "#{modifyEventBean}", ModifyEventBean.class);
-        }catch(Exception e){
-            System.err.println("error in the DetailsEventBean init while retrieving the ScheduleBean and ModifyEventBean");
-        }
     }
 
     /**
@@ -84,9 +72,9 @@ public class DetailsEventBean implements Serializable {
      */
     public void modify(){
         try{
+            System.out.println("sono modify()");
             getModifyEventBean().setEvent(event);         
-            getModifyEventBean().setNewEvent(false);
-            
+            getModifyEventBean().setNewEvent(false); 
         //set the ModifyEventBean vars
             getModifyEventBean().setTitle(event.getTitle());          
             getModifyEventBean().setDescription(event.getDescription());
