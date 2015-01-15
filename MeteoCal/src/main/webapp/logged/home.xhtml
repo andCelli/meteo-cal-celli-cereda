@@ -44,7 +44,14 @@ This is the logged-user homepage.
                  </p:selectOneRadio>
                  <h:outputLabel for="forecastDet" value="Forecast:"/>
                  <p:outputLabel id="forecastDet" value="TODO"/>
-                 
+                 <h:outputLabel for="partecipants" value="Partecipants: "/>
+                 <p:dataScroller id="partecipants" value="#{detailsEventBean.partecipants}" var="user" chunkSize="10">
+                     <p:outputLabel value="#{user.username}"/>
+                 </p:dataScroller>
+                    
+          
+                     
+                     
                  <p:commandButton id="modifyButton" value="Modify" action="#{detailsEventBean.modify()}"
                                   onclick="PF('modifyEventDialog').show();PF('eventDetailsDialog').hide();"/>
                 <p:commandButton id="deleteButton" value="Delete" action="#{detailsEventBean.delete()}"
@@ -58,7 +65,8 @@ This is the logged-user homepage.
        <h:form>   
         <p:growl id="messages" showDetail="true" />
         <p:commandButton value="New Event" id="newEvent" onclick="PF('modifyEventDialog').show();"/>
-        <p:dialog widgetVar="modifyEventDialog" header="Event Details" showEffect="clip" hideEffect="clip" position="right" draggable="false">
+        <p:dialog widgetVar="modifyEventDialog" header="Event Details" showEffect="clip" hideEffect="clip" 
+                  position="right" draggable="false">
            <h:panelGrid id="modifyEventDetails" columns="2"  style="width:410px;height:560px;">
               <h:outputLabel for="title" value="Title:" />
               <p:inputText id="title" value="#{modifyEventBean.title}"/>
@@ -91,6 +99,10 @@ This is the logged-user homepage.
                                placeholder="Insert username" queryDelay="100">
                     <p:ajax event="itemSelect" listener="#{userInviteBean.onUserSelect}" />
               </p:autoComplete>
+              <h:outputLabel for="partecipants" value="Partecipants: "/>
+              <p:dataScroller id="partecipants" value="#{modifyEventBean.invitedUsers}" var="user" chunkSize="10">
+                     <p:outputLabel value="#{user.username}"/>
+                 </p:dataScroller>
               <p:commandButton type="reset" value="Reset"/>
               <p:commandButton id="addButton" value="Save" action="#{modifyEventBean.saveEvent()}" 
                                oncomplete="PF('myschedule').update()" onclick="PF('modifyEventDialog').hide()"/>

@@ -7,12 +7,15 @@ package it.polimi.cellicereda.meteocal.gui;
 
 import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import it.polimi.cellicereda.meteocal.businesslogic.CalendarManager;
+import it.polimi.cellicereda.meteocal.businesslogic.NotificationManager;
 import it.polimi.cellicereda.meteocal.businesslogic.UserProfileManager;
 import it.polimi.cellicereda.meteocal.entities.Event;
 import it.polimi.cellicereda.meteocal.entities.Place;
 import it.polimi.cellicereda.meteocal.entities.User;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -40,6 +43,8 @@ public class ModifyEventBean implements Serializable{
     @Inject
     ScheduleBean scheduleBean;
     
+    @EJB
+    private NotificationManager notificationManager;
     
     private User currentUser;
     
@@ -58,6 +63,7 @@ public class ModifyEventBean implements Serializable{
     private String location;
     private boolean isPublic;
     private boolean allDay;
+    private List<User> invitedUsers;
     
     //states whether a user is creating a new event or modifying an existing one
     private boolean newEvent;
@@ -83,9 +89,9 @@ public class ModifyEventBean implements Serializable{
     public void saveEvent(){
         //check
         System.out.println("the newEvent flag is: "+newEvent);
-        if(newEvent){
-           try{
-              //set info (va bene farlo prima che venga aggiunto??)
+        if(newEvent){ 
+           //update event info
+            try{
               calendarManager.changeEventTitle(getEvent(), getTitle());
               System.out.println("the title is: "+getTitle());
               calendarManager.changeEventDescription(getEvent(), getDescription());
@@ -94,13 +100,14 @@ public class ModifyEventBean implements Serializable{
               System.out.println("the start date is: "+ getStartingDate().toString());
               //correggere
               calendarManager.changeEventLocation(getEvent(), null);
-                getEvent().setPublicEvent(isIsPublic());
-                getEvent().setIsAllDay(isAllDay());
-                getEvent().setCreator(userProfileManager.getByEmail(currentUser.getEmail()));
+              getEvent().setPublicEvent(isIsPublic());
+              getEvent().setIsAllDay(isAllDay());
+              getEvent().setCreator(userProfileManager.getByEmail(currentUser.getEmail()));
            }catch(Exception e){
                 printStackTrace();
                 System.err.println("Problems while updating the event");
            }
+            //save the event in the db
             try{
                 System.out.println("user id: "+getEvent().getCreator().getEmail());
                 calendarManager.save(getEvent());
@@ -108,6 +115,7 @@ public class ModifyEventBean implements Serializable{
                 printStackTrace();
                 System.err.println("Problems while saving the event");
             }
+            //add the event to the schedule model
             try{
               scheduleBean.getModel().addEvent(getEvent());
             }catch(Exception e){
@@ -130,6 +138,18 @@ public class ModifyEventBean implements Serializable{
             }
         }
         
+        //add invited user
+        try{
+          for(User u:getInvitedUsers()){
+              //non invita un utente che è già tra i partecipanti
+              if(!calendarManager.getEventParticipant(event).contains(u)){
+                  notificationManager.sendAnInvite(event,u);
+              }
+          }
+        }catch(Exception e){
+            printStackTrace();
+            System.err.println("error while sending invites (save() ModifyEventBean");
+        }
         setEvent(new Event());
         resetUtilityVariables();
     }
@@ -261,12 +281,32 @@ public class ModifyEventBean implements Serializable{
     }
 
     //set all the utility variables to the default value (null)
-    private void resetUtilityVariables() {
+    public void resetUtilityVariables() {
+      try{
         setNewEvent(true);
         setTitle(new String());
         setDescription(new String());
         setStartingDate(new Date());
         setEndingDate(new Date());
         setLocation(new String());
+        setInvitedUsers(new ArrayList<User>());
+      }catch(Exception e){
+          e.printStackTrace();
+          System.err.println("error while resetting the utility vars in modifyEventbean");
+      }
+    }
+
+    /**
+     * @return the invitedUsers
+     */
+    public List<User> getInvitedUsers() {
+        return invitedUsers;
+    }
+
+    /**
+     * @param invitedUsers the invitedUsers to set
+     */
+    public void setInvitedUsers(List<User> invitedUsers) {
+        this.invitedUsers = invitedUsers;
     }
 }
