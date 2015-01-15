@@ -23,10 +23,10 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class NotificationManager {
-    
+
     @PersistenceContext
     private EntityManager em;
-    
+
     @EJB
     private CalendarManager cm;
 
@@ -75,10 +75,12 @@ public class NotificationManager {
                 || (invite.getNotificationState() != NotificationState.PENDING)) {
             throw new IllegalArgumentException();
         }
-        
+
+        em.getTransaction().begin();
         invite.setNotificationAnswer(answer);
         invite.setNotificationState(NotificationState.ANSWERED);
-        
+        em.getTransaction().commit();
+
         if (answer) {
             cm.addAnUserToAnEventParticipants(invite.getRecipient(), invite.getReferredEvent());
         }
@@ -102,17 +104,19 @@ public class NotificationManager {
                 || (proposal.getNotificationState() != NotificationState.PENDING)) {
             throw new IllegalArgumentException();
         }
-        
+
+        em.getTransaction().begin();
         proposal.setNotificationAnswer(answer);
         proposal.setNotificationState(NotificationState.ANSWERED);
-        
+        em.getTransaction().commit();
+
         if (answer) {
             Event e = proposal.getReferredEvent();
 
             //new ending = oldEnding + (newstart - oldstart)
             Date newEnding = new Date();
             newEnding.setTime(e.getEndDate().getTime() + newStartingDate.getTime() - e.getStartDate().getTime());
-            
+
             cm.changeEventTiming(e, newStartingDate, newEnding);
         }
     }
@@ -133,6 +137,8 @@ public class NotificationManager {
      * notification state to readed
      */
     public void readNotification(Notification n) {
+        em.getTransaction().begin();
         n.setNotificationState(NotificationState.READED);
+        em.getTransaction().commit();
     }
 }

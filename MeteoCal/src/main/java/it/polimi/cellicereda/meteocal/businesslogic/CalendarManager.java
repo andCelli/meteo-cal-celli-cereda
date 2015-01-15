@@ -124,7 +124,9 @@ public class CalendarManager {
      * @param event The event where the user will participate
      */
     public void addAnUserToAnEventParticipants(User newParticipant, Event event) {
+        em.getTransaction().begin();
         newParticipant.addEvent(event);
+        em.getTransaction().commit();
     }
 
     /**
@@ -159,7 +161,10 @@ public class CalendarManager {
      * Change the title of the event and generate the consequent notifications
      */
     public void changeEventTitle(Event event, String newTitle) {
+        em.getTransaction().begin();
         event.setTitle(newTitle);
+        em.getTransaction().commit();
+
         generateEventChangedNotifications(event);
     }
 
@@ -168,7 +173,10 @@ public class CalendarManager {
      * notifications
      */
     public void changeEventDescription(Event event, String newDesc) {
+        em.getTransaction().begin();
         event.setDescription(newDesc);
+        em.getTransaction().commit();
+
         generateEventChangedNotifications(event);
     }
 
@@ -177,8 +185,11 @@ public class CalendarManager {
      * notifications. You have to provide both the date even if only one changes
      */
     public void changeEventTiming(Event event, Date newStarting, Date newEnding) {
+        em.getTransaction().begin();
         event.setStartingDate(newStarting);
         event.setEndingDate(newEnding);
+        em.getTransaction().commit();
+
         generateEventChangedNotifications(event);
 
     }
@@ -187,7 +198,10 @@ public class CalendarManager {
      * Change the event locationt and generate the consequent notifications
      */
     public void changeEventLocation(Event event, Place newPlace) {
+        em.getTransaction().begin();
         event.setEventLocation(newPlace);
+        em.getTransaction().commit();
+
         generateEventChangedNotifications(event);
     }
 }
