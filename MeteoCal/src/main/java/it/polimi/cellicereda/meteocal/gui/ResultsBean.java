@@ -32,9 +32,7 @@ public class ResultsBean {
   
     private List<User> users;
     
-    private User selectedUser;
-    
-    
+   
     //the message shown in the header
     private String header;
     
@@ -56,20 +54,6 @@ public class ResultsBean {
     
     public String getHeader(){
         return header;
-    }
-
-    /**
-     * @return the selectedUser
-     */
-    public User getSelectedUser() {
-        return selectedUser;
-    }
-
-    /**
-     * @param selectedUser the selectedUser to set
-     */
-    public void setSelectedUser(User selectedUser) {
-        this.selectedUser = selectedUser;
     }
     
 }

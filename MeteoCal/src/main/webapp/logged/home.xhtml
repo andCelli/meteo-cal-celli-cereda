@@ -38,10 +38,7 @@ This is the logged-user homepage.
                  <h:outputLabel for="locationDet" value="Location: "/>
                  <p:outputLabel id="locationDet" value="#{detailsEventBean.event.eventLocation}"/>
                  <h:outputLabel for="privacyDet" value="Privacy:"/>
-                 <p:selectOneRadio id="privacyDet" value="#{detailsEventBean.event.publicEvent}" disabled="true">
-                               <f:selectItem itemLabel="Public" itemValue="#{true}" />
-                               <f:selectItem itemLabel="Private" itemValue="#{false}" />
-                 </p:selectOneRadio>
+                 <h:outputText value=" #{detailsEventBean.event.publicEvent? 'Public event' : 'Private event'}"/>
                  <h:outputLabel for="forecastDet" value="Forecast:"/>
                  <p:outputLabel id="forecastDet" value="TODO"/>
                  <h:outputLabel for="partecipants" value="Partecipants: "/>

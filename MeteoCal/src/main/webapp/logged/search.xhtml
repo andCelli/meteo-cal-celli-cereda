@@ -24,11 +24,13 @@ and open the template in the editor.-->
                          <h:outputText value="#{user.email}"/>
                          <h:outputText value="#{user.name} #{user.surname}"/>
                          <h:outputText value=" #{user.publicCalendar? 'Public calendar' : 'Private calendar'}"/>
-                           
+                         <p:commandLink action="/logged/externalCal?faces-redirect=true" title="See Calendar" rendered="#{user.publicCalendar}">
+                             <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                             <f:setPropertyActionListener value="#{user}" target="#{externalCalendarBean.user}"/>
+                         </p:commandLink>
                     </h:panelGrid>
             </p:panel>
             </p:dataGrid>
- 
    
         </h:form>
     </ui:define>
