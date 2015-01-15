@@ -23,7 +23,7 @@ import javax.inject.Named;
 
 @ViewScoped
 @Named
-public class SearchScrollerBean {
+public class ResultsBean {
     
     
     FacesContext context;
@@ -31,6 +31,9 @@ public class SearchScrollerBean {
     private SearchBean searchBean;
   
     private List<User> users;
+    
+    private User selectedUser;
+    
     
     //the message shown in the header
     private String header;
@@ -54,4 +57,19 @@ public class SearchScrollerBean {
     public String getHeader(){
         return header;
     }
+
+    /**
+     * @return the selectedUser
+     */
+    public User getSelectedUser() {
+        return selectedUser;
+    }
+
+    /**
+     * @param selectedUser the selectedUser to set
+     */
+    public void setSelectedUser(User selectedUser) {
+        this.selectedUser = selectedUser;
+    }
+    
 }

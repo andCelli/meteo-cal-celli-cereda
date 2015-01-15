@@ -90,9 +90,11 @@ public class ModifyEventBean implements Serializable{
         //check
         System.out.println("the newEvent flag is: "+newEvent);
         if(newEvent){ 
-           //update event info
+           
+
+//update event info
             try{
-              calendarManager.changeEventTitle(getEvent(), getTitle());
+            /*calendarManager.changeEventTitle(getEvent(), getTitle());
               System.out.println("the title is: "+getTitle());
               calendarManager.changeEventDescription(getEvent(), getDescription());
                System.out.println("the description is: "+description);
@@ -102,14 +104,20 @@ public class ModifyEventBean implements Serializable{
               calendarManager.changeEventLocation(getEvent(), null);
               getEvent().setPublicEvent(isIsPublic());
               getEvent().setIsAllDay(isAllDay());
-              getEvent().setCreator(userProfileManager.getByEmail(currentUser.getEmail()));
+              getEvent().setCreator(userProfileManager.getByEmail(currentUser.getEmail()));*/
+              getEvent().setTitle(getTitle());
+              getEvent().setDescription(getDescription());
+              getEvent().setStartingDate(getStartingDate());
+              getEvent().setEndingDate(getEndingDate());
+              getEvent().setIsAllDay(isAllDay());
+              getEvent().setPublicEvent(isPublic);
+              getEvent().setCreator(currentUser);
            }catch(Exception e){
                 printStackTrace();
                 System.err.println("Problems while updating the event");
            }
             //save the event in the db
             try{
-                System.out.println("user id: "+getEvent().getCreator().getEmail());
                 calendarManager.save(getEvent());
             }catch(Exception e){
                 printStackTrace();
