@@ -5,6 +5,7 @@
  */
 package it.polimi.cellicereda.meteocal.businesslogic;
 
+import it.polimi.cellicereda.meteocal.entities.Event;
 import it.polimi.cellicereda.meteocal.entities.Place;
 import javax.persistence.EntityManager;
 import org.junit.After;
@@ -32,13 +33,16 @@ public class ForecastManagerTest {
         fm.em = mock(EntityManager.class);
         fm.lm = mock(LocationManager.class);
 
-        //    forecast.setPlace(lm.getPlaceByID(cityID));
         //create a place entity
         Place moscow = new Place();
         moscow.setId((long) 524901);
         moscow.setName("Moscow");
         moscow.setLongitude(37.615555);
         moscow.setLatitude(55.75222);
+        
+        //and a related event
+        Event event = new Event();
+        event.setEventLocation(moscow);
 
         //and return it when the forecast manager asks it to the location manager
         Mockito.when(fm.lm.getPlaceByID((long) 524901)).thenReturn(moscow);
@@ -50,7 +54,7 @@ public class ForecastManagerTest {
 
     @Test
     public void getNewForecastsByCityID() {
-        fm.persistNewForecastsByCityID((long) 524901);
+        fm.getUrlOfWeatherIcon(524901);
         verify(fm.em, atLeast(10)).persist(any());
     }
 

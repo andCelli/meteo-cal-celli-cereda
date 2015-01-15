@@ -41,11 +41,15 @@ public class ForecastManager {
     }
 
     /**
-     * Given a cityID this method queries openweathermap to obtain the updated
-     * forecast, which are then persisted in the database.
+     * Given an event this method queries openweathermap to obtain the updated
+     * forecast, which is returned. If no forecast is available the method
+     * returns null. Note that the forecast is not persisted into the database
      */
-    public void persistNewForecastsByCityID(Long cityID) {
+    public Forecast downloadNewForecastsForEvent(Event event) {
         try {
+            Long cityID = event.getEventLocation().getId();
+            Date wantedTime = event.getStartDate();
+
             JSONObject entireForecast = new JSONObject(downloadForecastsByCityID(cityID));
             JSONArray forecastList = entireForecast.getJSONArray("list");
 
@@ -55,16 +59,21 @@ public class ForecastManager {
             for (int i = 0; i < forecastList.length(); i++) {
                 JSONObject forecastJson = forecastList.getJSONObject(i);
 
-                Forecast forecast = new Forecast();
-
-                //SET THE PLACE
-                forecast.setPlace(lm.getPlaceByID(cityID));
-
                 //SET THE STARTING/ENDING VALIDITY TIME (time coverage = 3 hours)
                 Date starting = new Date(forecastJson.getLong("dt") * 1000);
                 Date ending = new Date(starting.getTime() + (3 * 60 * 60 * 1000));
+
+                if (starting.after(wantedTime) || ending.before(wantedTime)) {
+                    continue;
+                }
+
+                Forecast forecast = new Forecast();
+
                 forecast.setStartingValidity(starting);
                 forecast.setEndingValidity(ending);
+
+                //SET THE PLACE
+                forecast.setPlace(lm.getPlaceByID(cityID));
 
                 //SAVE THE MAKING TIME (computed before and equals for all the forecasts)
                 forecast.setMakingTime(now);
@@ -72,14 +81,15 @@ public class ForecastManager {
                 //SET THE WEATHER ID
                 forecast.setWeatherId(forecastJson.getJSONArray("weather").getJSONObject(0).getInt("id"));
 
-                //PERSIST THE FORECAST
-                em.persist(forecast);
+                //RETURN THE FORECAST
+                return forecast;
             }
 
         } catch (Exception ex) {
             Logger.getLogger(ForecastManager.class
                     .getName()).log(Level.SEVERE, "Unable to download forecasts", ex);
         }
+        return null;
     }
 
     /**
@@ -160,9 +170,6 @@ public class ForecastManager {
         int beginning = icon.length() - 7;
         int num = Integer.parseInt(icon.substring(beginning, beginning + 2));
 
-        if (num <= 4) {
-            return true;
-        }
-        return false;
+        return num <= 4;
     }
 }
