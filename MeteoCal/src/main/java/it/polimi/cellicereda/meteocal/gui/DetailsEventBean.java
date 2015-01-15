@@ -9,7 +9,9 @@ import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import it.polimi.cellicereda.meteocal.businesslogic.CalendarManager;
 import it.polimi.cellicereda.meteocal.businesslogic.UserProfileManager;
 import it.polimi.cellicereda.meteocal.entities.Event;
+import it.polimi.cellicereda.meteocal.entities.User;
 import java.io.Serializable;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -33,6 +35,8 @@ public class DetailsEventBean implements Serializable {
     private ScheduleBean scheduleBean;
     
     private ModifyEventBean modifyEventBean;
+    
+    private List<User> partecipants;
     
     @EJB
     private CalendarManager calendarManager;
@@ -83,7 +87,8 @@ public class DetailsEventBean implements Serializable {
             getModifyEventBean().setLocation(null);
             getModifyEventBean().setIsPublic(event.getPublicEvent());
             getModifyEventBean().setAllDay(event.isAllDay());
-        
+        //set the partecipants list    
+            getModifyEventBean().setInvitedUsers(partecipants);
         }catch(Exception e){
             e.printStackTrace();
             System.err.println("Error in modify (DetailsEventBean)");
@@ -144,6 +149,20 @@ public class DetailsEventBean implements Serializable {
      */
     public void setModifyEventBean(ModifyEventBean modifyEventBean) {
         this.modifyEventBean = modifyEventBean;
+    }
+
+    /**
+     * @return the partecipants
+     */
+    public List<User> getPartecipants() {
+        return partecipants;
+    }
+
+    /**
+     * @param partecipants the partecipants to set
+     */
+    public void setPartecipants(List<User> partecipants) {
+        this.partecipants = partecipants;
     }
     
 }

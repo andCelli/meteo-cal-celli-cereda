@@ -97,6 +97,7 @@ public class ScheduleBean implements Serializable{
        Event event=(Event)e.getObject();
         getDetailsEventBean().setEvent(event);
         getDetailsEventBean().setIsCreator(event.getCreator().equals(currentUser));
+        getDetailsEventBean().setPartecipants(calendarManager.getEventParticipant(event));
        } 
 
     /**
