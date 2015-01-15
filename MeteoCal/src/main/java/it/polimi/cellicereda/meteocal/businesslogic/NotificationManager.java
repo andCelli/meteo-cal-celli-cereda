@@ -76,10 +76,8 @@ public class NotificationManager {
             throw new IllegalArgumentException();
         }
 
-        em.getTransaction().begin();
         invite.setNotificationAnswer(answer);
         invite.setNotificationState(NotificationState.ANSWERED);
-        em.getTransaction().commit();
 
         if (answer) {
             cm.addAnUserToAnEventParticipants(invite.getRecipient(), invite.getReferredEvent());
@@ -105,10 +103,8 @@ public class NotificationManager {
             throw new IllegalArgumentException();
         }
 
-        em.getTransaction().begin();
         proposal.setNotificationAnswer(answer);
         proposal.setNotificationState(NotificationState.ANSWERED);
-        em.getTransaction().commit();
 
         if (answer) {
             Event e = proposal.getReferredEvent();
@@ -137,8 +133,6 @@ public class NotificationManager {
      * notification state to readed
      */
     public void readNotification(Notification n) {
-        em.getTransaction().begin();
         n.setNotificationState(NotificationState.READED);
-        em.getTransaction().commit();
     }
 }
