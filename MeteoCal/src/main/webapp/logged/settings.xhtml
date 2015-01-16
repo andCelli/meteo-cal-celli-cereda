@@ -5,25 +5,78 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition template="/logged/loggedTemplate.xhtml"
-      xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    
+    <h:head>
+        
+    </h:head>
+ <h:body>
+   <ui:composition template="/logged/loggedTemplate.xhtml">
     <ui:define name="contentCenter">
         <h:form>
-        
-            <h:outputLabel id="title" value="Settings" style="color:chartreuse  ;font-family: arial;font-size:350%"/>
+            <h:outputLabel id="title" value="Settings" style="color:mediumspringgreen  ;font-family: arial;font-size:350%"/>
+            <br/><br/> 
+           
+            <p:panel style="border-color: blue;border-style: solid;">
+                <h:panelGrid columns="1" border="0">
+                    <h:outputLabel value="User: #{settingsBean.currentUser.username}" style="color: blue;border: none;"/>
+                    <h:outputLabel value="Name: #{settingsBean.currentUser.username} #{settingsBean.currentUser.surname}" style="color: blue;border: none;"/>
+                    <h:outputLabel value="Email: #{settingsBean.currentUser.email}" style="color: blue;border: none;"/>
+                </h:panelGrid>
+               
+                <br/><br/> <br/><br/>
+            <center>  
+            <h:panelGrid id="personalInfo" columns="3" border="0">
+                    <h:outputLabel for="changeUsername">
+                        Username
+                    </h:outputLabel>
+                <p:inputText id="changeUsername" value="#{settingsBean.currentUser.username}" >
+                        <p:ajax update="changeusernamemsg"/>
+                    </p:inputText>
+                    <p:message id="changeusernamemsg" for="changeUsername" />
+                    
+                    <h:outputLabel for="changename">
+                        Name
+                    </h:outputLabel>
+                    <p:inputText id="changename" value="#{settingsBean.currentUser.name}">
+                        <p:ajax update="changenamemsg"/>
+                    </p:inputText>
+                    <p:message id="changenamemsg" for="changename" />
+                    
+                    <h:outputLabel for="changesurname">
+                        Surname
+                    </h:outputLabel>
+                    <p:inputText id="changesurname" value="#{settingsBean.currentUser.surname}">
+                        <p:ajax update="changesurnamemsg"/>
+                    </p:inputText>
+                    <p:message id="changesurnamemsg" for="changesurname" />
+                    <h:outputLabel for="changePassword">
+                        Password
+                    </h:outputLabel>
+                    <p:password id="changePassword" value="#{settingsBean.currentUser.password}"
+                                feedback="true" match="pwd2" label="Password"  onchange="#{settingsBean.setIsChanged(true)}"/>
+                    <p:message for="changePassword" />
+                    
+                    <h:outputLabel for="pwd2">
+                        Confirm Password
+                    </h:outputLabel>
+                    <p:password id="pwd2" label="Confirm Password"/> 
+            </h:panelGrid>  
+                <br/><br/>
             
-            <p:panelGrid id="personalInfo" columns="2">
-                <h:outputLabel for="username" value="Username:"/>
+               </center>   
+                <p:commandButton id="saveChanges" value="Save" rendered="#{settingsBean.isChanged}" 
+                                 action="#{settingsBean.save()}"/>
                 
-            </p:panelGrid>
-     
+            
   
-       
+            </p:panel>
+          
         </h:form>
     </ui:define>
 </ui:composition>
+ </h:body>
+</html>

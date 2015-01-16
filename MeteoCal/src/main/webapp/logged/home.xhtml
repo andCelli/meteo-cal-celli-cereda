@@ -26,7 +26,7 @@ This is the logged-user homepage.
          </p:schedule>
         <!--Event details--> 
          <p:dialog widgetVar="eventDetailsDialog" header="Event Details" showEffect="clip" hideEffect="clip">
-             <p:panelGrid id="eventDetails" columns="2">
+             <h:panelGrid id="eventDetails" columns="2" border="0">
                  <h:outputLabel for="titleDet" value="Title:"/>
                  <p:outputLabel id="titleDet" value="#{detailsEventBean.event.title}"/>
                  <h:outputLabel for="descriptionDet" value="Description:"/>
@@ -50,7 +50,7 @@ This is the logged-user homepage.
                                   onclick="PF('modifyEventDialog').show();PF('eventDetailsDialog').hide();"/>
                 <p:commandButton id="deleteButton" value="Delete" action="#{detailsEventBean.delete()}"
                                   onclick="PF('eventDetailsDialog').hide()" oncomplete="PF('myschedule').update()" />
-             </p:panelGrid> 
+             </h:panelGrid> 
          </p:dialog>
      </h:form>
    </ui:define> 

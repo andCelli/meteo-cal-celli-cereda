@@ -30,13 +30,13 @@ Registration page
             Registration
         </h1>
         <h:form id="registrationform"> 
-            <p:panel header="Insert your data here">
+            <p:panel header="Insert new data here">
                 <h:panelGrid columns="3" id="regGrid">
-                    <!--Personal information-->
+                    
                     <h:outputLabel for="username">
                         Username
                     </h:outputLabel>
-                    <p:inputText id="username" value="#{registrationBean.user.username}">
+                    <p:inputText id="username" value="#{registrationBean.user.username}" >
                         <p:ajax update="usernamemsg"/>
                     </p:inputText>
                     <p:message id="usernamemsg" for="username" />
@@ -77,7 +77,7 @@ Registration page
                     </h:outputLabel>
                     <p:password id="pwd2" label="Confirm Password"/> 
                 </h:panelGrid>
-               <!-- Privacy settings-->
+              
                 <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
                      <p:outputLabel for="privacy" value="Calendar privacy" />
                      <p:selectOneRadio id="privacy" value="#{registrationBean.user.publicCalendar}" >
