@@ -45,11 +45,13 @@ and open the template in the editor.
             <ui:define name="contentRight">
                 <h:form id="infoOtherUser" style="border: none;">
                     <center>
-                    <p:panelGrid columns="1" style="border: none;">
+                    <p:panel style="border-color: blue;">
+                    <h:panelGrid columns="1" border="0">
                     <h:outputLabel value="User: #{externalCalendarBean.user.username}" style="color: blue;border: none;"/>
                     <h:outputLabel value="Name: #{externalCalendarBean.user.username} #{externalCalendarBean.user.surname}" style="color: blue;border: none;"/>
                     <h:outputLabel value="Email: #{externalCalendarBean.user.email}" style="color: blue;border: none;"/>
-                    </p:panelGrid>
+                    </h:panelGrid>
+                    </p:panel>
                     </center>    
                 </h:form>
             </ui:define>

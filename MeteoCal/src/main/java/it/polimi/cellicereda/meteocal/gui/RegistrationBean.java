@@ -40,7 +40,7 @@ public class RegistrationBean{
     
     public String register(){
         userManager.save(user);
-        //?????
+        
         return "logged/home?faces-redirect=true";
     }
 }

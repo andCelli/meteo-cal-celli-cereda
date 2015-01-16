@@ -7,9 +7,11 @@ package it.polimi.cellicereda.meteocal.gui;
 
 import it.polimi.cellicereda.meteocal.businesslogic.UserProfileManager;
 import it.polimi.cellicereda.meteocal.entities.User;
+import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
@@ -17,9 +19,9 @@ import javax.inject.Named;
  * This bean manages the updates of user personal information
  * @author Andrea
  */
-@RequestScoped
+@SessionScoped
 @Named
-public class SettingsBean {
+public class SettingsBean implements Serializable{
     
     @EJB
     private UserProfileManager upm;

@@ -68,9 +68,10 @@ and open the template in the editor.
                 <br/><br/>
             
                </center>   
+                <h:form>
                 <p:commandButton id="saveChanges" value="Save" rendered="#{settingsBean.isChanged}" 
                                  action="#{settingsBean.save()}"/>
-                
+                </h:form>
             
   
             </p:panel>
