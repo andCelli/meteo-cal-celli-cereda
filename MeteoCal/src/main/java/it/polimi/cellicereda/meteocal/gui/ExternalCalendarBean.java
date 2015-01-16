@@ -6,7 +6,6 @@
 package it.polimi.cellicereda.meteocal.gui;
 
 import static com.sun.corba.se.impl.util.Utility.printStackTrace;
-import com.sun.media.jai.opimage.ConvolveRIF;
 import it.polimi.cellicereda.meteocal.businesslogic.CalendarManager;
 import it.polimi.cellicereda.meteocal.businesslogic.UserProfileManager;
 import it.polimi.cellicereda.meteocal.entities.Event;

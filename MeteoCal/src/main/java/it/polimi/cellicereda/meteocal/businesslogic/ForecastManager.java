@@ -45,7 +45,7 @@ public class ForecastManager {
      * forecast, which is returned. If no forecast is available the method
      * returns null. Note that the forecast is not persisted into the database
      */
-    public Forecast downloadNewForecastsForEvent(Event event) {
+    public Forecast downloadNewForecastForEvent(Event event) {
         try {
             Long cityID = event.getEventLocation().getId();
             Date wantedTime = event.getStartDate();
