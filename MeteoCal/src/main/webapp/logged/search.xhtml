@@ -12,16 +12,25 @@ and open the template in the editor.-->
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:define name="contentCenter">
-        <p:dataScroller value="#{searchScrollerBean.users}" var="user" chunkSize="10">
-            <f:facet name ="header">
-                #{searchScrollerBean.header}
-            </f:facet>
-            
-            <h:panelGrid columns="2">
-                <h:outputLabel id="username" value="#{user.username}"/>
-                <h:outputLabel id="email" value="#{user.email}"/>
-            </h:panelGrid>
-            
-        </p:dataScroller>
+        <h:form id="resultsForm">
+            <p:dataGrid var="user" value="#{resultsBean.users}" columns="3" rows="4" 
+                        paginator="true" id="resultsDataGrid"
+                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
+                <f:facet name="header" >
+                    #{resultsBean.header}
+                </f:facet>
+                <p:panel header="#{user.username}" style="text-align: center">
+                     <h:panelGrid columns="1" style="width: 100%">
+                         <h:outputText value="#{user.email}"/>
+                         <h:outputText value="#{user.name} #{user.surname}"/>
+                         <h:outputText value=" #{user.publicCalendar? 'Public calendar' : 'Private calendar'}"/>
+                         <p:commandLink action="#{resultsBean.goToUserCalendar()}" title="See Calendar" rendered="#{user.publicCalendar}">
+                             <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                             <f:setPropertyActionListener  value="#{user}" target="#{resultsBean.selectedUser}"/>
+                         </p:commandLink>
+                    </h:panelGrid>
+               </p:panel>
+            </p:dataGrid>
+        </h:form>
     </ui:define>
 </ui:composition>

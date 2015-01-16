@@ -8,10 +8,12 @@ package it.polimi.cellicereda.meteocal.gui;
 import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import it.polimi.cellicereda.meteocal.entities.User;
+import java.io.Serializable;
 import java.util.List;
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
@@ -21,9 +23,9 @@ import javax.inject.Named;
  * @author Andrea
  */
 
-@ViewScoped
+@SessionScoped
 @Named
-public class SearchScrollerBean {
+public class ResultsBean implements Serializable{
     
     
     FacesContext context;
@@ -32,6 +34,8 @@ public class SearchScrollerBean {
   
     private List<User> users;
     
+    private User selectedUser;
+   
     //the message shown in the header
     private String header;
     
@@ -41,6 +45,7 @@ public class SearchScrollerBean {
         context=FacesContext.getCurrentInstance();           
         searchBean=(SearchBean) context.getApplication().evaluateExpressionGet(context, "#{searchBean}", SearchBean.class);
         users=searchBean.getSearchResults();
+        searchBean.setSearchKey(null);
         //userNotFound
         if(users.size()==0){
             header="No results found";
@@ -53,5 +58,24 @@ public class SearchScrollerBean {
     
     public String getHeader(){
         return header;
+    }
+
+    /**
+     * @return the selectedUser
+     */
+    public User getSelectedUser() {
+        return selectedUser;
+    }
+
+    /**
+     * @param selectedUser the selectedUser to set
+     */
+    public void setSelectedUser(User selectedUser) {
+        this.selectedUser = selectedUser;
+    }
+    
+    public String goToUserCalendar(){
+        System.out.println("selezionato "+selectedUser.toString());
+        return "/logged/externalCal?faces-redirect=true;email="+selectedUser.getEmail();
     }
 }

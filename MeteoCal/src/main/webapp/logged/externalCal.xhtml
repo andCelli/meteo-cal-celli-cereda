@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>meteoCal</title>
+    </head>
+    <body>
+        <ui:composition template="/logged/loggedTemplate.xhtml">
+            <ui:define name="contentCenter">
+                <h:form>
+                    <p:schedule value="#{externalCalendarBean.model}" widgetVar="externalSchedule" timeZone="GMT+1" draggable="false">
+                        <p:ajax event="eventSelect" listener="#{externalCalendarBean.onEventSelect}" update="externalEventDetails" oncomplete="PF('externalEventDetailsDialog').show();"/>
+                    </p:schedule>
+                    <p:dialog widgetVar="externalEventDetailsDialog" header="Event Details" showEffect="clip" hideEffect="clip">
+                        <p:panelGrid id="externalEventDetails" columns="2">
+                              <h:outputLabel for="titleDet" value="Title:" rendered="#{externalCalendarBean.selectedEvent.publicEvent}"/>
+                              <p:outputLabel id="titleDet" value="#{externalCalendarBean.selectedEvent.title}" rendered="#{externalCalendarBean.selectedEvent.publicEvent}"/>
+                              <h:outputLabel for="descriptionDet" value="Description:" rendered="#{externalCalendarBean.selectedEvent.publicEvent}"/>
+                              <p:outputLabel id="descriptionDet" value="#{externalCalendarBean.selectedEvent.description}" rendered="#{externalCalendarBean.selectedEvent.publicEvent}"/>
+                              <h:outputLabel for="startingTimeDet" value="From:" />
+                              <p:calendar id="startingTimeDet" value="#{externalCalendarBean.selectedEvent.startDate}" readonly="true" pattern="MM/dd/yyyy HH:mm:ss" />
+                              <h:outputLabel for="endingTimeDet" value="To:" />
+                              <p:calendar id="endingTimeDet" value="#{externalCalendarBean.selectedEvent.endDate}" readonly="true" pattern="MM/dd/yyyy HH:mm:ss" />
+                              <h:outputLabel for="locationDet" value="Location: " rendered="#{externalCalendarBean.selectedEvent.publicEvent}"/>
+                              <p:outputLabel id="locationDet" value="#{externalCalendarBean.selectedEvent.eventLocation}" rendered="#{externalCalendarBean.selectedEvent.publicEvent}"/>
+                              <h:outputLabel for="forecastDet" value="Forecast:" rendered="#{externalCalendarBean.selectedEvent.publicEvent}"/>
+                              <p:outputLabel id="forecastDet" value="TODO" rendered="#{externalCalendarBean.selectedEvent.publicEvent}"/>
+                              <h:outputLabel for="partecipants" value="Partecipants: " rendered="#{externalCalendarBean.selectedEvent.publicEvent}"/>
+                              <p:dataScroller id="partecipants" value="#{detailsEventBean.partecipants}" var="user" chunkSize="10" rendered="#{externalCalendarBean.selectedEvent.publicEvent}">
+                                   <p:outputLabel value="#{user.username}"/>
+                              </p:dataScroller>
+                       </p:panelGrid> 
+                    </p:dialog>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

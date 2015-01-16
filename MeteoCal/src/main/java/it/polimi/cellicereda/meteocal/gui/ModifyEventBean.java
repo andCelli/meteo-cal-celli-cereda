@@ -90,7 +90,7 @@ public class ModifyEventBean implements Serializable{
         //check
         System.out.println("the newEvent flag is: "+newEvent);
         if(newEvent){ 
-           //update event info
+            //update event info
             try{
               calendarManager.changeEventTitle(getEvent(), getTitle());
               System.out.println("the title is: "+getTitle());
@@ -109,7 +109,6 @@ public class ModifyEventBean implements Serializable{
            }
             //save the event in the db
             try{
-                System.out.println("user id: "+getEvent().getCreator().getEmail());
                 calendarManager.save(getEvent());
             }catch(Exception e){
                 printStackTrace();
@@ -124,7 +123,7 @@ public class ModifyEventBean implements Serializable{
         }else{
             try{
             //@TODO refactor
-            //System.out.println("sto aggiornando l'evento");    
+            System.out.println("sto aggiornando l'evento");    
             calendarManager.changeEventTitle(getEvent(), getTitle());
             calendarManager.changeEventDescription(getEvent(), getDescription());
             calendarManager.changeEventTiming(getEvent(), getStartingDate(), getEndingDate());

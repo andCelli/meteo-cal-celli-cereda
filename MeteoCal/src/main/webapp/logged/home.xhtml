@@ -21,7 +21,7 @@ This is the logged-user homepage.
    <ui:composition template="/logged/loggedTemplate.xhtml" >   
     <ui:define name="contentCenter">
      <h:form>
-         <p:schedule value="#{scheduleBean.model}"  widgetVar="myschedule" timeZone="GMT+1">
+         <p:schedule value="#{scheduleBean.model}"  widgetVar="myschedule" timeZone="GMT+1" draggable="false">
                 <p:ajax event="eventSelect" listener="#{scheduleBean.onEventSelect}" update="eventDetails" oncomplete="PF('eventDetailsDialog').show();"/>
          </p:schedule>
         <!--Event details--> 
@@ -38,20 +38,14 @@ This is the logged-user homepage.
                  <h:outputLabel for="locationDet" value="Location: "/>
                  <p:outputLabel id="locationDet" value="#{detailsEventBean.event.eventLocation}"/>
                  <h:outputLabel for="privacyDet" value="Privacy:"/>
-                 <p:selectOneRadio id="privacyDet" value="#{detailsEventBean.event.publicEvent}" disabled="true">
-                               <f:selectItem itemLabel="Public" itemValue="#{true}" />
-                               <f:selectItem itemLabel="Private" itemValue="#{false}" />
-                 </p:selectOneRadio>
+                 <h:outputText id="privacyDet" value=" #{detailsEventBean.event.publicEvent? 'Public event' : 'Private event'}"/>
                  <h:outputLabel for="forecastDet" value="Forecast:"/>
                  <p:outputLabel id="forecastDet" value="TODO"/>
                  <h:outputLabel for="partecipants" value="Partecipants: "/>
                  <p:dataScroller id="partecipants" value="#{detailsEventBean.partecipants}" var="user" chunkSize="10">
                      <p:outputLabel value="#{user.username}"/>
                  </p:dataScroller>
-                    
-          
-                     
-                     
+                 
                  <p:commandButton id="modifyButton" value="Modify" action="#{detailsEventBean.modify()}"
                                   onclick="PF('modifyEventDialog').show();PF('eventDetailsDialog').hide();"/>
                 <p:commandButton id="deleteButton" value="Delete" action="#{detailsEventBean.delete()}"
