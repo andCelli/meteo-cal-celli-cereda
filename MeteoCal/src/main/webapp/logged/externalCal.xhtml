@@ -11,7 +11,7 @@ and open the template in the editor.
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <head>
-        <title>meteoCal</title>
+        <title>meteoCal</title> 
     </head>
     <body>
         <ui:composition template="/logged/loggedTemplate.xhtml">
@@ -40,6 +40,17 @@ and open the template in the editor.
                               </p:dataScroller>
                        </p:panelGrid> 
                     </p:dialog>
+                </h:form>
+            </ui:define>
+            <ui:define name="contentRight">
+                <h:form id="infoOtherUser" style="border: none;">
+                    <center>
+                    <p:panelGrid columns="1" style="border: none;">
+                    <h:outputLabel value="User: #{externalCalendarBean.user.username}" style="color: blue;border: none;"/>
+                    <h:outputLabel value="Name: #{externalCalendarBean.user.username} #{externalCalendarBean.user.surname}" style="color: blue;border: none;"/>
+                    <h:outputLabel value="Email: #{externalCalendarBean.user.email}" style="color: blue;border: none;"/>
+                    </p:panelGrid>
+                    </center>    
                 </h:form>
             </ui:define>
         </ui:composition>

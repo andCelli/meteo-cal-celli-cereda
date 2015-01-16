@@ -69,17 +69,13 @@ public class ExternalCalendarBean implements Serializable{
         }
                 
         try{
-        model=new DefaultScheduleModel((List<ScheduleEvent>) cm.getEventsByCreator(user));
-        }catch(Exception e){
-            System.err.println("error while adding 1) to the model. The user is "+user.toString());
-            
-        }
-        try{
-        if(cm.getEventsByParticipant(user).size()>0){
-          for(Event e:(List<Event>)cm.getEventsByParticipant(user)){
+           model=new DefaultScheduleModel((List<ScheduleEvent>) cm.getEventsByCreator(user));
+           if(cm.getEventsByParticipant(user).size()>0){
+           for(Event e:(List<Event>)cm.getEventsByParticipant(user)){
               model.addEvent(e);
           }
-        }}catch(Exception e){
+         }
+        }catch(Exception e){
             System.err.println("error while adding to the model. The user is "+user.toString());
             printStackTrace();
         }
