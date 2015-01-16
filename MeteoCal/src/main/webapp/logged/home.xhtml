@@ -38,17 +38,14 @@ This is the logged-user homepage.
                  <h:outputLabel for="locationDet" value="Location: "/>
                  <p:outputLabel id="locationDet" value="#{detailsEventBean.event.eventLocation}"/>
                  <h:outputLabel for="privacyDet" value="Privacy:"/>
-                 <h:outputText value=" #{detailsEventBean.event.publicEvent? 'Public event' : 'Private event'}"/>
+                 <h:outputText id="privacyDet" value=" #{detailsEventBean.event.publicEvent? 'Public event' : 'Private event'}"/>
                  <h:outputLabel for="forecastDet" value="Forecast:"/>
                  <p:outputLabel id="forecastDet" value="TODO"/>
                  <h:outputLabel for="partecipants" value="Partecipants: "/>
                  <p:dataScroller id="partecipants" value="#{detailsEventBean.partecipants}" var="user" chunkSize="10">
                      <p:outputLabel value="#{user.username}"/>
                  </p:dataScroller>
-                    
-          
-                     
-                     
+                 
                  <p:commandButton id="modifyButton" value="Modify" action="#{detailsEventBean.modify()}"
                                   onclick="PF('modifyEventDialog').show();PF('eventDetailsDialog').hide();"/>
                 <p:commandButton id="deleteButton" value="Delete" action="#{detailsEventBean.delete()}"

@@ -123,7 +123,7 @@ public class ModifyEventBean implements Serializable{
         }else{
             try{
             //@TODO refactor
-            //System.out.println("sto aggiornando l'evento");    
+            System.out.println("sto aggiornando l'evento");    
             calendarManager.changeEventTitle(getEvent(), getTitle());
             calendarManager.changeEventDescription(getEvent(), getDescription());
             calendarManager.changeEventTiming(getEvent(), getStartingDate(), getEndingDate());
