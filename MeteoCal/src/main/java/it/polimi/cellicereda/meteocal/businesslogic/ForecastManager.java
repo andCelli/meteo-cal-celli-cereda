@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.primefaces.json.JSONArray;
@@ -23,6 +24,7 @@ import org.primefaces.json.JSONObject;
  *
  * @author stefano
  */
+@Stateless
 public class ForecastManager {
 
     @PersistenceContext

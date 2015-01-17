@@ -296,7 +296,7 @@ public class ModifyEventBean implements Serializable{
         setEndingDate(new Date());
         setLocationKey(new String());
         setInvitedUsers(new ArrayList<User>());
-        setPlace(new Place());
+        setPlace(null);
       }catch(Exception e){
           e.printStackTrace();
           System.err.println("error while resetting the utility vars in modifyEventbean");
@@ -340,15 +340,19 @@ public class ModifyEventBean implements Serializable{
         places=new ArrayList<String>();
         for(Place p:lm.getPlaceByName(locationKey)){
             places.add(p.toString());
+            System.out.println(p.toString());
         }
         return places;
     }
     
     /**
      * method used to select a place
+     * has to get the name from the string "name (country)"
      */
     public void onPlaceSelect(SelectEvent selectedPlace){
-        //@TODO
+        String completeString=selectedPlace.getObject().toString();
+        String[] parts=completeString.split(" (");
+        //metodo che restituisce il posto specifico dando nome+stato
     }
 
     /**

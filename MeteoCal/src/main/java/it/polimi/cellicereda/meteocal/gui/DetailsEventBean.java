@@ -7,6 +7,7 @@ package it.polimi.cellicereda.meteocal.gui;
 
 import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import it.polimi.cellicereda.meteocal.businesslogic.CalendarManager;
+import it.polimi.cellicereda.meteocal.businesslogic.ForecastManager;
 import it.polimi.cellicereda.meteocal.businesslogic.UserProfileManager;
 import it.polimi.cellicereda.meteocal.entities.Event;
 import it.polimi.cellicereda.meteocal.entities.User;
@@ -42,6 +43,8 @@ public class DetailsEventBean implements Serializable {
     private CalendarManager calendarManager;
     @EJB
     private UserProfileManager userProfileManager;
+    @EJB
+    private ForecastManager fm;
     
     @PostConstruct
     public void init(){
@@ -165,4 +168,33 @@ public class DetailsEventBean implements Serializable {
         this.partecipants = partecipants;
     }
     
+    /**
+     * get the weather icon related to the selected event forecast
+     * @return the url of the weather icon
+     */
+    public String getForecastIcon(){
+        try{
+         return fm.getUrlOfWeatherIcon(fm.getWeatherForEvent(event)); 
+        }catch(Exception e){
+            System.err.println("error while retrieving the icon");
+            printStackTrace();
+        }
+        return null;
+    }
+    /**
+     * 
+     * @return true if the event has a forecast 
+     */
+    public boolean hasPrediction(){
+        try{
+      if(event.getEventLocation()!=null){
+        if(fm.getWeatherForEvent(event)!=0)
+            return true;
+            }
+        }catch(Exception e){
+            System.err.println("error while checking if the event has a prediction");
+            printStackTrace();
+        }
+        return false;
+    }
 }

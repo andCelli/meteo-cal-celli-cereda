@@ -39,8 +39,10 @@ This is the logged-user homepage.
                  <p:outputLabel id="locationDet" value="#{detailsEventBean.event.eventLocation}"/>
                  <h:outputLabel for="privacyDet" value="Privacy:"/>
                  <h:outputText id="privacyDet" value=" #{detailsEventBean.event.publicEvent? 'Public event' : 'Private event'}"/>
-                 <h:outputLabel for="forecastDet" value="Forecast:"/>
-                 <p:outputLabel id="forecastDet" value="TODO"/>
+                 <h:outputLabel for="forecastDet" value="Forecast:" rendered="#{detailsEventBean.hasPrediction()}"/>
+                 <p:panel rendered="#{detailsEventBean.hasPrediction()}">
+                     <img id="forecast" src="#{detailsEventBean.getForecastIcon()}"/>
+                 </p:panel> 
                  <h:outputLabel for="partecipants" value="Partecipants: "/>
                  <p:dataScroller id="partecipants" value="#{detailsEventBean.partecipants}" var="user" chunkSize="10">
                      <p:outputLabel value="#{user.username}"/>
