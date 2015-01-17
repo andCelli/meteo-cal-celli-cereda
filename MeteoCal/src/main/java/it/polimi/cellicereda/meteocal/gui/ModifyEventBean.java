@@ -7,6 +7,7 @@ package it.polimi.cellicereda.meteocal.gui;
 
 import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import it.polimi.cellicereda.meteocal.businesslogic.CalendarManager;
+import it.polimi.cellicereda.meteocal.businesslogic.LocationManager;
 import it.polimi.cellicereda.meteocal.businesslogic.NotificationManager;
 import it.polimi.cellicereda.meteocal.businesslogic.UserProfileManager;
 import it.polimi.cellicereda.meteocal.entities.Event;
@@ -24,6 +25,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import org.primefaces.event.SelectEvent;
 
 /**
  * This bean manages the modification of an event 
@@ -39,6 +41,9 @@ public class ModifyEventBean implements Serializable{
     
     @EJB
     UserProfileManager userProfileManager;
+    
+    @EJB
+    private LocationManager lm;
     
     @Inject
     ScheduleBean scheduleBean;
@@ -60,10 +65,12 @@ public class ModifyEventBean implements Serializable{
     private String description;
     private Date startingDate;
     private Date endingDate;
-    private String location;
+    private String locationKey;
+    private Place place;
     private boolean isPublic;
     private boolean allDay;
     private List<User> invitedUsers;
+    private List<String> places;
     
     //states whether a user is creating a new event or modifying an existing one
     private boolean newEvent;
@@ -99,7 +106,7 @@ public class ModifyEventBean implements Serializable{
               calendarManager.changeEventTiming(getEvent(), getStartingDate(), getEndingDate());
               System.out.println("the start date is: "+ getStartingDate().toString());
               //correggere
-              calendarManager.changeEventLocation(getEvent(), null);
+              calendarManager.changeEventLocation(getEvent(), place);
               getEvent().setPublicEvent(isIsPublic());
               getEvent().setIsAllDay(isAllDay());
               getEvent().setCreator(userProfileManager.getByEmail(currentUser.getEmail()));
@@ -128,7 +135,7 @@ public class ModifyEventBean implements Serializable{
             calendarManager.changeEventDescription(getEvent(), getDescription());
             calendarManager.changeEventTiming(getEvent(), getStartingDate(), getEndingDate());
             //correggere
-            calendarManager.changeEventLocation(getEvent(), new Place());
+            calendarManager.changeEventLocation(getEvent(), place);
             getEvent().setPublicEvent(isIsPublic());
             getEvent().setIsAllDay(isAllDay());
             }catch(Exception e){
@@ -142,7 +149,7 @@ public class ModifyEventBean implements Serializable{
           for(User u:getInvitedUsers()){
               //non invita un utente che è già tra i partecipanti
               if(!calendarManager.getEventParticipant(event).contains(u)){
-                  notificationManager.sendAnInvite(event,u);
+                  notificationManager.sendAnInvite(null,u);
               }
           }
         }catch(Exception e){
@@ -226,15 +233,15 @@ public class ModifyEventBean implements Serializable{
     /**
      * @return the location
      */
-    public String getLocation() {
-        return location;
+    public String getLocationKey() {
+        return locationKey;
     }
 
     /**
      * @param location the location to set
      */
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLocationKey(String location) {
+        this.locationKey = location;
     }
 
     /**
@@ -287,8 +294,9 @@ public class ModifyEventBean implements Serializable{
         setDescription(new String());
         setStartingDate(new Date());
         setEndingDate(new Date());
-        setLocation(new String());
+        setLocationKey(new String());
         setInvitedUsers(new ArrayList<User>());
+        setPlace(new Place());
       }catch(Exception e){
           e.printStackTrace();
           System.err.println("error while resetting the utility vars in modifyEventbean");
@@ -307,5 +315,53 @@ public class ModifyEventBean implements Serializable{
      */
     public void setInvitedUsers(List<User> invitedUsers) {
         this.invitedUsers = invitedUsers;
+    }
+
+    /**
+     * @return the place
+     */
+    public Place getPlace() {
+        return place;
+    }
+
+    /**
+     * @param place the place to set
+     */
+    public void setPlace(Place place) {
+        this.place = place;
+    }
+    
+    /**
+     * method used to retrieve the places shown in the autocomplete
+     */
+    public List<String> findPLaces(String locationKey){
+        setLocationKey(locationKey);
+        System.out.println("the key is: "+locationKey);
+        places=new ArrayList<String>();
+        for(Place p:lm.getPlaceByName(locationKey)){
+            places.add(p.toString());
+        }
+        return places;
+    }
+    
+    /**
+     * method used to select a place
+     */
+    public void onPlaceSelect(SelectEvent selectedPlace){
+        //@TODO
+    }
+
+    /**
+     * @return the places
+     */
+    public List<String> getPlaces() {
+        return places;
+    }
+
+    /**
+     * @param places the places to set
+     */
+    public void setPlaces(List<String> places) {
+        this.places = places;
     }
 }

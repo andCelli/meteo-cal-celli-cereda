@@ -79,9 +79,11 @@ This is the logged-user homepage.
               <h:outputLabel for="allDay" value="All Day:" />
               <h:selectBooleanCheckbox id="allDay" value="#{modifyEventBean.allDay}" />
               
-              <h:outputLabel for="location" value="Location:"/>
-              <p:inputText id="location" value="#{modifyEventBean.location}"/>
-              
+              <p:outputLabel for="location" value="Location: "/>
+              <p:autoComplete id="location" value="#{modifyEventBean.locationKey}" completeMethod="#{modifyEventBean.findPLaces}"
+                               placeholder="Insert location" queryDelay="5">
+                  <p:ajax event="itemSelect" listener="#{modifyEventBean.onPlaceSelect}" />
+              </p:autoComplete>
               
               <h:outputLabel for="privacy" value="Privacy:"/>
               <p:selectOneRadio id="privacy" value="#{modifyEventBean.isPublic}">

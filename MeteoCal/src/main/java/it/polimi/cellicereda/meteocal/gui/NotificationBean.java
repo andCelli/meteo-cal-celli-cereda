@@ -42,30 +42,30 @@ public class NotificationBean implements Serializable{
     @PostConstruct
     public void init(){
         setUser(upm.getLoggedUser());
-        try{
+        /*try{
         setNotifications(nm.getPendingNotificationForUser(getUser()));
         }catch(Exception e){
             System.err.println("error while retrieving the notification list. User: "+user.getEmail());
             printStackTrace();
-        }
+        }*/
     }
     
     /**
      * This method it's called for the update of the displayed notifications
      */
     public void update(){
-        try{
+        /*try{
            List<Notification> prova=nm.getPendingNotificationForUser(user);
-            /*for(Notification n:nm.getPendingNotificationForUser(user)){
+            for(Notification n:nm.getPendingNotificationForUser(user)){
                if(!notifications.contains(n)){
                    notifications.add(n);
                }
            }*/
             
-        }catch(Exception e){
+      /*  }catch(Exception e){
             System.err.println("Error while updating notification for user: "+user.getEmail());
             printStackTrace();
-        }
+        }*/
     }
 
     /**
