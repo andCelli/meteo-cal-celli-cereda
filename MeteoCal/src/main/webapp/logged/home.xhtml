@@ -105,6 +105,21 @@ This is the logged-user homepage.
        </p:dialog>
        </h:form>
     </ui:define> 
+   <ui:define name="contentLeft">               
+                <h:form id="notificationForm">
+                    <p:poll interval="5" listener="#{notificationBean.update()}" update="notificationsGrid"/>
+                    <p:dataGrid var="notification" value="#{notificationBean.notifications}" columns="1" id="notificationsGrid">
+                        <f:facet name="header">
+                            Notifications:
+                        </f:facet>
+                        <p:panel style="text-align: center;border-color:mediumspringgreen;">
+                            <h:panelGrid columns="1" style="width: 100%" border="0">
+                                <h:outputText value="#{notification.referredEvent.title}"/>
+                            </h:panelGrid>   
+                        </p:panel>
+                    </p:dataGrid>
+                </h:form>
+            </ui:define>
 </ui:composition>
 </h:body>
 </html> 

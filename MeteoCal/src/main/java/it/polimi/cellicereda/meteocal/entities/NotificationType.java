@@ -12,5 +12,18 @@ import java.io.Serializable;
  * @author stefano
  */
 public enum NotificationType{
-    EVENT_CHANGED, BAD_WEATHER_ALERT, SUNNY_DAY_PROPOSAL, EVENT_INVITE
+    EVENT_CHANGED, BAD_WEATHER_ALERT, SUNNY_DAY_PROPOSAL, EVENT_INVITE;
+    
+    @Override
+    public String toString(){
+        if(this==EVENT_CHANGED)
+            return "EVENT_CHANGED";
+        else
+            if(this==BAD_WEATHER_ALERT)
+                return "BAD_WEATHER-ALERT";
+        else
+                if(this==SUNNY_DAY_PROPOSAL)
+                    return "SUNNY_DAY_PROPOSAL";
+                return "EVENT_INVITE";
+    }
 }

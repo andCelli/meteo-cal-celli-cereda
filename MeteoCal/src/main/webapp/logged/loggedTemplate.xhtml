@@ -45,7 +45,7 @@ The template defines: 1) the basic layout that will be used in all the logged-us
            <p:layoutUnit position="north" size="55px" resizable="false" >  
                <p:layout id="topDivision">
                    <p:layoutUnit position="east">
-                   <p:panelGrid id="commandGrid" columns="5">    
+                   <h:panelGrid id="commandGrid" columns="5" border="0">    
                        <h:form>
                        <p:inputText id="searchKey"  value="#{searchBean.searchKey}" 
                                     style="margin-right:10px; background-color:mediumspringgreen;border: none;"/>
@@ -56,13 +56,15 @@ The template defines: 1) the basic layout that will be used in all the logged-us
                    <h:form>
                       <p:commandLink action="#{loginBean.logout()}" value="logout"/>
                    </h:form>
-                   </p:panelGrid>
+                   </h:panelGrid>
                    </p:layoutUnit>
                    <p:layoutUnit position="center"/>
                </p:layout>   
             </p:layoutUnit>
 
-            <p:layoutUnit position="west" size="250"  resizable="false"/>
+            <p:layoutUnit position="west" size="250"  resizable="false">
+                <ui:insert name="contentLeft"/>
+            </p:layoutUnit>
               
             <p:layoutUnit position="east" size="450" resizable="false">
                 <ui:insert name="contentRight"/>

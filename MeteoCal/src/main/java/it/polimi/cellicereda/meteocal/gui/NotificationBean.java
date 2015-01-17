@@ -5,6 +5,7 @@
  */
 package it.polimi.cellicereda.meteocal.gui;
 
+import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import it.polimi.cellicereda.meteocal.businesslogic.NotificationManager;
 import it.polimi.cellicereda.meteocal.businesslogic.UserProfileManager;
 import it.polimi.cellicereda.meteocal.entities.Notification;
@@ -41,14 +42,30 @@ public class NotificationBean implements Serializable{
     @PostConstruct
     public void init(){
         setUser(upm.getLoggedUser());
+        try{
         setNotifications(nm.getPendingNotificationForUser(getUser()));
+        }catch(Exception e){
+            System.err.println("error while retrieving the notification list. User: "+user.getEmail());
+            printStackTrace();
+        }
     }
     
     /**
      * This method it's called for the update of the displayed notifications
      */
     public void update(){
-        setNotifications(nm.getPendingNotificationForUser(getUser()));
+        try{
+           List<Notification> prova=nm.getPendingNotificationForUser(user);
+            /*for(Notification n:nm.getPendingNotificationForUser(user)){
+               if(!notifications.contains(n)){
+                   notifications.add(n);
+               }
+           }*/
+            
+        }catch(Exception e){
+            System.err.println("Error while updating notification for user: "+user.getEmail());
+            printStackTrace();
+        }
     }
 
     /**
