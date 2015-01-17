@@ -21,6 +21,7 @@ This is the logged-user homepage.
    <ui:composition template="/logged/loggedTemplate.xhtml" >   
     <ui:define name="contentCenter">
      <h:form>
+         <p:poll id="currentDateUpdate" interval="60" listener="#{scheduleBean.updateCurrentDate()}"/>
          <p:schedule value="#{scheduleBean.model}"  widgetVar="myschedule" timeZone="GMT+1" draggable="false">
                 <p:ajax event="eventSelect" listener="#{scheduleBean.onEventSelect}" update="eventDetails" oncomplete="PF('eventDetailsDialog').show();"/>
          </p:schedule>
@@ -73,13 +74,14 @@ This is the logged-user homepage.
              
               
               <h:outputLabel for="from" value="From:" />
-              <p:calendar id="from" value="#{modifyEventBean.startingDate}" pattern="MM/dd/yyyy HH:mm:ss"/>
+              <p:calendar id="from" value="#{modifyEventBean.startingDate}" pattern="MM/dd/yyyy HH:mm:ss" 
+                          mindate="#{scheduleBean.currentDate}">
+                  <p:ajax event="dateSelect" update="to"/>
+              </p:calendar>
               
               <h:outputLabel for="to" value="To:" />
-              <p:calendar id="to" value="#{modifyEventBean.endingDate}" pattern="MM/dd/yyyy HH:mm:ss"/>
-              
-              <h:outputLabel for="allDay" value="All Day:" />
-              <h:selectBooleanCheckbox id="allDay" value="#{modifyEventBean.allDay}" />
+              <p:calendar id="to" value="#{modifyEventBean.endingDate}" pattern="MM/dd/yyyy HH:mm:ss"
+                          mindate="#{modifyEventBean.startingDate}"/>
               
               <p:outputLabel for="location" value="Location: "/>
               <p:autoComplete id="location" value="#{modifyEventBean.locationKey}" completeMethod="#{modifyEventBean.findPLaces}"
@@ -111,7 +113,7 @@ This is the logged-user homepage.
     </ui:define> 
    <ui:define name="contentLeft">               
                 <h:form id="notificationForm">
-                    <p:poll interval="5" listener="#{notificationBean.update()}" update="notificationsGrid"/>
+                    <p:poll id="notificationCheck" interval="5" listener="#{notificationBean.update()}" update="notificationsGrid"/>
                     <p:dataGrid var="notification" value="#{notificationBean.notifications}" columns="1" id="notificationsGrid">
                         <f:facet name="header">
                             Notifications:

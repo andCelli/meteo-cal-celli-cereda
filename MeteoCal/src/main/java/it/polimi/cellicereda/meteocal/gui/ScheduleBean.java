@@ -11,6 +11,7 @@ import it.polimi.cellicereda.meteocal.businesslogic.UserProfileManager;
 import it.polimi.cellicereda.meteocal.entities.Event;
 import it.polimi.cellicereda.meteocal.entities.User;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -44,6 +45,8 @@ public class ScheduleBean implements Serializable{
     private ScheduleModel model;
     private User currentUser;
   
+    //used to limit date selection
+    private Date currentDate;
   
     /*
     states whether the user is the creator or a partecipant 
@@ -58,6 +61,7 @@ public class ScheduleBean implements Serializable{
     @PostConstruct
     public void init(){
         System.out.println("Parto: ScheduleBean");
+        setCurrentDate(new Date());
         try{
           currentUser=userProfileManager.getLoggedUser();
           //find all the events in which the user will partecipate 
@@ -105,5 +109,26 @@ public class ScheduleBean implements Serializable{
      */
     public DetailsEventBean getDetailsEventBean() {
         return detailsEventBean;
+    }
+
+    /**
+     * @return the currentDate
+     */
+    public Date getCurrentDate() {
+        return currentDate;
+    }
+
+    /**
+     * @param currentDate the currentDate to set
+     */
+    public void setCurrentDate(Date currentDate) {
+        this.currentDate = currentDate;
+    }
+    
+    /**
+     * updates the currentDate value
+     */
+    public void updateCurrentDate(){
+        currentDate=new Date();
     }
 }
