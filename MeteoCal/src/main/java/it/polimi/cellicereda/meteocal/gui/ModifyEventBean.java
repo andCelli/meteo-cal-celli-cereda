@@ -149,7 +149,7 @@ public class ModifyEventBean implements Serializable{
           for(User u:getInvitedUsers()){
               //non invita un utente che è già tra i partecipanti
               if(!calendarManager.getEventParticipant(event).contains(u)){
-                  notificationManager.sendAnInvite(null,u);
+                  notificationManager.sendAnInvite(event,u);
               }
           }
         }catch(Exception e){
