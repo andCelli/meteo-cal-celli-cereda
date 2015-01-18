@@ -67,7 +67,7 @@ public class CalendarManager {
      * @param id The event id to serach for
      * @return The event that has the given id
      */
-    public Event getByID(Long id) {
+    public Event getByID(String id) {
         return em.find(Event.class, id);
     }
 
@@ -200,9 +200,24 @@ public class CalendarManager {
      */
     public void changeEventLocation(Event event, Place newPlace) {
         event = em.find(Event.class, event.getId());
-        newPlace = em.find(Place.class, newPlace.getId());
+
+        if (newPlace != null) {
+            newPlace = em.find(Place.class, newPlace.getId());
+        }
 
         event.setEventLocation(newPlace);
         generateEventChangedNotifications(event);
+    }
+
+    public void changeEventPrivacy(Event event, boolean newPrivacy) {
+        event = em.find(Event.class, event.getId());
+
+        event.setPublicEvent(newPrivacy);
+    }
+
+    public void changeEventAllDay(Event event, boolean isAllDay) {
+        event = em.find(Event.class, event.getId());
+
+        event.setIsAllDay(isAllDay);
     }
 }

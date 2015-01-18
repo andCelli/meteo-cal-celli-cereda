@@ -5,7 +5,6 @@
  */
 package it.polimi.cellicereda.meteocal.gui;
 
-import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import it.polimi.cellicereda.meteocal.businesslogic.CalendarManager;
 import it.polimi.cellicereda.meteocal.businesslogic.LocationManager;
 import it.polimi.cellicereda.meteocal.businesslogic.NotificationManager;
@@ -19,22 +18,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceUnit;
-import javax.transaction.SystemException;
-import javax.transaction.UserTransaction;
 import org.primefaces.event.SelectEvent;
 
 /**
@@ -87,13 +75,12 @@ public class ModifyEventBean implements Serializable {
     public void init() {
         resetUtilityVariables();
         currentUser = userProfileManager.getLoggedUser();
-        System.out.println("Parto: ModifyEvent");
+
         try {
             scheduleBean.getDetailsEventBean().setModifyEventBean(this);
-            System.out.println("ho settato modifyBean in DetailsBean");
         } catch (Exception e) {
-            printStackTrace();
-            System.err.println("error while retrieving detailsEventBean in the init of ModifyEventBean");
+            Logger.getLogger(ModifyEventBean.class.getName()).
+                    log(Level.SEVERE, "Error while retrieving detailsEventBean in the init of ModifyEventBean", e);
         }
     }
     /*
@@ -103,71 +90,50 @@ public class ModifyEventBean implements Serializable {
      */
 
     public void saveEvent() {
-        //check
-        System.out.println("the newEvent flag is: " + newEvent);
         if (newEvent) {
-            //update event info
-            try {
-                calendarManager.changeEventTitle(getEvent(), getTitle());
-                System.out.println("the title is: " + getTitle());
-                calendarManager.changeEventDescription(getEvent(), getDescription());
-                System.out.println("the description is: " + description);
-                calendarManager.changeEventTiming(getEvent(), getStartingDate(), getEndingDate());
-                System.out.println("the start date is: " + getStartingDate().toString());
-                //correggere
-                calendarManager.changeEventLocation(getEvent(), place);
-                getEvent().setPublicEvent(isIsPublic());
-                getEvent().setIsAllDay(isAllDay());
-                getEvent().setCreator(userProfileManager.getByEmail(currentUser.getEmail()));
-            } catch (Exception e) {
-                printStackTrace();
-                System.err.println("Problems while updating the event");
-            }
-            //save the event in the db
-            try {
-                calendarManager.save(getEvent());
-            } catch (Exception e) {
-                printStackTrace();
-                System.err.println("Problems while saving the event");
-            }
+            //save the new values into the event and persist it
+            event.setTitle(title);
+            event.setDescription(description);
+            event.setStartDate(startingDate);
+            event.setEndDate(endingDate);
+            event.setEventLocation(place);
+            event.setIsAllDay(allDay);
+            event.setPublicEvent(isPublic);
+            event.setCreator(currentUser);
+
+            calendarManager.save(event);
+
             //add the event to the schedule model
-            try {
-                scheduleBean.getModel().addEvent(getEvent());
-            } catch (Exception e) {
-                System.err.println("Error while trying to add the event to the model in the modifyEventBean");
-            }
+            scheduleBean.getModel().addEvent(event);
         } else {
-            try {
-                //@TODO refactor
-                System.out.println("sto aggiornando l'evento");
-
-                calendarManager.changeEventTitle(getEvent(), getTitle());
-                calendarManager.changeEventDescription(getEvent(), getDescription());
-                calendarManager.changeEventTiming(getEvent(), getStartingDate(), getEndingDate());
-                //correggere
-                calendarManager.changeEventLocation(getEvent(), place);
-                getEvent().setPublicEvent(isIsPublic());
-                getEvent().setIsAllDay(isAllDay());
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.err.println("error while updating the event (save() in ModifyBean)");
+            //update the event in the database
+            calendarManager.changeEventTitle(event, title);
+            calendarManager.changeEventDescription(event, description);
+            calendarManager.changeEventTiming(event, startingDate, endingDate);
+            if (place != null) {
+                calendarManager.changeEventLocation(event, place);
             }
+            calendarManager.changeEventPrivacy(event, isPublic);
+            calendarManager.changeEventAllDay(event, allDay);
+
+            //and update the schedule model
+            scheduleBean.getModel().deleteEvent(event);
+            event = calendarManager.getByID(event.getId());
+            scheduleBean.getModel().addEvent(event);
         }
 
         //add invited user
-        try {
-            for (User u : getInvitedUsers()) {
+        if (!invitedUsers.isEmpty()) {
+            for (User u : invitedUsers) {
                 //non invita un utente che è già tra i partecipanti
                 if (!calendarManager.getEventParticipant(event).contains(u)) {
                     notificationManager.sendAnInvite(event, u);
                 }
             }
-        } catch (Exception e) {
-            printStackTrace();
-            System.err.println("error while sending invites (save() ModifyEventBean");
         }
-        setEvent(new Event());
+
+        //be ready for the next update
+        event = new Event();
         resetUtilityVariables();
     }
 
@@ -299,19 +265,14 @@ public class ModifyEventBean implements Serializable {
 
     //set all the utility variables to the default value (null)
     public void resetUtilityVariables() {
-        try {
-            setNewEvent(true);
-            setTitle(new String());
-            setDescription(new String());
-            setStartingDate(new Date());
-            setEndingDate(new Date());
-            setLocationKey(new String());
-            setInvitedUsers(new ArrayList<User>());
-            setPlace(null);
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.err.println("error while resetting the utility vars in modifyEventbean");
-        }
+        newEvent = true;
+        title = new String();
+        description = new String();
+        startingDate = new Date();
+        endingDate = new Date();
+        locationKey = new String();
+        invitedUsers = new ArrayList<>();
+        place = null;
     }
 
     /**
@@ -347,11 +308,9 @@ public class ModifyEventBean implements Serializable {
      */
     public List<String> findPLaces(String locationKey) {
         setLocationKey(locationKey);
-        System.out.println("the key is: " + locationKey);
         places = new ArrayList<String>();
         for (Place p : lm.getPlaceByName(locationKey)) {
             places.add(p.toString());
-            System.out.println(p.toString());
         }
         return places;
     }
