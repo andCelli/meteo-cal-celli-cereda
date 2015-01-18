@@ -71,4 +71,8 @@ public class UserProfileManager {
         return em.createNamedQuery("User.findBySurname").setParameter("surname", surname).getResultList();
     }
 
+    public void changeUsername(User user, String newUsername) {
+        User u = em.find(User.class, user.getEmail());
+        u.setUsername(newUsername);
+    }
 }

@@ -41,8 +41,8 @@ public class ForecastManagerTest {
         moscow.setLatitude(55.75222);
 
         //and a related event
-        event.setStartingDate(new Date());
-        event.setEndingDate(new Date(new Date().getTime() + 1 * 60 * 60 * 1000));
+        event.setStartDate(new Date());
+        event.setEndDate(new Date(new Date().getTime() + 1 * 60 * 60 * 1000));
         event.setEventLocation(moscow);
 
         //and return it when the forecast manager asks it to the location manager
