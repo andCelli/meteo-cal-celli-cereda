@@ -11,6 +11,7 @@ import it.polimi.cellicereda.meteocal.entities.NotificationState;
 import it.polimi.cellicereda.meteocal.entities.NotificationType;
 import it.polimi.cellicereda.meteocal.entities.User;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -50,7 +51,7 @@ public class NotificationManager {
     }
 
     /**
-     * Get the notifications that a user still have to see
+     * Get the notifications that a user still have to see.
      *
      * @param recipient The user that is the recipient of the search
      * notifications
@@ -61,6 +62,30 @@ public class NotificationManager {
         return em.createNamedQuery("Notification.findPendingForUser").
                 setParameter("recipient", recipient).
                 setParameter("state", NotificationState.PENDING).getResultList();
+    }
+
+    /**
+     * Get the pending notifications related to events that still have to take
+     * place
+     *
+     * @param recipient The user that is the recipient of the search
+     * notifications
+     * @return The notifications that have the given user as recipient and
+     * pending as state and the related event still have to start
+     */
+    public List<Notification> getPendingFutureNotificationForUser(User recipient) {
+        List<Notification> nonFiltered = getPendingNotificationForUser(recipient);
+        List<Notification> filtered = new LinkedList<>();
+
+        Date now = new Date();
+
+        for (Notification n : nonFiltered) {
+            if (n.getReferredEvent().getStartDate().after(now)) {
+                filtered.add(n);
+            }
+        }
+
+        return filtered;
     }
 
     /**
