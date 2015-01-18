@@ -45,10 +45,10 @@ public class Event implements Serializable, ScheduleEvent {
     private String description;
 
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-    private Date startingDate;
+    private Date startDate;
 
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-    private Date endingDate;
+    private Date endDate;
 
     /**
      * The location where the event takes place (can be null when the event is
@@ -101,84 +101,28 @@ public class Event implements Serializable, ScheduleEvent {
         return "it.polimi.cellicereda.meteocal.entities.Event[ id=" + id + " ]";
     }
 
-    @Override
     public String getId() {
         return id;
     }
 
-    @Override
     public void setId(String id) {
         this.id = id;
     }
 
-    @Override
     public String getTitle() {
         return title;
     }
 
-    @Override
-    public Date getStartDate() {
-        return startingDate;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    @Override
-    public Date getEndDate() {
-        return endingDate;
-    }
-
-    @Override
-    public boolean isAllDay() {
-        return isAllDay;
-    }
-
-    public void setIsAllDay(Boolean allDay) {
-        isAllDay = allDay;
-    }
-
-    @Override
-    public String getStyleClass() {
-        return null;
-    }
-
-    @Override
-    /**
-     * All the events are editable
-     */
-    public boolean isEditable() {
-        return true;
-    }
-
-    @Override
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String desc) {
-        description = desc;
-    }
-
-    public Boolean getPublicEvent() {
-        return publicEvent;
-    }
-
-    public void setPublicEvent(Boolean publicEvent) {
-        this.publicEvent = publicEvent;
-    }
-
-    public User getCreator() {
-        return creator;
-    }
-
-    public void setCreator(User creator) {
-        this.creator = creator;
-    }
-
-    public void setStartingDate(Date starting) {
-        this.startingDate = starting;
-    }
-
-    public void setEndingDate(Date ending) {
-        this.endingDate = ending;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Place getEventLocation() {
@@ -197,15 +141,64 @@ public class Event implements Serializable, ScheduleEvent {
         this.forecast = forecast;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public boolean isPublicEvent() {
+        return publicEvent;
+    }
+
+    public void setPublicEvent(boolean publicEvent) {
+        this.publicEvent = publicEvent;
+    }
+
+    public Boolean getIsAllDay() {
+        return isAllDay;
+    }
+
+    public void setIsAllDay(Boolean isAllDay) {
+        this.isAllDay = isAllDay;
+    }
+
+    public User getCreator() {
+        return creator;
+    }
+
+    public void setCreator(User creator) {
+        this.creator = creator;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     @Override
-    /**
-     * @return The event's forecast
-     */
     public Object getData() {
-        return forecast;
+        return null;
     }
+
+    @Override
+    public boolean isAllDay() {
+        return isAllDay;
+    }
+
+    @Override
+    public String getStyleClass() {
+        return null;
+    }
+
+    @Override
+    public boolean isEditable() {
+        return true;
+    }
+
 }

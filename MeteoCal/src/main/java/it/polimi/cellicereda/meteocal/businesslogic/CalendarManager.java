@@ -124,6 +124,9 @@ public class CalendarManager {
      * @param event The event where the user will participate
      */
     public void addAnUserToAnEventParticipants(User newParticipant, Event event) {
+        newParticipant = em.find(User.class, newParticipant.getEmail());
+        event = em.find(Event.class, event.getId());
+
         newParticipant.addEvent(event);
     }
 
@@ -136,6 +139,8 @@ public class CalendarManager {
      * @param event The event that just changed
      */
     private void generateEventChangedNotifications(Event event) {
+        event = em.find(Event.class, event.getId());
+
         for (User u : getEventParticipant(event)) {
             //check if we need a new notification
             Boolean needed = true;
@@ -159,8 +164,9 @@ public class CalendarManager {
      * Change the title of the event and generate the consequent notifications
      */
     public void changeEventTitle(Event event, String newTitle) {
-        event.setTitle(newTitle);
+        event = em.find(Event.class, event.getId());
 
+        event.setTitle(newTitle);
         generateEventChangedNotifications(event);
     }
 
@@ -169,8 +175,9 @@ public class CalendarManager {
      * notifications
      */
     public void changeEventDescription(Event event, String newDesc) {
-        event.setDescription(newDesc);
+        event = em.find(Event.class, event.getId());
 
+        event.setDescription(newDesc);
         generateEventChangedNotifications(event);
     }
 
@@ -179,8 +186,10 @@ public class CalendarManager {
      * notifications. You have to provide both the date even if only one changes
      */
     public void changeEventTiming(Event event, Date newStarting, Date newEnding) {
-        event.setStartingDate(newStarting);
-        event.setEndingDate(newEnding);
+        event = em.find(Event.class, event.getId());
+
+        event.setStartDate(newStarting);
+        event.setEndDate(newEnding);
 
         generateEventChangedNotifications(event);
 
@@ -190,8 +199,10 @@ public class CalendarManager {
      * Change the event locationt and generate the consequent notifications
      */
     public void changeEventLocation(Event event, Place newPlace) {
-        event.setEventLocation(newPlace);
+        event = em.find(Event.class, event.getId());
+        newPlace = em.find(Place.class, newPlace.getId());
 
+        event.setEventLocation(newPlace);
         generateEventChangedNotifications(event);
     }
 }
