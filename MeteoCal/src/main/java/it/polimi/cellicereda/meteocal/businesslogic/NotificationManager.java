@@ -59,7 +59,7 @@ public class NotificationManager {
      * pending as state
      */
     public List<Notification> getPendingNotificationForUser(User recipient) {
-        return em.createNamedQuery("Notification.findPendingForUser").
+        return em.createNamedQuery("Notification.findForUserAndState").
                 setParameter("recipient", recipient).
                 setParameter("state", NotificationState.PENDING).getResultList();
     }
