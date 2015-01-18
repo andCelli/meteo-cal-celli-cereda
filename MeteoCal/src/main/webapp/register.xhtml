@@ -85,14 +85,16 @@ Registration page
                                <f:selectItem itemLabel="Private" itemValue="#{false}" />
                           </p:selectOneRadio>
                 </h:panelGrid>
-                <p:commandButton id="submit" value="Register" update="regGrid"
-                                 action="#{registrationBean.register()}" />
+                <p:commandButton id="submit" value="Register" 
+                                 action="#{registrationBean.register()}" ajax="true"
+                                     update="@all"/>
                 <!--links-->
                 <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
                     <p:link outcome="login" value="Login" />
                     <p:link outcome="about" value="About" />
                 </h:panelGrid>   
             </p:panel>
+            <p:messages style="color:red;font-family: arial;" showIcon="false"/>
         </h:form>    
         </center>
     </body>

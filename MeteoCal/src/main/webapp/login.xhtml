@@ -12,7 +12,7 @@ Login page
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
-    <head>
+    <h:head>
         <title>METEOCAL</title>
         <style>
             h1{
@@ -35,14 +35,14 @@ Login page
             }
             
         </style>
-    </head>
+    </h:head>
       <h:body>
         <center>
             <h1> METEOCAL </h1>
         <h:form id="loginform">
-            <p:panel>
+            <p:panel style="border:none;">
                 <h2>Login</h2>
-                <p:panelGrid columns="2">
+                <h:panelGrid columns="2" style="border:0;">
                     <p:outputLabel for="email" value="Email"/>
                     <p:inputText id="email" value="#{loginBean.email}" 
                                  required="true" />
@@ -53,9 +53,9 @@ Login page
                     <p:commandButton id="submit" action="#{loginBean.login()}" value="Login" ajax="true"
                                      update="@all"/>
                     </center>
-                </p:panelGrid>
+                </h:panelGrid>
             </p:panel>
-            <h:messages style="color:red;"/>
+            <p:messages style="color:red;font-family: arial;" showIcon="false"/>
         </h:form>
         <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
                     <p:link outcome="register" value="Register"/>
