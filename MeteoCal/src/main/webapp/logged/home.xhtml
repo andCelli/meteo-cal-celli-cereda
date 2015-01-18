@@ -81,7 +81,7 @@ This is the logged-user homepage.
               
               <h:outputLabel for="to" value="To:" />
               <p:calendar id="to" value="#{modifyEventBean.endingDate}" pattern="MM/dd/yyyy HH:mm:ss"
-                          mindate="#{modifyEventBean.startingDate}"/>
+                          mindate="#{modifyEventBean.startingDate}" />
               
               <p:outputLabel for="location" value="Location: "/>
               <p:autoComplete id="location" value="#{modifyEventBean.locationKey}" completeMethod="#{modifyEventBean.findPLaces}"
