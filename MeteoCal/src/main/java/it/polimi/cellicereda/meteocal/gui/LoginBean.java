@@ -5,9 +5,12 @@
  */
 package it.polimi.cellicereda.meteocal.gui;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +22,9 @@ import javax.servlet.http.HttpServletRequest;
 @Named
 @RequestScoped
 public class LoginBean{
+    
+    @Inject
+    private Logger logger;
     
     private String email;
     private String password;
@@ -55,12 +61,12 @@ public class LoginBean{
         
         try{
             request.login(this.email,this.password);
+            return"/logged/home";
         }catch(ServletException e){
-            context.addMessage(null, new FacesMessage("Login failed."));
-            return "login?error=true";
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login Failed", "Login Failed"));
+            logger.log(Level.SEVERE,"Login Failed");
+            return null;
         }
-        //login OK
-        return "/logged/home?faces-redirect=true";
     }
     
     /*
