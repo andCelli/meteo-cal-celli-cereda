@@ -40,18 +40,22 @@ The template defines: 1) the basic layout that will be used in all the logged-us
            .ui-layout-north{
                 background-color: mediumspringgreen;
             }
+            .ui-layout-pane-north{
+                background-color: mediumspringgreen;
+            }
+            .ui-layout-unit .ui-layout-unit-content{
+                overflow:hidden !important;
+                padding: 0px;
+            }
         </style>    
     </h:head>
     <body>
         
        <p:layout fullPage="true">
           
-          <p:layoutUnit position="north" size="50px" resizable="false"  >  
-            
-              
-            <!--  <p:layout id="topDivision" style="background-color:mediumspringgreen;">
-                   <p:layoutUnit position="east">-->
-            <div align="left">
+           <p:layoutUnit position="north" resizable="false">  
+      
+            <div align="right" style="background-color:mediumspringgreen;">
                    <h:panelGrid id="commandGrid" columns="5" border="0">
                        <h:form>
                        <p:inputText id="searchKey"  value="#{searchBean.searchKey}" 
@@ -65,9 +69,7 @@ The template defines: 1) the basic layout that will be used in all the logged-us
                    </h:form>
                 </h:panelGrid>
             </div>
-                  <!-- </p:layoutUnit>-->
-                 <!-- <p:layoutUnit position="center" style="background-color: mediumspringgreen;"/>
-               </p:layout>   -->
+                  
             </p:layoutUnit>
 
             <p:layoutUnit position="west" size="250"  resizable="false">

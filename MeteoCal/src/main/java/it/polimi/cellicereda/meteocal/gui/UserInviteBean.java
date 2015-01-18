@@ -78,6 +78,8 @@ public class UserInviteBean {
      if(!invitedUsers.contains(selected)){
       invitedUsers.add(selected);
      }
+     
+     searchKey=null;
     }
 
     /**
