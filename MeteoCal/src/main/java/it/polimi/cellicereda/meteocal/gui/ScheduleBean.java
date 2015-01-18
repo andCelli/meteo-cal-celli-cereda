@@ -40,6 +40,8 @@ public class ScheduleBean implements Serializable{
     UserProfileManager userProfileManager;
     @Inject
     private DetailsEventBean detailsEventBean;
+    @EJB
+    private Utility utility;
 
     //this will contain the list of events to be displayed
     private ScheduleModel model;
@@ -102,6 +104,8 @@ public class ScheduleBean implements Serializable{
         getDetailsEventBean().setEvent(event);
         getDetailsEventBean().setIsCreator(event.getCreator().equals(currentUser));
         getDetailsEventBean().setPartecipants(calendarManager.getEventParticipant(event));
+        getDetailsEventBean().setStart(utility.getFormattedDate(event.getStartDate()));
+        getDetailsEventBean().setEnd(utility.getFormattedDate(event.getEndDate()));
        } 
 
     /**

@@ -33,9 +33,9 @@ This is the logged-user homepage.
                  <h:outputLabel for="descriptionDet" value="Description:"/>
                  <p:outputLabel id="descriptionDet" value="#{detailsEventBean.event.description}"/>
                  <h:outputLabel for="startingTimeDet" value="From:" />
-                 <p:calendar id="startingTimeDet" value="#{detailsEventBean.event.startDate}" readonly="true" pattern="MM/dd/yyyy HH:mm:ss" />
+                 <h:outputLabel id="startingTimeDet" value="#{detailsEventBean.start}"/>
                  <h:outputLabel for="endingTimeDet" value="To:" />
-                 <p:calendar id="endingTimeDet" value="#{detailsEventBean.event.endDate}" readonly="true" pattern="MM/dd/yyyy HH:mm:ss" />
+                 <h:outputLabel id="endingTimeDet" value="#{detailsEventBean.end}"/>
                  <h:outputLabel for="locationDet" value="Location: "/>
                  <p:outputLabel id="locationDet" value="#{detailsEventBean.event.eventLocation}"/>
                  <h:outputLabel for="privacyDet" value="Privacy:"/>
@@ -50,9 +50,13 @@ This is the logged-user homepage.
                  </p:dataScroller>
                  
                  <p:commandButton id="modifyButton" value="Modify" action="#{detailsEventBean.modify()}"
-                                  onclick="PF('modifyEventDialog').show();PF('eventDetailsDialog').hide();"/>
+                                  onclick="PF('modifyEventDialog').show();PF('eventDetailsDialog').hide();" 
+                                  rendered="#{detailsEventBean.isCreator}"/>
                 <p:commandButton id="deleteButton" value="Delete" action="#{detailsEventBean.delete()}"
-                                  onclick="PF('eventDetailsDialog').hide()" oncomplete="PF('myschedule').update()" />
+                                  onclick="PF('eventDetailsDialog').hide()" oncomplete="PF('myschedule').update()" 
+                                  rendered="#{detailsEventBean.isCreator}"/>
+                <p:commandButton id="removePartecipation" value="Remove partecipation" action="#{detailsEventBean.removeFromPartecipants()}"
+                                 onclick="PF('eventDetailsDialog').hide();"  rendered="#{!detailsEventBean.isCreator}"/>
              </h:panelGrid> 
          </p:dialog>
      </h:form>

@@ -21,15 +21,15 @@ and open the template in the editor.
                         <p:ajax event="eventSelect" listener="#{externalCalendarBean.onEventSelect}" update="externalEventDetails" oncomplete="PF('externalEventDetailsDialog').show();"/>
                     </p:schedule>
                     <p:dialog widgetVar="externalEventDetailsDialog" header="Event Details" showEffect="clip" hideEffect="clip">
-                        <p:panelGrid id="externalEventDetails" columns="2">
+                        <h:panelGrid id="externalEventDetails" columns="2" border="0">
                               <h:outputLabel for="titleDet" value="Title:" rendered="#{externalCalendarBean.selectedEvent.publicEvent}"/>
                               <p:outputLabel id="titleDet" value="#{externalCalendarBean.selectedEvent.title}" rendered="#{externalCalendarBean.selectedEvent.publicEvent}"/>
                               <h:outputLabel for="descriptionDet" value="Description:" rendered="#{externalCalendarBean.selectedEvent.publicEvent}"/>
                               <p:outputLabel id="descriptionDet" value="#{externalCalendarBean.selectedEvent.description}" rendered="#{externalCalendarBean.selectedEvent.publicEvent}"/>
                               <h:outputLabel for="startingTimeDet" value="From:" />
-                              <p:calendar id="startingTimeDet" value="#{externalCalendarBean.selectedEvent.startDate}" readonly="true" pattern="MM/dd/yyyy HH:mm:ss" />
+                              <h:outputLabel id="startingTimeDet" value="#{externalCalendarBean.start}"/>
                               <h:outputLabel for="endingTimeDet" value="To:" />
-                              <p:calendar id="endingTimeDet" value="#{externalCalendarBean.selectedEvent.endDate}" readonly="true" pattern="MM/dd/yyyy HH:mm:ss" />
+                              <h:outputLabel id="endingTimeDet" value="#{externalCalendarBean.end}"/>
                               <h:outputLabel for="locationDet" value="Location: " rendered="#{externalCalendarBean.selectedEvent.publicEvent}"/>
                               <p:outputLabel id="locationDet" value="#{externalCalendarBean.selectedEvent.eventLocation}" rendered="#{externalCalendarBean.selectedEvent.publicEvent}"/>
                               <h:outputLabel for="forecastDet" value="Forecast:" rendered="#{externalCalendarBean.selectedEvent.publicEvent}"/>
@@ -38,7 +38,7 @@ and open the template in the editor.
                               <p:dataScroller id="partecipants" value="#{detailsEventBean.partecipants}" var="user" chunkSize="10" rendered="#{externalCalendarBean.selectedEvent.publicEvent}">
                                    <p:outputLabel value="#{user.username}"/>
                               </p:dataScroller>
-                       </p:panelGrid> 
+                       </h:panelGrid> 
                     </p:dialog>
                 </h:form>
             </ui:define>

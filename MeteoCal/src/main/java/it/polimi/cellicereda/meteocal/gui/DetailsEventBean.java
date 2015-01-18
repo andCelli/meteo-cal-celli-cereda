@@ -30,7 +30,8 @@ public class DetailsEventBean implements Serializable {
     //this flag states if the user is the creator of the selected event
     //it's set in the onEventSelect method in the ScheduleBean
     //Used to choose which buttons to be rendered
-    private boolean isCreator;
+    private boolean isCreator=false;
+    
     private Event event;
     
     private ScheduleBean scheduleBean;
@@ -45,6 +46,9 @@ public class DetailsEventBean implements Serializable {
     private UserProfileManager userProfileManager;
     @EJB
     private ForecastManager fm;
+   
+    
+    private String start,end;
     
     @PostConstruct
     public void init(){
@@ -57,6 +61,7 @@ public class DetailsEventBean implements Serializable {
      * remove from db
      */
     public void delete(){
+        isCreator=false;
         getScheduleBean().getModel().deleteEvent(event);
         calendarManager.delete(event);
     }
@@ -78,6 +83,7 @@ public class DetailsEventBean implements Serializable {
      * (the flag states that the event is not a new one)
      */
     public void modify(){
+        isCreator=false;
         try{
             System.out.println("sono modify()");
             getModifyEventBean().setEvent(event);         
@@ -196,5 +202,33 @@ public class DetailsEventBean implements Serializable {
             printStackTrace();
         }
         return false;
+    }
+
+    /**
+     * @return the start
+     */
+    public String getStart() {
+        return start;
+    }
+
+    /**
+     * @param start the start to set
+     */
+    public void setStart(String start) {
+        this.start = start;
+    }
+
+    /**
+     * @return the end
+     */
+    public String getEnd() {
+        return end;
+    }
+
+    /**
+     * @param end the end to set
+     */
+    public void setEnd(String end) {
+        this.end = end;
     }
 }

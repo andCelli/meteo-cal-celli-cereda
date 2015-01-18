@@ -43,11 +43,15 @@ public class ExternalCalendarBean implements Serializable{
     private CalendarManager cm;
     @EJB
     private UserProfileManager upm;
+    @EJB 
+    private Utility u;
     
     private User user;
     private ScheduleModel model;
     private Event selectedEvent;
     private FacesContext context;
+    
+    private String start,end;
     
     @PostConstruct
     public void init(){
@@ -112,6 +116,7 @@ public class ExternalCalendarBean implements Serializable{
      */
     public void onEventSelect(SelectEvent e) {
         setSelectedEvent((Event)e.getObject()); 
+        
        }
 
     /**
@@ -126,5 +131,35 @@ public class ExternalCalendarBean implements Serializable{
      */
     public void setSelectedEvent(Event selectedEvent) {
         this.selectedEvent = selectedEvent;
+        setStart(u.getFormattedDate(selectedEvent.getStartDate()));
+        setEnd(u.getFormattedDate(selectedEvent.getEndDate()));
+    }
+
+    /**
+     * @return the start
+     */
+    public String getStart() {
+        return start;
+    }
+
+    /**
+     * @param start the start to set
+     */
+    public void setStart(String start) {
+        this.start = start;
+    }
+
+    /**
+     * @return the end
+     */
+    public String getEnd() {
+        return end;
+    }
+
+    /**
+     * @param end the end to set
+     */
+    public void setEnd(String end) {
+        this.end = end;
     }
 }
