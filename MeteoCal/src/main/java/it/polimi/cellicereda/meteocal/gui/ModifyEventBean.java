@@ -135,6 +135,8 @@ public class ModifyEventBean implements Serializable {
         //be ready for the next update
         event = new Event();
         resetUtilityVariables();
+        
+       
     }
 
     /**

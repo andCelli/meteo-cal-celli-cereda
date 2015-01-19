@@ -50,8 +50,9 @@ This is the logged-user homepage.
                  </p:dataScroller>
                  
                  <p:commandButton id="modifyButton" value="Modify" action="#{detailsEventBean.modify()}"
-                                  onclick="PF('modifyEventDialog').show();PF('eventDetailsDialog').hide();" 
+                                  oncomplete="PF('modifyEventDialog').show();PF('eventDetailsDialog').hide();" 
                                   rendered="#{detailsEventBean.isCreator}"/>
+         
                 <p:commandButton id="deleteButton" value="Delete" action="#{detailsEventBean.delete()}"
                                   onclick="PF('eventDetailsDialog').hide()" oncomplete="PF('myschedule').update()" 
                                   rendered="#{detailsEventBean.isCreator}"/>
@@ -63,15 +64,14 @@ This is the logged-user homepage.
    </ui:define> 
    <!--Right--> 
    <ui:define name="contentRight">  
-       <h:form>   
+       <h:form id="modifyForm" prependId="false">   
         <p:growl id="messages" showDetail="true" />
         <p:commandButton value="New Event" id="newEvent" onclick="PF('modifyEventDialog').show();"/>
-        <p:dialog widgetVar="modifyEventDialog" header="Event Details" showEffect="clip" hideEffect="clip" 
-                  position="right" draggable="false">
+        <p:dialog id="modifyDialog" widgetVar="modifyEventDialog" header="Event Details" showEffect="clip" hideEffect="clip" 
+                  position="right" draggable="false" dynamic="true">
            <h:panelGrid id="modifyEventDetails" columns="2"  style="width:410px;height:560px;">
               <h:outputLabel for="title" value="Title:" />
               <p:inputText id="title" value="#{modifyEventBean.title}"/>
-       
               
               <h:outputLabel for="description" value="Description:" />
               <p:inputText id="description" value="#{modifyEventBean.description}"/>
@@ -109,8 +109,7 @@ This is the logged-user homepage.
                  </p:dataScroller>
               <p:commandButton type="reset" value="Reset"/>
               <p:commandButton id="addButton" value="Save" action="#{modifyEventBean.saveEvent()}" 
-                               oncomplete="PF('myschedule').update()" onclick="PF('modifyEventDialog').hide()"/>
-              
+                               oncomplete="PF('myschedule').update();PF('modifyEventDialog').hide();"/>   
            </h:panelGrid>
        </p:dialog>
        </h:form>
