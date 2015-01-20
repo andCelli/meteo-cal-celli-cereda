@@ -87,4 +87,16 @@ public class LocationManager {
         return em.createNamedQuery("Place.findByName").
                 setParameter("name", name).getResultList();
     }
+
+    /**
+     * Search a place by name and country
+     *
+     * @param name The name to search
+     * @param country The country to search
+     * @return The place that have the name and the country given
+     */
+    public Place getPlaceByNameAndCountry(String name, String country) {
+        return (Place) em.createNamedQuery("Place.findByNameAndCountry").
+                setParameter("name", name).setParameter("country", country).getSingleResult();
+    }
 }
