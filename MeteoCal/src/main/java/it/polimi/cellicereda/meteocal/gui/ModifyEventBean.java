@@ -5,6 +5,7 @@
  */
 package it.polimi.cellicereda.meteocal.gui;
 
+import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import it.polimi.cellicereda.meteocal.businesslogic.CalendarManager;
 import it.polimi.cellicereda.meteocal.businesslogic.LocationManager;
 import it.polimi.cellicereda.meteocal.businesslogic.NotificationManager;
@@ -275,7 +276,6 @@ public class ModifyEventBean implements Serializable {
         locationKey = new String();
         invitedUsers = new ArrayList<>();
         place = null;
-        System.out.println("title: "+title+".");
     }
 
     /**
@@ -323,9 +323,15 @@ public class ModifyEventBean implements Serializable {
      * (country)"
      */
     public void onPlaceSelect(SelectEvent selectedPlace) {
-        String completeString = selectedPlace.getObject().toString();
-        String[] parts = completeString.split(" (");
-        //metodo che restituisce il posto specifico dando nome+stato
+       
+        String completeString = selectedPlace.getObject().toString();    
+        
+        String[] parts = completeString.split("\\s");
+        parts[1]=parts[1].replaceAll("[()]", "");
+        
+        setPlace(lm.getPlaceByNameAndCountry(parts[0] , parts[1]));
+        
+        System.out.println(place.toString());
     }
 
     /**

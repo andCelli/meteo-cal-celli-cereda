@@ -13,14 +13,17 @@ import javax.persistence.PersistenceContext;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
+import static org.junit.Assert.assertNotNull;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
  *
  * @author Andrea
  */
-@RunWith(Arquillian.class)
+/*@RunWith(Arquillian.class)
 public class ModifyEventIT {
     
     @Inject
@@ -33,8 +36,13 @@ public class ModifyEventIT {
     public static WebArchive createArchiveAndDeploy(){
         return ShrinkWrap.create(WebArchive.class)
                 .addClass(ModifyEventBean.class)
-                .addPackage(Event.class.getPackage());
-             
+                .addPackage(Event.class.getPackage())
+                .addAsResource("META-INF/persistence.xml")
+                .addAsWebInfResource(EmptyAsset.INSTANCE,"beans.xml");      
     }
     
-}
+    @Test
+    public void ModifyInjected(){
+        assertNotNull(meb);
+    }
+}*/
