@@ -29,7 +29,9 @@ import javax.validation.constraints.NotNull;
     @NamedQuery(name = "Place.findByID",
             query = "SELECT p FROM Place p WHERE p.id = :ID"),
     @NamedQuery(name = "Place.findByName",
-            query = "SELECT p FROM Place p WHERE p.name = :name"),})
+            query = "SELECT p FROM Place p WHERE p.name = :name"),
+    @NamedQuery(name = "Place.findByNameAndCountry",
+            query = "SELECT p FROM Place p WHERE p.name = :name AND p.country = :country")})
 
 public class Place implements Serializable {
 
