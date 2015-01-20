@@ -9,6 +9,7 @@ import it.polimi.cellicereda.meteocal.entities.Event;
 import it.polimi.cellicereda.meteocal.entities.Forecast;
 import it.polimi.cellicereda.meteocal.entities.Place;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -31,6 +32,12 @@ public class ForecastManager {
     @EJB
     LocationManager lm;
 
+    @EJB
+    CalendarManager cm;
+
+    @EJB
+    NotificationManager nm;
+
     /**
      * Download from openweathermap the forecasts for the given city, the
      * forecast have a time span of 5 days with data every 3 hours
@@ -43,7 +50,12 @@ public class ForecastManager {
     /**
      * Given an event this method queries openweathermap to obtain the updated
      * forecast, which is returned. If no forecast is available the method
-     * returns null. Note that the forecast is not persisted into the database
+     * returns null. Note that the forecast is not persisted into the database.
+     * The forecast has to be referred to the same place of the event and has to
+     * have a time coverage that includes the starting time of the event
+     *
+     * @param event The event for which you want to download a new forecast
+     * @return The forecasts obtained for the given event
      */
     public Forecast downloadNewForecastForEvent(Event event) {
         try {
@@ -174,6 +186,42 @@ public class ForecastManager {
     }
 
     public void updateForecastsForAllTheEvents() {
-        //TODO
+        List<Event> events = cm.getAllEventsAsEvents();
+
+        for (Event e : events) {
+            //check if the event is in the future and if it has a valid location
+            if (e.getEventLocation() != null && e.getStartDate().after(new Date())) {
+
+                //if the event is in the future by more than 5 days don't even try to download a new forecast as we won't get it
+                if (!cm.isInFiveDays(e)) {
+                    continue;
+                }
+
+                //if the event already have a valid forecast save it
+                Forecast oldForecast = e.getForecast();
+                boolean wasGood = true;
+                if (oldForecast != null) {
+                    wasGood = isGoodWeather(oldForecast.getWeatherId());
+                }
+
+                //download the new forecast
+                Forecast newForecast = downloadNewForecastForEvent(e);
+
+                //and update the old one (so taht the id does not change in the db)
+                oldForecast.setMakingTime(newForecast.getMakingTime());
+                oldForecast.setWeatherId(newForecast.getWeatherId());
+
+                //now it's time to generate the notifications
+                //if the event is tomorrow and the weather is bad generate a bad weather alert
+                if (cm.isTomorrow(e) && !isGoodWeather(newForecast.getWeatherId())) {
+                    nm.sendBadWeatherAlert(e);
+                }
+
+                //if the event starts in three days and the weather just turned bad send a sunny day proposal
+                if (cm.isInThreeDays(e) && wasGood && !isGoodWeather(newForecast.getWeatherId())) {
+                    nm.sendSunnyDayProposal(e);
+                }
+            }
+        }
     }
 }

@@ -160,4 +160,12 @@ public class NotificationManager {
     public void readNotification(Notification n) {
         n.setNotificationState(NotificationState.READED);
     }
+
+    public void sendBadWeatherAlert(Event e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void sendSunnyDayProposal(Event e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
