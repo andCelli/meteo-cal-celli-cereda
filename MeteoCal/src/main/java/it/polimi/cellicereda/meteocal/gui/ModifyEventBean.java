@@ -275,6 +275,7 @@ public class ModifyEventBean implements Serializable {
         locationKey = new String();
         invitedUsers = new ArrayList<>();
         place = null;
+        System.out.println("title: "+title+".");
     }
 
     /**
