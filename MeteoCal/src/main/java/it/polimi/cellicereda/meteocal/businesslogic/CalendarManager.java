@@ -139,8 +139,6 @@ public class CalendarManager {
      * @param event The event that just changed
      */
     private void generateEventChangedNotifications(Event event) {
-        event = em.find(Event.class, event.getId());
-
         for (User u : getEventParticipant(event)) {
             //check if we need a new notification
             Boolean needed = true;

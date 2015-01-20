@@ -9,7 +9,6 @@ import it.polimi.cellicereda.meteocal.entities.Event;
 import it.polimi.cellicereda.meteocal.entities.Forecast;
 import it.polimi.cellicereda.meteocal.entities.Place;
 import java.util.Date;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -17,7 +16,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.primefaces.json.JSONArray;
-import org.primefaces.json.JSONException;
 import org.primefaces.json.JSONObject;
 
 /**
@@ -173,5 +171,9 @@ public class ForecastManager {
         int num = Integer.parseInt(icon.substring(beginning, beginning + 2));
 
         return num <= 4;
+    }
+
+    public void updateForecastsForAllTheEvents() {
+        //TODO
     }
 }

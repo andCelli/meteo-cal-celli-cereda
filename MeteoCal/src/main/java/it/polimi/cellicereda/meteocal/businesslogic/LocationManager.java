@@ -9,7 +9,9 @@ import it.polimi.cellicereda.meteocal.entities.Place;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.ejb.Stateless;
+import javax.annotation.PostConstruct;
+import javax.ejb.Singleton;
+import javax.ejb.Startup;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -17,17 +19,20 @@ import javax.persistence.PersistenceContext;
  *
  * @author stefano
  */
-@Stateless
+@Singleton
+@Startup
 public class LocationManager {
 
     @PersistenceContext
     EntityManager em;
 
     /**
-     * This method downloads the luist of places from openweathermap, it should
-     * be called only once, at the startup of the system
+     * This method downloads the list of places from openweathermap, it should
+     * be called only once, at the startup of the system. It is declared package
+     * private instead of private so the test package can use it
      */
-    public void initializePlaceList() {
+    @PostConstruct
+    void initializePlaceList() {
         em.createNamedQuery("Place.deleteAll").executeUpdate();
 
         try {
