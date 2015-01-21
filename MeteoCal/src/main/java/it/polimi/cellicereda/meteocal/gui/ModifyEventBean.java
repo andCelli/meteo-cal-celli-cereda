@@ -25,6 +25,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import org.primefaces.event.SelectEvent;
+import org.primefaces.model.ScheduleEvent;
 
 /**
  * This bean manages the modification of an event
@@ -105,7 +106,10 @@ public class ModifyEventBean implements Serializable {
             calendarManager.save(event);
 
             //add the event to the schedule model
+            String id = event.getId();
             scheduleBean.getModel().addEvent(event);
+            event.setId(id);
+
         } else {
             //update the event in the database
             calendarManager.changeEventTitle(event, title);
@@ -120,7 +124,10 @@ public class ModifyEventBean implements Serializable {
             //and update the schedule model
             scheduleBean.getModel().deleteEvent(event);
             event = calendarManager.getByID(event.getId());
+            
+            String id = event.getId();
             scheduleBean.getModel().addEvent(event);
+            event.setId(id);
         }
 
         //add invited user
@@ -136,8 +143,6 @@ public class ModifyEventBean implements Serializable {
         //be ready for the next update
         event = new Event();
         resetUtilityVariables();
-        
-       
     }
 
     /**
@@ -323,14 +328,14 @@ public class ModifyEventBean implements Serializable {
      * (country)"
      */
     public void onPlaceSelect(SelectEvent selectedPlace) {
-       
-        String completeString = selectedPlace.getObject().toString();    
-        
+
+        String completeString = selectedPlace.getObject().toString();
+
         String[] parts = completeString.split("\\s");
-        parts[1]=parts[1].replaceAll("[()]", "");
-        
-        setPlace(lm.getPlaceByNameAndCountry(parts[0] , parts[1]));
-        
+        parts[1] = parts[1].replaceAll("[()]", "");
+
+        setPlace(lm.getPlaceByNameAndCountry(parts[0], parts[1]));
+
         System.out.println(place.toString());
     }
 
