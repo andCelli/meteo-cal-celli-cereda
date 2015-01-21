@@ -23,10 +23,10 @@ import static org.mockito.Mockito.mock;
  * @author stefano
  */
 public class ForecastManagerTest {
-    
+
     private ForecastManager fm;
     private Event event = new Event();
-    
+
     @Before
     public void setUp() {
         fm = new ForecastManager();
@@ -48,16 +48,16 @@ public class ForecastManagerTest {
         //and return it when the forecast manager asks it to the location manager
         Mockito.when(fm.lm.getPlaceByID((long) 524901)).thenReturn(moscow);
     }
-    
+
     @After
     public void tearDown() {
     }
-    
+
     @Test
     public void DownloadNewForecastForEvent() {
-      //  Assert.assertNotNull(fm.downloadNewForecastForEvent(event));
+        Assert.assertNotNull(fm.downloadNewForecastForEvent(event));
     }
-    
+
     @Test
     public void isGoodWeather() {
         assertTrue(fm.isGoodWeather(800));
@@ -65,7 +65,7 @@ public class ForecastManagerTest {
         assertTrue(fm.isGoodWeather(802));
         assertTrue(fm.isGoodWeather(803));
         assertTrue(fm.isGoodWeather(804));
-        
+
         assertFalse(fm.isGoodWeather(200));
         assertFalse(fm.isGoodWeather(232));
         assertFalse(fm.isGoodWeather(300));

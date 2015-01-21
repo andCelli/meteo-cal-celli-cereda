@@ -20,7 +20,7 @@ import javax.persistence.PersistenceContext;
  * @author stefano
  */
 @Singleton
-//@Startup
+@Startup
 public class LocationManager {
 
     @PersistenceContext
