@@ -32,6 +32,7 @@ public class LocationManagerTest {
         query = mock(Query.class);
 
         Mockito.when(lm.em.createNamedQuery("Place.deleteAll")).thenReturn(query);
+        Mockito.when(lm.em.createNamedQuery("Place.findAll")).thenReturn(query);
     }
 
     @After
