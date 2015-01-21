@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import org.junit.After;
 import org.junit.Assert;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,19 +35,22 @@ public class ForecastManagerTest {
         fm.lm = mock(LocationManager.class);
 
         //create a place entity
-        Place moscow = new Place();
-        moscow.setId((long) 524901);
-        moscow.setName("Moscow");
-        moscow.setLongitude(37.615555);
-        moscow.setLatitude(55.75222);
+        Place honolulu = new Place();
+        honolulu.setId((long) 5856195);
+        honolulu.setName("Honolulu");
+        honolulu.setLongitude(21.306940);
+        honolulu.setLatitude(-157.858337);
+        honolulu.setCountry("US");
 
         //and a related event
         event.setStartDate(new Date());
         event.setEndDate(new Date(new Date().getTime() + 1 * 60 * 60 * 1000));
-        event.setEventLocation(moscow);
+        event.setEventLocation(honolulu);
 
         //and return it when the forecast manager asks it to the location manager
-        Mockito.when(fm.lm.getPlaceByID((long) 524901)).thenReturn(moscow);
+        Mockito.when(fm.lm.getPlaceByID((long) 5856195)).thenReturn(honolulu);
+
+        Mockito.when(fm.em.find(Event.class, event)).thenReturn(event);
     }
 
     @After
@@ -55,7 +59,13 @@ public class ForecastManagerTest {
 
     @Test
     public void DownloadNewForecastForEvent() {
-        Assert.assertNotNull(fm.downloadNewForecastForEvent(event));
+        assertNotNull(fm.downloadNewForecastForEvent(event));
+    }
+
+    @Test
+    public void searchGoodWeatherForEvent() {
+        //this test could fail, but what the fuck we are in honolulu
+        assertTrue(fm.searchGoodWeatherForEvent(event).size() > 0);
     }
 
     @Test

@@ -9,6 +9,7 @@ import it.polimi.cellicereda.meteocal.entities.Event;
 import it.polimi.cellicereda.meteocal.entities.Forecast;
 import it.polimi.cellicereda.meteocal.entities.Place;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -45,6 +46,15 @@ public class ForecastManager {
      */
     private String downloadForecastsByCityID(Long cityID) throws Exception {
         String url = "http://api.openweathermap.org/data/2.5/forecast?id=" + cityID;
+        return URLConnectionReader.getText(url);
+    }
+
+    /**
+     * Download from openweathermap the forecasts for the given city, the
+     * forecast have a time span of 16 days with data every 1 day
+     */
+    private String download16DayForecastsByCityID(Long cityID) throws Exception {
+        String url = "http://api.openweathermap.org/data/2.5/forecast/daily?id=" + cityID;
         return URLConnectionReader.getText(url);
     }
 
@@ -246,4 +256,61 @@ public class ForecastManager {
             }
         }
     }
+
+    public List<Forecast> searchGoodWeatherForEvent(Event e) {
+        List<Forecast> goodDates = new LinkedList<>();
+
+        e = em.find(Event.class, e);
+
+        //if the event is not "valid" return an empty list
+        if (e.getEventLocation() == null || e.getStartDate() == null) {
+            return goodDates;
+        }
+
+        try {
+            Long cityID = e.getEventLocation().getId();
+            Date startingTime = e.getStartDate();
+
+            JSONObject entireForecast = new JSONObject(download16DayForecastsByCityID(cityID));
+            JSONArray forecastList = entireForecast.getJSONArray("list");
+
+            //compute the making time
+            Date now = new Date();
+
+            for (int i = 0; i < forecastList.length(); i++) {
+                JSONObject forecastJson = forecastList.getJSONObject(i);
+
+                //SET THE STARTING/ENDING VALIDITY TIME (time coverage = 1 day)
+                Date starting = new Date(forecastJson.getLong("dt") * 1000);
+                Date ending = new Date(starting.getTime() + (24 * 60 * 60 * 1000));
+
+                if (ending.before(starting)) {
+                    continue;
+                }
+
+                //GET THE WEATHER ID
+                int weatherID = forecastJson.getJSONArray("weather").getJSONObject(0).getInt("id");
+
+                //IF IT IS GOOD CREATE THE FORECAST AND ADD IT TO THE LIST
+                if (isGoodWeather(weatherID)) {
+                    Forecast forecast = new Forecast();
+
+                    forecast.setStartingValidity(starting);
+                    forecast.setEndingValidity(ending);
+                    forecast.setPlace(lm.getPlaceByID(cityID));
+                    forecast.setMakingTime(now);
+                    forecast.setWeatherId(weatherID);
+
+                    goodDates.add(forecast);
+
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ForecastManager.class
+                    .getName()).log(Level.INFO, "Unable to download forecast.", ex);
+        }
+
+        return goodDates;
+    }
+
 }
