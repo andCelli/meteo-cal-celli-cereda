@@ -58,7 +58,8 @@ public class NotificationManager {
      * @return The notifications that have the given user as recipient and
      * pending as state
      */
-    public List<Notification> getPendingNotificationForUser(User recipient){
+    public List<Notification> getPendingNotificationForUser(User recipient) {
+        recipient = em.find(User.class, recipient.getEmail());
         return em.createNamedQuery("Notification.findForUserAndState").
                 setParameter("recipient", recipient).
                 setParameter("state", NotificationState.PENDING).getResultList();
@@ -74,6 +75,8 @@ public class NotificationManager {
      * pending as state and the related event still have to start
      */
     public List<Notification> getPendingFutureNotificationForUser(User recipient) {
+        recipient = em.find(User.class, recipient.getEmail());
+
         List<Notification> nonFiltered = getPendingNotificationForUser(recipient);
         List<Notification> filtered = new LinkedList<>();
 
@@ -96,6 +99,8 @@ public class NotificationManager {
      * @param answer The answer to the invite
      */
     public void answerToAnInvite(Notification invite, Boolean answer) {
+        invite = em.find(Notification.class, invite.getId());
+
         if ((invite.getNotificationType() != NotificationType.EVENT_INVITE)
                 || (invite.getNotificationState() != NotificationState.PENDING)) {
             throw new IllegalArgumentException();
@@ -123,6 +128,8 @@ public class NotificationManager {
      * accept the proposal)
      */
     public void answerToASunnyDayProposal(Notification proposal, Boolean answer, Date newStartingDate) {
+        proposal = em.find(Notification.class, proposal.getId());
+
         if ((proposal.getNotificationType() != NotificationType.SUNNY_DAY_PROPOSAL)
                 || (proposal.getNotificationState() != NotificationState.PENDING)) {
             throw new IllegalArgumentException();
@@ -150,7 +157,10 @@ public class NotificationManager {
      */
     public void sendAnInvite(Event event, User invited) {
         event = em.find(Event.class, event.getId());
-        invited=em.find(User.class,invited.getEmail());
+        invited = em.find(User.class, invited.getEmail());
+
+        event = em.find(Event.class, event.getId());
+        invited = em.find(User.class, invited.getEmail());
         Notification n = new Notification(NotificationType.EVENT_INVITE, invited, event);
         em.persist(n);
     }
@@ -160,6 +170,7 @@ public class NotificationManager {
      * notification state to readed
      */
     public void readNotification(Notification n) {
+        n = em.find(Notification.class, n.getId());
         n.setNotificationState(NotificationState.READED);
     }
 
