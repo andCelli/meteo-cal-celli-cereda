@@ -149,6 +149,8 @@ public class NotificationManager {
      * @param invited The user you want to invite
      */
     public void sendAnInvite(Event event, User invited) {
+        event = em.find(Event.class, event.getId());
+        invited=em.find(User.class,invited.getEmail());
         Notification n = new Notification(NotificationType.EVENT_INVITE, invited, event);
         em.persist(n);
     }

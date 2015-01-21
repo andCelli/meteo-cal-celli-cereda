@@ -96,6 +96,7 @@ public class DetailsEventBean implements Serializable {
             getModifyEventBean().setLocationKey(null);
             getModifyEventBean().setIsPublic(event.isPublicEvent());
             getModifyEventBean().setAllDay(event.isAllDay());
+            getModifyEventBean().setLocationKey(event.getEventLocation().getName());
         //set the partecipants list    
             getModifyEventBean().setInvitedUsers(partecipants);
         }catch(Exception e){
