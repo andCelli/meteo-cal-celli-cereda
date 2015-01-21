@@ -75,4 +75,24 @@ public class UserProfileManager {
         User u = em.find(User.class, user.getEmail());
         u.setUsername(newUsername);
     }
+
+    public void changeName(User user, String newName) {
+        User u = em.find(User.class, user.getEmail());
+        u.setName(newName);
+    }
+
+    public void changeSurname(User user, String newSurname) {
+        User u = em.find(User.class, user.getEmail());
+        u.setSurname(newSurname);
+    }
+
+    public void changePassword(User user, String newPassword) {
+        User u = em.find(User.class, user.getEmail());
+        u.setPassword(newPassword);
+    }
+
+    public void changePublicCalendar(User user, boolean newPublicCalendar) {
+        User u = em.find(User.class, user.getEmail());
+        u.setPublicCalendar(newPublicCalendar);
+    }
 }
