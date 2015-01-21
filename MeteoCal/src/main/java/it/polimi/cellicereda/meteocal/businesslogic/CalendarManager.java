@@ -83,14 +83,14 @@ public class CalendarManager {
      * @return All the events in the DB
      */
     public List<? extends ScheduleEvent> getAllEvents() {
-        return em.createNamedQuery("event.findAll").getResultList();
+        return em.createNamedQuery("Event.findAll").getResultList();
     }
 
     /**
      * Get all the stored events as a list of event and not as a list of wtf
      */
     public List<Event> getAllEventsAsEvents() {
-        return em.createNamedQuery("event.findAll").getResultList();
+        return em.createNamedQuery("Event.findAll").getResultList();
     }
 
     /**
