@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
+import javax.ejb.Schedule;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -57,7 +58,7 @@ public class ForecastManager {
      * @param event The event for which you want to download a new forecast
      * @return The forecasts obtained for the given event
      */
-    private Forecast downloadNewForecastForEvent(Event event) {
+    Forecast downloadNewForecastForEvent(Event event) {
         try {
             if (event.getEventLocation() == null || event.getStartDate() == null) {
                 return null;
@@ -113,7 +114,7 @@ public class ForecastManager {
      * attach it in the event
      */
     public void saveNewForecastForecastForEvent(Event e) {
-        e = em.find(Event.class, e);
+        e = em.find(Event.class, e.getId());
 
         Forecast f = downloadNewForecastForEvent(e);
 
@@ -205,6 +206,7 @@ public class ForecastManager {
         return num <= 4;
     }
 
+    @Schedule(hour = "*")
     public void updateForecastsForAllTheEvents() {
         List<Event> events = cm.getAllEventsAsEvents();
 
