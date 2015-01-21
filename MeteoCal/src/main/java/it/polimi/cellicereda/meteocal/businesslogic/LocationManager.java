@@ -33,8 +33,10 @@ public class LocationManager {
      */
     @PostConstruct
     void initializePlaceList() {
-        em.createNamedQuery("Place.deleteAll").executeUpdate();
-
+        if (em.createNamedQuery("Place.findAll").getResultList().size() != 0) {
+            return;
+        }
+        
         try {
             String placesList = URLConnectionReader.getText("http://openweathermap.org/help/city_list.txt");
             String places[] = placesList.split("\\n");
