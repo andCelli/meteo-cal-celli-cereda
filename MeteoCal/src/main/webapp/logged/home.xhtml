@@ -45,7 +45,7 @@ This is the logged-user homepage.
                      <img id="forecast" src="#{detailsEventBean.getForecastIcon()}"/>
                  </p:panel> 
                  <h:outputLabel for="partecipants" value="Partecipants: "/>
-                 <p:dataScroller id="partecipants" value="#{detailsEventBean.partecipants}" var="user" chunkSize="10">
+                 <p:dataScroller id="partecipants" value="#{detailsEventBean.participants}" var="user" chunkSize="10">
                      <p:outputLabel value="#{user.username}"/>
                  </p:dataScroller>
                  <p:commandButton id="modifyButton" value="Modify" action="#{detailsEventBean.modify()}"
@@ -126,7 +126,7 @@ This is the logged-user homepage.
               <h:outputLabel for="partecipants" value="Partecipants: "/>
               <p:dataScroller id="partecipants" value="#{modifyEventBean.invitedUsers}" var="user" chunkSize="10">
                      <p:outputLabel value="#{user.username}"/>
-                 </p:dataScroller>
+              </p:dataScroller>
               <p:commandButton type="reset" value="Reset"/>
               <p:commandButton id="addButton" value="Save" action="#{modifyEventBean.saveEvent()}" 
                                oncomplete="PF('myschedule').update();PF('modifyEventDialog').hide();"
@@ -137,7 +137,7 @@ This is the logged-user homepage.
     </ui:define> 
    <ui:define name="contentLeft">               
                 <h:form id="notificationForm">
-                    <p:poll id="notificationCheck" interval="5" listener="#{notificationBean.update()}" update="notificationsGrid"/>
+                    <p:poll id="notificationCheck" interval="30" listener="#{notificationBean.update()}" update="notificationsGrid"/>
                     <p:scrollPanel style="width:230px;height:580px;">
                         <p:dataGrid var="notification" value="#{notificationBean.notifications}" columns="1" id="notificationsGrid" style="border:none;">
                         <f:facet name="header">

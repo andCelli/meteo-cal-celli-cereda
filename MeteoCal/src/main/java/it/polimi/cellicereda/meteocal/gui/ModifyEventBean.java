@@ -92,7 +92,7 @@ public class ModifyEventBean implements Serializable {
      */
 
     public void saveEvent() {
-        if (newEvent) {
+            if (newEvent) {
             //save the new values into the event and persist it
             event.setTitle(title);
             event.setDescription(description);
