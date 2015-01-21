@@ -22,7 +22,7 @@ This is the logged-user homepage.
     <ui:define name="contentCenter">
      <h:form id="centerForm">
          <p:poll id="currentDateUpdate" interval="60" listener="#{scheduleBean.updateCurrentDate()}"/>
-         <p:schedule value="#{scheduleBean.model}"  widgetVar="myschedule" timeZone="GMT+1" draggable="false">
+         <p:schedule value="#{scheduleBean.model}" id="mySchedule" widgetVar="myschedule" timeZone="GMT+1" draggable="false">
                 <p:ajax event="eventSelect" listener="#{scheduleBean.onEventSelect}" update="eventDetails" oncomplete="PF('eventDetailsDialog').show();"/>
          </p:schedule>
         <!--Event details--> 
@@ -73,7 +73,9 @@ This is the logged-user homepage.
                 <h:outputLabel id="referredEventEnd" value="#{notificationBean.end}"/>
                 <h:outputLabel for="referredEventLocation" value="Location: "/>
                 <p:outputLabel id="referredEventLocation" value="#{notificationBean.selectedNotification.referredEvent.eventLocation}"/>
-                <p:commandButton id="positiveAnswer" value="Accept" action="#{notificationBean.positiveAnswer()}" oncomplete="PF('myschedule').update()"
+                <p:commandButton id="positiveAnswer" value="Accept" action="#{scheduleBean.addPartecipations()}"
+                                 actionListener="#{notificationBean.positiveAnswer()}"
+                                 oncomplete="PF('myschedule').update();PF('notificationDialog').hide();"
                                  update=":notificationForm:notificationsGrid"/>
             </h:panelGrid>
         </p:dialog>
@@ -132,7 +134,7 @@ This is the logged-user homepage.
    <ui:define name="contentLeft">               
                 <h:form id="notificationForm">
                     <p:poll id="notificationCheck" interval="5" listener="#{notificationBean.update()}" update="notificationsGrid"/>
-                    <p:scrollPanel style="width:250px;height:580px;">
+                    <p:scrollPanel style="width:230px;height:580px;">
                         <p:dataGrid var="notification" value="#{notificationBean.notifications}" columns="1" id="notificationsGrid" style="border:none;">
                         <f:facet name="header">
                             Notifications:

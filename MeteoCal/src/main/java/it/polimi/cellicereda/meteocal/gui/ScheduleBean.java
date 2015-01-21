@@ -10,6 +10,7 @@ import it.polimi.cellicereda.meteocal.businesslogic.CalendarManager;
 import it.polimi.cellicereda.meteocal.businesslogic.UserProfileManager;
 import it.polimi.cellicereda.meteocal.entities.Event;
 import it.polimi.cellicereda.meteocal.entities.User;
+import java.awt.event.ActionEvent;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -71,7 +72,7 @@ public class ScheduleBean implements Serializable{
           model=new DefaultScheduleModel((List<ScheduleEvent>) calendarManager.getEventsByCreator(currentUser));
           //partecipating events
           for(Event e:(List<Event>)calendarManager.getEventsByParticipant(currentUser))
-              model.addEvent(e);
+            model.addEvent(e);
           
           
           detailsEventBean.setScheduleBean(this);
@@ -104,6 +105,7 @@ public class ScheduleBean implements Serializable{
         getDetailsEventBean().setEvent(event);
         getDetailsEventBean().setIsCreator(event.getCreator().equals(currentUser));
         getDetailsEventBean().setPartecipants(calendarManager.getEventParticipant(event));
+        getDetailsEventBean().getPartecipants().add(event.getCreator());
         getDetailsEventBean().setStart(utility.getFormattedDate(event.getStartDate()));
         getDetailsEventBean().setEnd(utility.getFormattedDate(event.getEndDate()));
        } 
@@ -134,5 +136,15 @@ public class ScheduleBean implements Serializable{
      */
     public void updateCurrentDate(){
         currentDate=new Date();
+    }
+    
+    /**
+     * refresh the list of events in which the user will partecipate 
+     * (tipically called after an invite accepted)
+     */
+    public void addPartecipations(){
+        for(Event e:(List<Event>)calendarManager.getEventsByParticipant(currentUser))
+           if(!model.getEvents().contains(e))
+            model.addEvent(e);
     }
 }

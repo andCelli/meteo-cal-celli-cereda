@@ -47,6 +47,7 @@ public class NotificationBean implements Serializable{
     
     @PostConstruct
     public void init(){
+        System.out.println("notification");
        setUser(upm.getLoggedUser());
         try{
         setNotifications(nm.getPendingFutureNotificationForUser(getUser()));
