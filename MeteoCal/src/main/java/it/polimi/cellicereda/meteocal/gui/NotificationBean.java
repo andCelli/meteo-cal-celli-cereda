@@ -83,7 +83,6 @@ public class NotificationBean implements Serializable{
             //@TODO
         }else{
             if(selectedNotification.getNotificationType().equals(EVENT_INVITE)){
-                System.out.println("check "+selectedNotification.getReferredEvent().getTitle());
                 nm.answerToAnInvite(selectedNotification, Boolean.TRUE);
                 notifications.remove(selectedNotification);
             }            
@@ -101,6 +100,7 @@ public class NotificationBean implements Serializable{
         }else{
             if(selectedNotification.getNotificationType().equals(EVENT_INVITE)){
                 nm.answerToAnInvite(selectedNotification, Boolean.FALSE);
+                notifications.remove(selectedNotification);
             }            
         }
         nm.readNotification(selectedNotification);
