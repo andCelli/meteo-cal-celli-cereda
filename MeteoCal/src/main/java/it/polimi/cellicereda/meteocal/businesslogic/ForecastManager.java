@@ -57,7 +57,7 @@ public class ForecastManager {
      * @param event The event for which you want to download a new forecast
      * @return The forecasts obtained for the given event
      */
-    public Forecast downloadNewForecastForEvent(Event event) {
+    private Forecast downloadNewForecastForEvent(Event event) {
         try {
             if (event.getEventLocation() == null || event.getStartDate() == null) {
                 return null;
@@ -113,6 +113,8 @@ public class ForecastManager {
      * attach it in the event
      */
     public void saveNewForecastForecastForEvent(Event e) {
+        e = em.find(Event.class, e);
+
         Forecast f = downloadNewForecastForEvent(e);
 
         if (f != null) {
