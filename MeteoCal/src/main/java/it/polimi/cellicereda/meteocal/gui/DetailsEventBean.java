@@ -20,76 +20,75 @@ import javax.inject.Named;
 
 /**
  * This bean manages the vizualization of an event's details
+ *
  * @author Andrea
  */
-
 @SessionScoped
 @Named
 public class DetailsEventBean implements Serializable {
-    
+
     //this flag states if the user is the creator of the selected event
     //it's set in the onEventSelect method in the ScheduleBean
     //Used to choose which buttons to be rendered
-    private boolean isCreator=false;
-    
+    private boolean isCreator = false;
+
     private Event event;
-    
+
     private ScheduleBean scheduleBean;
-    
+
     private ModifyEventBean modifyEventBean;
-    
+
     private List<User> partecipants;
-    
+
     @EJB
     private CalendarManager calendarManager;
     @EJB
     private UserProfileManager userProfileManager;
     @EJB
     private ForecastManager fm;
-   
-    
-    private String start,end;
-    
+
+    private String start, end;
+
     @PostConstruct
-    public void init(){
-        event=new Event();
+    public void init() {
+        event = new Event();
         System.out.println("Parto: DetailsEventBean");
     }
 
     /**
-     * remove from the list of displayed event (in scheduleBean)
-     * remove from db
+     * remove from the list of displayed event (in scheduleBean) remove from db
      */
-    public void delete(){
-        isCreator=false;
+    public void delete() {
+        isCreator = false;
         getScheduleBean().getModel().deleteEvent(event);
         calendarManager.delete(event);
     }
-    
+
     /**
      * the user removes himself from the partecipants
+     *
      * @TODO
      */
-    public void removeFromPartecipants(){
+    public void removeFromPartecipants() {
         getScheduleBean().getModel().deleteEvent(event);
-       /**
-        * @TODO rimuovere dalla lista dell'utente
-        */
+        /**
+         * @TODO rimuovere dalla lista dell'utente
+         */
     }
-    
+
     /**
-     * This method is called when the user decides to modify an event
-     * it calls the ModifySettingBean setting the event and the modification flag
-     * (the flag states that the event is not a new one)
+     * This method is called when the user decides to modify an event it calls
+     * the ModifySettingBean setting the event and the modification flag (the
+     * flag states that the event is not a new one)
      */
-    public void modify(){
-        isCreator=false;
-        try{
+    public void modify() {
+        isCreator = false;
+        try {
             System.out.println("sono modify()");
-            getModifyEventBean().setEvent(event);         
-            getModifyEventBean().setNewEvent(false); 
-        //set the ModifyEventBean vars
-            getModifyEventBean().setTitle(event.getTitle());          
+            getModifyEventBean().setEvent(event);
+            getModifyEventBean().setNewEvent(false);
+            //set the ModifyEventBean vars
+            getModifyEventBean().setTitle(event.getTitle());
             getModifyEventBean().setDescription(event.getDescription());
             getModifyEventBean().setStartingDate(event.getStartDate());
             getModifyEventBean().setEndingDate(event.getEndDate());
@@ -97,14 +96,14 @@ public class DetailsEventBean implements Serializable {
             getModifyEventBean().setIsPublic(event.isPublicEvent());
             getModifyEventBean().setAllDay(event.isAllDay());
             getModifyEventBean().setLocationKey(event.getEventLocation().getName());
-        //set the partecipants list    
+            //set the partecipants list    
             getModifyEventBean().setInvitedUsers(partecipants);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.err.println("Error in modify (DetailsEventBean)");
         }
     }
-    
+
     /**
      * @return the isCreator
      */
@@ -174,31 +173,34 @@ public class DetailsEventBean implements Serializable {
     public void setPartecipants(List<User> partecipants) {
         this.partecipants = partecipants;
     }
-    
+
     /**
      * get the weather icon related to the selected event forecast
+     *
      * @return the url of the weather icon
      */
-    public String getForecastIcon(){
-        try{
-         return fm.getUrlOfWeatherIcon(fm.getWeatherForEvent(event)); 
-        }catch(Exception e){
+    public String getForecastIcon() {
+        try {
+            return fm.getUrlOfWeatherIcon(fm.getWeatherForEvent(event));
+        } catch (Exception e) {
             System.err.println("error while retrieving the icon");
             printStackTrace();
         }
         return null;
     }
+
     /**
-     * 
-     * @return true if the event has a forecast 
+     *
+     * @return true if the event has a forecast
      */
-    public boolean hasPrediction(){
-        try{
-      if(event.getEventLocation()!=null){
-        if(fm.getWeatherForEvent(event)!=0)
-            return true;
+    public boolean hasPrediction() {
+        try {
+            if (event.getEventLocation() != null) {
+                if (fm.getWeatherForEvent(event) != 0) {
+                    return true;
+                }
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             System.err.println("error while checking if the event has a prediction");
             printStackTrace();
         }

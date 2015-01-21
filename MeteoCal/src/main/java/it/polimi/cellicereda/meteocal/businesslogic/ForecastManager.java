@@ -119,14 +119,15 @@ public class ForecastManager {
         Place location = e.getEventLocation();
         Date time = e.getStartDate();
 
-        Forecast f = (Forecast) em.createNamedQuery("Forecast.findByPlaceAndTime").
-                setParameter("id", location.getId()).
-                setParameter("time", time).getSingleResult();
-
-        if (f != null) {
+        try {
+            Forecast f = (Forecast) em.createNamedQuery("Forecast.findByPlaceAndTime").
+                    setParameter("id", location.getId()).
+                    setParameter("time", time).getSingleResult();
             return f.getWeatherId();
+
+        } catch (javax.persistence.NoResultException ex) {
+            return 0;
         }
-        return 0;
     }
 
     /**
