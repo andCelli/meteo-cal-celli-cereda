@@ -59,7 +59,11 @@ public class ForecastManager {
      */
     public Forecast downloadNewForecastForEvent(Event event) {
         try {
+            if (event.getEventLocation() == null || event.getStartDate() == null) {
+                return null;
+            }
             Long cityID = event.getEventLocation().getId();
+
             Date wantedTime = event.getStartDate();
 
             JSONObject entireForecast = new JSONObject(downloadForecastsByCityID(cityID));
@@ -99,9 +103,22 @@ public class ForecastManager {
 
         } catch (Exception ex) {
             Logger.getLogger(ForecastManager.class
-                    .getName()).log(Level.SEVERE, "Unable to download forecasts", ex);
+                    .getName()).log(Level.INFO, "Unable to download forecast.", ex);
         }
         return null;
+    }
+
+    /**
+     * Download a new forecast for the given event, save it in the database and
+     * attach it in the event
+     */
+    public void saveNewForecastForecastForEvent(Event e) {
+        Forecast f = downloadNewForecastForEvent(e);
+
+        if (f != null) {
+            em.persist(f);
+            cm.changeEventForecast(e, f);
+        }
     }
 
     /**
