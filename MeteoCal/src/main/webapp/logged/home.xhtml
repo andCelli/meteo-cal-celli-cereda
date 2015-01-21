@@ -20,7 +20,7 @@ This is the logged-user homepage.
  <h:body>
    <ui:composition template="/logged/loggedTemplate.xhtml" >   
     <ui:define name="contentCenter">
-     <h:form>
+     <h:form id="centerForm">
          <p:poll id="currentDateUpdate" interval="60" listener="#{scheduleBean.updateCurrentDate()}"/>
          <p:schedule value="#{scheduleBean.model}"  widgetVar="myschedule" timeZone="GMT+1" draggable="false">
                 <p:ajax event="eventSelect" listener="#{scheduleBean.onEventSelect}" update="eventDetails" oncomplete="PF('eventDetailsDialog').show();"/>
@@ -48,11 +48,9 @@ This is the logged-user homepage.
                  <p:dataScroller id="partecipants" value="#{detailsEventBean.partecipants}" var="user" chunkSize="10">
                      <p:outputLabel value="#{user.username}"/>
                  </p:dataScroller>
-                 
                  <p:commandButton id="modifyButton" value="Modify" action="#{detailsEventBean.modify()}"
                                   oncomplete="PF('modifyEventDialog').show();PF('eventDetailsDialog').hide();" 
                                   rendered="#{detailsEventBean.isCreator}" update=":modifyForm:modifyEventDetails"/>
-         
                 <p:commandButton id="deleteButton" value="Delete" action="#{detailsEventBean.delete()}"
                                   onclick="PF('eventDetailsDialog').hide()" oncomplete="PF('myschedule').update()" 
                                   rendered="#{detailsEventBean.isCreator}"/>
@@ -60,6 +58,25 @@ This is the logged-user homepage.
                                  onclick="PF('eventDetailsDialog').hide();"  rendered="#{!detailsEventBean.isCreator}"/>
              </h:panelGrid> 
          </p:dialog>
+        <!--Notification dialog-->
+        <p:dialog widgetVar="notificationDialog" header="Notification Details:" showEffect="clip" hideEffect="clip">
+            <h:panelGrid id="notificationDetails" columns="2" border="0">
+                <p:outputLabel for="notificationType" value="Type: "/>
+                <p:outputLabel id="notificationType" value="#{notificationBean.selectedNotification.notificationType.displayableString()}"/>
+                <p:outputLabel for="referredEventTitle" value="Event: "/>
+                <p:outputLabel id="referredEventTitle" value="#{notificationBean.selectedNotification.referredEvent.title}"/>
+                <h:outputLabel for="referredEventDescription" value="Description:"/>
+                <p:outputLabel id="referredEventDescription" value="#{notificationBean.selectedNotification.referredEvent.description}"/>
+                <h:outputLabel for="referredEventStart" value="From:" />
+                <h:outputLabel id="referredEventStart" value="#{notificationBean.start}"/>
+                <h:outputLabel for="referredEventEnd" value="To:" />
+                <h:outputLabel id="referredEventEnd" value="#{notificationBean.end}"/>
+                <h:outputLabel for="referredEventLocation" value="Location: "/>
+                <p:outputLabel id="referredEventLocation" value="#{notificationBean.selectedNotification.referredEvent.eventLocation}"/>
+                <p:commandButton id="positiveAnswer" value="Accept" action="#{notificationBean.positiveAnswer()}" oncomplete="PF('myschedule').update()"
+                                 update=":notificationForm:notificationsGrid"/>
+            </h:panelGrid>
+        </p:dialog>
      </h:form>
    </ui:define> 
    <!--Right--> 
@@ -74,21 +91,16 @@ This is the logged-user homepage.
            <h:panelGrid id="modifyEventDetails" columns="2"  style="width:410px;height:560px;">
               <h:outputLabel for="title" value="Title:" />
               <p:inputText id="title" value="#{modifyEventBean.title}"/>
-              
               <h:outputLabel for="description" value="Description:" />
               <p:inputText id="description" value="#{modifyEventBean.description}"/>
-             
-              
               <h:outputLabel for="from" value="From:" />
               <p:calendar id="from" value="#{modifyEventBean.startingDate}" pattern="MM/dd/yyyy HH:mm:ss" 
                           mindate="#{scheduleBean.currentDate}">
                   <p:ajax event="dateSelect" update="to"/>
               </p:calendar>
-              
               <h:outputLabel for="to" value="To:" />
               <p:calendar id="to" value="#{modifyEventBean.endingDate}" pattern="MM/dd/yyyy HH:mm:ss"
                           mindate="#{modifyEventBean.startingDate}" />
-              
               <p:outputLabel for="location" value="Location: "/>
               <p:autoComplete id="location" value="#{modifyEventBean.locationKey}" completeMethod="#{modifyEventBean.findPLaces}"
                                placeholder="Insert location" queryDelay="5">
@@ -120,16 +132,24 @@ This is the logged-user homepage.
    <ui:define name="contentLeft">               
                 <h:form id="notificationForm">
                     <p:poll id="notificationCheck" interval="5" listener="#{notificationBean.update()}" update="notificationsGrid"/>
-                    <p:dataGrid var="notification" value="#{notificationBean.notifications}" columns="1" id="notificationsGrid">
+                    <p:scrollPanel style="width:250px;height:580px;">
+                        <p:dataGrid var="notification" value="#{notificationBean.notifications}" columns="1" id="notificationsGrid" style="border:none;">
                         <f:facet name="header">
                             Notifications:
                         </f:facet>
                         <p:panel style="text-align: center;border-color:mediumspringgreen;">
                             <h:panelGrid columns="1" style="width: 100%" border="0">
+                                <h:outputText value="#{notification.notificationType.displayableString()}"/>
                                 <h:outputText value="#{notification.referredEvent.title}"/>
+                                <p:commandLink oncomplete="PF('notificationDialog').show();" title="See Calendar" update=":centerForm:notificationDetails"
+                                               action="#{notificationBean.setStartAndEnd()}">
+                                    <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                                    <f:setPropertyActionListener  value="#{notification}" target="#{notificationBean.selectedNotification}"/>
+                                </p:commandLink>
                             </h:panelGrid>   
                         </p:panel>
                     </p:dataGrid>
+                    </p:scrollPanel>
                 </h:form>
             </ui:define>
 </ui:composition>
