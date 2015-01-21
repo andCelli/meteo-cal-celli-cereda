@@ -33,7 +33,7 @@ public class LocationManager {
      */
     @PostConstruct
     void initializePlaceList() {
-        if (em.createNamedQuery("Place.findAll").getResultList().size() != 0) {
+        if (!em.createNamedQuery("Place.findAll").getResultList().isEmpty()) {
             return;
         }
 
