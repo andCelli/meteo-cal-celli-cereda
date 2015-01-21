@@ -58,7 +58,7 @@ public class NotificationManager {
      * @return The notifications that have the given user as recipient and
      * pending as state
      */
-    public List<Notification> getPendingNotificationForUser(User recipient) {
+    public List<Notification> getPendingNotificationForUser(User recipient){
         return em.createNamedQuery("Notification.findForUserAndState").
                 setParameter("recipient", recipient).
                 setParameter("state", NotificationState.PENDING).getResultList();

@@ -26,4 +26,16 @@ public enum NotificationType{
                     return "SUNNY_DAY_PROPOSAL";
                 return "EVENT_INVITE";
     }
+    
+    public String displayableString(){
+         if(this==EVENT_CHANGED)
+            return "Event details changed";
+        else
+            if(this==BAD_WEATHER_ALERT)
+                return "Bad weather warning";
+        else
+                if(this==SUNNY_DAY_PROPOSAL)
+                    return "Sunny day proposal";
+                return "Invite";
+    }
 }

@@ -32,6 +32,8 @@ public class NotificationBean implements Serializable{
     private UserProfileManager upm;
     @EJB
     private NotificationManager nm;
+    @EJB
+    private Utility util;
     
     private User user;
     
@@ -39,23 +41,27 @@ public class NotificationBean implements Serializable{
     
     private Notification selectedNotification;
     
+    //strings used to display dates 
+    private String start;
+    private String end;
+    
     @PostConstruct
     public void init(){
-       /*setUser(upm.getLoggedUser());
+       setUser(upm.getLoggedUser());
         try{
-        setNotifications(nm.getPendingNotificationForUser(getUser()));
+        setNotifications(nm.getPendingFutureNotificationForUser(getUser()));
         }catch(Exception e){
             System.err.println("error while retrieving the notification list. User: "+user.getEmail());
             printStackTrace();
-        }*/
+        }
     }
     
     /**
      * This method it's called for the update of the displayed notifications
      */
     public void update(){
-       /* try{
-           List<Notification> prova=nm.getPendingNotificationForUser(user);
+       try{
+           List<Notification> prova=nm.getPendingFutureNotificationForUser(user);
             for(Notification n:nm.getPendingNotificationForUser(user)){
                if(!notifications.contains(n)){
                    notifications.add(n);
@@ -65,7 +71,7 @@ public class NotificationBean implements Serializable{
        }catch(Exception e){
             System.err.println("Error while updating notification for user: "+user.getEmail());
             printStackTrace();
-        }*/
+        }
     }
 
     /**
@@ -76,7 +82,9 @@ public class NotificationBean implements Serializable{
             //@TODO
         }else{
             if(selectedNotification.getNotificationType().equals(EVENT_INVITE)){
+                System.out.println("check "+selectedNotification.getReferredEvent().getTitle());
                 nm.answerToAnInvite(selectedNotification, Boolean.TRUE);
+                notifications.remove(selectedNotification);
             }            
         }
         nm.readNotification(selectedNotification);
@@ -139,6 +147,40 @@ public class NotificationBean implements Serializable{
     public void setSelectedNotification(Notification selectedNotification) {
         this.selectedNotification = selectedNotification;
     }
+
+    /**
+     * @return the start
+     */
+    public String getStart() {
+        return start;
+    }
+
+    /**
+     * @param start the start to set
+     */
+    public void setStart(String start) {
+        this.start = start;
+    }
+
+    /**
+     * @return the end
+     */
+    public String getEnd() {
+        return end;
+    }
+
+    /**
+     * @param end the end to set
+     */
+    public void setEnd(String end) {
+        this.end = end;
+    }
     
-    
+    /**
+     * sets the strings that display start and end of the event reletate to the selectedNotification
+     */
+    public void setStartAndEnd(){
+        setStart(util.getFormattedDate(selectedNotification.getReferredEvent().getStartDate()));
+        setEnd(util.getFormattedDate(selectedNotification.getReferredEvent().getEndDate()));
+    }
 }
