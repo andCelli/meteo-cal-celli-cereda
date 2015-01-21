@@ -6,6 +6,7 @@
 package it.polimi.cellicereda.meteocal.businesslogic;
 
 import it.polimi.cellicereda.meteocal.entities.Event;
+import it.polimi.cellicereda.meteocal.entities.Forecast;
 import it.polimi.cellicereda.meteocal.entities.Notification;
 import it.polimi.cellicereda.meteocal.entities.NotificationType;
 import it.polimi.cellicereda.meteocal.entities.Place;
@@ -32,13 +33,17 @@ public class CalendarManager {
     @EJB
     NotificationManager nm;
 
+    @EJB
+    ForecastManager fm;
+
     /**
-     * Save into the DB the given event
+     * Save into the DB the given event and try to get a forecast for it
      *
      * @param e the event to be saved
      */
     public void save(Event e) {
         em.persist(e);
+        fm.saveNewForecastForecastForEvent(e);
     }
 
     /**
@@ -197,6 +202,8 @@ public class CalendarManager {
         event.setStartDate(newStarting);
         event.setEndDate(newEnding);
 
+        fm.saveNewForecastForecastForEvent(event);
+
         generateEventChangedNotifications(event);
 
     }
@@ -212,6 +219,9 @@ public class CalendarManager {
         }
 
         event.setEventLocation(newPlace);
+
+        fm.saveNewForecastForecastForEvent(event);
+
         generateEventChangedNotifications(event);
     }
 
@@ -290,5 +300,10 @@ public class CalendarManager {
         c3.set(Calendar.MILLISECOND, 999);
 
         return c2.after(c1) && c2.before(c3);
+    }
+
+    public void changeEventForecast(Event e, Forecast f) {
+        e = em.find(Event.class, e.getId());
+        e.setForecast(f);
     }
 }
