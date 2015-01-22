@@ -20,7 +20,7 @@ public enum NotificationType{
             return "EVENT_CHANGED";
         else
             if(this==BAD_WEATHER_ALERT)
-                return "BAD_WEATHER-ALERT";
+                return "BAD_WEATHER_ALERT";
         else
                 if(this==SUNNY_DAY_PROPOSAL)
                     return "SUNNY_DAY_PROPOSAL";
@@ -29,13 +29,13 @@ public enum NotificationType{
     
     public String displayableString(){
          if(this==EVENT_CHANGED)
-            return "Event details changed";
+            return "Event changed";
         else
             if(this==BAD_WEATHER_ALERT)
-                return "Bad weather warning";
+                return "Bad weather";
         else
                 if(this==SUNNY_DAY_PROPOSAL)
-                    return "Sunny day proposal";
+                    return "Sunny day";
                 return "Invite";
     }
 }

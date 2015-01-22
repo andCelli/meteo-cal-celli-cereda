@@ -77,11 +77,20 @@ This is the logged-user homepage.
                 <p:commandButton id="positiveAnswer" value="Accept" action="#{scheduleBean.addPartecipations()}"
                                  actionListener="#{notificationBean.positiveAnswer()}"
                                  oncomplete="PF('myschedule').update();PF('notificationDialog').hide();"
-                                 update=":notificationForm:notificationsGrid"/>
+                                 update=":notificationForm:notificationsGrid" 
+                                 rendered="#{notificationBean.selectedNotification.notificationType.toString()=='EVENT_INVITE' ||
+                                                notificationBean.selectedNotification.notificationType.toString()=='SUNNY_DAY_PROPOSAL'}"/>
                 <p:commandButton id="negativeAnswer" value="Decline"
                                  actionListener="#{notificationBean.negativeAnswer()}"
                                  oncomplete="PF('myschedule').update();PF('notificationDialog').hide();"
-                                 update=":notificationForm:notificationsGrid"/>
+                                 update=":notificationForm:notificationsGrid"
+                                 rendered="#{notificationBean.selectedNotification.notificationType.toString()=='EVENT_INVITE' ||
+                                 notificationBean.selectedNotification.notificationType.toString()=='SUNNY_DAY_PROPOSAL'}"/>
+                <p:commandButton id="OKbutton" value="OK" rendered="#{notificationBean.selectedNotification.notificationType.toString()=='EVENT_CHANGED' ||
+                                 notificationBean.selectedNotification.notificationType.toString()=='BAD_WEATHER_ALERT'}"
+                                 actionListener="#{notificationBean.readed()}"
+                                 oncomplete="PF('myschedule').update();PF('notificationDialog').hide();"
+                                 update=":notificationForm:notificationsGrid" />
             </h:panelGrid>
         </p:dialog>
      </h:form>

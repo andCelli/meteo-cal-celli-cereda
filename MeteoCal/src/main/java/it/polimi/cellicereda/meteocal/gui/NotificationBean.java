@@ -83,12 +83,10 @@ public class NotificationBean implements Serializable{
             //@TODO
         }else{
             if(selectedNotification.getNotificationType().equals(EVENT_INVITE)){
-                nm.answerToAnInvite(selectedNotification, Boolean.TRUE);
-                notifications.remove(selectedNotification);
+                nm.answerToAnInvite(selectedNotification, Boolean.TRUE);  
             }            
         }
-        nm.readNotification(selectedNotification);
-        notifications.remove(selectedNotification);
+        readed();
     }
     
     /**
@@ -100,12 +98,18 @@ public class NotificationBean implements Serializable{
         }else{
             if(selectedNotification.getNotificationType().equals(EVENT_INVITE)){
                 nm.answerToAnInvite(selectedNotification, Boolean.FALSE);
-                notifications.remove(selectedNotification);
             }            
         }
-        nm.readNotification(selectedNotification);
-        notifications.remove(selectedNotification);
+        readed();
     }
+    
+    /**
+     * the user has read the notification (changed event and bad weather alert)
+     */
+     public void readed(){
+         nm.readNotification(selectedNotification);
+         notifications.remove(selectedNotification);
+     }
     
     /**
      * @return the user
