@@ -5,6 +5,7 @@
  */
 package it.polimi.cellicereda.meteocal.businesslogic;
 
+import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import it.polimi.cellicereda.meteocal.entities.Event;
 import it.polimi.cellicereda.meteocal.entities.Forecast;
 import it.polimi.cellicereda.meteocal.entities.Notification;
@@ -124,8 +125,15 @@ public class CalendarManager {
      * @return The list of all the participants to the given event
      */
     public List<User> getEventParticipant(Event e) {
-        return em.createNamedQuery("User.getEventParticipants").
+         try{
+          List<User> users=em.createNamedQuery("User.getEventParticipants").
                 setParameter("event", e).getResultList();
+           return users;
+         }catch(Exception ex){
+             System.err.println("errore nella query");
+             printStackTrace();
+         }
+         return null;
     }
 
     /**

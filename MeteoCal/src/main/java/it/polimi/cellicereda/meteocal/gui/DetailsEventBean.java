@@ -99,8 +99,6 @@ public class DetailsEventBean implements Serializable {
             }else{
                 getModifyEventBean().setLocationKey(null);
             }
-            //set the participants list    
-            getModifyEventBean().setInvitedUsers(participants);
         } catch (Exception e) {
             e.printStackTrace();
             System.err.println("Error in modify (DetailsEventBean)");

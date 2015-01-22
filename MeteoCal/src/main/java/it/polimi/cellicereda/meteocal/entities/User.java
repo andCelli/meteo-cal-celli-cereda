@@ -38,7 +38,7 @@ import javax.validation.constraints.Pattern;
     @NamedQuery(name = "User.getParticipationList",
             query = "SELECT e FROM USERS u JOIN u.events e WHERE u = :participant"),
     @NamedQuery(name = "User.getEventParticipants",
-            query = "SELECT e FROM USERS u JOIN u.events e WHERE e = :event")
+            query = "SELECT u FROM USERS u JOIN u.events e WHERE e = :event")
 
 })
 
