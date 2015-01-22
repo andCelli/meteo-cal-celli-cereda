@@ -181,4 +181,32 @@ public class NotificationManager {
     public void sendSunnyDayProposal(Event e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    /**
+     * Generate an EventChangedNotification for all the users that participates
+     * in the given event (excluding the event's creator). If the user already
+     * have a pending EventChanged notification for the same event we skip the
+     * creation of a new one.
+     *
+     * @param event The event that just changed
+     */
+    public void generateEventChangedNotifications(Event event) {
+        for (User u : cm.getEventParticipant(event)) {
+            //check if we need a new notification
+            Boolean needed = true;
+
+            for (Notification n : getPendingNotificationForUser(u)) {
+                if (n.getNotificationType() == NotificationType.EVENT_CHANGED
+                        && n.getReferredEvent() == event) {
+                    needed = false;
+                }
+            }
+
+            if (needed) {
+                Notification n = new Notification(NotificationType.EVENT_CHANGED, u, event);
+                em.persist(n);
+            }
+
+        }
+    }
 }

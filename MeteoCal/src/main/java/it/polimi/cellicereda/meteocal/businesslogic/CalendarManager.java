@@ -152,41 +152,13 @@ public class CalendarManager {
     }
 
     /**
-     * Generate an EventChangedNotification for all the users that participates
-     * in the given event (excluding the event's creator). If the user already
-     * have a pending EventChanged notification for the same event we skip the
-     * creation of a new one.
-     *
-     * @param event The event that just changed
-     */
-    private void generateEventChangedNotifications(Event event) {
-        for (User u : getEventParticipant(event)) {
-            //check if we need a new notification
-            Boolean needed = true;
-
-            for (Notification n : nm.getPendingNotificationForUser(u)) {
-                if (n.getNotificationType() == NotificationType.EVENT_CHANGED
-                        && n.getReferredEvent() == event) {
-                    needed = false;
-                }
-            }
-
-            if (needed) {
-                Notification n = new Notification(NotificationType.EVENT_CHANGED, u, event);
-                em.persist(n);
-            }
-
-        }
-    }
-
-    /**
      * Change the title of the event and generate the consequent notifications
      */
     public void changeEventTitle(Event event, String newTitle) {
         event = em.find(Event.class, event.getId());
 
         event.setTitle(newTitle);
-        generateEventChangedNotifications(event);
+        nm.generateEventChangedNotifications(event);
     }
 
     /**
@@ -197,7 +169,7 @@ public class CalendarManager {
         event = em.find(Event.class, event.getId());
 
         event.setDescription(newDesc);
-        generateEventChangedNotifications(event);
+        nm.generateEventChangedNotifications(event);
     }
 
     /**
@@ -212,7 +184,7 @@ public class CalendarManager {
 
         fm.saveNewForecastForecastForEvent(event);
 
-        generateEventChangedNotifications(event);
+        nm.generateEventChangedNotifications(event);
 
     }
 
@@ -230,7 +202,7 @@ public class CalendarManager {
 
         fm.saveNewForecastForecastForEvent(event);
 
-        generateEventChangedNotifications(event);
+        nm.generateEventChangedNotifications(event);
     }
 
     /**
