@@ -187,36 +187,9 @@ public class ForecastManager {
 
         Forecast f = downloadNewForecastForEvent(e);
 
-        if (f
-                != null) {
+        if (f != null) {
             em.persist(f);
             cm.changeEventForecast(e, f);
-        }
-    }
-
-    /**
-     * Given an event search for a forecast that is related to the same place of
-     * the event and has a temporal validity that includes the beginning of the
-     * given event. The value returned is the weather id of the obtained
-     * forecast. For a list of the weather id see
-     * http://openweathermap.org/weather-conditions If no forecast is available
-     * the reruned value is 0
-     *
-     * @param e The event to search a forecast for
-     * @return The weather id or 0 if no forecast is available
-     */
-    public int getWeatherForEvent(Event e) {
-        Place location = e.getEventLocation();
-        Date time = e.getStartDate();
-
-        try {
-            Forecast f = (Forecast) em.createNamedQuery("Forecast.findByPlaceAndTime").
-                    setParameter("id", location.getId()).
-                    setParameter("time", time).getSingleResult();
-            return f.getWeatherId();
-
-        } catch (javax.persistence.NoResultException ex) {
-            return 0;
         }
     }
 

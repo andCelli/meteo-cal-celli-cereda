@@ -8,8 +8,6 @@ package it.polimi.cellicereda.meteocal.businesslogic;
 import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import it.polimi.cellicereda.meteocal.entities.Event;
 import it.polimi.cellicereda.meteocal.entities.Forecast;
-import it.polimi.cellicereda.meteocal.entities.Notification;
-import it.polimi.cellicereda.meteocal.entities.NotificationType;
 import it.polimi.cellicereda.meteocal.entities.Place;
 import it.polimi.cellicereda.meteocal.entities.User;
 import java.util.Calendar;

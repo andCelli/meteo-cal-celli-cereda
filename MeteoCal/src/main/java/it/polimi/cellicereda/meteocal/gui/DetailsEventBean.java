@@ -48,7 +48,7 @@ public class DetailsEventBean implements Serializable {
     private ForecastManager fm;
 
     private String start, end;
-    
+
     private boolean hasForecast;
 
     @PostConstruct
@@ -96,9 +96,9 @@ public class DetailsEventBean implements Serializable {
             getModifyEventBean().setEndingDate(event.getEndDate());
             getModifyEventBean().setIsPublic(event.isPublicEvent());
             getModifyEventBean().setAllDay(event.isAllDay());
-            if(event.getEventLocation()!=null){
-              getModifyEventBean().setLocationKey(event.getEventLocation().getName());
-            }else{
+            if (event.getEventLocation() != null) {
+                getModifyEventBean().setLocationKey(event.getEventLocation().getName());
+            } else {
                 getModifyEventBean().setLocationKey(null);
             }
         } catch (Exception e) {
@@ -184,7 +184,7 @@ public class DetailsEventBean implements Serializable {
      */
     public String getForecastIcon() {
         try {
-            return fm.getUrlOfWeatherIcon(fm.getWeatherForEvent(event));
+            return fm.getUrlOfWeatherIcon(event.getForecast().getWeatherId());
         } catch (Exception e) {
             System.err.println("error while retrieving the icon");
             printStackTrace();
@@ -199,7 +199,7 @@ public class DetailsEventBean implements Serializable {
     public boolean hasPrediction() {
         try {
             if (event.getEventLocation() != null) {
-                if (event.getForecast()!= null) {
+                if (event.getForecast() != null) {
                     return true;
                 }
             }
