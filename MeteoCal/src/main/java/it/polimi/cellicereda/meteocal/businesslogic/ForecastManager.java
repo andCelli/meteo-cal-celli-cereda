@@ -60,6 +60,7 @@ public class ForecastManager {
                     retry = false;
                 } else {
                     retry = true;
+                    n++;
                 }
             }
         } while (retry);
@@ -87,6 +88,7 @@ public class ForecastManager {
                     retry = false;
                 } else {
                     retry = true;
+                    n++;
                 }
             }
         } while (retry);
@@ -321,8 +323,7 @@ public class ForecastManager {
         e = em.find(Event.class, e);
 
         //if the event is not "valid" return an empty list
-        if (e.getEventLocation()
-                == null || e.getStartDate() == null) {
+        if (e.getEventLocation() == null || e.getStartDate() == null) {
             return goodDates;
         }
 

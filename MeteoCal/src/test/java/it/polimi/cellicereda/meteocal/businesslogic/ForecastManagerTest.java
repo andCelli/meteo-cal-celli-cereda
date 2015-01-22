@@ -99,4 +99,10 @@ public class ForecastManagerTest {
         assertFalse(fm.isGoodWeather(701));
         assertFalse(fm.isGoodWeather(781));
     }
+
+    @Test
+    public void getUrlOfWeatherIcon() {
+        assertTrue(fm.getUrlOfWeatherIcon(800).contentEquals("http://openweathermap.org/img/w/01d.png"));
+    }
+
 }
