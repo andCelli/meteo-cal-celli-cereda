@@ -103,6 +103,7 @@ public class ForecastManagerTest {
     @Test
     public void getUrlOfWeatherIcon() {
         assertTrue(fm.getUrlOfWeatherIcon(800).contentEquals("http://openweathermap.org/img/w/01d.png"));
+        assertTrue(fm.getUrlOfWeatherIcon(802).contentEquals("http://openweathermap.org/img/w/03d.png"));
     }
 
 }
