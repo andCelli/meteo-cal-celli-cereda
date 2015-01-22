@@ -228,7 +228,6 @@ public class NotificationManager {
                 Notification n = new Notification(NotificationType.EVENT_CHANGED, u, event);
                 em.persist(n);
             }
-
         }
     }
 }
