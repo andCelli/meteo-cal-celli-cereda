@@ -28,14 +28,17 @@ public class SettingsBean implements Serializable{
     
     private User currentUser;
     
-    //variable that determines if the save button is rendered or not
-    private boolean isChanged=false;
+    private String username;
+    private String name;
+    private String surname;
+    private String password;
+    private boolean privacy;
     
     @PostConstruct
     public void init(){
         setCurrentUser(upm.getLoggedUser());
     }
-
+    
     /**
      * @return the currentUser
      */
@@ -50,22 +53,82 @@ public class SettingsBean implements Serializable{
         this.currentUser = currentUser;
     }
 
-    /**
-     * @return the isChanged
-     */
-    public boolean isIsChanged() {
-        return isChanged;
+    public String save(){
+        upm.changeUsername(currentUser, currentUser.getUsername());
+        upm.changeName(currentUser, currentUser.getName());
+        upm.changeSurname(currentUser, currentUser.getSurname());
+        upm.changePassword(currentUser,password);
+        upm.changePublicCalendar(currentUser, currentUser.getPublicCalendar());
+        return "/logged/home?faces-redirect=true";
     }
 
     /**
-     * @param isChanged the isChanged to set
+     * @return the username
      */
-    public void setIsChanged(boolean isChanged) {
-        this.isChanged = isChanged;
+    public String getUsername() {
+        return username;
     }
-    
-    public String save(){
-        System.out.println("bottone");
-        return "/logged/home?faces-redirect=true";
+
+    /**
+     * @param username the username to set
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return the surname
+     */
+    public String getSurname() {
+        return surname;
+    }
+
+    /**
+     * @param surname the surname to set
+     */
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    /**
+     * @return the password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * @param password the password to set
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
+     * @return the privacy
+     */
+    public boolean isPrivacy() {
+        return privacy;
+    }
+
+    /**
+     * @param privacy the privacy to set
+     */
+    public void setPrivacy(boolean privacy) {
+        this.privacy = privacy;
     }
 }

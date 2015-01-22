@@ -33,11 +33,10 @@ and open the template in the editor.
                     <h:outputLabel for="changeUsername">
                         Username
                     </h:outputLabel>
-                <p:inputText id="changeUsername" value="#{settingsBean.currentUser.username}" >
+                    <p:inputText id="changeUsername" value="#{settingsBean.currentUser.username}">
                         <p:ajax update="changeusernamemsg"/>
                     </p:inputText>
                     <p:message id="changeusernamemsg" for="changeUsername" />
-                    
                     <h:outputLabel for="changename">
                         Name
                     </h:outputLabel>
@@ -45,7 +44,6 @@ and open the template in the editor.
                         <p:ajax update="changenamemsg"/>
                     </p:inputText>
                     <p:message id="changenamemsg" for="changename" />
-                    
                     <h:outputLabel for="changesurname">
                         Surname
                     </h:outputLabel>
@@ -56,26 +54,27 @@ and open the template in the editor.
                     <h:outputLabel for="changePassword">
                         Password
                     </h:outputLabel>
-                    <p:password id="changePassword" value="#{settingsBean.currentUser.password}"
-                                feedback="true" match="pwd2" label="Password"  onchange="#{settingsBean.setIsChanged(true)}"/>
+                    <p:password id="changePassword" value="#{settingsBean.password}"
+                                feedback="true" match="pwd2" label="Password" required="true"/>
                     <p:message for="changePassword" />
-                    
                     <h:outputLabel for="pwd2">
                         Confirm Password
                     </h:outputLabel>
                     <p:password id="pwd2" label="Confirm Password"/> 
-            </h:panelGrid>  
+            </h:panelGrid> 
+            <h:panelGrid columns="2" border="0" cellpadding="5">
+                     <p:outputLabel for="privacy" value="Calendar privacy" />
+                     <p:selectOneRadio id="privacy" value="#{settingsBean.currentUser.publicCalendar}" >
+                               <f:selectItem itemLabel="Public" itemValue="#{true}" />
+                               <f:selectItem itemLabel="Private" itemValue="#{false}" />
+                     </p:selectOneRadio>
+            </h:panelGrid>
                 <br/><br/>
-            
-               </center>   
-                <h:form>
-                <p:commandButton id="saveChanges" value="Save" rendered="#{settingsBean.isChanged}" 
-                                 action="#{settingsBean.save()}"/>
-                </h:form>
-            
-  
+           </center>  
+            <p:commandButton id="saveSettings" value="Save" 
+                             action="#{settingsBean.save()}" ajax="true"
+                                     update="@all"/>
             </p:panel>
-          
         </h:form>
     </ui:define>
 </ui:composition>
