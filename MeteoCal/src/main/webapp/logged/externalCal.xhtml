@@ -35,7 +35,7 @@ and open the template in the editor.
                               <h:outputLabel for="forecastDet" value="Forecast:" rendered="#{externalCalendarBean.selectedEvent.publicEvent}"/>
                               <p:outputLabel id="forecastDet" value="TODO" rendered="#{externalCalendarBean.selectedEvent.publicEvent}"/>
                               <h:outputLabel for="partecipants" value="Partecipants: " rendered="#{externalCalendarBean.selectedEvent.publicEvent}"/>
-                              <p:dataScroller id="partecipants" value="#{detailsEventBean.partecipants}" var="user" chunkSize="10" rendered="#{externalCalendarBean.selectedEvent.publicEvent}">
+                              <p:dataScroller id="partecipants" value="#{detailsEventBean.participants}" var="user" chunkSize="10" rendered="#{externalCalendarBean.selectedEvent.publicEvent}">
                                    <p:outputLabel value="#{user.username}"/>
                               </p:dataScroller>
                        </h:panelGrid> 

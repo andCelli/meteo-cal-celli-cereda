@@ -38,7 +38,7 @@ public class DetailsEventBean implements Serializable {
 
     private ModifyEventBean modifyEventBean;
 
-    private List<User> partecipants;
+    private List<User> participants;
 
     @EJB
     private CalendarManager calendarManager;
@@ -48,6 +48,8 @@ public class DetailsEventBean implements Serializable {
     private ForecastManager fm;
 
     private String start, end;
+    
+    private boolean hasForecast;
 
     @PostConstruct
     public void init() {
@@ -65,7 +67,7 @@ public class DetailsEventBean implements Serializable {
     }
 
     /**
-     * the user removes himself from the partecipants
+     * the user removes himself from the participants
      *
      * @TODO
      */
@@ -92,12 +94,13 @@ public class DetailsEventBean implements Serializable {
             getModifyEventBean().setDescription(event.getDescription());
             getModifyEventBean().setStartingDate(event.getStartDate());
             getModifyEventBean().setEndingDate(event.getEndDate());
-            getModifyEventBean().setLocationKey(null);
             getModifyEventBean().setIsPublic(event.isPublicEvent());
             getModifyEventBean().setAllDay(event.isAllDay());
-            getModifyEventBean().setLocationKey(event.getEventLocation().getName());
-            //set the partecipants list    
-            getModifyEventBean().setInvitedUsers(partecipants);
+            if(event.getEventLocation()!=null){
+              getModifyEventBean().setLocationKey(event.getEventLocation().getName());
+            }else{
+                getModifyEventBean().setLocationKey(null);
+            }
         } catch (Exception e) {
             e.printStackTrace();
             System.err.println("Error in modify (DetailsEventBean)");
@@ -161,17 +164,17 @@ public class DetailsEventBean implements Serializable {
     }
 
     /**
-     * @return the partecipants
+     * @return the participants
      */
-    public List<User> getPartecipants() {
-        return partecipants;
+    public List<User> getParticipants() {
+        return participants;
     }
 
     /**
-     * @param partecipants the partecipants to set
+     * @param partecipants the participants to set
      */
-    public void setPartecipants(List<User> partecipants) {
-        this.partecipants = partecipants;
+    public void setParticipants(List<User> participants) {
+        this.participants = participants;
     }
 
     /**
@@ -196,7 +199,7 @@ public class DetailsEventBean implements Serializable {
     public boolean hasPrediction() {
         try {
             if (event.getEventLocation() != null) {
-                if (fm.getWeatherForEvent(event) != 0) {
+                if (event.getForecast()!= null) {
                     return true;
                 }
             }

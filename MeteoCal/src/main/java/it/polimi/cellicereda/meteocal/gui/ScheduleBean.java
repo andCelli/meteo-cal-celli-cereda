@@ -101,13 +101,18 @@ public class ScheduleBean implements Serializable{
      * @param SelectEvent
      */
     public void onEventSelect(SelectEvent e) {
-       Event event=(Event)e.getObject();
+        try{
+        Event event=(Event)e.getObject();
         getDetailsEventBean().setEvent(event);
         getDetailsEventBean().setIsCreator(event.getCreator().equals(currentUser));
-        getDetailsEventBean().setPartecipants(calendarManager.getEventParticipant(event));
-        getDetailsEventBean().getPartecipants().add(event.getCreator());
+        getDetailsEventBean().setParticipants(calendarManager.getEventParticipant(event));
+        getDetailsEventBean().getParticipants().add(event.getCreator());
         getDetailsEventBean().setStart(utility.getFormattedDate(event.getStartDate()));
         getDetailsEventBean().setEnd(utility.getFormattedDate(event.getEndDate()));
+        }catch(Exception ex){
+            System.err.println("errore in onEventSelect cazzo");
+            printStackTrace();
+        }
        } 
 
     /**

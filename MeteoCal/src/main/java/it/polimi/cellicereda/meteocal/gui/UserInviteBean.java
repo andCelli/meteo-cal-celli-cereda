@@ -70,7 +70,7 @@ public class UserInviteBean {
         return getSearchResults();  
     }
     
-    //@TODO
+    
     public void onUserSelect(SelectEvent selectedUser){
      User selected=upm.getByEmail(selectedUser.getObject().toString());
      List<User> invitedUsers=meb.getInvitedUsers();
@@ -78,7 +78,6 @@ public class UserInviteBean {
      if(!invitedUsers.contains(selected)){
       invitedUsers.add(selected);
      }
-     
      searchKey=null;
     }
 
