@@ -39,7 +39,6 @@ public class Event implements Serializable, ScheduleEvent {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
 
-    @NotNull(message = "May not be empty")
     private String title;
 
     private String description;
