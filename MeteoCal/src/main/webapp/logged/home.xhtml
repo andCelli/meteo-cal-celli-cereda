@@ -41,11 +41,12 @@ This is the logged-user homepage.
                  <h:outputLabel for="privacyDet" value="Privacy:"/>
                  <h:outputText id="privacyDet" value=" #{detailsEventBean.event.publicEvent? 'Public event' : 'Private event'}"/>
                  <h:outputLabel for="forecastDet" value="Forecast:" rendered="#{detailsEventBean.hasPrediction()}"/>
-                 <p:panel rendered="#{detailsEventBean.hasPrediction()}">
-                     <img id="forecast" src="#{detailsEventBean.getForecastIcon()}"/>
+                 <p:panel style="border:none;"  rendered="#{detailsEventBean.hasPrediction()}">
+                     <img id="forecastDet" src="#{detailsEventBean.getForecastIcon()}"/>
                  </p:panel> 
                  <h:outputLabel for="partecipants" value="Partecipants: "/>
-                 <p:dataScroller id="partecipants" value="#{detailsEventBean.participants}" var="user" chunkSize="10">
+                 <p:dataScroller id="partecipants" value="#{detailsEventBean.participants}" var="user" chunkSize="10"
+                                  style="border:none;">
                      <p:outputLabel value="#{user.username}"/>
                  </p:dataScroller>
                  <p:commandButton id="modifyButton" value="Modify" action="#{detailsEventBean.modify()}"
@@ -121,7 +122,7 @@ This is the logged-user homepage.
               <p:outputLabel for="invite" value="Invite: "/>
               <p:autoComplete id="invite" value="#{userInviteBean.searchKey}" completeMethod="#{userInviteBean.autoCompleteSearch}"
                                placeholder="Insert username" queryDelay="100">
-                  <p:ajax event="itemSelect" listener="#{userInviteBean.onUserSelect}"/>
+                  <p:ajax event="itemSelect" listener="#{userInviteBean.onUserSelect}" update=":modifyForm:invitedUsers,:modifyForm:invite"/>
               </p:autoComplete>
               <h:outputLabel for="invitedUsers" value="Invited: "/>
               <p:dataScroller id="invitedUsers" value="#{modifyEventBean.invitedUsers}" var="user" chunkSize="10">

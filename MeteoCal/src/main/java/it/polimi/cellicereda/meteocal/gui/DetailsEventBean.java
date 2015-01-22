@@ -48,6 +48,8 @@ public class DetailsEventBean implements Serializable {
     private ForecastManager fm;
 
     private String start, end;
+    
+    private boolean hasForecast;
 
     @PostConstruct
     public void init() {
@@ -197,7 +199,7 @@ public class DetailsEventBean implements Serializable {
     public boolean hasPrediction() {
         try {
             if (event.getEventLocation() != null) {
-                if (fm.getWeatherForEvent(event) != 0) {
+                if (event.getForecast()!= null) {
                     return true;
                 }
             }
