@@ -125,15 +125,15 @@ public class CalendarManager {
      * @return The list of all the participants to the given event
      */
     public List<User> getEventParticipant(Event e) {
-         try{
-          List<User> users=em.createNamedQuery("User.getEventParticipants").
-                setParameter("event", e).getResultList();
-           return users;
-         }catch(Exception ex){
-             System.err.println("errore nella query");
-             printStackTrace();
-         }
-         return null;
+        try {
+            List<User> users = em.createNamedQuery("User.getEventParticipants").
+                    setParameter("event", e).getResultList();
+            return users;
+        } catch (Exception ex) {
+            System.err.println("errore nella query");
+            printStackTrace();
+        }
+        return null;
     }
 
     /**

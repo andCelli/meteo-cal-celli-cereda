@@ -45,8 +45,26 @@ public class ForecastManager {
      * forecast have a time span of 5 days with data every 3 hours
      */
     private String downloadForecastsByCityID(Long cityID) throws Exception {
-        String url = "http://api.openweathermap.org/data/2.5/forecast?id=" + cityID;
-        return URLConnectionReader.getText(url);
+        String toReturn = null;
+        int n = 0;
+        boolean retry = false;
+
+        do {
+            try {
+                String url = "http://api.openweathermap.org/data/2.5/forecast?id=" + cityID;
+                toReturn = URLConnectionReader.getText(url);
+            } catch (Exception ex) {
+                if (n > 5) {
+                    Logger.getLogger(ForecastManager.class
+                            .getName()).log(Level.INFO, "Unable to download forecast.", ex);
+                    retry = false;
+                } else {
+                    retry = true;
+                }
+            }
+        } while (retry);
+
+        return toReturn;
     }
 
     /**
@@ -54,8 +72,26 @@ public class ForecastManager {
      * forecast have a time span of 16 days with data every 1 day
      */
     private String download16DayForecastsByCityID(Long cityID) throws Exception {
-        String url = "http://api.openweathermap.org/data/2.5/forecast/daily?id=" + cityID;
-        return URLConnectionReader.getText(url);
+        String toReturn = null;
+        int n = 0;
+        boolean retry = false;
+
+        do {
+            try {
+                String url = "http://api.openweathermap.org/data/2.5/forecast/daily?id=" + cityID;
+                toReturn = URLConnectionReader.getText(url);
+            } catch (Exception ex) {
+                if (n > 5) {
+                    Logger.getLogger(ForecastManager.class
+                            .getName()).log(Level.INFO, "Unable to download forecast.", ex);
+                    retry = false;
+                } else {
+                    retry = true;
+                }
+            }
+        } while (retry);
+
+        return toReturn;
     }
 
     /**
@@ -68,53 +104,74 @@ public class ForecastManager {
      * @param event The event for which you want to download a new forecast
      * @return The forecasts obtained for the given event
      */
-    Forecast downloadNewForecastForEvent(Event event) {
-        try {
-            if (event.getEventLocation() == null || event.getStartDate() == null) {
-                return null;
-            }
-            Long cityID = event.getEventLocation().getId();
+    public Forecast downloadNewForecastForEvent(Event event) {
+        if (event.getEventLocation() == null || event.getStartDate() == null) {
+            return null;
+        }
 
+        Forecast forecast = null;
+
+        try {
+            Long cityID = event.getEventLocation().getId();
             Date wantedTime = event.getStartDate();
 
-            JSONObject entireForecast = new JSONObject(downloadForecastsByCityID(cityID));
-            JSONArray forecastList = entireForecast.getJSONArray("list");
+            //try with 5 days
+            if (cm.isInFiveDays(event)) {
+                String jsonString = downloadForecastsByCityID(cityID);
+                JSONObject jsonForecast = new JSONObject(jsonString);
+                JSONArray forecastList = jsonForecast.getJSONArray("list");
+                int coveredHours = 3;
 
-            //compute the making time
-            Date now = new Date();
-
-            for (int i = 0; i < forecastList.length(); i++) {
-                JSONObject forecastJson = forecastList.getJSONObject(i);
-
-                //SET THE STARTING/ENDING VALIDITY TIME (time coverage = 3 hours)
-                Date starting = new Date(forecastJson.getLong("dt") * 1000);
-                Date ending = new Date(starting.getTime() + (3 * 60 * 60 * 1000));
-
-                if (starting.after(wantedTime) || ending.before(wantedTime)) {
-                    continue;
-                }
-
-                Forecast forecast = new Forecast();
-
-                forecast.setStartingValidity(starting);
-                forecast.setEndingValidity(ending);
-
-                //SET THE PLACE
-                forecast.setPlace(lm.getPlaceByID(cityID));
-
-                //SAVE THE MAKING TIME (computed before and equals for all the forecasts)
-                forecast.setMakingTime(now);
-
-                //SET THE WEATHER ID
-                forecast.setWeatherId(forecastJson.getJSONArray("weather").getJSONObject(0).getInt("id"));
-
-                //RETURN THE FORECAST
-                return forecast;
+                forecast = downloadForecast(forecastList, coveredHours, wantedTime, cityID);
             }
 
+            //try with 16 days
+            if (forecast == null && cm.isInNDays(event, 16)) {
+                String jsonString = download16DayForecastsByCityID(cityID);
+                JSONObject jsonForecast = new JSONObject(jsonString);
+                JSONArray forecastList = jsonForecast.getJSONArray("list");
+                int coveredHours = 24;
+
+                forecast = downloadForecast(forecastList, coveredHours, wantedTime, cityID);
+            }
         } catch (Exception ex) {
-            Logger.getLogger(ForecastManager.class
-                    .getName()).log(Level.INFO, "Unable to download forecast.", ex);
+            Logger.getLogger(ForecastManager.class.getName()).log(Level.INFO, "Unable to download forecast", ex);
+        }
+
+        return forecast;
+    }
+
+    private Forecast downloadForecast(JSONArray forecastList, int coveredHours, Date wantedTime, Long cityID) throws Exception {
+        //compute the making time
+        Date now = new Date();
+
+        for (int i = 0; i < forecastList.length(); i++) {
+            JSONObject forecastJson = forecastList.getJSONObject(i);
+
+            //SET THE STARTING/ENDING VALIDITY TIME
+            Date starting = new Date(forecastJson.getLong("dt") * 1000);
+            Date ending = new Date(starting.getTime() + (coveredHours * 60 * 60 * 1000));
+
+            if (starting.after(wantedTime) || ending.before(wantedTime)) {
+                continue;
+            }
+
+            Forecast forecast = new Forecast();
+
+            forecast.setStartingValidity(starting);
+            forecast.setEndingValidity(ending);
+
+            //SET THE PLACE
+            forecast.setPlace(lm.getPlaceByID(cityID));
+
+            //SAVE THE MAKING TIME (computed before and equals for all the forecasts)
+            forecast.setMakingTime(now);
+
+            //SET THE WEATHER ID
+            forecast.setWeatherId(forecastJson.getJSONArray("weather").getJSONObject(0).getInt("id"));
+
+            //RETURN THE FORECAST
+            return forecast;
         }
         return null;
     }
@@ -128,7 +185,8 @@ public class ForecastManager {
 
         Forecast f = downloadNewForecastForEvent(e);
 
-        if (f != null) {
+        if (f
+                != null) {
             em.persist(f);
             cm.changeEventForecast(e, f);
         }
@@ -224,8 +282,8 @@ public class ForecastManager {
             //check if the event is in the future and if it has a valid location
             if (e.getEventLocation() != null && e.getStartDate().after(new Date())) {
 
-                //if the event is in the future by more than 5 days don't even try to download a new forecast as we won't get it
-                if (!cm.isInFiveDays(e)) {
+                //if the event is in the future by more than 16 days don't even try to download a new forecast as we won't get it
+                if (!cm.isInNDays(e, 16)) {
                     continue;
                 }
 
@@ -239,7 +297,7 @@ public class ForecastManager {
                 //download the new forecast
                 Forecast newForecast = downloadNewForecastForEvent(e);
 
-                //and update the old one (so taht the id does not change in the db)
+                //and update the old one (so that the id does not change in the db)
                 oldForecast.setMakingTime(newForecast.getMakingTime());
                 oldForecast.setWeatherId(newForecast.getWeatherId());
 
@@ -263,7 +321,8 @@ public class ForecastManager {
         e = em.find(Event.class, e);
 
         //if the event is not "valid" return an empty list
-        if (e.getEventLocation() == null || e.getStartDate() == null) {
+        if (e.getEventLocation()
+                == null || e.getStartDate() == null) {
             return goodDates;
         }
 
@@ -309,8 +368,6 @@ public class ForecastManager {
             Logger.getLogger(ForecastManager.class
                     .getName()).log(Level.INFO, "Unable to download forecast.", ex);
         }
-
         return goodDates;
     }
-
 }

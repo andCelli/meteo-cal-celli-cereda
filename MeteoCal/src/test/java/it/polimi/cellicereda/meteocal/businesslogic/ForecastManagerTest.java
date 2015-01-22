@@ -33,6 +33,7 @@ public class ForecastManagerTest {
         fm = new ForecastManager();
         fm.em = mock(EntityManager.class);
         fm.lm = mock(LocationManager.class);
+        fm.cm = new CalendarManager();
 
         //create a place entity
         Place honolulu = new Place();
@@ -59,6 +60,15 @@ public class ForecastManagerTest {
 
     @Test
     public void DownloadNewForecastForEvent() {
+        assertNotNull(fm.downloadNewForecastForEvent(event));
+
+        //now try with an event in 6 days (16 days forecast related test, but not all weather has 16 days data - Honolulu only has seven days)
+        Date newStart = event.getStartDate();
+        newStart.setTime(newStart.getTime() + 6 * 24 * 60 * 60 * 1000);
+        Date newEnd = new Date(newStart.getTime() + 10);
+
+        event.setStartDate(newStart);
+        event.setEndDate(newEnd);
         assertNotNull(fm.downloadNewForecastForEvent(event));
     }
 
