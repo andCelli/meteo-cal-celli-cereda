@@ -22,8 +22,11 @@ import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.validation.ConstraintViolationException;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.ScheduleEvent;
 
@@ -47,13 +50,14 @@ public class ModifyEventBean implements Serializable {
 
     @Inject
     ScheduleBean scheduleBean;
-
+   
     @EJB
     private NotificationManager notificationManager;
 
     private User currentUser;
 
     private Event event = new Event();
+    
 
     /*
      these are the attributes that are used to decouple the gui from the entities
@@ -76,8 +80,7 @@ public class ModifyEventBean implements Serializable {
     @PostConstruct
     public void init() {
         resetUtilityVariables();
-        currentUser = userProfileManager.getLoggedUser();
-
+        currentUser = userProfileManager.getLoggedUser();     
         try {
             scheduleBean.getDetailsEventBean().setModifyEventBean(this);
         } catch (Exception e) {
@@ -92,7 +95,13 @@ public class ModifyEventBean implements Serializable {
      */
 
     public void saveEvent() {
-            if (newEvent) {
+        
+        //makes sure that the end date is not before the start date (in case the end date has not been specified
+        if(endingDate.before(startingDate)){
+            endingDate=startingDate;
+        }
+         
+        if (newEvent) {
             //save the new values into the event and persist it
             event.setTitle(title);
             event.setDescription(description);
@@ -129,7 +138,7 @@ public class ModifyEventBean implements Serializable {
             scheduleBean.getModel().addEvent(event);
             event.setId(id);
         }
-
+      
         //add invited user
         if (!invitedUsers.isEmpty()) {
             for (User u : invitedUsers) {
