@@ -159,8 +159,6 @@ public class NotificationManager {
         event = em.find(Event.class, event.getId());
         invited = em.find(User.class, invited.getEmail());
 
-        event = em.find(Event.class, event.getId());
-        invited = em.find(User.class, invited.getEmail());
         Notification n = new Notification(NotificationType.EVENT_INVITE, invited, event);
         em.persist(n);
     }
@@ -174,14 +172,38 @@ public class NotificationManager {
         n.setNotificationState(NotificationState.READED);
     }
 
+    /**
+     * Send a bad weather alert to all the event participant and to the event
+     * creator
+     *
+     * @param e The event with a bad weather
+     */
     public void sendBadWeatherAlert(Event e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        e = em.find(Event.class, e);
+
+        //an alert for all the participants
+        for (User u : cm.getEventParticipant(e)) {
+            Notification n = new Notification(NotificationType.BAD_WEATHER_ALERT, u, e);
+            em.persist(n);
+        }
+
+        //and one for the crator
+        Notification n = new Notification(NotificationType.BAD_WEATHER_ALERT, e.getCreator(), e);
+        em.persist(n);
     }
 
+    /**
+     * Send a sunny day proposal to the event creator
+     *
+     * @param e The event witha bad weather
+     */
     public void sendSunnyDayProposal(Event e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        e = em.find(Event.class, e);
+
+        Notification n = new Notification(NotificationType.SUNNY_DAY_PROPOSAL, e.getCreator(), e);
+        em.persist(n);
     }
-    
+
     /**
      * Generate an EventChangedNotification for all the users that participates
      * in the given event (excluding the event's creator). If the user already
