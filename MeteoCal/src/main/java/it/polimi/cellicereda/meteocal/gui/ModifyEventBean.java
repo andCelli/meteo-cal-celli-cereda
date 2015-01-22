@@ -331,9 +331,12 @@ public class ModifyEventBean implements Serializable {
 
         String completeString = selectedPlace.getObject().toString();
 
-        String[] parts = completeString.split("\\s");
+        String[] parts = completeString.split("\\s\\(");
         parts[1] = parts[1].replaceAll("[()]", "");
-
+        
+        System.out.println("part 0: "+parts[0]);
+        System.out.println("part 1: "+parts[1]);
+        
         setPlace(lm.getPlaceByNameAndCountry(parts[0], parts[1]));
 
         System.out.println(place.toString());
