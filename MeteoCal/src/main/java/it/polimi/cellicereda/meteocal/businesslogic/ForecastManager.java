@@ -44,7 +44,7 @@ public class ForecastManager {
      * Download from openweathermap the forecasts for the given city, the
      * forecast have a time span of 5 days with data every 3 hours
      */
-    private String downloadForecastsByCityID(Long cityID) throws Exception {
+    private String downloadForecastsByCityID(Long cityID) {
         String toReturn = null;
         int n = 0;
         boolean retry = false;
@@ -72,14 +72,14 @@ public class ForecastManager {
      * Download from openweathermap the forecasts for the given city, the
      * forecast have a time span of 16 days with data every 1 day
      */
-    private String download16DayForecastsByCityID(Long cityID) throws Exception {
+    private String download16DayForecastsByCityID(Long cityID) {
         String toReturn = null;
         int n = 0;
         boolean retry = false;
 
         do {
             try {
-                String url = "http://api.openweathermap.org/data/2.5/forecast/daily?id=" + cityID;
+                String url = "http://api.openweathermap.org/data/2.5/forecast/daily?id=" + cityID + "&cnt=16";
                 toReturn = URLConnectionReader.getText(url);
             } catch (Exception ex) {
                 if (n > 5) {
@@ -262,29 +262,33 @@ public class ForecastManager {
                     continue;
                 }
 
-                //if the event already have a valid forecast save it
+                //if the event already have a valid forecast save it, otherwise create a new one                
                 Forecast oldForecast = e.getForecast();
-                boolean wasGood = true;
                 if (oldForecast != null) {
-                    wasGood = isGoodWeather(oldForecast.getWeatherId());
-                }
+                    boolean wasGood = true;
+                    if (oldForecast != null) {
+                        wasGood = isGoodWeather(oldForecast.getWeatherId());
+                    }
 
-                //download the new forecast
-                Forecast newForecast = downloadNewForecastForEvent(e);
+                    //download the new forecast
+                    Forecast newForecast = downloadNewForecastForEvent(e);
 
-                //and update the old one (so that the id does not change in the db)
-                oldForecast.setMakingTime(newForecast.getMakingTime());
-                oldForecast.setWeatherId(newForecast.getWeatherId());
+                    //and update the old one (so that the id does not change in the db)
+                    oldForecast.setMakingTime(newForecast.getMakingTime());
+                    oldForecast.setWeatherId(newForecast.getWeatherId());
 
-                //now it's time to generate the notifications
-                //if the event is tomorrow and the weather is bad generate a bad weather alert
-                if (cm.isTomorrow(e) && !isGoodWeather(newForecast.getWeatherId())) {
-                    nm.sendBadWeatherAlert(e);
-                }
+                    //now it's time to generate the notifications
+                    //if the event is tomorrow and the weather is bad generate a bad weather alert
+                    if (cm.isTomorrow(e) && !isGoodWeather(newForecast.getWeatherId())) {
+                        nm.sendBadWeatherAlert(e);
+                    }
 
-                //if the event starts in three days and the weather just turned bad send a sunny day proposal
-                if (cm.isInThreeDays(e) && wasGood && !isGoodWeather(newForecast.getWeatherId())) {
-                    nm.sendSunnyDayProposal(e);
+                    //if the event starts in three days and the weather just turned bad send a sunny day proposal
+                    if (cm.isInThreeDays(e) && wasGood && !isGoodWeather(newForecast.getWeatherId())) {
+                        nm.sendSunnyDayProposal(e);
+                    }
+                } else {
+                    saveNewForecastForecastForEvent(e);
                 }
             }
         }
