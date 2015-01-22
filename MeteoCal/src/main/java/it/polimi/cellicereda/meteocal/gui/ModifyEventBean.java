@@ -95,6 +95,11 @@ public class ModifyEventBean implements Serializable {
      */
 
     public void saveEvent() {
+        
+        //makes sure that the end date is not before the start date (in case the end date has not been specified
+        if(endingDate.before(startingDate)){
+            endingDate=startingDate;
+        }
          
         if (newEvent) {
             //save the new values into the event and persist it
