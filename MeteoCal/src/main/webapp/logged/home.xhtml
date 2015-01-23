@@ -90,11 +90,13 @@ This is the logged-user homepage.
                 <p:outputLabel id="sunnyDay" value="#{notificationBean.nextGoodDay()}"
                                rendered="#{notificationBean.selectedNotification.notificationType.toString()=='SUNNY_DAY_PROPOSAL'}"/>
                 <p:commandButton id="positiveAnswer" value="Accept" action="#{scheduleBean.addPartecipations()}"
-                                 actionListener="#{notificationBean.positiveAnswer()}"
                                  oncomplete="PF('myschedule').update();PF('notificationDialog').hide();"
                                  update=":notificationForm:notificationsGrid" 
                                  rendered="#{notificationBean.selectedNotification.notificationType.toString()=='EVENT_INVITE' ||
-                                                (notificationBean.selectedNotification.notificationType.toString()=='SUNNY_DAY_PROPOSAL' and notificationBean.hasGoodDayFlag)}"/>
+                                             (notificationBean.selectedNotification.notificationType.toString()=='SUNNY_DAY_PROPOSAL' and notificationBean.hasGoodDayFlag)}">
+                    <f:actionListener binding="#{notificationBean.positiveAnswer()}"/>
+                    <f:actionListener binding="#{scheduleBean.refreshEvents()}"/>
+                </p:commandButton>
                 <p:commandButton id="negativeAnswer" value="Decline"
                                  actionListener="#{notificationBean.negativeAnswer()}"
                                  oncomplete="PF('myschedule').update();PF('notificationDialog').hide();"

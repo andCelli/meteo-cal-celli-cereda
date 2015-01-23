@@ -157,4 +157,13 @@ public class ScheduleBean implements Serializable {
             }
         }
     }
+    
+    /**
+     * this method refreshes the displayed created events (called after a sunny day proposal)
+     */
+    public void refreshEvents(){
+        for(Event e: (List<Event>) calendarManager.getEventsByCreator(currentUser)){
+            model.updateEvent(e);
+        }
+    }
 }

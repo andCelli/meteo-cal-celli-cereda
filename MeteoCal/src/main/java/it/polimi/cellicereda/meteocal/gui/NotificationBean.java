@@ -210,7 +210,7 @@ public class NotificationBean implements Serializable{
        }catch(Exception e){
            System.err.println("error while searching good days");
        }
-       if(goodDates!=null){
+       if(!goodDates.isEmpty()){
            //there's a day with good weather
             setHasGoodDayFlag(true);
            return util.getFormattedDate(goodDates.get(0).getStartingValidity());
