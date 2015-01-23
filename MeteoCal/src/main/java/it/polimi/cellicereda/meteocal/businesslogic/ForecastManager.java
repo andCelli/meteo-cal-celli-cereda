@@ -261,8 +261,6 @@ public class ForecastManager {
                 //if the event already have a valid forecast save it, otherwise create a new one                
                 Forecast oldForecast = e.getForecast();
                 if (oldForecast != null) {
-                    boolean wasGood = isGoodWeather(oldForecast.getWeatherId());
-
                     //download the new forecast
                     Forecast newForecast = downloadNewForecastForEvent(e);
 
@@ -276,8 +274,8 @@ public class ForecastManager {
                         nm.sendBadWeatherAlert(e);
                     }
 
-                    //if the event starts in three days and the weather just turned bad send a sunny day proposal
-                    if (cm.isInThreeDays(e) && wasGood && !isGoodWeather(newForecast.getWeatherId())) {
+                    //if the event starts in three days and the weather is bad send a sunny day proposal
+                    if (cm.isInThreeDays(e) && !isGoodWeather(newForecast.getWeatherId())) {
                         nm.sendSunnyDayProposal(e);
                     }
                 } else {
