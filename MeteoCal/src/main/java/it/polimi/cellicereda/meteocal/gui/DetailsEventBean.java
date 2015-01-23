@@ -237,4 +237,5 @@ public class DetailsEventBean implements Serializable {
     public void setEnd(String end) {
         this.end = end;
     }
+  
 }
