@@ -51,6 +51,19 @@ public class NotificationManager {
     }
 
     /**
+     * Get all the notifications that refers to a user.
+     *
+     * @param recipient The user that is the recipient of the search
+     * notifications
+     * @return The notifications that have the given user as recipient
+     */
+    public List<Notification> getNotificationForUser(User recipient) {
+        recipient = em.find(User.class, recipient.getEmail());
+        return em.createNamedQuery("Notification.findForUser").
+                setParameter("recipient", recipient).getResultList();
+    }
+
+    /**
      * Get the notifications that a user still have to see.
      *
      * @param recipient The user that is the recipient of the search
@@ -160,7 +173,9 @@ public class NotificationManager {
         invited = em.find(User.class, invited.getEmail());
 
         Notification n = new Notification(NotificationType.EVENT_INVITE, invited, event);
-        em.persist(n);
+        if (notAlreadySent(n)) {
+            em.persist(n);
+        }
     }
 
     /**
@@ -184,12 +199,16 @@ public class NotificationManager {
         //an alert for all the participants
         for (User u : cm.getEventParticipant(e)) {
             Notification n = new Notification(NotificationType.BAD_WEATHER_ALERT, u, e);
-            em.persist(n);
+            if (notAlreadySent(n)) {
+                em.persist(n);
+            }
         }
 
         //and one for the crator
         Notification n = new Notification(NotificationType.BAD_WEATHER_ALERT, e.getCreator(), e);
-        em.persist(n);
+        if (notAlreadySent(n)) {
+            em.persist(n);
+        }
     }
 
     /**
@@ -201,7 +220,9 @@ public class NotificationManager {
         e = em.find(Event.class, e.getId());
 
         Notification n = new Notification(NotificationType.SUNNY_DAY_PROPOSAL, e.getCreator(), e);
-        em.persist(n);
+        if (notAlreadySent(n)) {
+            em.persist(n);
+        }
     }
 
     /**
@@ -216,20 +237,24 @@ public class NotificationManager {
         event = em.find(Event.class, event.getId());
 
         for (User u : cm.getEventParticipant(event)) {
-            //check if we need a new notification
-            Boolean needed = true;
-
-            for (Notification n : getPendingNotificationForUser(u)) {
-                if (n.getNotificationType() == NotificationType.EVENT_CHANGED
-                        && n.getReferredEvent() == event) {
-                    needed = false;
-                }
-            }
-
-            if (needed) {
-                Notification n = new Notification(NotificationType.EVENT_CHANGED, u, event);
+            Notification n = new Notification(NotificationType.EVENT_CHANGED, u, event);
+            if (notAlreadySent(n)) {
                 em.persist(n);
             }
         }
+    }
+
+    /**
+     * This method checks if we already have an equivalent notificiation: same
+     * kind, same event, same user
+     */
+    private boolean notAlreadySent(Notification n) {
+        for (Notification notification : getNotificationForUser(n.getRecipient())) {
+            if (notification.getNotificationType().equals(n.getNotificationType())
+                    && notification.getReferredEvent().equals(n.getReferredEvent())) {
+                return false;
+            }
+        }
+        return true;
     }
 }
