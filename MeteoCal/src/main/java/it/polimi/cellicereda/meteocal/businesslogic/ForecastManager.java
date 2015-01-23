@@ -40,6 +40,10 @@ public class ForecastManager {
     @EJB
     NotificationManager nm;
 
+    public List<Forecast> findForecastWithoutRelatedEvent() {
+        return em.createNamedQuery("Forecast.findForecastWithouEvent").getResultList();
+    }
+
     /**
      * Download from openweathermap the forecasts for the given city, the
      * forecast have a time span of 5 days with data every 3 hours
@@ -241,7 +245,7 @@ public class ForecastManager {
         return num <= 4;
     }
 
-    @Schedule(hour = "*", minute="*")
+    @Schedule(hour = "*", minute = "*")
     private void updateForecastsForAllTheEvents() {
         List<Event> events = cm.getAllEventsAsEvents();
 

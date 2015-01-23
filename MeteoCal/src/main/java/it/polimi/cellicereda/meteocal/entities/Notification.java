@@ -29,9 +29,9 @@ import javax.validation.constraints.NotNull;
             query = "SELECT n FROM Notification n WHERE n.recipient = :recipient AND n.notificationState = :state"),
     @NamedQuery(name = "Notification.findForUser",
             query = "SELECT n FROM Notification n WHERE n.recipient = :recipient"),
-    @NamedQuery(name = "Notification.findForEvent",
-            query = "SELECT n FROM Notification n WHERE n.referredEvent = :event")
-})
+    @NamedQuery(name = "Notification.findNotificationWithoutEvent",
+            query = "SELECT n FROM Notification n WHERE n.referredEvent NOT IN ("
+            + "SELECT e FROM Event e)")})
 public class Notification implements Serializable {
 
     private static final long serialVersionUID = 1L;

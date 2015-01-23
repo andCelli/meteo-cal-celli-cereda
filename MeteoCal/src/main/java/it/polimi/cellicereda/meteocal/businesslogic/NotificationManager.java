@@ -52,11 +52,11 @@ public class NotificationManager {
 
     public List<Notification> getNotificationForEvent(Event e) {
         e = em.find(Event.class, e.getId());
-        
+
         return em.createNamedQuery("Notification.findForEvent").
                 setParameter("event", e).getResultList();
     }
-    
+
     /**
      * Get all the notifications that refers to a user.
      *
@@ -109,6 +109,10 @@ public class NotificationManager {
         }
 
         return filtered;
+    }
+
+    public List<Notification> findNotificationWithoutEvent() {
+        return em.createNamedQuery("Notification.findNotificationWithoutEvent").getResultList();
     }
 
     /**

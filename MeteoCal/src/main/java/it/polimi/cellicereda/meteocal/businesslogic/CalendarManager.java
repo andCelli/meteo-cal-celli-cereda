@@ -135,6 +135,10 @@ public class CalendarManager {
         return null;
     }
 
+    public List<Event> getPastEvents() {
+        return em.createNamedQuery("Event.findPreviousToDate").setParameter("date", new Date()).getResultList();
+    }
+
     /**
      * This method adds the user to the list of participants of the event.
      * Usually this method is used by the notification manager when an user
