@@ -10,7 +10,6 @@ import it.polimi.cellicereda.meteocal.businesslogic.CalendarManager;
 import it.polimi.cellicereda.meteocal.businesslogic.UserProfileManager;
 import it.polimi.cellicereda.meteocal.entities.Event;
 import it.polimi.cellicereda.meteocal.entities.User;
-import java.awt.event.ActionEvent;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -69,7 +68,7 @@ public class ScheduleBean implements Serializable {
             currentUser = userProfileManager.getLoggedUser();
             //find all the events in which the user will partecipate 
             //created events
-            model = new DefaultScheduleModel((List<ScheduleEvent>) calendarManager.getEventsByCreator(currentUser));
+            model = new MeteocalScheduleModel((List<ScheduleEvent>) calendarManager.getEventsByCreator(currentUser));
             //partecipating events
             for (Event e : (List<Event>) calendarManager.getEventsByParticipant(currentUser)) {
                 String id = e.getId();

@@ -72,7 +72,7 @@ public class ExternalCalendarBean implements Serializable{
         }
                 
         try{
-           model=new DefaultScheduleModel((List<ScheduleEvent>) cm.getEventsByCreator(user));
+           model=new MeteocalScheduleModel((List<ScheduleEvent>) cm.getEventsByCreator(user));
            if(cm.getEventsByParticipant(user).size()>0){
            for(Event e:(List<Event>)cm.getEventsByParticipant(user)){
               model.addEvent(e);

@@ -50,7 +50,7 @@ public class ForecastManagerTest {
         //and return it when the forecast manager asks it to the location manager
         Mockito.when(fm.lm.getPlaceByID((long) 5856195)).thenReturn(honolulu);
 
-        Mockito.when(fm.em.find(Event.class, event)).thenReturn(event);
+        Mockito.when(fm.em.find(Event.class, event.getId())).thenReturn(event);
     }
 
     @After
