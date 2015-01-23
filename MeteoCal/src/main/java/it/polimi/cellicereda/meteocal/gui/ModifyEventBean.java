@@ -283,7 +283,7 @@ public class ModifyEventBean implements Serializable {
     //set all the utility variables to the default value (null)
     public void resetUtilityVariables() {
         newEvent = true;
-        title = new String();
+        title = "New event";
         description = new String();
         startingDate = new Date();
         endingDate = new Date();
