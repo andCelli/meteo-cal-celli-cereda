@@ -205,7 +205,11 @@ public class NotificationBean implements Serializable{
      * this method also sets the hasGoodDay flag used to decide what to render in the notification's dialog
      */
     public String nextGoodDay(){
+       try{
        goodDates=fm.searchGoodWeatherForEvent(selectedNotification.getReferredEvent());
+       }catch(Exception e){
+           System.err.println("error while searching good days");
+       }
        if(goodDates!=null){
            //there's a day with good weather
             setHasGoodDayFlag(true);

@@ -73,11 +73,7 @@ public class ScheduleBean implements Serializable{
           //partecipating events
           for(Event e:(List<Event>)calendarManager.getEventsByParticipant(currentUser))
             model.addEvent(e);
-          
-          
-          detailsEventBean.setScheduleBean(this);
-          
-          
+          detailsEventBean.setScheduleBean(this);      
         }catch(Exception e){
            printStackTrace();
            System.err.println("Problems durig init of scheduleBean"); 

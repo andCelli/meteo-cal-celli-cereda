@@ -84,7 +84,7 @@ This is the logged-user homepage.
                                rendered="#{notificationBean.selectedNotification.notificationType.toString()=='SUNNY_DAY_PROPOSAL'}"/>
                 <p:outputLabel for="sunnyDay" value="Nearest sunny day: "
                                rendered="#{notificationBean.selectedNotification.notificationType.toString()=='SUNNY_DAY_PROPOSAL'}"/>
-                <p:outputLabel id="sunnyDay" value="#{notificationBean.nextGoodDay}"
+                <p:outputLabel id="sunnyDay" value="#{notificationBean.nextGoodDay()}"
                                rendered="#{notificationBean.selectedNotification.notificationType.toString()=='SUNNY_DAY_PROPOSAL'}"/>
                 <p:commandButton id="positiveAnswer" value="Accept" action="#{scheduleBean.addPartecipations()}"
                                  actionListener="#{notificationBean.positiveAnswer()}"
