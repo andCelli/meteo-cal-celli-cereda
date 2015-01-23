@@ -299,8 +299,11 @@ public class CalendarManager {
      * @param u A user, either the event creator or a participant
      */
     public void unSubscribeFromEvent(Event e, User u) {
+        e = em.find(Event.class, e.getId());
+        u = em.find(User.class, u.getEmail());
+
         if (e.getCreator().equals(u)) {
-            creatorCancelEvent(e, u);
+            creatorCancelEvent(e);
         } else if (getEventParticipant(e).contains(u)) {
             //simply remove the participation
             u.removeEvent(e);
@@ -309,7 +312,7 @@ public class CalendarManager {
         }
     }
 
-    private void creatorCancelEvent(Event e, User u) {
+    private void creatorCancelEvent(Event e) {
         //remove the participation
         for (User participant : getEventParticipant(e)) {
             participant.removeEvent(e);
