@@ -133,7 +133,6 @@ public class ModifyEventBean implements Serializable {
             }
             calendarManager.changeEventPrivacy(event, isPublic);
             calendarManager.changeEventAllDay(event, allDay);
-
             //and update the schedule model
             scheduleBean.getModel().deleteEvent(event);
             event = calendarManager.getByID(event.getId());
