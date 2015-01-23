@@ -6,8 +6,10 @@
 package it.polimi.cellicereda.meteocal.gui;
 
 import static com.sun.corba.se.impl.util.Utility.printStackTrace;
+import it.polimi.cellicereda.meteocal.businesslogic.ForecastManager;
 import it.polimi.cellicereda.meteocal.businesslogic.NotificationManager;
 import it.polimi.cellicereda.meteocal.businesslogic.UserProfileManager;
+import it.polimi.cellicereda.meteocal.entities.Forecast;
 import it.polimi.cellicereda.meteocal.entities.Notification;
 import static it.polimi.cellicereda.meteocal.entities.NotificationType.EVENT_CHANGED;
 import static it.polimi.cellicereda.meteocal.entities.NotificationType.EVENT_INVITE;
@@ -34,6 +36,8 @@ public class NotificationBean implements Serializable{
     private NotificationManager nm;
     @EJB
     private Utility util;
+    @EJB
+    private ForecastManager fm;
     
     private User user;
     
@@ -41,14 +45,18 @@ public class NotificationBean implements Serializable{
     
     private Notification selectedNotification;
     
+    private boolean hasGoodDayFlag;
+    private List<Forecast> goodDates;
+    
     //strings used to display dates 
     private String start;
     private String end;
     
     @PostConstruct
     public void init(){
-        System.out.println("notification");
+       System.out.println("notification");
        setUser(upm.getLoggedUser());
+        setHasGoodDayFlag(false);
         try{
         setNotifications(nm.getPendingFutureNotificationForUser(getUser()));
         }catch(Exception e){
@@ -80,7 +88,8 @@ public class NotificationBean implements Serializable{
      */
     public void positiveAnswer(){
         if(selectedNotification.getNotificationType().equals(SUNNY_DAY_PROPOSAL)){
-            //@TODO
+            nm.answerToASunnyDayProposal(selectedNotification, Boolean.TRUE,goodDates.get(0).getStartingValidity());
+            setHasGoodDayFlag(false);
         }else{
             if(selectedNotification.getNotificationType().equals(EVENT_INVITE)){
                 nm.answerToAnInvite(selectedNotification, Boolean.TRUE);  
@@ -94,7 +103,7 @@ public class NotificationBean implements Serializable{
      */
     public void negativeAnswer(){
         if(selectedNotification.getNotificationType().equals(SUNNY_DAY_PROPOSAL)){
-            //@TODO
+            nm.answerToASunnyDayProposal(selectedNotification, Boolean.FALSE, null);
         }else{
             if(selectedNotification.getNotificationType().equals(EVENT_INVITE)){
                 nm.answerToAnInvite(selectedNotification, Boolean.FALSE);
@@ -187,5 +196,35 @@ public class NotificationBean implements Serializable{
     public void setStartAndEnd(){
         setStart(util.getFormattedDate(selectedNotification.getReferredEvent().getStartDate()));
         setEnd(util.getFormattedDate(selectedNotification.getReferredEvent().getEndDate()));
+    }
+    
+    /**
+     * @return the string representing the next available day with good weather (or tells that
+     * no one was found)
+     * 
+     * this method also sets the hasGoodDay flag used to decide what to render in the notification's dialog
+     */
+    public String nextGoodDay(){
+       goodDates=fm.searchGoodWeatherForEvent(selectedNotification.getReferredEvent());
+       if(goodDates!=null){
+           //there's a day with good weather
+            setHasGoodDayFlag(true);
+           return util.getFormattedDate(goodDates.get(0).getStartingValidity());
+       }
+       return "No day with good weather :(";
+    }
+
+    /**
+     * @return the hasGoodDayFlag
+     */
+    public boolean isHasGoodDayFlag() {
+        return hasGoodDayFlag;
+    }
+
+    /**
+     * @param hasGoodDayFlag the hasGoodDayFlag to set
+     */
+    public void setHasGoodDayFlag(boolean hasGoodDayFlag) {
+        this.hasGoodDayFlag = hasGoodDayFlag;
     }
 }

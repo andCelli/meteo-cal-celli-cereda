@@ -64,6 +64,10 @@ This is the logged-user homepage.
             <h:panelGrid id="notificationDetails" columns="2" border="0">
                 <p:outputLabel for="notificationType" value="Type: "/>
                 <p:outputLabel id="notificationType" value="#{notificationBean.selectedNotification.notificationType.displayableString()}"/>
+                <p:outputLabel for="warningNotification" value="Warning: "
+                                rendered="#{notificationBean.selectedNotification.notificationType.toString()=='BAD_WEATHER_ALERT'}"/>
+                <p:outputLabel id="warningNotification" value="Bad weather for the following event!"
+                               rendered="#{notificationBean.selectedNotification.notificationType.toString()=='BAD_WEATHER_ALERT'}"/>
                 <p:outputLabel for="referredEventTitle" value="Event: "/>
                 <p:outputLabel id="referredEventTitle" value="#{notificationBean.selectedNotification.referredEvent.title}"/>
                 <h:outputLabel for="referredEventDescription" value="Description:"/>
@@ -74,20 +78,29 @@ This is the logged-user homepage.
                 <h:outputLabel id="referredEventEnd" value="#{notificationBean.end}"/>
                 <h:outputLabel for="referredEventLocation" value="Location: "/>
                 <p:outputLabel id="referredEventLocation" value="#{notificationBean.selectedNotification.referredEvent.eventLocation}"/>
+                <p:outputLabel for="proposal" value="Proposal: "
+                               rendered="#{notificationBean.selectedNotification.notificationType.toString()=='SUNNY_DAY_PROPOSAL'}"/>
+                <p:outputLabel id="proposal" value="Weather forecasts for the event are bad. Do you want to move it?"
+                               rendered="#{notificationBean.selectedNotification.notificationType.toString()=='SUNNY_DAY_PROPOSAL'}"/>
+                <p:outputLabel for="sunnyDay" value="Nearest sunny day: "
+                               rendered="#{notificationBean.selectedNotification.notificationType.toString()=='SUNNY_DAY_PROPOSAL'}"/>
+                <p:outputLabel id="sunnyDay" value="#{notificationBean.nextGoodDay}"
+                               rendered="#{notificationBean.selectedNotification.notificationType.toString()=='SUNNY_DAY_PROPOSAL'}"/>
                 <p:commandButton id="positiveAnswer" value="Accept" action="#{scheduleBean.addPartecipations()}"
                                  actionListener="#{notificationBean.positiveAnswer()}"
                                  oncomplete="PF('myschedule').update();PF('notificationDialog').hide();"
                                  update=":notificationForm:notificationsGrid" 
                                  rendered="#{notificationBean.selectedNotification.notificationType.toString()=='EVENT_INVITE' ||
-                                                notificationBean.selectedNotification.notificationType.toString()=='SUNNY_DAY_PROPOSAL'}"/>
+                                                (notificationBean.selectedNotification.notificationType.toString()=='SUNNY_DAY_PROPOSAL' and notificationBean.hasGoodDayFlag)}"/>
                 <p:commandButton id="negativeAnswer" value="Decline"
                                  actionListener="#{notificationBean.negativeAnswer()}"
                                  oncomplete="PF('myschedule').update();PF('notificationDialog').hide();"
                                  update=":notificationForm:notificationsGrid"
                                  rendered="#{notificationBean.selectedNotification.notificationType.toString()=='EVENT_INVITE' ||
-                                 notificationBean.selectedNotification.notificationType.toString()=='SUNNY_DAY_PROPOSAL'}"/>
+                                 (notificationBean.selectedNotification.notificationType.toString()=='SUNNY_DAY_PROPOSAL' and notificationBean.hasGoodDayFlag)}"/>
                 <p:commandButton id="OKbutton" value="OK" rendered="#{notificationBean.selectedNotification.notificationType.toString()=='EVENT_CHANGED' ||
-                                 notificationBean.selectedNotification.notificationType.toString()=='BAD_WEATHER_ALERT'}"
+                                 notificationBean.selectedNotification.notificationType.toString()=='BAD_WEATHER_ALERT' ||
+                                 (notificationBean.selectedNotification.notificationType.toString()=='SUNNY_DAY_PROPOSAL' and !notificationBean.hasGoodDayFlag)}"
                                  actionListener="#{notificationBean.readed()}"
                                  oncomplete="PF('myschedule').update();PF('notificationDialog').hide();"
                                  update=":notificationForm:notificationsGrid" />

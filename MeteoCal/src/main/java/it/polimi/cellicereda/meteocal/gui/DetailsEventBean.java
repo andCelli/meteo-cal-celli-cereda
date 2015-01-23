@@ -62,8 +62,7 @@ public class DetailsEventBean implements Serializable {
      */
     public void delete() {
         isCreator = false;
-        getScheduleBean().getModel().deleteEvent(event);
-        calendarManager.delete(event);
+        removeFromPartecipants();
     }
 
     /**
@@ -73,9 +72,7 @@ public class DetailsEventBean implements Serializable {
      */
     public void removeFromPartecipants() {
         getScheduleBean().getModel().deleteEvent(event);
-        /**
-         * @TODO rimuovere dalla lista dell'utente
-         */
+        calendarManager.unSubscribeFromEvent(event, userProfileManager.getLoggedUser());
     }
 
     /**
@@ -237,4 +234,5 @@ public class DetailsEventBean implements Serializable {
     public void setEnd(String end) {
         this.end = end;
     }
+  
 }

@@ -59,7 +59,7 @@ public class ModifyEventIT {
      * no events saved with start date>end date
      */
     @Test
-    public void newUsersShouldBeValid() {
+    public void newEventShouldBeValid() {
         Event newEvent = new Event();
         meb.setEndingDate(new Date(2015,1,20));
         meb.setStartingDate(new Date());

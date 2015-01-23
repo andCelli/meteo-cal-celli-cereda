@@ -144,7 +144,7 @@ public class NotificationManager {
      * care of generate the right EventChanged notifications. If the user
      * accepts the proposal you have to provide in the paarmeters the new
      * starting date chosen by the user, the ending date will be set
-     * automagically so taht the event duration remains the same.
+     * automagically so that the event duration remains the same.
      *
      * @param proposal The answered notification
      * @param answer True if the user accepts the proposal
