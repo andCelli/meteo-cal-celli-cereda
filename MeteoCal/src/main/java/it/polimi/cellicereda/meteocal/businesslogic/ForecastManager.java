@@ -288,7 +288,7 @@ public class ForecastManager {
     public List<Forecast> searchGoodWeatherForEvent(Event e) {
         List<Forecast> goodDates = new LinkedList<>();
 
-        e = em.find(Event.class, e);
+        e = em.find(Event.class, e.getId());
 
         //if the event is not "valid" return an empty list
         if (e.getEventLocation() == null || e.getStartDate() == null) {
