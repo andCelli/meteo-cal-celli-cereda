@@ -73,8 +73,7 @@ public class ForecastManagerTest {
 
     @Test
     public void searchGoodWeatherForEvent() {
-        //this test could fail, but what the fuck we are in honolulu
-        assertTrue(fm.searchGoodWeatherForEvent(event).size() > 1);
+        assertNotNull(fm.searchGoodWeatherForEvent(event));
     }
 
     @Test
