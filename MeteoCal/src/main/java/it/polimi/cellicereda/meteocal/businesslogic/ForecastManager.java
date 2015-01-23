@@ -165,7 +165,8 @@ public class ForecastManager {
 
     /**
      * Download a new forecast for the given event, save it in the database and
-     * attach it in the event
+     * attach it in the event. If the event already has a forecast it is removed
+     * from the db
      */
     public void saveNewForecastForecastForEvent(Event e) {
         e = em.find(Event.class, e.getId());
@@ -173,8 +174,14 @@ public class ForecastManager {
         Forecast f = downloadNewForecastForEvent(e);
 
         if (f != null) {
+            Forecast old = e.getForecast();
+
             em.persist(f);
             cm.changeEventForecast(e, f);
+
+            if (old != null) {
+                em.remove(old);
+            }
         }
     }
 
