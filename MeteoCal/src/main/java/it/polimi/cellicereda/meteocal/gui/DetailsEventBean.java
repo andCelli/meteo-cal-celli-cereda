@@ -67,8 +67,6 @@ public class DetailsEventBean implements Serializable {
 
     /**
      * the user removes himself from the participants
-     *
-     * @TODO
      */
     public void removeFromPartecipants() {
         getScheduleBean().getModel().deleteEvent(event);

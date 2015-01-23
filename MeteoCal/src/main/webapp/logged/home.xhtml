@@ -58,7 +58,8 @@ This is the logged-user homepage.
                                  rendered="#{detailsEventBean.isCreator}"
                                  update=":notificationForm:notificationsGrid" />
                 <p:commandButton id="removePartecipation" value="Remove partecipation" action="#{detailsEventBean.removeFromPartecipants()}"
-                                 onclick="PF('eventDetailsDialog').hide();"  rendered="#{!detailsEventBean.isCreator}"/>
+                                 onclick="PF('eventDetailsDialog').hide();"  rendered="#{!detailsEventBean.isCreator}"
+                                 oncomplete="PF('myschedule').update()"/>
              </h:panelGrid> 
          </p:dialog>
         <!--Notification dialog-->
