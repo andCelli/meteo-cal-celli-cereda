@@ -7,7 +7,6 @@ package it.polimi.cellicereda.meteocal.businesslogic;
 
 import it.polimi.cellicereda.meteocal.entities.Event;
 import it.polimi.cellicereda.meteocal.entities.Forecast;
-import it.polimi.cellicereda.meteocal.entities.Place;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,6 +18,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.primefaces.json.JSONArray;
+import org.primefaces.json.JSONException;
 import org.primefaces.json.JSONObject;
 
 /**
@@ -44,27 +44,15 @@ public class ForecastManager {
      * Download from openweathermap the forecasts for the given city, the
      * forecast have a time span of 5 days with data every 3 hours
      */
-    private String downloadForecastsByCityID(Long cityID) {
+    private String downloadForecastsByCityID(Long cityID) throws UnableToDownloadException {
         String toReturn = null;
-        int n = 0;
-        boolean retry = false;
 
-        do {
-            try {
-                String url = "http://api.openweathermap.org/data/2.5/forecast?id=" + cityID;
-                toReturn = URLConnectionReader.getText(url);
-            } catch (Exception ex) {
-                if (n > 5) {
-                    Logger.getLogger(ForecastManager.class
-                            .getName()).log(Level.INFO, "Unable to download forecast.", ex);
-                    retry = false;
-                } else {
-                    retry = true;
-                    n++;
-                }
-            }
-        } while (retry);
-
+        try {
+            String url = "http://api.openweathermap.org/data/2.5/forecast?id=" + cityID;
+            toReturn = URLConnectionReader.getText(url);
+        } catch (Exception ex) {
+            throw new UnableToDownloadException(ex);
+        }
         return toReturn;
     }
 
@@ -72,27 +60,15 @@ public class ForecastManager {
      * Download from openweathermap the forecasts for the given city, the
      * forecast have a time span of 16 days with data every 1 day
      */
-    private String download16DayForecastsByCityID(Long cityID) {
+    private String download16DayForecastsByCityID(Long cityID) throws UnableToDownloadException {
         String toReturn = null;
-        int n = 0;
-        boolean retry = false;
 
-        do {
-            try {
-                String url = "http://api.openweathermap.org/data/2.5/forecast/daily?id=" + cityID + "&cnt=16";
-                toReturn = URLConnectionReader.getText(url);
-            } catch (Exception ex) {
-                if (n > 5) {
-                    Logger.getLogger(ForecastManager.class
-                            .getName()).log(Level.INFO, "Unable to download forecast.", ex);
-                    retry = false;
-                } else {
-                    retry = true;
-                    n++;
-                }
-            }
-        } while (retry);
-
+        try {
+            String url = "http://api.openweathermap.org/data/2.5/forecast/daily?id=" + cityID + "&cnt=16";
+            toReturn = URLConnectionReader.getText(url);
+        } catch (Exception ex) {
+            throw new UnableToDownloadException(ex);
+        }
         return toReturn;
     }
 
@@ -111,6 +87,8 @@ public class ForecastManager {
             return null;
         }
 
+        //If it's not possible to download a new forecast keep the old one
+        Forecast oldForecast = event.getForecast();
         Forecast forecast = null;
 
         try {
@@ -136,14 +114,21 @@ public class ForecastManager {
 
                 forecast = downloadForecast(forecastList, coveredHours, wantedTime, cityID);
             }
-        } catch (Exception ex) {
-            Logger.getLogger(ForecastManager.class.getName()).log(Level.INFO, "Unable to download forecast", ex);
+        } catch (UnableToDownloadException ex) {
+            Logger.getLogger(ForecastManager.class
+                    .getName()).log(Level.INFO, "Unable to download forecast.", ex);
+        } catch (JSONException ex) {
+            Logger.getLogger(ForecastManager.class.
+                    getName()).log(Level.SEVERE, "Error while parsing the forecast", ex);
         }
 
+        if (forecast == null) {
+            return oldForecast;
+        }
         return forecast;
     }
 
-    private Forecast downloadForecast(JSONArray forecastList, int coveredHours, Date wantedTime, Long cityID) throws Exception {
+    private Forecast downloadForecast(JSONArray forecastList, int coveredHours, Date wantedTime, Long cityID) throws JSONException {
         //compute the making time
         Date now = new Date();
 
@@ -250,7 +235,7 @@ public class ForecastManager {
     }
 
     @Schedule(hour = "*")
-    public void updateForecastsForAllTheEvents() {
+    private void updateForecastsForAllTheEvents() {
         List<Event> events = cm.getAllEventsAsEvents();
 
         for (Event e : events) {
@@ -265,10 +250,7 @@ public class ForecastManager {
                 //if the event already have a valid forecast save it, otherwise create a new one                
                 Forecast oldForecast = e.getForecast();
                 if (oldForecast != null) {
-                    boolean wasGood = true;
-                    if (oldForecast != null) {
-                        wasGood = isGoodWeather(oldForecast.getWeatherId());
-                    }
+                    boolean wasGood = isGoodWeather(oldForecast.getWeatherId());
 
                     //download the new forecast
                     Forecast newForecast = downloadNewForecastForEvent(e);
@@ -342,9 +324,12 @@ public class ForecastManager {
 
                 }
             }
-        } catch (Exception ex) {
+        } catch (UnableToDownloadException ex) {
             Logger.getLogger(ForecastManager.class
                     .getName()).log(Level.INFO, "Unable to download forecast.", ex);
+        } catch (JSONException ex) {
+            Logger.getLogger(ForecastManager.class.
+                    getName()).log(Level.SEVERE, "Error while parsing the forecast", ex);
         }
         return goodDates;
     }
