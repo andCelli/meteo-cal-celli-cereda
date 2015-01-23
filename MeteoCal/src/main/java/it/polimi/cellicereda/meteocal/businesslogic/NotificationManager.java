@@ -50,6 +50,13 @@ public class NotificationManager {
         em.remove(n);
     }
 
+    public List<Notification> getNotificationForEvent(Event e) {
+        e = em.find(Event.class, e.getId());
+        
+        return em.createNamedQuery("Notification.findForEvent").
+                setParameter("event", e).getResultList();
+    }
+    
     /**
      * Get all the notifications that refers to a user.
      *

@@ -165,6 +165,10 @@ public class User implements Serializable {
         events.add(event);
     }
 
+    public void removeEvent(Event event) {
+        events.remove(event);
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;

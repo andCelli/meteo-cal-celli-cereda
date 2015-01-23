@@ -8,6 +8,7 @@ package it.polimi.cellicereda.meteocal.businesslogic;
 import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import it.polimi.cellicereda.meteocal.entities.Event;
 import it.polimi.cellicereda.meteocal.entities.Forecast;
+import it.polimi.cellicereda.meteocal.entities.Notification;
 import it.polimi.cellicereda.meteocal.entities.Place;
 import it.polimi.cellicereda.meteocal.entities.User;
 import java.util.Calendar;
@@ -283,5 +284,46 @@ public class CalendarManager {
     public void changeEventForecast(Event e, Forecast f) {
         e = em.find(Event.class, e.getId());
         e.setForecast(f);
+    }
+
+    /**
+     * Call this method to usubscribe from an event. If the given user is a
+     * simple participant he's only removed from the participants list, if the
+     * user is the event creator the event is deleted.
+     *
+     * @param e The event
+     * @param u A user, either the event creator or a participant
+     */
+    public void unSubscribeFromEvent(Event e, User u) {
+        if (e.getCreator().equals(u)) {
+            creatorCancelEvent(e, u);
+        } else if (getEventParticipant(e).contains(u)) {
+            //simply remove the participation
+            u.removeEvent(e);
+        } else {
+            throw new IllegalArgumentException("The given user is not the event creator nor an event participant");
+        }
+    }
+
+    private void creatorCancelEvent(Event e, User u) {
+        //remove the participation
+        for (User participant : getEventParticipant(e)) {
+            participant.removeEvent(e);
+        }
+
+        //destroy the forecast
+        Forecast f = e.getForecast();
+        if (f != null) {
+            e.setForecast(null);
+            em.remove(f);
+        }
+
+        //destroy the notifications
+        for (Notification n : nm.getNotificationForEvent(e)) {
+            em.remove(n);
+        }
+
+        //destroy the event
+        em.remove(e);
     }
 }
