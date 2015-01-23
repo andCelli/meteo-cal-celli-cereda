@@ -44,7 +44,7 @@ public class ExternalCalendarBean implements Serializable{
     @EJB
     private UserProfileManager upm;
     @EJB 
-    private Utility u;
+    private UtilityMethods u;
     
     private User user;
     private ScheduleModel model;

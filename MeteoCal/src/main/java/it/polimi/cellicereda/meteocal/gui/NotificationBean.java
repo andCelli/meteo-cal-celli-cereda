@@ -35,7 +35,7 @@ public class NotificationBean implements Serializable{
     @EJB
     private NotificationManager nm;
     @EJB
-    private Utility util;
+    private UtilityMethods util;
     @EJB
     private ForecastManager fm;
     

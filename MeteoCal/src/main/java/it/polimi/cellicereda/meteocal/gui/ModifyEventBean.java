@@ -47,6 +47,9 @@ public class ModifyEventBean implements Serializable {
 
     @EJB
     private LocationManager lm;
+    
+    @EJB
+    private UtilityMethods utility;
 
     @Inject
     ScheduleBean scheduleBean;
@@ -94,14 +97,12 @@ public class ModifyEventBean implements Serializable {
      a new event instance in the db.
      */
 
-    public void saveEvent() {
-        
-        //makes sure that the end date is not before the start date (in case the end date has not been specified
-        if(endingDate.before(startingDate)){
-            endingDate=startingDate;
-        }
-         
+    public void saveEvent() {    
         if (newEvent) {
+            //makes sure that the end date is not before the start date (in case the end date has not been specified
+            if(endingDate.before(startingDate)){
+                endingDate=startingDate;
+            }
             //save the new values into the event and persist it
             event.setTitle(title);
             event.setDescription(description);
@@ -120,6 +121,9 @@ public class ModifyEventBean implements Serializable {
             event.setId(id);
 
         } else {
+            if(endingDate.before(startingDate)){
+                endingDate=utility.findNewDateWithInterval(event.getStartDate(), event.getEndDate(), startingDate);
+            }
             //update the event in the database
             calendarManager.changeEventTitle(event, title);
             calendarManager.changeEventDescription(event, description);
