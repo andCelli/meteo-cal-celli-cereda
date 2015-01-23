@@ -28,13 +28,13 @@ import org.primefaces.model.ScheduleModel;
 
 /**
  * Backing bean for the schedule holding user events.
+ *
  * @author Andrea
  */
-
 @SessionScoped
 @Named
-public class ScheduleBean implements Serializable{
-    
+public class ScheduleBean implements Serializable {
+
     @EJB
     CalendarManager calendarManager;
     @EJB
@@ -47,69 +47,77 @@ public class ScheduleBean implements Serializable{
     //this will contain the list of events to be displayed
     private ScheduleModel model;
     private User currentUser;
-  
+
     //used to limit date selection
     private Date currentDate;
-  
+
     /*
-    states whether the user is the creator or a partecipant 
-    the buttons in the detail dialog will be rendered accordingly to this flag
-    (a partecipant can't modify the event)
-    normally is true, the modification of an event makes it false
-    */
+     states whether the user is the creator or a partecipant 
+     the buttons in the detail dialog will be rendered accordingly to this flag
+     (a partecipant can't modify the event)
+     normally is true, the modification of an event makes it false
+     */
     private boolean isCreator;
-   
+
     private FacesContext context;
-    
+
     @PostConstruct
-    public void init(){
+    public void init() {
         System.out.println("Parto: ScheduleBean");
         setCurrentDate(new Date());
-        try{
-          currentUser=userProfileManager.getLoggedUser();
-          //find all the events in which the user will partecipate 
-          //created events
-          model=new DefaultScheduleModel((List<ScheduleEvent>) calendarManager.getEventsByCreator(currentUser));
-          //partecipating events
-          for(Event e:(List<Event>)calendarManager.getEventsByParticipant(currentUser))
-            model.addEvent(e);
-          detailsEventBean.setScheduleBean(this);      
-        }catch(Exception e){
-           printStackTrace();
-           System.err.println("Problems durig init of scheduleBean"); 
+        try {
+            currentUser = userProfileManager.getLoggedUser();
+            //find all the events in which the user will partecipate 
+            //created events
+            model = new DefaultScheduleModel((List<ScheduleEvent>) calendarManager.getEventsByCreator(currentUser));
+            //partecipating events
+            for (Event e : (List<Event>) calendarManager.getEventsByParticipant(currentUser)) {
+                String id = e.getId();
+                model.addEvent(e);
+                e.setId(id);
+            }
+
+            detailsEventBean.setScheduleBean(this);
+
+        } catch (Exception e) {
+            printStackTrace();
+            System.err.println("Problems durig init of scheduleBean");
+
         }
-    }        
-    
+    }
+
     public ScheduleModel getModel() {
-        return model; 
+        return model;
     }
-    public void setModel(ScheduleModel model){
-        this.model=model;
+
+    public void setModel(ScheduleModel model) {
+        this.model = model;
     }
-   
+
     private void addMessage(FacesMessage message) {
         FacesContext.getCurrentInstance().addMessage(null, message);
-    } 
-    
+    }
+
     /**
-     * This method get the selected event, sets the creator flag in the details bean
-     * and set to the selected event the details 
+     * This method get the selected event, sets the creator flag in the details
+     * bean and set to the selected event the details
+     *
      * @param SelectEvent
      */
     public void onEventSelect(SelectEvent e) {
-        try{
-        Event event=(Event)e.getObject();
-        getDetailsEventBean().setEvent(event);
-        getDetailsEventBean().setIsCreator(event.getCreator().equals(currentUser));
-        getDetailsEventBean().setParticipants(calendarManager.getEventParticipant(event));
-        getDetailsEventBean().getParticipants().add(event.getCreator());
-        getDetailsEventBean().setStart(utility.getFormattedDate(event.getStartDate()));
-        getDetailsEventBean().setEnd(utility.getFormattedDate(event.getEndDate()));
-        }catch(Exception ex){
+        try {
+            Event event = (Event) e.getObject();
+            getDetailsEventBean().setEvent(event);
+            getDetailsEventBean().setIsCreator(event.getCreator().equals(currentUser));
+            getDetailsEventBean().setParticipants(calendarManager.getEventParticipant(event));
+            getDetailsEventBean().getParticipants().add(event.getCreator());
+            getDetailsEventBean().setStart(utility.getFormattedDate(event.getStartDate()));
+            getDetailsEventBean().setEnd(utility.getFormattedDate(event.getEndDate()));
+        } catch (Exception ex) {
             System.err.println("errore in onEventSelect cazzo");
             printStackTrace();
         }
-       } 
+    }
 
     /**
      * @return the detailsEventBean
@@ -131,21 +139,23 @@ public class ScheduleBean implements Serializable{
     public void setCurrentDate(Date currentDate) {
         this.currentDate = currentDate;
     }
-    
+
     /**
      * updates the currentDate value
      */
-    public void updateCurrentDate(){
-        currentDate=new Date();
+    public void updateCurrentDate() {
+        currentDate = new Date();
     }
-    
+
     /**
-     * refresh the list of events in which the user will partecipate 
-     * (tipically called after an invite accepted)
+     * refresh the list of events in which the user will partecipate (tipically
+     * called after an invite accepted)
      */
-    public void addPartecipations(){
-        for(Event e:(List<Event>)calendarManager.getEventsByParticipant(currentUser))
-           if(!model.getEvents().contains(e))
-            model.addEvent(e);
+    public void addPartecipations() {
+        for (Event e : (List<Event>) calendarManager.getEventsByParticipant(currentUser)) {
+            if (!model.getEvents().contains(e)) {
+                model.addEvent(e);
+            }
+        }
     }
 }
