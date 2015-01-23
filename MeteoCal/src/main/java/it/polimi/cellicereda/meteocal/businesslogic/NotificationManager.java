@@ -179,7 +179,7 @@ public class NotificationManager {
      * @param e The event with a bad weather
      */
     public void sendBadWeatherAlert(Event e) {
-        e = em.find(Event.class, e);
+        e = em.find(Event.class, e.getId());
 
         //an alert for all the participants
         for (User u : cm.getEventParticipant(e)) {
@@ -198,7 +198,7 @@ public class NotificationManager {
      * @param e The event witha bad weather
      */
     public void sendSunnyDayProposal(Event e) {
-        e = em.find(Event.class, e);
+        e = em.find(Event.class, e.getId());
 
         Notification n = new Notification(NotificationType.SUNNY_DAY_PROPOSAL, e.getCreator(), e);
         em.persist(n);
@@ -213,6 +213,8 @@ public class NotificationManager {
      * @param event The event that just changed
      */
     public void generateEventChangedNotifications(Event event) {
+        event = em.find(Event.class, event.getId());
+
         for (User u : cm.getEventParticipant(event)) {
             //check if we need a new notification
             Boolean needed = true;
