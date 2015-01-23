@@ -10,7 +10,6 @@ import it.polimi.cellicereda.meteocal.entities.Place;
 import java.util.Date;
 import javax.persistence.EntityManager;
 import org.junit.After;
-import org.junit.Assert;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -62,7 +61,7 @@ public class ForecastManagerTest {
     public void DownloadNewForecastForEvent() {
         assertNotNull(fm.downloadNewForecastForEvent(event));
 
-        //now try with an event in 6 days (16 days forecast related test, but not all weather has 16 days data - Honolulu only has seven days)
+        //now try with an event in 16 days
         Date newStart = event.getStartDate();
         newStart.setTime(newStart.getTime() + 6 * 24 * 60 * 60 * 1000);
         Date newEnd = new Date(newStart.getTime() + 10);
@@ -75,7 +74,7 @@ public class ForecastManagerTest {
     @Test
     public void searchGoodWeatherForEvent() {
         //this test could fail, but what the fuck we are in honolulu
-        assertTrue(fm.searchGoodWeatherForEvent(event).size() > 0);
+        assertTrue(fm.searchGoodWeatherForEvent(event).size() > 1);
     }
 
     @Test
