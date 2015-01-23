@@ -231,4 +231,16 @@ public class NotificationBean implements Serializable{
     public void setHasGoodDayFlag(boolean hasGoodDayFlag) {
         this.hasGoodDayFlag = hasGoodDayFlag;
     }
+    
+    /**
+     * check if there are notifications that are displayed but not present in the db (it happens when an event is deleted).
+     * If so it removes them from the list of displayed notifications
+     */
+    public void checkForDeletedNotifications(){
+        for(Notification n:notifications){
+            if(!nm.getPendingFutureNotificationForUser(user).contains(n)){
+                notifications.remove(n);
+            }
+        }
+    }
 }

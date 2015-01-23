@@ -52,9 +52,11 @@ This is the logged-user homepage.
                  <p:commandButton id="modifyButton" value="Modify" action="#{detailsEventBean.modify()}"
                                   oncomplete="PF('modifyEventDialog').show();PF('eventDetailsDialog').hide();" 
                                   rendered="#{detailsEventBean.isCreator}" update=":modifyForm:modifyEventDetails"/>
-                <p:commandButton id="deleteButton" value="Delete" action="#{detailsEventBean.delete()}"
-                                  onclick="PF('eventDetailsDialog').hide()" oncomplete="PF('myschedule').update()" 
-                                  rendered="#{detailsEventBean.isCreator}"/>
+                <p:commandButton id="deleteButton" value="Delete" actionListener="#{detailsEventBean.delete()}"
+                                 action="#{notificationBean.checkForDeletedNotifications()}"
+                                 onclick="PF('eventDetailsDialog').hide()" oncomplete="PF('myschedule').update()" 
+                                 rendered="#{detailsEventBean.isCreator}"
+                                 update=":notificationForm:notificationsGrid" />
                 <p:commandButton id="removePartecipation" value="Remove partecipation" action="#{detailsEventBean.removeFromPartecipants()}"
                                  onclick="PF('eventDetailsDialog').hide();"  rendered="#{!detailsEventBean.isCreator}"/>
              </h:panelGrid> 
