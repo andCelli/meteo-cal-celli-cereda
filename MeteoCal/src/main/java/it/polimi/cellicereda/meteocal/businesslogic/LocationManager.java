@@ -41,8 +41,8 @@ public class LocationManager {
             String placesList = URLConnectionReader.getText("http://openweathermap.org/help/city_list.txt");
             String places[] = placesList.split("\\n");
 
-            //the first line is descriptive
-            for (int i = 1; i < places.length; i++) {
+            //the first line is descriptive and the last is empty
+            for (int i = 1; i < places.length - 1; i++) {
                 String values[] = places[i].split("\\t");
 
                 Place p = new Place();

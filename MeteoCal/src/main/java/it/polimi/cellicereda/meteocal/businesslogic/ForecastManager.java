@@ -241,7 +241,7 @@ public class ForecastManager {
         return num <= 4;
     }
 
-    @Schedule(hour = "*")
+    @Schedule(hour = "*", minute="*")
     private void updateForecastsForAllTheEvents() {
         List<Event> events = cm.getAllEventsAsEvents();
 
