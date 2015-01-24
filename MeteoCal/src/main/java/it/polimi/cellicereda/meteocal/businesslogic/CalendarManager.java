@@ -346,7 +346,7 @@ public class CalendarManager {
     public void removeInvitation(Event e, User u) {
         //If the user received an invite but still have to see it simply delete the notification
         for (Notification n : nm.getPendingNotificationForUser(u)) {
-            if (n.getNotificationType() == NotificationType.EVENT_INVITE) {
+            if (n.getNotificationType() == NotificationType.EVENT_INVITE && n.getReferredEvent().equals(e)) {
                 em.remove(n);
                 return;
             }
