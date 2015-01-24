@@ -262,7 +262,8 @@ public class NotificationManager {
     private boolean notAlreadySent(Notification n) {
         for (Notification notification : getNotificationForUser(n.getRecipient())) {
             if (notification.getNotificationType().equals(n.getNotificationType())
-                    && notification.getReferredEvent().equals(n.getReferredEvent())) {
+                    && notification.getReferredEvent().equals(n.getReferredEvent())
+                    && notification.getNotificationState().equals(n.getNotificationState())) {
                 return false;
             }
         }

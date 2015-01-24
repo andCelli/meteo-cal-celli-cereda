@@ -186,12 +186,6 @@ public class CalendarManager {
     }
 
     private boolean eventIsChanged(Event old, Event event) {
-        /*toRet.setDescription(this.description);
-         toRet.setEndDate(this.endDate);
-         toRet.setEventLocation(this.eventLocation);
-         toRet.setStartDate(startDate);
-         toRet.setTitle(title);   */
-
         return (isChanged(old.getDescription(), event.getDescription())
                 || isChanged(old.getEndDate(), event.getEndDate())
                 || isChanged(old.getEventLocation(), event.getEventLocation())
