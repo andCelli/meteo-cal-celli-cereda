@@ -153,7 +153,12 @@ This is the logged-user homepage.
               </p:autoComplete>
               <h:outputLabel for="invitedUsers" value="Invited: "/>
               <p:dataScroller id="invitedUsers" value="#{modifyEventBean.invitedUsers}" var="user" chunkSize="10">
+                  <h:panelGrid id="invitedGrid" border="0" columns="2">
                      <p:outputLabel value="#{user.username}"/>
+                     <p:commandButton value="remove" action="#{modifyEventBean.removeFromPartecipant()}">
+                         <f:setPropertyActionListener value="#{user}" target="#{modifyEventBean.removedFromParticipants}"/>
+                     </p:commandButton>
+                  </h:panelGrid>
               </p:dataScroller>
               <p:commandButton type="reset" value="Reset"/>
               <p:commandButton id="addButton" value="Save" action="#{modifyEventBean.saveEvent()}" 

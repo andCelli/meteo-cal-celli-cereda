@@ -61,6 +61,7 @@ public class ModifyEventBean implements Serializable {
 
     private Event event = new Event();
     
+    private User removedFromParticipants;
 
     /*
      these are the attributes that are used to decouple the gui from the entities
@@ -366,5 +367,23 @@ public class ModifyEventBean implements Serializable {
      */
     public void setPlaces(List<String> places) {
         this.places = places;
+    }
+    
+    public void removeFromPartecipant(){
+        System.out.println("user: "+removedFromParticipants.toString());
+    }
+
+    /**
+     * @return the removedFromPartecipants
+     */
+    public User getRemovedFromParticipants() {
+        return removedFromParticipants;
+    }
+
+    /**
+     * @param removedFromPartecipants the removedFromPartecipants to set
+     */
+    public void setRemovedFromParticipants(User removedFromParticipants) {
+        this.removedFromParticipants = removedFromParticipants;
     }
 }
