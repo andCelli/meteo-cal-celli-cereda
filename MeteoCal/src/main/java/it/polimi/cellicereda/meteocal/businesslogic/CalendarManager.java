@@ -306,8 +306,7 @@ public class CalendarManager {
         if (e.getCreator().equals(u)) {
             creatorCancelEvent(e);
         } else if (getEventParticipant(e).contains(u)) {
-            //simply remove the participation
-            u.removeEvent(e);
+            cancelParticipant(e, u);
         } else {
             throw new IllegalArgumentException("The given user is not the event creator nor an event participant");
         }
@@ -353,9 +352,25 @@ public class CalendarManager {
             }
         }
 
-        //otherwise check if the user participates in the event and remove the aprtecipation
+        //otherwise check if the user participates in the event and remove the partecipation
         if (u.getEvents().contains(e)) {
-            u.removeEvent(e);
+            cancelParticipant(e, u);
         }
+    }
+
+    /**
+     * Remove an user from the event participants and delete all the
+     * notifications that have the user as recipient and the event as referred event
+     */
+    private void cancelParticipant(Event e, User u) {
+        //remove all the notifications
+        for (Notification n : nm.getNotificationForUser(u)) {
+            if (n.getReferredEvent().equals(e)) {
+                em.remove(n);
+            }
+        }
+
+        //cancel the partecipation
+        u.removeEvent(e);
     }
 }
