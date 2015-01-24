@@ -9,11 +9,13 @@ import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import it.polimi.cellicereda.meteocal.entities.Event;
 import it.polimi.cellicereda.meteocal.entities.Forecast;
 import it.polimi.cellicereda.meteocal.entities.Notification;
+import it.polimi.cellicereda.meteocal.entities.NotificationState;
 import it.polimi.cellicereda.meteocal.entities.NotificationType;
 import it.polimi.cellicereda.meteocal.entities.Place;
 import it.polimi.cellicereda.meteocal.entities.User;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -344,6 +346,9 @@ public class CalendarManager {
      * @param u The user
      */
     public void removeInvitation(Event e, User u) {
+        e = em.find(Event.class, e.getId());
+        u = em.find(User.class, u.getEmail());
+
         //If the user received an invite but still have to see it simply delete the notification
         for (Notification n : nm.getPendingNotificationForUser(u)) {
             if (n.getNotificationType() == NotificationType.EVENT_INVITE && n.getReferredEvent().equals(e)) {
@@ -360,7 +365,8 @@ public class CalendarManager {
 
     /**
      * Remove an user from the event participants and delete all the
-     * notifications that have the user as recipient and the event as referred event
+     * notifications that have the user as recipient and the event as referred
+     * event
      */
     private void cancelParticipant(Event e, User u) {
         //remove all the notifications
@@ -372,5 +378,25 @@ public class CalendarManager {
 
         //cancel the partecipation
         u.removeEvent(e);
+    }
+
+    /**
+     * Search the user that have been invited to an event but still have not
+     * answered to the invite
+     *
+     * @param e The event
+     * @return A list of user invited to the event with a non answered
+     * notification
+     */
+    public List<User> getInvitedUserNotAnsweredInvite(Event e) {
+        List<User> toReturn = new LinkedList();
+
+        for (Notification n : nm.getNotificationForEvent(e)) {
+            if (!n.getNotificationState().equals(NotificationState.ANSWERED)) {
+                toReturn.add(n.getRecipient());
+            }
+        }
+
+        return toReturn;
     }
 }
