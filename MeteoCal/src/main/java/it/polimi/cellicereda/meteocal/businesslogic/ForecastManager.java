@@ -7,6 +7,7 @@ package it.polimi.cellicereda.meteocal.businesslogic;
 
 import it.polimi.cellicereda.meteocal.entities.Event;
 import it.polimi.cellicereda.meteocal.entities.Forecast;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -316,8 +317,8 @@ public class ForecastManager {
 
         try {
             Long cityID = e.getEventLocation().getId();
-            Date startingTime = e.getStartDate();
-            Date endingTime = e.getEndDate();
+            Date eventStarting = e.getStartDate();
+            Date eventEnding = e.getEndDate();
 
             JSONObject entireForecast = new JSONObject(download16DayForecastsByCityID(cityID));
             JSONArray forecastList = entireForecast.getJSONArray("list");
@@ -335,8 +336,14 @@ public class ForecastManager {
                 if (isGoodWeather(weatherID)) {
                     Forecast forecast = new Forecast();
 
-                    forecast.setStartingValidity(startingTime);
-                    forecast.setEndingValidity(endingTime);
+                    //the starting validity has the day equal to the forecast validity and the time equal to the event duration
+                    Date forecastStarting = new Date(forecastJson.getLong("dt")*1000);
+
+                    Date starting = mixTiming(forecastStarting, eventStarting);
+                    Date ending = mixTiming(forecastStarting, eventEnding);
+
+                    forecast.setStartingValidity(starting);
+                    forecast.setEndingValidity(ending);
                     forecast.setPlace(lm.getPlaceByID(cityID));
                     forecast.setMakingTime(now);
                     forecast.setWeatherId(weatherID);
@@ -352,5 +359,23 @@ public class ForecastManager {
                     getName()).log(Level.SEVERE, "Error while parsing the forecast", ex);
         }
         return goodDates;
+    }
+
+    /**
+     * Return a date that has the day/month/year equal to the first parameter
+     * and the hour/minute/second/ms equals to the second
+     */
+    private Date mixTiming(Date day, Date hour) {
+        Calendar cHour = Calendar.getInstance();
+        cHour.setTime(hour);
+
+        Calendar toReturn = Calendar.getInstance();
+        toReturn.setTime(day);
+        toReturn.set(Calendar.HOUR_OF_DAY, cHour.get(Calendar.HOUR_OF_DAY));
+        toReturn.set(Calendar.MINUTE, cHour.get(Calendar.MINUTE));
+        toReturn.set(Calendar.SECOND, cHour.get(Calendar.SECOND));
+        toReturn.set(Calendar.MILLISECOND, cHour.get(Calendar.MILLISECOND));
+
+        return (toReturn.getTime());
     }
 }
