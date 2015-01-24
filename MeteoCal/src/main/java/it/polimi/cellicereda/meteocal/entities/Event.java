@@ -201,4 +201,17 @@ public class Event implements Serializable, ScheduleEvent {
         return true;
     }
 
+    @Override
+    public Event clone() {
+        Event toRet = new Event();
+
+        toRet.setDescription(this.description);
+        toRet.setEndDate(this.endDate);
+        toRet.setEventLocation(this.eventLocation);
+        toRet.setStartDate(startDate);
+        toRet.setTitle(title);
+
+        return toRet;
+    }
+
 }

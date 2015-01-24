@@ -163,8 +163,12 @@ public class CalendarManager {
     public void changeEventTitle(Event event, String newTitle) {
         event = em.find(Event.class, event.getId());
 
+        Event old = event.clone();
         event.setTitle(newTitle);
-        nm.generateEventChangedNotifications(event);
+
+        if (eventIsChanged(old, event)) {
+            nm.generateEventChangedNotifications(event);
+        }
     }
 
     /**
@@ -174,8 +178,35 @@ public class CalendarManager {
     public void changeEventDescription(Event event, String newDesc) {
         event = em.find(Event.class, event.getId());
 
+        Event old = event.clone();
         event.setDescription(newDesc);
-        nm.generateEventChangedNotifications(event);
+        if (eventIsChanged(old, event)) {
+            nm.generateEventChangedNotifications(event);
+        }
+    }
+
+    private boolean eventIsChanged(Event old, Event event) {
+        /*toRet.setDescription(this.description);
+         toRet.setEndDate(this.endDate);
+         toRet.setEventLocation(this.eventLocation);
+         toRet.setStartDate(startDate);
+         toRet.setTitle(title);   */
+
+        return (isChanged(old.getDescription(), event.getDescription())
+                || isChanged(old.getEndDate(), event.getEndDate())
+                || isChanged(old.getEventLocation(), event.getEventLocation())
+                || isChanged(old.getStartDate(), event.getStartDate())
+                || isChanged(old.getTitle(), event.getTitle()));
+    }
+
+    private boolean isChanged(Object o1, Object o2) {
+        if (o1 == null && o2 != null) {
+            return true;
+        }
+        if (o1 == null && o2 == null) {
+            return false;
+        }
+        return o1.equals(o2);
     }
 
     /**
@@ -185,13 +216,14 @@ public class CalendarManager {
     public void changeEventTiming(Event event, Date newStarting, Date newEnding) {
         event = em.find(Event.class, event.getId());
 
+        Event old = event.clone();
         event.setStartDate(newStarting);
         event.setEndDate(newEnding);
 
-        fm.saveNewForecastForecastForEvent(event);
-
-        nm.generateEventChangedNotifications(event);
-
+        if (eventIsChanged(old, event)) {
+            fm.saveNewForecastForecastForEvent(event);
+            nm.generateEventChangedNotifications(event);
+        }
     }
 
     /**
@@ -204,11 +236,14 @@ public class CalendarManager {
             newPlace = em.find(Place.class, newPlace.getId());
         }
 
+        Event old = event.clone();
+
         event.setEventLocation(newPlace);
 
-        fm.saveNewForecastForecastForEvent(event);
-
-        nm.generateEventChangedNotifications(event);
+        if (eventIsChanged(old, event)) {
+            fm.saveNewForecastForecastForEvent(event);
+            nm.generateEventChangedNotifications(event);
+        }
     }
 
     /**
@@ -305,9 +340,11 @@ public class CalendarManager {
         e = em.find(Event.class, e.getId());
         u = em.find(User.class, u.getEmail());
 
-        if (e.getCreator().equals(u)) {
+        if (e.getCreator()
+                .equals(u)) {
             creatorCancelEvent(e);
-        } else if (getEventParticipant(e).contains(u)) {
+        } else if (getEventParticipant(e)
+                .contains(u)) {
             cancelParticipant(e, u);
         } else {
             throw new IllegalArgumentException("The given user is not the event creator nor an event participant");
@@ -350,7 +387,8 @@ public class CalendarManager {
         u = em.find(User.class, u.getEmail());
 
         //If the user received an invite but still have to see it simply delete the notification
-        for (Notification n : nm.getPendingNotificationForUser(u)) {
+        for (Notification n
+                : nm.getPendingNotificationForUser(u)) {
             if (n.getNotificationType() == NotificationType.EVENT_INVITE && n.getReferredEvent().equals(e)) {
                 em.remove(n);
                 return;
@@ -358,7 +396,8 @@ public class CalendarManager {
         }
 
         //otherwise check if the user participates in the event and remove the partecipation
-        if (u.getEvents().contains(e)) {
+        if (u.getEvents()
+                .contains(e)) {
             cancelParticipant(e, u);
         }
     }
