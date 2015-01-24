@@ -161,7 +161,7 @@ This is the logged-user homepage.
                      </p:commandButton>
                   </h:panelGrid>
               </p:dataScroller>
-              <p:commandButton type="reset" value="Reset"/>
+              <p:commandButton value="Reset" action="#{modifyEventBean.partialReset()}" update=":modifyForm:modifyEventDetails"/>
               <p:commandButton id="addButton" value="Save" action="#{modifyEventBean.saveEvent()}" 
                                oncomplete="PF('myschedule').update();PF('modifyEventDialog').hide();"
                                update=":modifyForm:modifyEventDetails"/>   

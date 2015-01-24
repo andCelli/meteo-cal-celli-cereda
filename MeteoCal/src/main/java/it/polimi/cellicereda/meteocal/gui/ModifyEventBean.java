@@ -286,16 +286,19 @@ public class ModifyEventBean implements Serializable {
 
     //set all the utility variables to the default value (null)
     public void resetUtilityVariables() {
+        partialReset();
         newEvent = true;
+        invitedUsers = new ArrayList<>();
+    }
+
+    public void partialReset(){
         title = "New event";
         description = new String();
         startingDate = new Date();
         endingDate = new Date();
         locationKey = new String();
-        invitedUsers = new ArrayList<>();
         place = null;
     }
-
     /**
      * @return the invitedUsers
      */
