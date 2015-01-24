@@ -49,7 +49,7 @@ public class ModifyEventBean implements Serializable {
     private LocationManager lm;
     
     @EJB
-    private UtilityMethods utility;
+    private Utility utility;
 
     @Inject
     ScheduleBean scheduleBean;

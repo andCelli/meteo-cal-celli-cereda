@@ -41,7 +41,7 @@ public class ScheduleBean implements Serializable {
     @Inject
     private DetailsEventBean detailsEventBean;
     @EJB
-    private UtilityMethods utility;
+    private Utility utility;
 
     //this will contain the list of events to be displayed
     private ScheduleModel model;

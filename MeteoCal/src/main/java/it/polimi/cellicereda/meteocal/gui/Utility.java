@@ -17,7 +17,7 @@ import javax.inject.Named;
  */
 @Stateless
 @Named
-public class UtilityMethods {
+public class Utility {
     
     private DateFormat df=new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
     

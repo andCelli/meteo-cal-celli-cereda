@@ -11,7 +11,7 @@ import it.polimi.cellicereda.meteocal.gui.DetailsEventBean;
 import it.polimi.cellicereda.meteocal.gui.ModifyEventBean;
 import it.polimi.cellicereda.meteocal.gui.ScheduleBean;
 import it.polimi.cellicereda.meteocal.gui.SettingsBean;
-import it.polimi.cellicereda.meteocal.gui.UtilityMethods;
+import it.polimi.cellicereda.meteocal.gui.Utility;
 import java.nio.file.Paths;
 import java.util.Date;
 import javax.ejb.EJB;
@@ -35,7 +35,7 @@ import org.junit.runner.RunWith;
  * @author Andrea
  */
 @RunWith(Arquillian.class)
-public class ModifyEventIT {
+public class SettingsIT {
     
    @Inject
    private SettingsBean sb;
