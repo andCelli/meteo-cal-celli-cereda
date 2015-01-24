@@ -92,7 +92,7 @@ public class SearchBean implements Serializable {
             printStackTrace();
             System.err.println("Problems in the user search. Search key: "+getSearchKey());
         }
-        
+      
         return results;
     }
 

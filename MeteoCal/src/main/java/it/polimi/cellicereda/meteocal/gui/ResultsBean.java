@@ -6,15 +6,11 @@
 package it.polimi.cellicereda.meteocal.gui;
 
 import static com.sun.corba.se.impl.util.Utility.printStackTrace;
-import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import it.polimi.cellicereda.meteocal.entities.User;
 import java.io.Serializable;
 import java.util.List;
-import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
-import javax.enterprise.context.SessionScoped;
-import javax.faces.bean.ViewScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
@@ -23,7 +19,7 @@ import javax.inject.Named;
  * @author Andrea
  */
 
-@SessionScoped
+@RequestScoped
 @Named
 public class ResultsBean implements Serializable{
     
