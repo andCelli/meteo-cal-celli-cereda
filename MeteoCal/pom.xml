@@ -26,31 +26,22 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-            <scope>test</scope>
-            <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>1.10.8</version>
-            <scope>test</scope>
-            <type>jar</type>
-        </dependency>
-        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.jboss.arquillian</groupId>
-            <artifactId>arquillian-bom</artifactId>
-            <version>1.1.5.Final</version>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
             <scope>test</scope>
-            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>1.10.8</version>
+            <scope>test</scope>
         </dependency>
          <dependency>
             <groupId>org.jboss.arquillian.junit</groupId>
@@ -62,11 +53,6 @@
             <artifactId>arquillian-glassfish-embedded-3.1</artifactId>
             <version>1.0.0.CR4</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-           <groupId>org.jboss.arquillian.protocol</groupId>
-           <artifactId>arquillian-protocol-servlet</artifactId>
-           <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.glassfish.main.extras</groupId>
@@ -86,6 +72,19 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+    <build>
+        <finalName>MeteoCal</finalName>
+        <plugins>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.17</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.17</version>
+            </plugin>
+        </plugins>
+    </build>
      <repositories>
         <repository>
             <url>http://repository.primefaces.org/</url>
@@ -102,17 +101,4 @@
         <maven.compiler.testTarget>1.7</maven.compiler.testTarget>
         <failOnMissingWebXml>false</failOnMissingWebXml>
     </properties>
-    <build>
-        <finalName>MeteoCal</finalName>
-        <plugins>
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.17</version>
-            </plugin>
-            <plugin>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.17</version>
-            </plugin>
-        </plugins>
-    </build>
 </project>
