@@ -7,13 +7,7 @@ package it.polimi.cellicereda.meteocal.businesslogic;
 
 import it.polimi.cellicereda.meteocal.entities.Event;
 import it.polimi.cellicereda.meteocal.entities.User;
-import it.polimi.cellicereda.meteocal.gui.DetailsEventBean;
-import it.polimi.cellicereda.meteocal.gui.ModifyEventBean;
-import it.polimi.cellicereda.meteocal.gui.ScheduleBean;
 import it.polimi.cellicereda.meteocal.gui.SettingsBean;
-import it.polimi.cellicereda.meteocal.gui.Utility;
-import java.nio.file.Paths;
-import java.util.Date;
 import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -24,6 +18,8 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -67,8 +63,8 @@ public class SettingsIT {
     }
     
     /**
-     * no events saved with start date>end date
-     *
+     * no empty fields in settings
+     */
     @Test
     public void noEmptyFieldsInSettings() {
         User u=new User();
@@ -78,13 +74,43 @@ public class SettingsIT {
         u.setSurname("a");
         u.setPassword("a");
         u.setPublicCalendar(true);
-        em.persist(u);
+        upm.save(u);
         sb.setCurrentUser(u);
         sb.setName(new String());
+        sb.setSurname("new");
         try {
             sb.save();
-        } catch (Exception e) {
-            assertTrue(e.getCause() instanceof ConstraintViolationException);
-        }
-    }*/
+        } catch (NullPointerException e){}
+        //name and surname have not been changed
+        assertTrue(em.find(User.class,u.getEmail()).getName().equals("a"));
+        assertTrue(em.find(User.class,u.getEmail()).getSurname().equals("a"));
+    }
+    
+    /**
+     * if new data are fine user info are updated
+     */
+    public void updateData(){
+        User u=new User();
+        u.setEmail("a@a.com");
+        u.setUsername("a");
+        u.setName("a");
+        u.setSurname("a");
+        u.setPassword("a");
+        u.setPublicCalendar(false);
+        upm.save(u);
+        sb.setCurrentUser(u);
+        sb.setName("new");
+        sb.setSurname("new");
+        sb.setUsername("new");
+        sb.setPrivacy(true);
+        sb.setPassword("a");
+        sb.save();
+        User updatedUser=em.find(User.class,u.getEmail());
+        assertNotNull(updatedUser);
+        assertEquals(updatedUser.getUsername(),"new");
+        assertEquals(updatedUser.getName(),"new");
+        assertEquals(updatedUser.getSurname(),"new");
+        assertEquals(updatedUser.getPublicCalendar(),true);    
+    }
 }
+//si può salvare senza riconfermare la password?

@@ -70,7 +70,7 @@ public class NotificationBean implements Serializable{
      */
     public void update(){
        try{
-           List<Notification> prova=nm.getPendingFutureNotificationForUser(user);
+            checkForDeletedNotifications();
             for(Notification n:nm.getPendingNotificationForUser(user)){
                if(!notifications.contains(n)){
                    notifications.add(n);
@@ -237,8 +237,9 @@ public class NotificationBean implements Serializable{
      * If so it removes them from the list of displayed notifications
      */
     public void checkForDeletedNotifications(){
+        List<Notification> actualNotification=nm.getPendingFutureNotificationForUser(user);
         for(Notification n:notifications){
-            if(!nm.getPendingFutureNotificationForUser(user).contains(n)){
+            if(!actualNotification.contains(n)){
                 notifications.remove(n);
             }
         }
