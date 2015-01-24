@@ -9,6 +9,7 @@ import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import it.polimi.cellicereda.meteocal.entities.Event;
 import it.polimi.cellicereda.meteocal.entities.Forecast;
 import it.polimi.cellicereda.meteocal.entities.Notification;
+import it.polimi.cellicereda.meteocal.entities.NotificationType;
 import it.polimi.cellicereda.meteocal.entities.Place;
 import it.polimi.cellicereda.meteocal.entities.User;
 import java.util.Calendar;
@@ -305,8 +306,7 @@ public class CalendarManager {
         if (e.getCreator().equals(u)) {
             creatorCancelEvent(e);
         } else if (getEventParticipant(e).contains(u)) {
-            //simply remove the participation
-            u.removeEvent(e);
+            cancelParticipant(e, u);
         } else {
             throw new IllegalArgumentException("The given user is not the event creator nor an event participant");
         }
@@ -332,5 +332,45 @@ public class CalendarManager {
 
         //destroy the event
         em.remove(e);
+    }
+
+    /**
+     * Delete an invited user. If the user received an invite notification but
+     * the notification is still pending the invite is deleted. Otherwise (if
+     * the user saw the invite and accepted it) the user is removed from the
+     * partecipation list and the event disappears from his calendar
+     *
+     * @param e The event
+     * @param u The user
+     */
+    public void removeInvitation(Event e, User u) {
+        //If the user received an invite but still have to see it simply delete the notification
+        for (Notification n : nm.getPendingNotificationForUser(u)) {
+            if (n.getNotificationType() == NotificationType.EVENT_INVITE) {
+                em.remove(n);
+                return;
+            }
+        }
+
+        //otherwise check if the user participates in the event and remove the partecipation
+        if (u.getEvents().contains(e)) {
+            cancelParticipant(e, u);
+        }
+    }
+
+    /**
+     * Remove an user from the event participants and delete all the
+     * notifications that have the user as recipient and the event as referred event
+     */
+    private void cancelParticipant(Event e, User u) {
+        //remove all the notifications
+        for (Notification n : nm.getNotificationForUser(u)) {
+            if (n.getReferredEvent().equals(e)) {
+                em.remove(n);
+            }
+        }
+
+        //cancel the partecipation
+        u.removeEvent(e);
     }
 }
