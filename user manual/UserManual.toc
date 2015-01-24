@@ -1,0 +1,20 @@
+\contentsline {part}{I\hspace {1em}System Description}{2}{part.1}
+\contentsline {part}{II\hspace {1em}Unlogged User}{2}{part.2}
+\contentsline {section}{\numberline {1}Login}{2}{section.1}
+\contentsline {section}{\numberline {2}Register}{3}{section.2}
+\contentsline {section}{\numberline {3}View About}{3}{section.3}
+\contentsline {part}{III\hspace {1em}Logged User}{4}{part.3}
+\contentsline {section}{\numberline {4}Overview}{4}{section.4}
+\contentsline {section}{\numberline {5}Manage Calendar}{6}{section.5}
+\contentsline {subsection}{\numberline {5.1}Browse Calendar}{6}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Create event}{6}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Check, modify, delete event}{9}{subsection.5.3}
+\contentsline {section}{\numberline {6}Search}{11}{section.6}
+\contentsline {subsection}{\numberline {6.1}Search}{11}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}View other user page}{12}{subsection.6.2}
+\contentsline {section}{\numberline {7}Notifications}{13}{section.7}
+\contentsline {section}{\numberline {8}Settings}{15}{section.8}
+\contentsline {part}{IV\hspace {1em}Errors}{16}{part.4}
+\contentsline {section}{\numberline {9}Login errors}{17}{section.9}
+\contentsline {section}{\numberline {10}Registration errors}{18}{section.10}
+\contentsline {section}{\numberline {11}Settings error}{19}{section.11}
