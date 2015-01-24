@@ -93,7 +93,7 @@ public class User implements Serializable {
 
     @ManyToMany
     @JoinTable(name = "PARTICIPATES",
-            joinColumns = @JoinColumn(name = "USER"),
+            joinColumns = @JoinColumn(name = "USERS"),
             inverseJoinColumns = @JoinColumn(name = "EVENT"))
     private Collection<Event> events;
 
