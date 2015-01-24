@@ -86,7 +86,7 @@ public class ForecastManager {
      * @param event The event for which you want to download a new forecast
      * @return The forecasts obtained for the given event
      */
-    public Forecast downloadNewForecastForEvent(Event event) {
+    Forecast downloadNewForecastForEvent(Event event) {
         if (event.getEventLocation() == null || event.getStartDate() == null) {
             return null;
         }
@@ -132,6 +132,18 @@ public class ForecastManager {
         return forecast;
     }
 
+    /**
+     * Given the JSON array and the time coverage wanted this method parse the
+     * json and returns the wanted forecast
+     *
+     * @param forecastList A JSONArray containing the data to be parsed
+     * @param coveredHours The time coverage of the given forecast (3 hours /
+     * daily)
+     * @param wantedTime The time that must be covered by the returned forecast
+     * @param cityID The cityID for wich is the given forecast
+     * @return The Forecast containing the wanted forecast (can be null)
+     * @throws JSONException If a parse error occurs
+     */
     private Forecast downloadForecast(JSONArray forecastList, int coveredHours, Date wantedTime, Long cityID) throws JSONException {
         //compute the making time
         Date now = new Date();
@@ -170,7 +182,8 @@ public class ForecastManager {
     /**
      * Download a new forecast for the given event, save it in the database and
      * attach it in the event. If the event already has a forecast it is removed
-     * from the db
+     * from the db. This method also generates the
+     * sunnyDayProposal/BadWeatherAlert notifications if needed
      */
     public void saveNewForecastForecastForEvent(Event e) {
         e = em.find(Event.class, e.getId());
@@ -185,6 +198,17 @@ public class ForecastManager {
 
             if (old != null) {
                 em.remove(old);
+            }
+
+            // now it's time to generate the notifications
+            //if the event is tomorrow and the weather is bad generate a bad weather alert
+            if (cm.isTomorrow(e) && !isGoodWeather(f.getWeatherId())) {
+                nm.sendBadWeatherAlert(e);
+            }
+
+            //if the event starts in three days and the weather is bad send a sunny day proposal
+            if (cm.isInThreeDays(e) && !isGoodWeather(f.getWeatherId())) {
+                nm.sendSunnyDayProposal(e);
             }
         }
     }
@@ -235,6 +259,9 @@ public class ForecastManager {
      * done according to the weather icon
      * (http://openweathermap.org/weather-conditions) icon from 1 to 4 are
      * considered "good weather", the other "bad weather"
+     *
+     * @param weatherID The integer represting the weather
+     * @return If the weather has to be considered good
      */
     public boolean isGoodWeather(int weatherID) {
         String icon = getUrlOfWeatherIcon(weatherID);
@@ -246,6 +273,9 @@ public class ForecastManager {
     }
 
     @Schedule(hour = "*", minute = "*")
+    /**
+     * Update the forecast for all the events (and generate the notifications)
+     */
     private void updateForecastsForAllTheEvents() {
         List<Event> events = cm.getAllEventsAsEvents();
 
@@ -258,33 +288,22 @@ public class ForecastManager {
                     continue;
                 }
 
-                //if the event already have a valid forecast save it, otherwise create a new one                
-                Forecast oldForecast = e.getForecast();
-                if (oldForecast != null) {
-                    //download the new forecast
-                    Forecast newForecast = downloadNewForecastForEvent(e);
-
-                    //and update the old one (so that the id does not change in the db)
-                    oldForecast.setMakingTime(newForecast.getMakingTime());
-                    oldForecast.setWeatherId(newForecast.getWeatherId());
-
-                    //now it's time to generate the notifications
-                    //if the event is tomorrow and the weather is bad generate a bad weather alert
-                    if (cm.isTomorrow(e) && !isGoodWeather(newForecast.getWeatherId())) {
-                        nm.sendBadWeatherAlert(e);
-                    }
-
-                    //if the event starts in three days and the weather is bad send a sunny day proposal
-                    if (cm.isInThreeDays(e) && !isGoodWeather(newForecast.getWeatherId())) {
-                        nm.sendSunnyDayProposal(e);
-                    }
-                } else {
-                    saveNewForecastForecastForEvent(e);
-                }
+                saveNewForecastForecastForEvent(e);
             }
         }
     }
 
+    /**
+     * Given an event search for the days where the event could be moved to
+     * obtain a good weather. A day is considered to be good or not basing on
+     * the daily forecast, not on the 3 hours forecast. For a matter of
+     * simplicity the time coverage of the forecasts is not set as
+     * 0.0.00/23.59.59 but is set equal to the duration of the given event, in
+     * that way they can be directly used to reschedule the event
+     *
+     * @param e The event to be moved
+     * @return A list of forecast that are considered good
+     */
     public List<Forecast> searchGoodWeatherForEvent(Event e) {
         List<Forecast> goodDates = new LinkedList<>();
 
@@ -298,6 +317,7 @@ public class ForecastManager {
         try {
             Long cityID = e.getEventLocation().getId();
             Date startingTime = e.getStartDate();
+            Date endingTime = e.getEndDate();
 
             JSONObject entireForecast = new JSONObject(download16DayForecastsByCityID(cityID));
             JSONArray forecastList = entireForecast.getJSONArray("list");
@@ -308,14 +328,6 @@ public class ForecastManager {
             for (int i = 0; i < forecastList.length(); i++) {
                 JSONObject forecastJson = forecastList.getJSONObject(i);
 
-                //SET THE STARTING/ENDING VALIDITY TIME (time coverage = 1 day)
-                Date starting = new Date(forecastJson.getLong("dt") * 1000);
-                Date ending = new Date(starting.getTime() + (24 * 60 * 60 * 1000));
-
-                if (ending.before(starting)) {
-                    continue;
-                }
-
                 //GET THE WEATHER ID
                 int weatherID = forecastJson.getJSONArray("weather").getJSONObject(0).getInt("id");
 
@@ -323,14 +335,13 @@ public class ForecastManager {
                 if (isGoodWeather(weatherID)) {
                     Forecast forecast = new Forecast();
 
-                    forecast.setStartingValidity(starting);
-                    forecast.setEndingValidity(ending);
+                    forecast.setStartingValidity(startingTime);
+                    forecast.setEndingValidity(endingTime);
                     forecast.setPlace(lm.getPlaceByID(cityID));
                     forecast.setMakingTime(now);
                     forecast.setWeatherId(weatherID);
 
                     goodDates.add(forecast);
-
                 }
             }
         } catch (UnableToDownloadException ex) {
