@@ -35,7 +35,7 @@ public class Cleanupper {
     @PersistenceContext
     private EntityManager em;
 
-    @Schedule(hour = "*", minute = "*")
+    @Schedule(hour = "0")
     private void cleanup() {
         cleanupUselessForecast();
         cleanupUselessNotification();
