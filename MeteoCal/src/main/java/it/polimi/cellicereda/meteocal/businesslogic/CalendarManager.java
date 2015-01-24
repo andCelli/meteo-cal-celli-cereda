@@ -425,7 +425,7 @@ public class CalendarManager {
         List<User> toReturn = new LinkedList();
 
         for (Notification n : nm.getNotificationForEvent(e)) {
-            if (!n.getNotificationState().equals(NotificationState.ANSWERED)) {
+            if (!n.getNotificationState().equals(NotificationState.READED) && n.getNotificationType().equals(NotificationType.EVENT_INVITE)) {
                 toReturn.add(n.getRecipient());
             }
         }
