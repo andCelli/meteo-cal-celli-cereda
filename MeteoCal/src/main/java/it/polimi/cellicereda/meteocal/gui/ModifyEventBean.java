@@ -369,8 +369,19 @@ public class ModifyEventBean implements Serializable {
         this.places = places;
     }
     
+    /**
+     * This method removes a user from an event to he/she have been invited
+     */
     public void removeFromPartecipant(){
         System.out.println("user: "+removedFromParticipants.toString());
+        //user has already accepted the invite
+        if(calendarManager.getEventParticipant(event).contains(removedFromParticipants)){
+            calendarManager.unSubscribeFromEvent(event, removedFromParticipants);
+            invitedUsers.remove(removedFromParticipants);
+        }else{
+            //the invite has been sent but not accepted yet
+            //@TODO
+        }
     }
 
     /**

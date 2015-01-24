@@ -155,7 +155,8 @@ This is the logged-user homepage.
               <p:dataScroller id="invitedUsers" value="#{modifyEventBean.invitedUsers}" var="user" chunkSize="10">
                   <h:panelGrid id="invitedGrid" border="0" columns="2">
                      <p:outputLabel value="#{user.username}"/>
-                     <p:commandButton value="remove" action="#{modifyEventBean.removeFromPartecipant()}">
+                     <p:commandButton value="remove" action="#{modifyEventBean.removeFromPartecipant()}" 
+                                      oncomplete="PF('myschedule').update();PF('modifyEventDialog').hide();">
                          <f:setPropertyActionListener value="#{user}" target="#{modifyEventBean.removedFromParticipants}"/>
                      </p:commandButton>
                   </h:panelGrid>
