@@ -113,7 +113,7 @@ public class ScheduleBean implements Serializable {
             getDetailsEventBean().setStart(utility.getFormattedDate(event.getStartDate()));
             getDetailsEventBean().setEnd(utility.getFormattedDate(event.getEndDate()));
         } catch (Exception ex) {
-            System.err.println("errore in onEventSelect cazzo");
+            System.err.println("errore in onEventSelect");
             printStackTrace();
         }
     }

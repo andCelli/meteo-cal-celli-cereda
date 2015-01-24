@@ -53,13 +53,13 @@ This is the logged-user homepage.
                                   oncomplete="PF('modifyEventDialog').show();PF('eventDetailsDialog').hide();" 
                                   rendered="#{detailsEventBean.isCreator}" update=":modifyForm:modifyEventDetails"/>
                 <p:commandButton id="deleteButton" value="Delete" actionListener="#{detailsEventBean.delete()}"
-                                 action="#{notificationBean.checkForDeletedNotifications()}"
-                                 onclick="PF('eventDetailsDialog').hide()" oncomplete="PF('myschedule').update()" 
+                                 onclick="PF('eventDetailsDialog').hide()" oncomplete="PF('myschedule').update();" 
                                  rendered="#{detailsEventBean.isCreator}"
                                  update=":notificationForm:notificationsGrid" />
                 <p:commandButton id="removePartecipation" value="Remove partecipation" action="#{detailsEventBean.removeFromPartecipants()}"
                                  onclick="PF('eventDetailsDialog').hide();"  rendered="#{!detailsEventBean.isCreator}"
-                                 oncomplete="PF('myschedule').update()"/>
+                                 oncomplete="PF('myschedule').update()"
+                                 update=":notificationForm:notificationsGrid"/>
              </h:panelGrid> 
          </p:dialog>
         <!--Notification dialog-->
@@ -171,7 +171,7 @@ This is the logged-user homepage.
     </ui:define> 
    <ui:define name="contentLeft">               
                 <h:form id="notificationForm">
-                    <p:poll id="notificationCheck" interval="5" listener="#{notificationBean.update()}" update="notificationsGrid"/>
+                    <p:poll id="notificationCheck" interval="1" listener="#{notificationBean.update()}" update="notificationsGrid"/>
                     <p:scrollPanel style="width:230px;height:580px;">
                         <p:dataGrid var="notification" value="#{notificationBean.notifications}" columns="1" id="notificationsGrid" style="border:none;">
                         <f:facet name="header">
