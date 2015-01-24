@@ -9,6 +9,7 @@ import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import it.polimi.cellicereda.meteocal.entities.Event;
 import it.polimi.cellicereda.meteocal.entities.Forecast;
 import it.polimi.cellicereda.meteocal.entities.Notification;
+import it.polimi.cellicereda.meteocal.entities.NotificationType;
 import it.polimi.cellicereda.meteocal.entities.Place;
 import it.polimi.cellicereda.meteocal.entities.User;
 import java.util.Calendar;
@@ -332,5 +333,29 @@ public class CalendarManager {
 
         //destroy the event
         em.remove(e);
+    }
+
+    /**
+     * Delete an invited user. If the user received an invite notification but
+     * the notification is still pending the invite is deleted. Otherwise (if
+     * the user saw the invite and accepted it) the user is removed from the
+     * partecipation list and the event disappears from his calendar
+     *
+     * @param e The event
+     * @param u The user
+     */
+    public void removeInvitation(Event e, User u) {
+        //If the user received an invite but still have to see it simply delete the notification
+        for (Notification n : nm.getPendingNotificationForUser(u)) {
+            if (n.getNotificationType() == NotificationType.EVENT_INVITE) {
+                em.remove(n);
+                return;
+            }
+        }
+
+        //otherwise check if the user participates in the event and remove the aprtecipation
+        if (u.getEvents().contains(e)) {
+            u.removeEvent(e);
+        }
     }
 }
