@@ -6,8 +6,15 @@
 package it.polimi.cellicereda.meteocal.businesslogic;
 
 import it.polimi.cellicereda.meteocal.entities.Event;
+import it.polimi.cellicereda.meteocal.entities.User;
+import it.polimi.cellicereda.meteocal.gui.DetailsEventBean;
 import it.polimi.cellicereda.meteocal.gui.ModifyEventBean;
+import it.polimi.cellicereda.meteocal.gui.ScheduleBean;
+import it.polimi.cellicereda.meteocal.gui.SettingsBean;
+import it.polimi.cellicereda.meteocal.gui.UtilityMethods;
+import java.nio.file.Paths;
 import java.util.Date;
+import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -30,44 +37,54 @@ import org.junit.runner.RunWith;
 @RunWith(Arquillian.class)
 public class ModifyEventIT {
     
-    @Inject
-    ModifyEventBean meb;
-    
+   @Inject
+   private SettingsBean sb;
+
+   @EJB
+   private UserProfileManager upm; 
+   
     @PersistenceContext
-    EntityManager em;
+    private EntityManager em;
     
     @Deployment
     public static WebArchive createArchiveAndDeploy(){
         return ShrinkWrap.create(WebArchive.class)
-                .addClass(ModifyEventBean.class)
-                .addPackage(Event.class.getPackage())
+                .addClass(SettingsBean.class)
+                .addClass(UserProfileManager.class)
+                .addPackage(User.class.getPackage())
                 .addAsResource("test-persistence.xml","META-INF/persistence.xml")
-                .addAsWebInfResource(EmptyAsset.INSTANCE,"beans.xml");      
+                .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");     
     }
     
-    @Test
-    public void ModifyInjected(){
-        assertNotNull(meb);
+  @Test
+    public void SettingsInjected(){
+        assertNotNull(sb);
     }
     
-    @Test
+  @Test
     public void EntityManagerShouldBeInjected() {
         assertNotNull(em);
     }
     
     /**
      * no events saved with start date>end date
-     */
+     *
     @Test
-    public void newEventShouldBeValid() {
-        Event newEvent = new Event();
-        meb.setEndingDate(new Date(2015,1,20));
-        meb.setStartingDate(new Date());
-        meb.setEvent(newEvent);
+    public void noEmptyFieldsInSettings() {
+        User u=new User();
+        u.setEmail("a@a.com");
+        u.setUsername("a");
+        u.setName("a");
+        u.setSurname("a");
+        u.setPassword("a");
+        u.setPublicCalendar(true);
+        em.persist(u);
+        sb.setCurrentUser(u);
+        sb.setName(new String());
         try {
-            meb.saveEvent();
+            sb.save();
         } catch (Exception e) {
             assertTrue(e.getCause() instanceof ConstraintViolationException);
         }
-    }
+    }*/
 }
