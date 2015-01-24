@@ -156,7 +156,7 @@ This is the logged-user homepage.
                   <h:panelGrid id="invitedGrid" border="0" columns="2">
                      <p:outputLabel value="#{user.username}"/>
                      <p:commandButton value="remove" action="#{modifyEventBean.removeFromPartecipant()}" 
-                                      oncomplete="PF('myschedule').update();PF('modifyEventDialog').hide();">
+                                      update=":modifyForm:modifyEventDetails">
                          <f:setPropertyActionListener value="#{user}" target="#{modifyEventBean.removedFromParticipants}"/>
                      </p:commandButton>
                   </h:panelGrid>
@@ -171,7 +171,7 @@ This is the logged-user homepage.
     </ui:define> 
    <ui:define name="contentLeft">               
                 <h:form id="notificationForm">
-                    <p:poll id="notificationCheck" interval="30" listener="#{notificationBean.update()}" update="notificationsGrid"/>
+                    <p:poll id="notificationCheck" interval="5" listener="#{notificationBean.update()}" update="notificationsGrid"/>
                     <p:scrollPanel style="width:230px;height:580px;">
                         <p:dataGrid var="notification" value="#{notificationBean.notifications}" columns="1" id="notificationsGrid" style="border:none;">
                         <f:facet name="header">
