@@ -57,7 +57,9 @@ public class SettingsBean implements Serializable{
         upm.changeUsername(currentUser, currentUser.getUsername());
         upm.changeName(currentUser, currentUser.getName());
         upm.changeSurname(currentUser, currentUser.getSurname());
-        upm.changePassword(currentUser,password);
+        if(password!=null && !password.isEmpty()){
+              upm.changePassword(currentUser,password);
+        }
         upm.changePublicCalendar(currentUser, currentUser.getPublicCalendar());
         return "/logged/home?faces-redirect=true";
     }
