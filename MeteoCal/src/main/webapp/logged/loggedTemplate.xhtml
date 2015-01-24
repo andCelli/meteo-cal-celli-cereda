@@ -61,7 +61,8 @@ The template defines: 1) the basic layout that will be used in all the logged-us
                        <p:inputText id="searchKey"  value="#{searchBean.searchKey}" 
                                     style="margin-right:10px; background-color:mediumspringgreen;border: none;"/>
                        </h:form>
-                       <p:commandButton id="searchButton" value="Search" action="#{searchBean.search()}" update=":topForm"/>     
+                       <p:commandButton id="searchButton" value="Search" action="#{searchBean.search()}" update=":topForm"
+                                        oncomplete="#{resultsBean.updateResults()}"/>     
                    <p:link  value="home" outcome="home"/>
                    <p:link  value="settings" outcome="settings"/>
                    <h:form>

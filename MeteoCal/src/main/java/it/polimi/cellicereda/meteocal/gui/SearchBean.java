@@ -65,8 +65,6 @@ public class SearchBean implements Serializable {
      */
     public List<User> getSearchResults(){
         List<User> results=new ArrayList<User>();
-        String name;
-        String surname;
         
         try{ 
         //search for username
@@ -75,9 +73,12 @@ public class SearchBean implements Serializable {
             results.addAll(userManager.getByUsername(getSearchKey()));
         }
         //search for (name + surmane) (and check that the user is not already in the list
-        /*
-        *
-        */
+       /* for(User u:userManager.getBySurname(getSearchKey()))
+             //
+             // CHECK (se metto più di uno spazio?)
+             //
+            if(!results.contains(u) && getSearchKey().equals(u.getName()+" "+u.getSurname()))
+                results.add(u);*/
        //search for surname
         for(User u:userManager.getBySurname(getSearchKey()))
             if(!results.contains(u) && !u.equals(currentUser))

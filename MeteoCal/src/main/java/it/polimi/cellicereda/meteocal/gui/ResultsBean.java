@@ -11,6 +11,8 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
@@ -19,7 +21,7 @@ import javax.inject.Named;
  * @author Andrea
  */
 
-@RequestScoped
+@SessionScoped
 @Named
 public class ResultsBean implements Serializable{
     
@@ -40,10 +42,13 @@ public class ResultsBean implements Serializable{
         header="Search Results";
         context=FacesContext.getCurrentInstance();           
         searchBean=(SearchBean) context.getApplication().evaluateExpressionGet(context, "#{searchBean}", SearchBean.class);
+    }
+    
+    public void updateResults(){
         users=searchBean.getSearchResults();
         searchBean.setSearchKey(null);
         //userNotFound
-        if(users.size()==0){
+        if(users.isEmpty()){
             header="No results found";
         }
     }
