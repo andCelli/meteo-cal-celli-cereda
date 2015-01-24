@@ -22,7 +22,7 @@ This is the logged-user homepage.
     <ui:define name="contentCenter">
      <h:form id="centerForm">
          <p:poll id="currentDateUpdate" interval="60" listener="#{scheduleBean.updateCurrentDate()}"/>
-         <p:schedule value="#{scheduleBean.model}" id="mySchedule" widgetVar="myschedule" timeZone="GMT+1" draggable="false">
+         <p:schedule value="#{scheduleBean.model}" id="mySchedule" widgetVar="myschedule" timeZone="GMT+1" draggable="false" resizable="false">
                 <p:ajax event="eventSelect" listener="#{scheduleBean.onEventSelect}" update="eventDetails" oncomplete="PF('eventDetailsDialog').show();"/>
          </p:schedule>
         <!--Event details--> 
@@ -41,8 +41,8 @@ This is the logged-user homepage.
                  <h:outputLabel for="privacyDet" value="Privacy:"/>
                  <h:outputText id="privacyDet" value=" #{detailsEventBean.event.publicEvent? 'Public event' : 'Private event'}"/>
                  <h:outputLabel for="forecastDet" value="Forecast:" rendered="#{detailsEventBean.hasPrediction()}"/>
-                 <p:panel style="border:none;"  rendered="#{detailsEventBean.hasPrediction()}">
-                     <img id="forecastDet" src="#{detailsEventBean.getForecastIcon()}"/>
+                 <p:panel id="forecastDet" style="border:none;"  rendered="#{detailsEventBean.hasPrediction()}">
+                     <img src="#{detailsEventBean.getForecastIcon()}"/>
                  </p:panel> 
                  <h:outputLabel for="partecipants" value="Partecipants: "/>
                  <p:dataScroller id="partecipants" value="#{detailsEventBean.participants}" var="user" chunkSize="10"
