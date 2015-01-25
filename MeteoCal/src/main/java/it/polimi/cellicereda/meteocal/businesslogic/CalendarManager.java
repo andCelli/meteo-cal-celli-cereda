@@ -194,13 +194,20 @@ public class CalendarManager {
     }
 
     private boolean isChanged(Object o1, Object o2) {
-        if (o1 == null && o2 != null) {
-            return true;
-        }
-        if (o1 == null && o2 == null) {
+        try {
+            if (o1 instanceof String) {
+                return ((String) o1).contentEquals((String) o2);
+            }
+            if (o1 instanceof Date) {
+                return (((Date) o1).compareTo((Date) o2) == 0);
+            }
+            if (o1 instanceof Place) {
+                return ((Place) o1).equals((Place) o2);
+            }
+        } catch (Exception e) {
             return false;
         }
-        return o1.equals(o2);
+        return false;
     }
 
     /**
