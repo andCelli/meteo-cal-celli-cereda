@@ -1,14 +1,14 @@
-\contentsline {part}{I\hspace {1em}Download and Setup}{1}{part.1}
-\contentsline {section}{\numberline {1}Java setup}{1}{section.1}
-\contentsline {section}{\numberline {2}MySql setup}{1}{section.2}
+\contentsline {part}{I\hspace {1em}Download and Setup}{2}{part.1}
+\contentsline {section}{\numberline {1}Java setup}{2}{section.1}
+\contentsline {section}{\numberline {2}MySql setup}{2}{section.2}
 \contentsline {section}{\numberline {3}GlassFish Application Server}{2}{section.3}
 \contentsline {section}{\numberline {4}MySql connector}{2}{section.4}
-\contentsline {part}{II\hspace {1em}Configuration}{2}{part.2}
-\contentsline {section}{\numberline {5}Database creation}{2}{section.5}
-\contentsline {section}{\numberline {6}GlassFish configuration}{2}{section.6}
-\contentsline {subsection}{\numberline {6.1}Start Glassfish}{2}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}JDBC pool}{2}{subsection.6.2}
-\contentsline {subsection}{\numberline {6.3}JDBC resource}{3}{subsection.6.3}
-\contentsline {subsection}{\numberline {6.4}Realm}{3}{subsection.6.4}
-\contentsline {part}{III\hspace {1em}Deploy}{4}{part.3}
-\contentsline {part}{IV\hspace {1em}Contacts}{4}{part.4}
+\contentsline {part}{II\hspace {1em}Configuration}{3}{part.2}
+\contentsline {section}{\numberline {5}Database creation}{3}{section.5}
+\contentsline {section}{\numberline {6}GlassFish configuration}{3}{section.6}
+\contentsline {subsection}{\numberline {6.1}Start Glassfish}{3}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}JDBC pool}{3}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}JDBC resource}{4}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.4}Realm}{4}{subsection.6.4}
+\contentsline {part}{III\hspace {1em}Deploy}{5}{part.3}
+\contentsline {part}{IV\hspace {1em}Contacts}{6}{part.4}
