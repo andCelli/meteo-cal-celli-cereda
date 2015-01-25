@@ -1,0 +1,14 @@
+\BOOKMARK [0][-]{part.1}{I Download and Setup}{}% 1
+\BOOKMARK [1][-]{section.1}{Java setup}{part.1}% 2
+\BOOKMARK [1][-]{section.2}{MySql setup}{part.1}% 3
+\BOOKMARK [1][-]{section.3}{GlassFish Application Server}{part.1}% 4
+\BOOKMARK [1][-]{section.4}{MySql connector}{part.1}% 5
+\BOOKMARK [0][-]{part.2}{II Configuration}{}% 6
+\BOOKMARK [1][-]{section.5}{Database creation}{part.2}% 7
+\BOOKMARK [1][-]{section.6}{GlassFish configuration}{part.2}% 8
+\BOOKMARK [2][-]{subsection.6.1}{Start Glassfish}{section.6}% 9
+\BOOKMARK [2][-]{subsection.6.2}{JDBC pool}{section.6}% 10
+\BOOKMARK [2][-]{subsection.6.3}{JDBC resource}{section.6}% 11
+\BOOKMARK [2][-]{subsection.6.4}{Realm}{section.6}% 12
+\BOOKMARK [0][-]{part.3}{III Deploy}{}% 13
+\BOOKMARK [0][-]{part.4}{IV Contacts}{}% 14

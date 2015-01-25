@@ -1,0 +1,118 @@
+\documentclass[10pt,a4paper,titlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage[hidelinks]{hyperref}
+
+%this is a command used in the title template
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+%questo fa in modo che le liste numerate siano allineate come le altre
+\setenumerate{leftmargin=*, labelindent=\parindent}
+
+%questo genera il toc, ricorda di eseguire due volte
+\makeindex
+
+\begin{document}
+\input{title.tex}
+
+\tableofcontents
+
+\part{Download and Setup}
+
+\section{Java setup}
+MeteoCal has been developed on Java so you need a Java runtime environment. You can download Java from this link: \url{https://www.java.com/it/download/}. Download the correct version according to you operative system and install it (pay attention to skip the installation of the Ask.com toolbar).
+
+\section{MySql setup}
+MeteoCal needs a database to run, and this guide will use MySql as database. You can download it from \url{http://dev.mysql.com/downloads/mysql/}. Notice that you are not obliged to sign up for an oracle web account, you can skip it by clicking on \emph{No thanks, just start my download.}
+
+The windows downloader comes with a fancy installer that lets you select the needed component, you only need the server. After that you can leave everything as default, except for the password (you will need it later!). Pay attention to enable the server start at machine startup (the option should be already enabled).
+
+In linux you can install the server with your distribution's package manager (MariaDB also works). Then you can enable the server launch at startup time or you can manually start the server every time.
+
+For Mac OSx use the installer. Either enable the launch at startup or remember to launch it manually every time.
+ 
+\section{GlassFish Application Server}
+The Application Server we will use is GlassFish, you can download it from \url{http://dlc.sun.com.edgesuite.net/glassfish/4.1/release/glassfish-4.1-web.zip} after the download is completed unzip it to a directory of your choice.
+
+\section{MySql connector}
+Download from \url{http://dev.mysql.com/downloads/connector/j/} the platform independent connector. Unzip it and move the jar file into you GlassFish directory in the glassfish/lib/ directory.
+
+\part{Configuration}
+
+\section{Database creation}
+In order to create the database open MySql in the CLI: in windows you have a program called MySQL Command Line Client, in Linux/Mac open a terminal and type \emph{mysql -u root -p}. In either case you will be asked for the password you set during the MySql setup. Once accessed to MySql type \emph{create database meteocal;} press enter and then close the window typying \emph{exit;}
+
+\section{GlassFish configuration}
+\subsection{Start Glassfish}
+In order to start the GlassFish server go in your glassfish directory and execute \emph{bin/asadmin start-domain} (in windows click on the \emph{asadmin} file and then type \emph{start-domain}.
+
+\subsection{JDBC pool}
+With a browser go to \url{http://localhost:4848/}. Using the left panel navigate to \emph{Resources/JDBC/JDBC Connection Pools} and create a new pool by clicking on \emph{new}. Fill the following page with this data:
+\begin{itemize}
+\item Pool Name: MeteoCalPool
+\item Resource Type: javax.sql.DataSource
+\item Database Driver Vendor: MySql
+\item Introspect: not enabled
+\end{itemize}
+click on \emph{next} and scroll down the next page to the additional properties, where you have to set these properties:
+\begin{itemize}
+\item password: The password you chose for MySql
+\item databaseName: meteocal
+\item serverName: localhost
+\item user: root
+\end{itemize}
+and click on \emph{Finish}. Open the pool that you just created and navigate to the \emph{Advanced} tab, scroll down to \emph{Connection Validation} and set the following values:
+\begin{itemize}
+\item Connection Validation: required
+\item Validation Method: table
+\item Table Name: DUAL
+\end{itemize}
+and click on \emph{Save}. Go back to the \emph{General} tab and test the pool clicking on \emph{Ping}. You should see a confirmation message.
+
+\subsection{JDBC resource}
+From the left pannel navigate to \emph{JDBC Resources} and create a new resource clicking on \emph{New}. Use the following propierties and save the resource.
+\begin{itemize}
+\item JNDI Name: jdbc/meteocal
+\item Pool Name: MeteoCalPool
+\end{itemize}
+
+\subsection{Realm}
+From the left panel navigate to \emph{Configurations/server-config/Security/Realms} and create a new Realm with the following properties:
+\begin{itemize}
+\item Name: MeteocalRealm
+\item ClassName: com.sun.enterprise.security.auth.realm.jdbc.JDBCRealm
+\item JAAS Context: jdbcRealm
+\item JNDI: jdbc/meteocal
+\item User Table: USERS
+\item User Name Column: EMAIL
+\item Password Column: PASSWORD
+\item Group Table: USERS
+\item Group Table User Name Column: EMAIL
+\item Group Name Column: GROUPNAME
+\item Password Encryption Algorithm: MD5
+\item Database password:
+\item Digest Algorithm: SHA-256
+\item Encoding:
+\item Charset:
+\end{itemize}
+
+\part{Deploy}
+From the left panel navigate to \emph{Applications} and click on \emph{Deploy}, then select the MeteoCal.war file and click on \emph{OK}. The application should be deployed (the first deploy takes some time because we have to populate the database). Due to a GlassFish bug the operation sometimes does not have success, in that case restart the server (the option is under the \emph{Server} section in the left panel) and try again to deploy.
+
+MeteoCal is accesible at \url{http://localhost:8080/MeteoCal/}
+
+\part{Contacts}
+If you have any problem contact us at:
+\begin{itemize}
+\item \url{andrea.celli@mail.polimi.it}
+\item \url{stefano1.cereda@mail.polimi.it}
+\end{itemize}
+
+\end{document}
+
