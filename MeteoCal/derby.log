@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Sun Jan 25 14:35:16 CET 2015:
-Avvio della versione di Derby The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): istanza a816c00e-014b-214d-b925-0000096533b8
-sulla directory di database /private/var/folders/yv/tjhbq9zs0xzd9_zc4drsn4zm0000gn/T/gfembed6551253510465441380tmp/lib/databases/embedded_default con caricatore classi sun.misc.Launcher$AppClassLoader@61bbe9ba 
+Sun Jan 25 16:07:35 CET 2015:
+Avvio della versione di Derby The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): istanza a816c00e-014b-21a2-3c1b-0000057672a8
+sulla directory di database /private/var/folders/yv/tjhbq9zs0xzd9_zc4drsn4zm0000gn/T/gfembed5980034681595956151tmp/lib/databases/embedded_default con caricatore classi sun.misc.Launcher$AppClassLoader@61bbe9ba 
 Caricato da file:/Users/macosx/.m2/repository/org/glassfish/main/extras/glassfish-embedded-all/4.1/glassfish-embedded-all-4.1.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_25-b17
@@ -12,9 +12,9 @@ os.version=10.10
 derby.system.home=null
 Programma di caricamento classe database avviato - derby.database.classpath=''
 ----------------------------------------------------------------
-Sun Jan 25 14:35:20 CET 2015:
-Avvio della versione di Derby The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): istanza 6a6b410a-014b-214d-b925-0000096533b8
-sulla directory di database /private/var/folders/yv/tjhbq9zs0xzd9_zc4drsn4zm0000gn/T/gfembed6551253510465441380tmp/lib/databases/ejbtimer con caricatore classi sun.misc.Launcher$AppClassLoader@61bbe9ba 
+Sun Jan 25 16:07:41 CET 2015:
+Avvio della versione di Derby The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): istanza 6a6b410a-014b-21a2-3c1b-0000057672a8
+sulla directory di database /private/var/folders/yv/tjhbq9zs0xzd9_zc4drsn4zm0000gn/T/gfembed5980034681595956151tmp/lib/databases/ejbtimer con caricatore classi sun.misc.Launcher$AppClassLoader@61bbe9ba 
 Caricato da file:/Users/macosx/.m2/repository/org/glassfish/main/extras/glassfish-embedded-all/4.1/glassfish-embedded-all-4.1.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_25-b17
