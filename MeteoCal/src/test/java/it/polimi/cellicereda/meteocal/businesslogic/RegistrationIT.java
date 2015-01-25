@@ -101,12 +101,12 @@ public class RegistrationIT {
         u1.setSurname("celli");
         u1.setPassword("a");
         u1.setPublicCalendar(true);
-        u1.setEmail("a@a.com");
+        u1.setEmail("a5@a.com");
         reg.setUser(u1);
         
         reg.register();
         
-        User saved=em.find(User.class,"a@a.com");
+        User saved=em.find(User.class,"a5@a.com");
         assertNotNull(saved);
         assertEquals(saved.getUsername(),"a");
         assertEquals(saved.getName(),"andrea");

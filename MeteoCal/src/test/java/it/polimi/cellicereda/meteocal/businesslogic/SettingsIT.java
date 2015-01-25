@@ -68,7 +68,7 @@ public class SettingsIT {
     @Test
     public void noEmptyFieldsInSettings() {
         User u=new User();
-        u.setEmail("a@a.com");
+        u.setEmail("a3@a.com");
         u.setUsername("a");
         u.setName("a");
         u.setSurname("a");
@@ -93,7 +93,7 @@ public class SettingsIT {
     @Test
     public void updateData(){
         User u=new User();
-        u.setEmail("b@a.com");
+        u.setEmail("b3@a.com");
         u.setUsername("a");
         u.setName("a");
         u.setSurname("a");

@@ -102,7 +102,7 @@ public class EventCreationIT {
         u1.setSurname("celli");
         u1.setPassword("a");
         u1.setPublicCalendar(true);
-        u1.setEmail("a@a.com");
+        u1.setEmail("a1@a.com");
         upm.save(u1);
         modify.setCurrentUser(u1);
         

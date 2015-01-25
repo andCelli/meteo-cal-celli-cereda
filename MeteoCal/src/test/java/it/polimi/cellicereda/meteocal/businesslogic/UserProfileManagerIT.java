@@ -47,7 +47,7 @@ public class UserProfileManagerIT {
         u1.setSurname("a");
         u1.setPassword("a");
         u1.setPublicCalendar(true);
-        u1.setEmail("a@a.com");
+        u1.setEmail("a2@a.com");
         upm.save(u1);
         
         User savedUser=em.find(User.class,u1.getEmail());
