@@ -27,6 +27,7 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -162,4 +163,49 @@ public class NotificationsIT {
         assertEquals(n.get(0).getReferredEvent().getId(), e1.getId());
         assertEquals(n.get(0).getNotificationType(),NotificationType.EVENT_CHANGED);
     }
+    
+    /*@Test
+    public void noNotificationsIfEventNotChanged(){
+        //set current user
+        User u1=new User();
+        u1.setUsername("a");
+        u1.setName("andrea");
+        u1.setSurname("celli");
+        u1.setPassword("a");
+        u1.setPublicCalendar(true);
+        u1.setEmail("otherMail@a.com");
+        upm.save(u1);
+        modify.setCurrentUser(u1);
+        
+        //create the invited user
+        User invited=new User();
+        invited.setUsername("b");
+        invited.setName("b");
+        invited.setSurname("b");
+        invited.setPassword("b");
+        invited.setPublicCalendar(true);
+        invited.setEmail("otherMail@b.com");
+        upm.save(invited);
+        
+        //create and save new event
+        Event e1=new Event();
+        e1.setCreator(u1);
+        e1.setTitle("e1");
+        e1.setStartDate(new Date());
+        e1.setEndDate(new Date());
+        calManager.save(e1);
+        calManager.addAnUserToAnEventParticipants(invited, e1);
+        
+        //save without making any change
+        det.setEvent(em.find(Event.class,e1.getId()));
+        det.modify();
+        modify.saveEvent();
+        
+        //no event changed notifications referring to e1
+        List<Notification> n=notification.getNotificationForUser(invited);
+        for(Notification notif:n){
+            assertTrue(!(notif.getReferredEvent().equals(e1) &&
+                    notif.getNotificationType().equals(NotificationType.EVENT_CHANGED)));
+        }
+    }*/
 }
