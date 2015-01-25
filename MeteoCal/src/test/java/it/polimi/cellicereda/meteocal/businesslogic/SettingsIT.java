@@ -76,41 +76,43 @@ public class SettingsIT {
         u.setPublicCalendar(true);
         upm.save(u);
         sb.setCurrentUser(u);
-        sb.setName(new String());
-        sb.setSurname("new");
+        sb.getCurrentUser().setName(null);
+        sb.getCurrentUser().setSurname("new");
         try {
             sb.save();
-        } catch (NullPointerException e){}
+        } catch (Exception e){}
         //name and surname have not been changed
-        assertTrue(em.find(User.class,u.getEmail()).getName().equals("a"));
-        assertTrue(em.find(User.class,u.getEmail()).getSurname().equals("a"));
+        User updatedUser=em.find(User.class,u.getEmail());
+        assertEquals(updatedUser.getName(),"a");
+        assertEquals(updatedUser.getSurname(),"a");
     }
     
     /**
      * if new data are fine user info are updated
      */
+    @Test
     public void updateData(){
         User u=new User();
-        u.setEmail("a@a.com");
+        u.setEmail("b@a.com");
         u.setUsername("a");
         u.setName("a");
         u.setSurname("a");
         u.setPassword("a");
         u.setPublicCalendar(false);
         upm.save(u);
+        
         sb.setCurrentUser(u);
-        sb.setName("new");
-        sb.setSurname("new");
-        sb.setUsername("new");
-        sb.setPrivacy(true);
-        sb.setPassword("a");
+        sb.getCurrentUser().setName("new");
+        sb.getCurrentUser().setSurname("new");
+        sb.getCurrentUser().setUsername("new");
+        sb.getCurrentUser().setPublicCalendar(false);
         sb.save();
+        
         User updatedUser=em.find(User.class,u.getEmail());
         assertNotNull(updatedUser);
         assertEquals(updatedUser.getUsername(),"new");
         assertEquals(updatedUser.getName(),"new");
         assertEquals(updatedUser.getSurname(),"new");
-        assertEquals(updatedUser.getPublicCalendar(),true);    
+        assertEquals(updatedUser.getPublicCalendar(),false);    
     }
 }
-//si può salvare senza riconfermare la password?
