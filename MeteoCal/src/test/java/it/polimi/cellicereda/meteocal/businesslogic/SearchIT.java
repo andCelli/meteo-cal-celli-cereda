@@ -56,7 +56,7 @@ public class SearchIT {
     }
     
     @Test
-    public void searchUserName(){
+    public void searchUser(){
         User current=new User();
         current.setUsername("c");
         current.setName("c");
@@ -68,9 +68,9 @@ public class SearchIT {
         search.setCurrentUser(current);
         
         User u1=new User();
-        u1.setUsername("a");
-        u1.setName("a");
-        u1.setSurname("a");
+        u1.setUsername("andre");
+        u1.setName("andrea");
+        u1.setSurname("celli");
         u1.setPassword("a");
         u1.setPublicCalendar(true);
         u1.setEmail("a@a.com");
@@ -85,11 +85,31 @@ public class SearchIT {
         u2.setEmail("b@a.com");
         upm.save(u2);
         
-        search.setSearchKey("b");
+        //username
+        search.setSearchKey("andre");
         List<User> results=search.getSearchResults();
-        
         assertNotNull(results);
         assertEquals(results.size(),1);
-        assertEquals(results.get(0).getUsername(),"b");
+        assertEquals(results.get(0).getUsername(),"andre");
+        
+        //name
+        search.setSearchKey("andrea");
+        results=search.getSearchResults();
+        assertNotNull(results);
+        assertEquals(results.size(),1);
+        assertEquals(results.get(0).getName(),"andrea");
+        
+        //surname
+        search.setSearchKey("celli");
+        results=search.getSearchResults();
+        assertNotNull(results);
+        assertEquals(results.size(),1);
+        assertEquals(results.get(0).getSurname(),"celli");
+        
+        //no current user search himself
+        search.setSearchKey("c");
+        results=search.getSearchResults();
+        assertNotNull(results);
+        assertEquals(results.size(),0);
     }
 }
