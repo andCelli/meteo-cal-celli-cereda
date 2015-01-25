@@ -24,10 +24,10 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class NotificationManager {
-    
+
     @PersistenceContext
     private EntityManager em;
-    
+
     @EJB
     private CalendarManager cm;
 
@@ -49,10 +49,10 @@ public class NotificationManager {
     public void delete(Notification n) {
         em.remove(n);
     }
-    
+
     public List<Notification> getNotificationForEvent(Event e) {
         e = em.find(Event.class, e.getId());
-        
+
         return em.createNamedQuery("Notification.findForEvent").
                 setParameter("event", e).getResultList();
     }
@@ -96,21 +96,21 @@ public class NotificationManager {
      */
     public List<Notification> getPendingFutureNotificationForUser(User recipient) {
         recipient = em.find(User.class, recipient.getEmail());
-        
+
         List<Notification> nonFiltered = getPendingNotificationForUser(recipient);
         List<Notification> filtered = new LinkedList<>();
-        
+
         Date now = new Date();
-        
+
         for (Notification n : nonFiltered) {
             if (n.getReferredEvent().getStartDate().after(now)) {
                 filtered.add(n);
             }
         }
-        
+
         return filtered;
     }
-    
+
     public List<Notification> findNotificationWithoutEvent() {
         return em.createNamedQuery("Notification.findNotificationWithoutEvent").getResultList();
     }
@@ -124,15 +124,15 @@ public class NotificationManager {
      */
     public void answerToAnInvite(Notification invite, Boolean answer) {
         invite = em.find(Notification.class, invite.getId());
-        
+
         if ((invite.getNotificationType() != NotificationType.EVENT_INVITE)
                 || (invite.getNotificationState() != NotificationState.PENDING)) {
             throw new IllegalArgumentException();
         }
-        
+
         invite.setNotificationAnswer(answer);
         invite.setNotificationState(NotificationState.ANSWERED);
-        
+
         if (answer) {
             cm.addAnUserToAnEventParticipants(invite.getRecipient(), invite.getReferredEvent());
         }
@@ -153,22 +153,22 @@ public class NotificationManager {
      */
     public void answerToASunnyDayProposal(Notification proposal, Boolean answer, Date newStartingDate) {
         proposal = em.find(Notification.class, proposal.getId());
-        
+
         if ((proposal.getNotificationType() != NotificationType.SUNNY_DAY_PROPOSAL)
                 || (proposal.getNotificationState() != NotificationState.PENDING)) {
             throw new IllegalArgumentException();
         }
-        
+
         proposal.setNotificationAnswer(answer);
         proposal.setNotificationState(NotificationState.ANSWERED);
-        
+
         if (answer) {
             Event e = proposal.getReferredEvent();
 
             //new ending = oldEnding + (newstart - oldstart)
             Date newEnding = new Date();
             newEnding.setTime(e.getEndDate().getTime() + newStartingDate.getTime() - e.getStartDate().getTime());
-            
+
             cm.changeEventTiming(e, newStartingDate, newEnding);
         }
     }
@@ -182,7 +182,7 @@ public class NotificationManager {
     public void sendAnInvite(Event event, User invited) {
         event = em.find(Event.class, event.getId());
         invited = em.find(User.class, invited.getEmail());
-        
+
         Notification n = new Notification(NotificationType.EVENT_INVITE, invited, event);
         if (notAlreadySent(n)) {
             em.persist(n);
@@ -195,7 +195,9 @@ public class NotificationManager {
      */
     public void readNotification(Notification n) {
         n = em.find(Notification.class, n.getId());
-        n.setNotificationState(NotificationState.READED);
+        if (n != null) {
+            n.setNotificationState(NotificationState.READED);
+        }
     }
 
     /**
@@ -229,7 +231,7 @@ public class NotificationManager {
      */
     public void sendSunnyDayProposal(Event e) {
         e = em.find(Event.class, e.getId());
-        
+
         Notification n = new Notification(NotificationType.SUNNY_DAY_PROPOSAL, e.getCreator(), e);
         if (notAlreadySent(n)) {
             em.persist(n);
@@ -246,7 +248,7 @@ public class NotificationManager {
      */
     public void generateEventChangedNotifications(Event event) {
         event = em.find(Event.class, event.getId());
-        
+
         for (User u : cm.getEventParticipant(event)) {
             Notification n = new Notification(NotificationType.EVENT_CHANGED, u, event);
             if (notAlreadySent(n)) {
@@ -268,8 +270,8 @@ public class NotificationManager {
         }
         return true;
     }
-    
-    void deleteForecastRelatedNotifications(Event event) {
+
+    public void deleteForecastRelatedNotifications(Event event) {
         for (Notification n : getNotificationForEvent(event)) {
             if (n.getNotificationType() == NotificationType.BAD_WEATHER_ALERT
                     || n.getNotificationType() == NotificationType.SUNNY_DAY_PROPOSAL) {
