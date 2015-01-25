@@ -38,7 +38,6 @@ public class CalendarManagerTest {
         Date twoDays = new Date(tomorrow.getTime() + 24 * 60 * 60 * 1000);
         fakeEvent.setStartDate(twoDays);
         assertFalse(cm.isTomorrow(fakeEvent));
-
     }
 
 }
