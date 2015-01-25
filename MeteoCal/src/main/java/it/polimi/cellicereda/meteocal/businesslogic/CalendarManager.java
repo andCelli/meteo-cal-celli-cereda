@@ -204,6 +204,9 @@ public class CalendarManager {
             if (o1 instanceof Place) {
                 return ((Place) o1).equals(o2);
             }
+            if (o1 == null && o2 == null) {
+                return true;
+            }
         } catch (Exception e) {
             return false;
         }
