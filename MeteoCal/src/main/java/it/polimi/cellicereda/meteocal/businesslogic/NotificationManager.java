@@ -240,9 +240,7 @@ public class NotificationManager {
 
     /**
      * Generate an EventChangedNotification for all the users that participates
-     * in the given event (excluding the event's creator). If the user already
-     * have a pending EventChanged notification for the same event we skip the
-     * creation of a new one.
+     * in the given event (excluding the event's creator).
      *
      * @param event The event that just changed
      */
@@ -250,9 +248,16 @@ public class NotificationManager {
         event = em.find(Event.class, event.getId());
 
         for (User u : cm.getEventParticipant(event)) {
+            deleteEventChangedNotifications(event, u);
             Notification n = new Notification(NotificationType.EVENT_CHANGED, u, event);
-            if (notAlreadySent(n)) {
-                em.persist(n);
+            em.persist(n);
+        }
+    }
+
+    private void deleteEventChangedNotifications(Event event, User u) {
+        for (Notification n : getNotificationForUser(u)) {
+            if (n.getReferredEvent().equals(event) && n.getNotificationType() == NotificationType.EVENT_CHANGED) {
+                em.remove(n);
             }
         }
     }
