@@ -8,11 +8,10 @@ package it.polimi.cellicereda.meteocal.businesslogic;
 import it.polimi.cellicereda.meteocal.entities.Event;
 import it.polimi.cellicereda.meteocal.entities.User;
 import it.polimi.cellicereda.meteocal.gui.DetailsEventBean;
-import it.polimi.cellicereda.meteocal.gui.LoggerProducer;
 import it.polimi.cellicereda.meteocal.gui.ModifyEventBean;
-import it.polimi.cellicereda.meteocal.gui.RegistrationBean;
 import it.polimi.cellicereda.meteocal.gui.ScheduleBean;
 import it.polimi.cellicereda.meteocal.gui.Utility;
+import java.util.Date;
 import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -22,6 +21,7 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
@@ -32,7 +32,7 @@ import org.junit.runner.RunWith;
  * @author Andrea
  */
 @RunWith(Arquillian.class)
-public class EventCreationIT {
+public class ModifyEventIT {
     @Inject
     private ModifyEventBean modify;
     @Inject
@@ -74,27 +74,8 @@ public class EventCreationIT {
     }
     
     @Test
-    public void ModifyEventBeanShouldBeInjected() {
-        assertNotNull(modify);
-    }
-    
-    @Test
-    public void EntityManagerShouldBeInjected() {
-        assertNotNull(em);
-    }
-    
-    @Test
-    public void ScheduleBeanShouldBeInjected() {
-        assertNotNull(schedule);
-    }
-    
-    @Test
-    public void DetailsEventBeanShouldBeInjected() {
-        assertNotNull(det);
-    }
-    
-    @Test
-    public void createNewEvent(){
+    public void modifyEvent(){
+        
         //set current user
         User u1=new User();
         u1.setUsername("a");
@@ -106,11 +87,27 @@ public class EventCreationIT {
         upm.save(u1);
         modify.setCurrentUser(u1);
         
-        modify.setTitle("prova");
+        //create and save new event
+        Event e1=new Event();
+        e1.setCreator(u1);
+        e1.setTitle("e1");
+        e1.setStartDate(new Date());
+        e1.setEndDate(new Date());
+        calManager.save(e1);
+        
+        //set event in details
+        det.setEvent(em.find(Event.class,e1.getId()));
+        det.modify();
+        
+        //changes
+        modify.setTitle("new Title");
         modify.saveEvent();
         
-        assertEquals(calManager.getEventsByCreator(u1).size(),1);
-        assertEquals(calManager.getEventsByCreator(u1).get(0).getTitle(),"prova");
+        Event modified=em.find(Event.class, e1.getId());
+        assertNotNull(modified);
+        assertEquals(modified.getTitle(),"new Title");
+        assertEquals(modified.getStartDate(),e1.getStartDate());
+        assertEquals(modified.getEndDate(),e1.getEndDate());
+        
     }
 }
-
