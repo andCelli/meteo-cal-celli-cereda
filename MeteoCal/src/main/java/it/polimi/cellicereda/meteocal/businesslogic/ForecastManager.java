@@ -273,7 +273,7 @@ public class ForecastManager {
         return num <= 4;
     }
 
-    @Schedule(hour = "*")
+    @Schedule(hour = "*", persistent = false)
     /**
      * Update the forecast for all the events (and generate the notifications)
      */
