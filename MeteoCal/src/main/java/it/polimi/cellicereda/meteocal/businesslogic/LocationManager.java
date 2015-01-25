@@ -19,9 +19,13 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class LocationManager {
-
+    
     @PersistenceContext
     EntityManager em;
+    
+    public void save(Place p) {
+        em.persist(p);
+    }
 
     /**
      * This method downloads the list of places from openweathermap, it should
@@ -32,7 +36,7 @@ public class LocationManager {
         if (!em.createNamedQuery("Place.findAll").getResultList().isEmpty()) {
             return;
         }
-
+        
         try {
             String placesList = URLConnectionReader.getText("http://openweathermap.org/help/city_list.txt");
             String places[] = placesList.split("\\n");
@@ -40,14 +44,14 @@ public class LocationManager {
             //the first line is descriptive and the last is empty
             for (int i = 1; i < places.length - 1; i++) {
                 String values[] = places[i].split("\\t");
-
+                
                 Place p = new Place();
                 p.setId(Long.parseLong(values[0]));
                 p.setName(values[1]);
                 p.setLatitude(Double.parseDouble(values[2]));
                 p.setLongitude(Double.parseDouble(values[3]));
                 p.setCountry(values[4]);
-
+                
                 em.persist(p);
             }
         } catch (Exception ex) {
