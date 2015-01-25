@@ -69,7 +69,7 @@ public class EventCreationIT {
                 .addClass(ForecastManager.class)
                 .addPackage(User.class.getPackage())
                 .addPackage(Event.class.getPackage())
-                .addAsResource("test-persistence.xml", "META-INF/persistence.xml")
+                .addAsResource("test-persistence_1.xml", "META-INF/persistence.xml")
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
     }
     

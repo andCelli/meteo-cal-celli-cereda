@@ -35,7 +35,7 @@ public class UserProfileManagerIT {
         return ShrinkWrap.create(WebArchive.class)
                 .addClass(UserProfileManager.class)
                 .addPackage(User.class.getPackage())
-                .addAsResource("test-persistence.xml","META-INF/persistence.xml")
+                .addAsResource("test-persistence_1.xml","META-INF/persistence.xml")
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");     
     }
     
