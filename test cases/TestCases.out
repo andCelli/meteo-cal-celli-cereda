@@ -1,0 +1,14 @@
+\BOOKMARK [0][-]{part.1}{I Introduction}{}% 1
+\BOOKMARK [0][-]{part.2}{II Test cases}{}% 2
+\BOOKMARK [1][-]{section.1}{User registration}{part.2}% 3
+\BOOKMARK [1][-]{section.2}{Login}{part.2}% 4
+\BOOKMARK [1][-]{section.3}{Create a new event}{part.2}% 5
+\BOOKMARK [1][-]{section.4}{Delete event}{part.2}% 6
+\BOOKMARK [1][-]{section.5}{Remove participation}{part.2}% 7
+\BOOKMARK [1][-]{section.6}{Modify event}{part.2}% 8
+\BOOKMARK [1][-]{section.7}{Read and answer to notifications}{part.2}% 9
+\BOOKMARK [1][-]{section.8}{Search User}{part.2}% 10
+\BOOKMARK [1][-]{section.9}{Selection of the user}{part.2}% 11
+\BOOKMARK [1][-]{section.10}{Browse other user's calendar}{part.2}% 12
+\BOOKMARK [1][-]{section.11}{Change settings}{part.2}% 13
+\BOOKMARK [0][-]{part.3}{III Note on the automated tests}{}% 14

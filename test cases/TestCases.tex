@@ -1,0 +1,225 @@
+\documentclass[10pt,a4paper,titlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage[hidelinks]{hyperref}
+
+%this is a command used in the title template
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+%questo fa in modo che le liste numerate siano allineate come le altre
+\setenumerate{leftmargin=*, labelindent=\parindent}
+
+%questo genera il toc, ricorda di eseguire due volte
+\makeindex
+
+\begin{document}
+\input{title.tex}
+
+\tableofcontents
+
+\pagebreak
+\part{Introduction}
+In order to test our platform we provide the following documents:
+\begin{itemize}
+\item Requirements and analysis specification document (RASD)
+\item Design Document (DD)
+\item Source Code
+\end{itemize}
+
+\pagebreak
+\part{Test cases}
+The following test cases address the key functionalities of the MeteoCal platform.
+
+\section{User registration}
+\begin{tabular}{| p{0.2\linewidth} | p{0.8\linewidth} |}
+\hline Goal & User registration\\
+\hline Environment & Registration page\\
+\hline Input & Random profile information \\
+\hline Expected output & The registration is completed \\
+\hline Obtained output & The same as above. The new user information are stored in the database \\
+\hline Final output & The user is taken back to the login page where he/she has to perform the login \\
+\hline Possible errors &
+\begin{itemize}
+\item  Empty fields: the system prevents the user registration to be
+accomplished as all the fields are mandatory (previous inputs are not
+deleted)
+\item Not-valid email address: the system prevents the user registration to be
+accomplished (previous inputs are not deleted)
+\item Mismatching password: the system prevents the user registration to be
+accomplished (previous inputs are not deleted)
+\item Email already in use: the system prevents the user registration to be
+accomplished (previous inputs are not deleted)
+\end{itemize}\\
+\hline
+\end{tabular}
+
+
+\section{Login}
+\begin{tabular}{| p{0.2\linewidth} | p{0.8\linewidth} |}
+\hline Goal & Login \\
+\hline Environment & The login page \\
+\hline Input & Email and password belonging to a registered user \\
+\hline Expected output & The systems confirms the login \\
+\hline Obtained output & The systems confirms the login \\
+\hline Final output & The user is redirected to his homepage \\
+\hline Possible errors &
+\begin{itemize}
+\item Empty fields: the systems doesn’t allow the login
+\item Invalid email: the system doesn’t allow the login
+\item Wrong password: the system doesn’t allow the login
+\end{itemize}\\
+\hline
+\end{tabular}
+
+
+\section{Create a new event}
+\begin{tabular}{| p{0.2\linewidth} | p{0.8\linewidth} |}
+\hline Goal & Create a new event \\
+\hline Environment & Homepage. More specifically the user will use the dialog appeared
+(after the “New Event” button is pressed) on the right of the calendar \\
+\hline Input & The relevant event details \\
+\hline Expected output & The system confirms the creation of the event \\
+\hline Obtained output & The system stores the event details in the database and, if
+necessary, generates the notifications related to the new event \\
+\hline Final output & The new event is displayed in the user’s calendar and the panel on
+the right is hidden \\
+\hline Possible errors &
+\begin{itemize}
+\item The place is not selected among the available choices: the event is
+created without a location
+\item The user is not selected among the available choices: the system
+prevents the creation of the event and reset previously specified data.
+\item (Time consistency of the start/end date is always guaranteed)
+\end{itemize}\\
+\hline
+\end{tabular}
+
+
+\section{Delete event}
+\begin{tabular}{| p{0.2\linewidth} | p{0.8\linewidth} |}
+\hline Goal & Delete event \\
+\hline Environment & Homepage, the dialog showing the event information \\
+\hline Input & Delete button \\
+\hline Expected output & The system confirms the deletion of the event \\
+\hline Obtained output & The systems deletes the event from the Event table. It also
+deletes all the notifications and participations related to that event \\
+\hline Final output & The event is no longer displayed in the calendar \\
+\hline Possible errors & none \\
+\hline
+\end{tabular}
+
+
+\section{Remove participation}
+\begin{tabular}{| p{0.2\linewidth} | p{0.8\linewidth} |}
+\hline Goal & Remove participation \\
+\hline Environment & Homepage, the dialogs showing event information \\
+\hline Input & The Remove Participation button \\
+\hline Expected output & The systems confirms the unregister request \\
+\hline Obtained output & The user participations is removed from the database. All the
+notifications for the user related to that event are deleted \\
+\hline Final output & The events and the related notifications are deleted from the calendar \\
+\hline Possible errors & none \\
+\hline
+\end{tabular}
+
+
+\section{Modify event}
+\begin{tabular}{| p{0.2\linewidth} | p{0.8\linewidth} |}
+\hline Goal & Modify event \\
+\hline Environment & Homepage \\
+\hline Input & Modify button and then any details that the user may want to change \\
+\hline Expected output & The system allows the user to modify the event details \\
+\hline Obtained output & The system updates the event in the database. It also produces
+event changed notifications for participants, if any \\
+\hline Final output & The updated event is displayed in the calendar \\
+\hline Possible errors & The same of “create of an event” \\
+\hline
+\end{tabular}
+
+
+\section{Read and answer to notifications}
+\begin{tabular}{| p{0.2\linewidth} | p{0.8\linewidth} |}
+\hline Goal & Read and answer to notifications \\
+\hline Environment & The homepage \\
+\hline Input & One of the possible answer buttons for notifications \\
+\hline Expected output & The systems confirms the user’s answer to the notification \\
+\hline Obtained output & The systems change the state of the notification in the database
+and update its answer (if the notification type requires one) \\
+\hline Final output & The notification is removed from the panel on the left and, eventually,
+the related event is updated in the calendar. \\
+\hline Possible errors & none\\
+\hline
+\end{tabular}
+
+
+\section{Search User}
+\begin{tabular}{| p{0.2\linewidth} | p{0.8\linewidth} |}
+\hline Goal & Search User \\
+\hline Environment & Any page of the system available to a logged user \\
+\hline Input & The search key \\
+\hline Expected output & The system performs the search \\
+\hline Obtained output & The systems retrieves the search results from the database \\
+\hline Final output & Search results (if any) are displayed in the result page \\
+\hline Possible errors & Not valid search key: the search key can be one between the username,
+the name, or the surname of the user. If the system does not find any
+matching with its users in one of those fields it will show no results \\
+\hline
+\end{tabular}
+
+
+\section{Selection of the user}
+\begin{tabular}{| p{0.2\linewidth} | p{0.8\linewidth} |}
+\hline Goal & Selection of the user\\
+\hline Environment & Result page \\
+\hline Input & The selected user \\
+\hline Expected output & The system confirms the selection \\
+\hline Obtained output & The system retrieves selected user data from the db \\
+\hline Final output & The selected user calendar is displayed \\
+\hline Possible errors & none \\
+\hline
+\end{tabular}
+
+
+\section{Browse other user's calendar}
+\begin{tabular}{| p{0.2\linewidth} | p{0.8\linewidth} |}
+\hline Goal & Browse other user’s calendar\\
+\hline Environment & external calendar page \\
+\hline Input & The selection of an event \\
+\hline Expected output & The system confirms the selection \\
+\hline Obtained output & The system retrieves event’s details \\
+\hline Final output & The system shows the details allowed by the event’s privacy setting \\
+\hline Possible errors & none \\
+\hline
+\end{tabular}
+
+
+\section{Change settings}
+\begin{tabular}{| p{0.2\linewidth} | p{0.8\linewidth} |}
+\hline Goal & Change settings \\
+\hline Environment & Settings page \\
+\hline Input & New user information \\
+\hline Expected output & The system confirms the new user information \\
+\hline Obtained output & The system updates the user data stored in the database \\
+\hline Final output & The user is redirected to his homepage \\
+\hline Possible errors &
+\begin{itemize}
+\item Empty fields: the system prevents the data update accomplishment
+(previous inputs are not deleted).
+\item Mismatch between passwords: the system prevents the data update
+accomplishment (previous inputs are not deleted).
+\end{itemize}\\
+\hline
+\end{tabular}
+
+
+\pagebreak
+\part{Note on the automated tests}
+The automated tests can perform a huge number of queries to the OpenWeatherMap service, therefore it is possible that sometimes they occasionally fail (OpenWeatherMap grants a limited number of query per minute). This is not a problem as the tests will start again to work of you wait some time.
+ 
+\end{document}
