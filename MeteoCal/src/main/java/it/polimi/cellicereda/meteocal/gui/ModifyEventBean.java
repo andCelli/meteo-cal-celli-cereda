@@ -84,7 +84,7 @@ public class ModifyEventBean implements Serializable {
     @PostConstruct
     public void init() {
         resetUtilityVariables();
-        currentUser = userProfileManager.getLoggedUser();     
+        setCurrentUser(userProfileManager.getLoggedUser());     
         try {
             scheduleBean.getDetailsEventBean().setModifyEventBean(this);
         } catch (Exception e) {
@@ -392,5 +392,12 @@ public class ModifyEventBean implements Serializable {
      */
     public void setRemovedFromParticipants(User removedFromParticipants) {
         this.removedFromParticipants = removedFromParticipants;
+    }
+
+    /**
+     * @param currentUser the currentUser to set
+     */
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
     }
 }

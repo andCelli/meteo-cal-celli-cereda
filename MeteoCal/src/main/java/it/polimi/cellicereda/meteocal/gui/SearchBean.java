@@ -38,7 +38,7 @@ public class SearchBean implements Serializable {
     @PostConstruct
     public void init(){
         setSearchKey(new String());
-        currentUser=userManager.getLoggedUser();
+        setCurrentUser(userManager.getLoggedUser());
     }
     
     /*
@@ -72,13 +72,6 @@ public class SearchBean implements Serializable {
         if(!currentUser.getUsername().equals(searchKey)){
             results.addAll(userManager.getByUsername(getSearchKey()));
         }
-        //search for (name + surmane) (and check that the user is not already in the list
-       /* for(User u:userManager.getBySurname(getSearchKey()))
-             //
-             // CHECK (se metto più di uno spazio?)
-             //
-            if(!results.contains(u) && getSearchKey().equals(u.getName()+" "+u.getSurname()))
-                results.add(u);*/
        //search for surname
         for(User u:userManager.getBySurname(getSearchKey()))
             if(!results.contains(u) && !u.equals(currentUser))
@@ -108,6 +101,13 @@ public class SearchBean implements Serializable {
      */
     public void setSearchKey(String searchKey) {
         this.searchKey = searchKey;
+    }
+
+    /**
+     * @param currentUser the currentUser to set
+     */
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
     }
     
    
