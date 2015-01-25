@@ -1,23 +1,14 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.11.5)  24 JAN 2015 20:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Arch Linux) (preloaded format=pdflatex 2015.1.25)  25 JAN 2015 16:50
 entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
 **UserManual.tex
-
-("C:\Users\stefano\Documents\NetBeansProjects\meteo-cal-celli-cereda\user manua
-l\UserManual.tex"
-LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
-abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
-croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
-lician, german, german-x-2013-05-26, greek, gujarati, hindi, hungarian, iceland
-ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
- lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
-german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
-ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
-an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
-ishmax, welsh, loaded.
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
+(./UserManual.tex
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 79 languages loaded.
+(/usr/share/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\size10.clo"
+(/usr/share/texmf-dist/tex/latex/base/size10.clo
 File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -32,19 +23,19 @@ File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
-Package: inputenc 2008/03/30 v1.1d Input encoding file
+(/usr/share/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2014/04/30 v1.2b Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\utf8.def"
+(/usr/share/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
+(/usr/share/texmf-dist/tex/latex/base/t1enc.dfu
 File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -194,7 +185,7 @@ File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
+(/usr/share/texmf-dist/tex/latex/base/ot1enc.dfu
 File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -225,7 +216,7 @@ File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
+(/usr/share/texmf-dist/tex/latex/base/omsenc.dfu
 File: omsenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
@@ -249,24 +240,24 @@ Now handling font encoding U ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+(/usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip43
 
 For additional information on amsmath, use the `?' option.
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+(/usr/share/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+(/usr/share/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks16
 \ex@=\dimen103
 ))
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+(/usr/share/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen104
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+(/usr/share/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count87
@@ -307,20 +298,20 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+(/usr/share/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+(/usr/share/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\makeidx.sty"
+(/usr/share/texmf-dist/tex/latex/base/makeidx.sty
 Package: makeidx 2000/03/29 v1.0m Standard LaTeX package
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\enumitem\enumitem.sty"
+(/usr/share/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enitkv@toks@=\toks21
 \labelindent=\skip46
@@ -329,31 +320,31 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enit@inbox=\box28
 \enitdp@description=\count99
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
-Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+(/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
-Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+(/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
 \KV@toks@=\toks23
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+(/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+(/usr/share/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
-File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+(/usr/share/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+(/usr/share/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+(/usr/share/texmf-dist/tex/generic/oberdiek/infwarerr.sty
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+(/usr/share/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count100
@@ -361,7 +352,7 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen113
 \Gin@req@width=\dimen114
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\tools\longtable.sty"
+(/usr/share/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
 \LTleft=\skip47
 \LTright=\skip48
@@ -379,16 +370,16 @@ Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
 \c@LT@chunks=\count105
 \LT@p@ftn=\toks24
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
+(/usr/share/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
-Package: hobsub-hyperref 2012/04/25 v1.12 Bundle oberdiek, subset hyperref (HO)
+(/usr/share/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
-Package: hobsub-generic 2012/04/25 v1.12 Bundle oberdiek, subset generic (HO)
-Package: hobsub 2012/04/25 v1.12 Construct package bundles (HO)
+(/usr/share/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2012/05/28 v1.13 Construct package bundles (HO)
 Package hobsub Info: Skipping package `infwarerr' (already loaded).
 Package hobsub Info: Skipping package `ltxcmds' (already loaded).
 Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
@@ -419,7 +410,7 @@ Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
 )
 Package hobsub Info: Skipping package `hobsub' (already loaded).
 Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
-Package: hopatch 2011/06/24 v1.1 Wrapper for package hooks (HO)
+Package: hopatch 2012/05/28 v1.2 Wrapper for package hooks (HO)
 Package: xcolor-patch 2011/01/30 xcolor patch
 Package: atveryend 2011/06/30 v1.8 Hooks at the very end of document (HO)
 Package atveryend Info: \enddocument detected (standard20110627).
@@ -427,27 +418,27 @@ Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
 Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
 Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+(/usr/share/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty"
+(/usr/share/texmf-dist/tex/latex/oberdiek/auxhook.sty
 Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
+(/usr/share/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
 \@linkdim=\dimen116
 \Hy@linkcounter=\count106
 \Hy@pagecounter=\count107
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
+(/usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
 \Hy@SavedSpaceFactor=\count108
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
+(/usr/share/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
 Package hyperref Info: Hyper figures OFF on input line 4443.
@@ -459,7 +450,7 @@ Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4688.
 \c@Hy@tempcnt=\count109
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\url\url.sty"
+(/usr/share/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
@@ -484,12 +475,12 @@ LaTeX Info: Redefining \pageref on input line 6369.
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
+(/usr/share/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
 \Fld@listcount=\count114
 \c@bookmark@seq@number=\count115
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
+(/usr/share/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
@@ -497,11 +488,13 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 \Hy@SectionHShift=\skip51
 )
 \@indexfile=\write3
+\openout3 = `UserManual.idx'.
+
 
 Writing index file UserManual.idx
+(./UserManual.aux)
+\openout1 = `UserManual.aux'.
 
-("C:\Users\stefano\Documents\NetBeansProjects\meteo-cal-celli-cereda\user manua
-l\UserManual.aux")
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
 LaTeX Font Info:    ... okay on input line 21.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
@@ -516,7 +509,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
 LaTeX Font Info:    ... okay on input line 21.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 21.
 LaTeX Font Info:    ... okay on input line 21.
- ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+ (/usr/share/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count116
 \scratchdimen=\dimen120
@@ -529,13 +522,28 @@ LaTeX Font Info:    ... okay on input line 21.
 \MPnumerator=\count120
 \makeMPintoPDFobject=\count121
 \everyMPtoPDFconversion=\toks26
+) (/usr/share/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/share/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
 )
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
 \AtBeginShipoutBox=\box34
 Package hyperref Info: Link coloring OFF on input line 21.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
+
+(/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
+(/usr/share/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count122
@@ -544,374 +552,351 @@ LaTeX Info: Redefining \ref on input line 21.
 LaTeX Info: Redefining \pageref on input line 21.
 LaTeX Info: Redefining \nameref on input line 21.
 
-("C:\Users\stefano\Documents\NetBeansProjects\meteo-cal-celli-cereda\user manua
-l\UserManual.out")
-("C:\Users\stefano\Documents\NetBeansProjects\meteo-cal-celli-cereda\user manua
-l\UserManual.out")
+(./UserManual.out) (./UserManual.out)
 \@outlinefile=\write4
+\openout4 = `UserManual.out'.
 
-("C:\Users\stefano\Documents\NetBeansProjects\meteo-cal-celli-cereda\user manua
-l\title.tex" <./images/logo.png, id=83, 569.12625pt x 569.12625pt>
+ (./title.tex
+<./images/logo.png, id=84, 569.12625pt x 569.12625pt>
 File: ./images/logo.png Graphic file (type png)
-
-<use ./images/logo.png>
+ <use ./images/logo.png>
 Package pdftex.def Info: ./images/logo.png used on input line 5.
 (pdftex.def)             Requested size: 103.50105pt x 103.49777pt.
- [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/stefano/Document
-s/NetBeansProjects/meteo-cal-celli-cereda/user manual/images/logo.png>])
-("C:\Users\stefano\Documents\NetBeansProjects\meteo-cal-celli-cereda\user manua
-l\UserManual.toc"
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./images/logo.png>])
+(./UserManual.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 9.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+ (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 9.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+(/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ))
 \tf@toc=\write5
+\openout5 = `UserManual.toc'.
+
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.27 \part
+l.26 \part
           {System Description} [1]
-<./images/01_login.png, id=122, 438.63875pt x 480.79625pt>
+<./images/01_login.png, id=123, 438.63875pt x 480.79625pt>
 File: ./images/01_login.png Graphic file (type png)
 
 <use ./images/01_login.png>
-Package pdftex.def Info: ./images/01_login.png used on input line 42.
+Package pdftex.def Info: ./images/01_login.png used on input line 41.
 (pdftex.def)             Requested size: 241.49895pt x 264.71019pt.
- [2 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/user ma
-nual/images/01_login.png>]
-<./images/02_registration.png, id=129, 490.83376pt x 575.14874pt>
+ [2 <./images/01_login.png>]
+<./images/02_registration.png, id=130, 490.83376pt x 575.14874pt>
 File: ./images/02_registration.png Graphic file (type png)
 
 <use ./images/02_registration.png>
-Package pdftex.def Info: ./images/02_registration.png used on input line 51.
+Package pdftex.def Info: ./images/02_registration.png used on input line 50.
 (pdftex.def)             Requested size: 241.49895pt x 282.98378pt.
 
-<./images/03_about.png, id=130, 921.4425pt x 547.04375pt>
+<./images/03_about.png, id=131, 921.4425pt x 547.04375pt>
 File: ./images/03_about.png Graphic file (type png)
 
 <use ./images/03_about.png>
-Package pdftex.def Info: ./images/03_about.png used on input line 60.
+Package pdftex.def Info: ./images/03_about.png used on input line 59.
 (pdftex.def)             Requested size: 345.0pt x 204.81535pt.
- [3 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/user ma
-nual/images/02_registration.png>]
-<./images/04_calendar_empty.png, id=136, 1443.3925pt x 692.5875pt>
+ [3 <./images/02_registration.png>]
+<./images/04_calendar_empty.png, id=137, 1443.3925pt x 692.5875pt>
 File: ./images/04_calendar_empty.png Graphic file (type png)
 
 <use ./images/04_calendar_empty.png>
-Package pdftex.def Info: ./images/04_calendar_empty.png used on input line 71.
+Package pdftex.def Info: ./images/04_calendar_empty.png used on input line 70.
 (pdftex.def)             Requested size: 345.0pt x 165.53746pt.
 
-<./images/05_calendar_busy.png, id=137, 1432.35126pt x 735.74875pt>
+<./images/05_calendar_busy.png, id=138, 1432.35126pt x 735.74875pt>
 File: ./images/05_calendar_busy.png Graphic file (type png)
 
 <use ./images/05_calendar_busy.png>
-Package pdftex.def Info: ./images/05_calendar_busy.png used on input line 75.
+Package pdftex.def Info: ./images/05_calendar_busy.png used on input line 74.
 (pdftex.def)             Requested size: 345.0pt x 177.21199pt.
- [4 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/user ma
-nual/images/03_about.png> <C:/Users/stefano/Documents/NetBeansProjects/meteo-ca
-l-celli-cereda/user manual/images/04_calendar_empty.png>] <./images/06_home_arr
-ows.png, id=144, 566.115pt x 421.575pt>
+ [4 <./images/03_about.png> <./images/04_calendar_empty.png>] <./images/06_home
+_arrows.png, id=145, 566.115pt x 421.575pt>
 File: ./images/06_home_arrows.png Graphic file (type png)
 
 <use ./images/06_home_arrows.png>
-Package pdftex.def Info: ./images/06_home_arrows.png used on input line 81.
+Package pdftex.def Info: ./images/06_home_arrows.png used on input line 80.
 (pdftex.def)             Requested size: 345.0pt x 256.92235pt.
 
-<./images/07_search_bar.png, id=145, 584.1825pt x 76.285pt>
+<./images/07_search_bar.png, id=146, 584.1825pt x 76.285pt>
 File: ./images/07_search_bar.png Graphic file (type png)
 
 <use ./images/07_search_bar.png>
-Package pdftex.def Info: ./images/07_search_bar.png used on input line 89.
+Package pdftex.def Info: ./images/07_search_bar.png used on input line 88.
 (pdftex.def)             Requested size: 345.0pt x 45.05315pt.
- [5 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/user ma
-nual/images/05_calendar_busy.png> <C:/Users/stefano/Documents/NetBeansProjects/
-meteo-cal-celli-cereda/user manual/images/06_home_arrows.png> <C:/Users/stefano
-/Documents/NetBeansProjects/meteo-cal-celli-cereda/user manual/images/07_search
-_bar.png>]
-<./images/08_calendar_top.png, id=152, 762.85pt x 73.27374pt>
+ [5 <./images/05_calendar_busy.png> <./images/06_home_arrows.png> <./images/07_
+search_bar.png>]
+<./images/08_calendar_top.png, id=153, 762.85pt x 73.27374pt>
 File: ./images/08_calendar_top.png Graphic file (type png)
 
 <use ./images/08_calendar_top.png>
-Package pdftex.def Info: ./images/08_calendar_top.png used on input line 98.
+Package pdftex.def Info: ./images/08_calendar_top.png used on input line 97.
 (pdftex.def)             Requested size: 345.0pt x 33.13722pt.
 
-<./images/09_create_event.png, id=153, 457.71pt x 625.33624pt>
+<./images/09_create_event.png, id=154, 457.71pt x 625.33624pt>
 File: ./images/09_create_event.png Graphic file (type png)
 
 <use ./images/09_create_event.png>
-Package pdftex.def Info: ./images/09_create_event.png used on input line 111.
+Package pdftex.def Info: ./images/09_create_event.png used on input line 110.
 (pdftex.def)             Requested size: 241.49895pt x 329.9381pt.
- [6 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/user ma
-nual/images/08_calendar_top.png> <C:/Users/stefano/Documents/NetBeansProjects/m
-eteo-cal-celli-cereda/user manual/images/09_create_event.png>]
-<./images/10_date_select.png, id=161, 453.695pt x 649.42625pt>
+ [6 <./images/08_calendar_top.png> <./images/09_create_event.png>]
+<./images/10_date_select.png, id=162, 453.695pt x 649.42625pt>
 File: ./images/10_date_select.png Graphic file (type png)
 
 <use ./images/10_date_select.png>
-Package pdftex.def Info: ./images/10_date_select.png used on input line 121.
+Package pdftex.def Info: ./images/10_date_select.png used on input line 120.
 (pdftex.def)             Requested size: 241.49895pt x 345.6807pt.
 
-<./images/11_choose_place.png, id=162, 450.68375pt x 621.32124pt>
+<./images/11_choose_place.png, id=163, 450.68375pt x 621.32124pt>
 File: ./images/11_choose_place.png Graphic file (type png)
 
 <use ./images/11_choose_place.png>
-Package pdftex.def Info: ./images/11_choose_place.png used on input line 139.
+Package pdftex.def Info: ./images/11_choose_place.png used on input line 138.
 (pdftex.def)             Requested size: 172.5pt x 237.81104pt.
 
-<./images/12_invite_user.png, id=163, 449.68pt x 624.3325pt>
+<./images/12_invite_user.png, id=164, 449.68pt x 624.3325pt>
 File: ./images/12_invite_user.png Graphic file (type png)
 
 <use ./images/12_invite_user.png>
-Package pdftex.def Info: ./images/12_invite_user.png used on input line 140.
+Package pdftex.def Info: ./images/12_invite_user.png used on input line 139.
 (pdftex.def)             Requested size: 172.5pt x 239.49707pt.
 
-<./images/13_after_invite.png, id=164, 460.72125pt x 623.32875pt>
+<./images/13_after_invite.png, id=165, 460.72125pt x 623.32875pt>
 File: ./images/13_after_invite.png Graphic file (type png)
 
 <use ./images/13_after_invite.png>
-Package pdftex.def Info: ./images/13_after_invite.png used on input line 141.
+Package pdftex.def Info: ./images/13_after_invite.png used on input line 140.
 (pdftex.def)             Requested size: 172.5pt x 233.37677pt.
- [7 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/user ma
-nual/images/10_date_select.png>] [8 <C:/Users/stefano/Documents/NetBeansProject
-s/meteo-cal-celli-cereda/user manual/images/11_choose_place.png> <C:/Users/stef
-ano/Documents/NetBeansProjects/meteo-cal-celli-cereda/user manual/images/12_inv
-ite_user.png>]
-<./images/14_home_details.png, id=179, 1435.3625pt x 700.6175pt>
+ [7 <./images/10_date_select.png>] [8 <./images/11_choose_place.png> <./images/
+12_invite_user.png>]
+<./images/14_home_details.png, id=181, 1435.3625pt x 700.6175pt>
 File: ./images/14_home_details.png Graphic file (type png)
 
 <use ./images/14_home_details.png>
-Package pdftex.def Info: ./images/14_home_details.png used on input line 148.
+Package pdftex.def Info: ./images/14_home_details.png used on input line 147.
 (pdftex.def)             Requested size: 345.0pt x 168.3975pt.
 
-<./images/15_creator_details_1.png, id=180, 345.29pt x 410.53375pt>
+<./images/15_creator_details_1.png, id=182, 345.29pt x 410.53375pt>
 File: ./images/15_creator_details_1.png Graphic file (type png)
 
 <use ./images/15_creator_details_1.png>
 Package pdftex.def Info: ./images/15_creator_details_1.png used on input line 1
-58.
+57.
 (pdftex.def)             Requested size: 172.5pt x 205.09723pt.
 
-<./images/16_creator_details_2.png, id=181, 341.275pt x 446.66875pt>
+<./images/16_creator_details_2.png, id=183, 341.275pt x 446.66875pt>
 File: ./images/16_creator_details_2.png Graphic file (type png)
 
 <use ./images/16_creator_details_2.png>
 Package pdftex.def Info: ./images/16_creator_details_2.png used on input line 1
-59.
+58.
 (pdftex.def)             Requested size: 172.5pt x 225.7738pt.
 
-<./images/17_creator_details_3.png, id=182, 343.2825pt x 402.50375pt>
+<./images/17_creator_details_3.png, id=184, 343.2825pt x 402.50375pt>
 File: ./images/17_creator_details_3.png Graphic file (type png)
 
 <use ./images/17_creator_details_3.png>
 Package pdftex.def Info: ./images/17_creator_details_3.png used on input line 1
-60.
+59.
 (pdftex.def)             Requested size: 172.5pt x 202.2586pt.
- [9 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/user ma
-nual/images/13_after_invite.png> <C:/Users/stefano/Documents/NetBeansProjects/m
-eteo-cal-celli-cereda/user manual/images/14_home_details.png>] [10 <C:/Users/st
-efano/Documents/NetBeansProjects/meteo-cal-celli-cereda/user manual/images/15_c
-reator_details_1.png> <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-ce
-lli-cereda/user manual/images/16_creator_details_2.png>]
-<./images/18_details_partecipant.png, id=195, 510.90875pt x 458.71375pt>
+ [9 <./images/13_after_invite.png> <./images/14_home_details.png>] [10 <./image
+s/15_creator_details_1.png> <./images/16_creator_details_2.png>]
+<./images/18_details_partecipant.png, id=197, 510.90875pt x 458.71375pt>
 File: ./images/18_details_partecipant.png Graphic file (type png)
 
 <use ./images/18_details_partecipant.png>
 Package pdftex.def Info: ./images/18_details_partecipant.png used on input line
- 166.
+ 165.
 (pdftex.def)             Requested size: 241.49895pt x 216.82738pt.
 
-<./images/19_search_results.png, id=196, 1060.96375pt x 443.6575pt>
+<./images/18bis_remove_participant.png, id=198, 1028.34187pt x 578.16pt>
+File: ./images/18bis_remove_participant.png Graphic file (type png)
+
+<use ./images/18bis_remove_participant.png>
+Package pdftex.def Info: ./images/18bis_remove_participant.png used on input li
+ne 170.
+(pdftex.def)             Requested size: 345.0pt x 193.9693pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 170--171
+[][] 
+ []
+
+[11 <./images/17_creator_details_3.png> <./images/18_details_partecipant.png>]
+<./images/19_search_results.png, id=206, 1060.96375pt x 443.6575pt>
 File: ./images/19_search_results.png Graphic file (type png)
 
 <use ./images/19_search_results.png>
-Package pdftex.def Info: ./images/19_search_results.png used on input line 176.
+Package pdftex.def Info: ./images/19_search_results.png used on input line 178.
 
 (pdftex.def)             Requested size: 241.49895pt x 100.983pt.
- [11 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/user m
-anual/images/17_creator_details_3.png> <C:/Users/stefano/Documents/NetBeansProj
-ects/meteo-cal-celli-cereda/user manual/images/18_details_partecipant.png>]
-<./images/20_search_results_detail.png, id=203, 713.66624pt x 165.61874pt>
+
+<./images/20_search_results_detail.png, id=207, 713.66624pt x 165.61874pt>
 File: ./images/20_search_results_detail.png Graphic file (type png)
 
 <use ./images/20_search_results_detail.png>
 Package pdftex.def Info: ./images/20_search_results_detail.png used on input li
-ne 182.
+ne 184.
 (pdftex.def)             Requested size: 241.49895pt x 56.04427pt.
 
-<./images/21_search_no_results.png, id=204, 493.845pt x 76.03406pt>
+<./images/21_search_no_results.png, id=208, 493.845pt x 76.03406pt>
 File: ./images/21_search_no_results.png Graphic file (type png)
 
 <use ./images/21_search_no_results.png>
 Package pdftex.def Info: ./images/21_search_no_results.png used on input line 1
-91.
+93.
 (pdftex.def)             Requested size: 345.0pt x 53.11673pt.
-
-<./images/22_other_user_page.png, id=205, 1433.355pt x 665.48625pt>
+ [12 <./images/18bis_remove_participant.png> <./images/19_search_results.png> <
+./images/20_search_results_detail.png>]
+<./images/22_other_user_page.png, id=216, 1433.355pt x 665.48625pt>
 File: ./images/22_other_user_page.png Graphic file (type png)
 
 <use ./images/22_other_user_page.png>
-Package pdftex.def Info: ./images/22_other_user_page.png used on input line 197
+Package pdftex.def Info: ./images/22_other_user_page.png used on input line 199
 .
 (pdftex.def)             Requested size: 345.0pt x 160.17691pt.
- [12 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/user m
-anual/images/19_search_results.png> <C:/Users/stefano/Documents/NetBeansProject
-s/meteo-cal-celli-cereda/user manual/images/20_search_results_detail.png> <C:/U
-sers/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/user manual/imag
-es/21_search_no_results.png> <C:/Users/stefano/Documents/NetBeansProjects/meteo
--cal-celli-cereda/user manual/images/22_other_user_page.png>]
-<./images/23_event_details_private.png, id=214, 302.12875pt x 143.53625pt>
+
+<./images/23_event_details_private.png, id=217, 302.12875pt x 143.53625pt>
 File: ./images/23_event_details_private.png Graphic file (type png)
 
 <use ./images/23_event_details_private.png>
 Package pdftex.def Info: ./images/23_event_details_private.png used on input li
-ne 208.
+ne 210.
 (pdftex.def)             Requested size: 241.49895pt x 114.73277pt.
 
-<./images/24_notification_scroll.png, id=215, 235.88126pt x 677.53125pt>
+<./images/24_notification_scroll.png, id=218, 235.88126pt x 677.53125pt>
 File: ./images/24_notification_scroll.png Graphic file (type png)
 
 <use ./images/24_notification_scroll.png>
 Package pdftex.def Info: ./images/24_notification_scroll.png used on input line
- 217.
+ 219.
 (pdftex.def)             Requested size: 103.50105pt x 297.2876pt.
- [13 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/user m
-anual/images/23_event_details_private.png> <C:/Users/stefano/Documents/NetBeans
-Projects/meteo-cal-celli-cereda/user manual/images/24_notification_scroll.png>]
-
-<./images/25_notification_invite.png, id=222, 378.41376pt x 372.39125pt>
+ [13 <./images/21_search_no_results.png> <./images/22_other_user_page.png> <./i
+mages/23_event_details_private.png>]
+<./images/25_notification_invite.png, id=225, 378.41376pt x 372.39125pt>
 File: ./images/25_notification_invite.png Graphic file (type png)
 
 <use ./images/25_notification_invite.png>
 Package pdftex.def Info: ./images/25_notification_invite.png used on input line
- 229.
+ 231.
 (pdftex.def)             Requested size: 241.49895pt x 237.65907pt.
 
-<./images/26_sunny_day_proposal.png, id=223, 761.84625pt x 341.275pt>
+<./images/26_sunny_day_proposal.png, id=226, 761.84625pt x 341.275pt>
 File: ./images/26_sunny_day_proposal.png Graphic file (type png)
 
 <use ./images/26_sunny_day_proposal.png>
 Package pdftex.def Info: ./images/26_sunny_day_proposal.png used on input line 
-230.
+232.
 (pdftex.def)             Requested size: 241.49895pt x 108.17915pt.
 
-<./images/27_bad_weather_alert.png, id=224, 452.69125pt x 309.155pt>
+<./images/27_bad_weather_alert.png, id=227, 452.69125pt x 309.155pt>
 File: ./images/27_bad_weather_alert.png Graphic file (type png)
 
 <use ./images/27_bad_weather_alert.png>
 Package pdftex.def Info: ./images/27_bad_weather_alert.png used on input line 2
-31.
+33.
 (pdftex.def)             Requested size: 241.49895pt x 164.92691pt.
 
-<./images/28_event_changed_notification.png, id=225, 340.27126pt x 284.06125pt>
+<./images/28_event_changed_notification.png, id=228, 340.27126pt x 284.06125pt>
 File: ./images/28_event_changed_notification.png Graphic file (type png)
 <use ./images/28_event_changed_notification.png>
 Package pdftex.def Info: ./images/28_event_changed_notification.png used on inp
-ut line 232.
+ut line 234.
 (pdftex.def)             Requested size: 241.49895pt x 201.60686pt.
- [14 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/user m
-anual/images/25_notification_invite.png> <C:/Users/stefano/Documents/NetBeansPr
-ojects/meteo-cal-celli-cereda/user manual/images/26_sunny_day_proposal.png>]
-<./images/29_settings.png, id=232, 1442.38875pt x 696.6025pt>
+ [14 <./images/24_notification_scroll.png>] [15 <./images/25_notification_invit
+e.png> <./images/26_sunny_day_proposal.png> <./images/27_bad_weather_alert.png>
+]
+<./images/29_settings.png, id=241, 1442.38875pt x 696.6025pt>
 File: ./images/29_settings.png Graphic file (type png)
 
 <use ./images/29_settings.png>
-Package pdftex.def Info: ./images/29_settings.png used on input line 239.
+Package pdftex.def Info: ./images/29_settings.png used on input line 241.
 (pdftex.def)             Requested size: 345.0pt x 166.61403pt.
- [15 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/user m
-anual/images/27_bad_weather_alert.png> <C:/Users/stefano/Documents/NetBeansProj
-ects/meteo-cal-celli-cereda/user manual/images/28_event_changed_notification.pn
-g>]
-<./images/30_error_login_1.png, id=239, 471.7625pt x 479.7925pt>
+
+<./images/30_error_login_1.png, id=242, 471.7625pt x 479.7925pt>
 File: ./images/30_error_login_1.png Graphic file (type png)
 
 <use ./images/30_error_login_1.png>
-Package pdftex.def Info: ./images/30_error_login_1.png used on input line 247.
+Package pdftex.def Info: ./images/30_error_login_1.png used on input line 249.
 (pdftex.def)             Requested size: 241.49895pt x 245.61337pt.
 
-<./images/31_error_login_2.png, id=240, 443.6575pt x 495.8525pt>
+<./images/31_error_login_2.png, id=243, 443.6575pt x 495.8525pt>
 File: ./images/31_error_login_2.png Graphic file (type png)
 
 <use ./images/31_error_login_2.png>
-Package pdftex.def Info: ./images/31_error_login_2.png used on input line 248.
+Package pdftex.def Info: ./images/31_error_login_2.png used on input line 250.
 (pdftex.def)             Requested size: 241.49895pt x 269.90512pt.
- [16 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/user m
-anual/images/29_settings.png>]
-<./images/32_error_registration_1.png, id=246, 631.35875pt x 519.9425pt>
+ [16 <./images/28_event_changed_notification.png> <./images/29_settings.png>]
+<./images/32_error_registration_1.png, id=250, 631.35875pt x 519.9425pt>
 File: ./images/32_error_registration_1.png Graphic file (type png)
 
 <use ./images/32_error_registration_1.png>
 Package pdftex.def Info: ./images/32_error_registration_1.png used on input lin
-e 253.
+e 255.
 (pdftex.def)             Requested size: 241.49895pt x 198.88132pt.
 
-<./images/33_error_registration_2.png, id=247, 873.2625pt x 626.34pt>
+<./images/33_error_registration_2.png, id=251, 873.2625pt x 626.34pt>
 File: ./images/33_error_registration_2.png Graphic file (type png)
 
 <use ./images/33_error_registration_2.png>
 Package pdftex.def Info: ./images/33_error_registration_2.png used on input lin
-e 254.
+e 256.
 (pdftex.def)             Requested size: 241.49895pt x 173.21408pt.
- [17 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/user m
-anual/images/30_error_login_1.png> <C:/Users/stefano/Documents/NetBeansProjects
-/meteo-cal-celli-cereda/user manual/images/31_error_login_2.png>]
-<./images/34_error_settings_1.png, id=254, 765.86125pt x 611.28375pt>
+ [17 <./images/30_error_login_1.png> <./images/31_error_login_2.png>]
+<./images/34_error_settings_1.png, id=258, 765.86125pt x 611.28375pt>
 File: ./images/34_error_settings_1.png Graphic file (type png)
 
 <use ./images/34_error_settings_1.png>
-Package pdftex.def Info: ./images/34_error_settings_1.png used on input line 25
-9.
+Package pdftex.def Info: ./images/34_error_settings_1.png used on input line 26
+1.
 (pdftex.def)             Requested size: 241.49895pt x 192.75127pt.
 
-<./images/35_error_settings_2.png, id=255, 808.01875pt x 682.55pt>
+<./images/35_error_settings_2.png, id=259, 808.01875pt x 682.55pt>
 File: ./images/35_error_settings_2.png Graphic file (type png)
 
 <use ./images/35_error_settings_2.png>
 Package pdftex.def Info: ./images/35_error_settings_2.png used on input line 26
-0.
+2.
 (pdftex.def)             Requested size: 241.49895pt x 203.99588pt.
- [18 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/user m
-anual/images/32_error_registration_1.png> <C:/Users/stefano/Documents/NetBeansP
-rojects/meteo-cal-celli-cereda/user manual/images/33_error_registration_2.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 263.
- [19 <C:/Users/stefano/Documents/NetBeansProjects/meteo-cal-celli-cereda/user m
-anual/images/34_error_settings_1.png> <C:/Users/stefano/Documents/NetBeansProje
-cts/meteo-cal-celli-cereda/user manual/images/35_error_settings_2.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 263.
-
-("C:\Users\stefano\Documents\NetBeansProjects\meteo-cal-celli-cereda\user manua
-l\UserManual.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 263.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 263.
+ [18 <./images/32_error_registration_1.png> <./images/33_error_registration_2.p
+ng>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 265.
+ [19 <./images/34_error_settings_1.png> <./images/35_error_settings_2.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 265.
+ (./UserManual.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 265.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 265.
 Package rerunfilecheck Info: File `UserManual.out' has not changed.
-(rerunfilecheck)             Checksum: EC3F44BD293753ED335689CF024C018B;1115.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 263.
+(rerunfilecheck)             Checksum: 2710085D93E230B7B3589C63B4C64D66;1095.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 265.
  ) 
 Here is how much of TeX's memory you used:
- 6637 strings out of 493921
- 98011 string characters out of 3147276
- 173245 words of memory out of 3000000
- 9781 multiletter control sequences out of 15000+200000
- 9788 words of font info for 37 fonts, out of 3000000 for 9000
- 841 hyphenation exceptions out of 8191
- 29i,4n,28p,345b,394s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmtt10.pfb>
-Output written on UserManual.pdf (20 pages, 1720180 bytes).
+ 6756 strings out of 493108
+ 98665 string characters out of 6140725
+ 180211 words of memory out of 5000000
+ 10059 multiletter control sequences out of 15000+600000
+ 10134 words of font info for 38 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 29i,4n,28p,384b,394s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></us
+r/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on UserManual.pdf (20 pages, 1800581 bytes).
 PDF statistics:
- 305 PDF objects out of 1000 (max. 8388607)
+ 314 PDF objects out of 1000 (max. 8388607)
+ 210 compressed objects within 3 object streams
  44 named destinations out of 1000 (max. 500000)
- 341 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 346 words of extra memory for PDF output out of 10000 (max. 10000000)
 
