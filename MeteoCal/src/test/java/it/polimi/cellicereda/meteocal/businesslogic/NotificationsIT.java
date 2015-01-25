@@ -238,7 +238,7 @@ public class NotificationsIT {
         e.setCreator(u1);
         e.setDescription(null);
         e.setTitle("prova");
-        Date start = new Date(new Date().getTime() + 1 * 60 * 60 * 1000);
+        Date start = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
         e.setStartDate(start);
         e.setEndDate(new Date(start.getTime() + 1 * 60 * 60 * 1000));
         e.setEventLocation(lm.getPlaceByID(p.getId()));
