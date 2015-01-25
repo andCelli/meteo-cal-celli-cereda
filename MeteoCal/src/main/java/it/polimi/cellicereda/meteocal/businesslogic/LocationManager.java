@@ -31,7 +31,7 @@ public class LocationManager {
      * be called only once, at the startup of the system. It is declared package
      * private instead of private so the test package can use it
      */
-    //@PostConstruct
+    @PostConstruct
     void initializePlaceList() {
         if (!em.createNamedQuery("Place.findAll").getResultList().isEmpty()) {
             return;
