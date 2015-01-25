@@ -38,7 +38,7 @@ import org.junit.runner.RunWith;
  */
 @RunWith(Arquillian.class)
 public class NotificationsIT {
-    
+
     @Inject
     private ModifyEventBean modify;
     @Inject
@@ -57,10 +57,10 @@ public class NotificationsIT {
     private DetailsEventBean det;
     @Inject
     private ForecastManager forecast;
-    
+
     @PersistenceContext
     EntityManager em;
-    
+
     @Deployment
     public static WebArchive createArchiveAndDeploy() {
         return ShrinkWrap.create(WebArchive.class)
@@ -78,7 +78,7 @@ public class NotificationsIT {
                 .addAsResource("test-persistence.xml", "META-INF/persistence.xml")
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
     }
-    
+
     @Test
     public void sendInvite() {
 
@@ -116,9 +116,9 @@ public class NotificationsIT {
         assertEquals(invite.size(), 1);
         assertEquals(invite.get(0).getNotificationType(), NotificationType.EVENT_INVITE);
         assertEquals(invite.get(0).getReferredEvent().getId(), e1.getId());
-        
+
     }
-    
+
     @Test
     public void eventChangedNotification() {
         //set current user
@@ -164,7 +164,7 @@ public class NotificationsIT {
         assertEquals(n.get(0).getReferredEvent().getId(), e1.getId());
         assertEquals(n.get(0).getNotificationType(), NotificationType.EVENT_CHANGED);
     }
-    
+
     @Test
     public void noNotificationsIfEventNotChanged() {
         //set current user
@@ -209,7 +209,7 @@ public class NotificationsIT {
                     && notif.getNotificationType().equals(NotificationType.EVENT_CHANGED)));
         }
     }
-    
+
     @Test
     public void movingBackAnEventRegeneratesNotification() {
         //an user creates an event for tomorrow
@@ -222,7 +222,7 @@ public class NotificationsIT {
         u1.setEmail("li.cazzi@tua.no");
         upm.save(u1);
         modify.setCurrentUser(u1);
-        
+
         Place p = em.find(Place.class, (long) 5557293);
         if (p == null) {
             p = new Place();
@@ -233,13 +233,14 @@ public class NotificationsIT {
             p.setLatitude(57.053059);
             lm.save(p);
         }
-        
+
         Event e = new Event();
         e.setCreator(u1);
         e.setDescription(null);
         e.setTitle("prova");
-        e.setStartDate(new Date((new Date()).getTime() + 24 * 60 * 60 * 100));
-        e.setEndDate(new Date(e.getStartDate().getTime() + 1 * 60 * 60 * 1000));
+        Date start = new Date(new Date().getTime() + 1 * 60 * 60 * 1000);
+        e.setStartDate(start);
+        e.setEndDate(new Date(start.getTime() + 1 * 60 * 60 * 1000));
         e.setEventLocation(lm.getPlaceByID(p.getId()));
         calManager.save(e);
 
@@ -253,14 +254,14 @@ public class NotificationsIT {
             }
             assertTrue(ok);
         }
-        
-        calManager.changeEventTiming(e, new Date(e.getStartDate().getTime() + 24 * 60 * 60 * 1000), new Date(e.getEndDate().getTime() + 24 * 60 * 60 * 1000));
+
+        calManager.changeEventTiming(e, new Date(start.getTime() + 24 * 60 * 60 * 1000), new Date(start.getTime() + 25 * 60 * 60 * 1000));
 
         //if the forecast is bad we should have a sunny day proposal and no bad weather alert
         if (!forecast.isGoodWeather(e.getForecast().getWeatherId())) {
             boolean ok1 = true;
             boolean ok2 = false;
-            
+
             for (Notification n : notification.getPendingNotificationForUser(u1)) {
                 if (n.getReferredEvent().equals(e) && n.getNotificationType() == NotificationType.BAD_WEATHER_ALERT) {
                     ok1 = false;

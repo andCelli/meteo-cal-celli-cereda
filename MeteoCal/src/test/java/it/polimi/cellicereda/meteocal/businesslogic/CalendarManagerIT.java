@@ -26,6 +26,7 @@ import org.junit.runner.RunWith;
  */
 @RunWith(Arquillian.class)
 public class CalendarManagerIT {
+
     @EJB
     private CalendarManager cm;
     @EJB
@@ -36,10 +37,10 @@ public class CalendarManagerIT {
     private LocationManager lm;
     @EJB
     private UserProfileManager upm;
-    
+
     @PersistenceContext
     EntityManager em;
-    
+
     @Deployment
     public static WebArchive createArchiveAndDeploy() {
         return ShrinkWrap.create(WebArchive.class)
@@ -53,10 +54,10 @@ public class CalendarManagerIT {
                 .addAsResource("test-persistence.xml", "META-INF/persistence.xml")
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
     }
-    
+
     @Test
-    public void removeInvitationTest(){
-        User u1=new User();
+    public void removeInvitationTest() {
+        User u1 = new User();
         u1.setUsername("a");
         u1.setName("andrea");
         u1.setSurname("celli");
@@ -64,8 +65,8 @@ public class CalendarManagerIT {
         u1.setPublicCalendar(true);
         u1.setEmail("removeInvitationTest@a.com");
         upm.save(u1);
-        
-        User u2=new User();
+
+        User u2 = new User();
         u2.setUsername("a");
         u2.setName("andrea");
         u2.setSurname("celli");
@@ -73,23 +74,23 @@ public class CalendarManagerIT {
         u2.setPublicCalendar(true);
         u2.setEmail("removeInvitationTest2@a.com");
         upm.save(u2);
-        
-        Event e1=new Event();
+
+        Event e1 = new Event();
         e1.setCreator(u1);
         cm.save(e1);
-        
-        Event e2=new Event();
+
+        Event e2 = new Event();
         e1.setCreator(u2);
         cm.save(e2);
-        cm.addAnUserToAnEventParticipants(u1,e2);
-        
-        Event e3=new Event();
+        cm.addAnUserToAnEventParticipants(u1, e2);
+
+        Event e3 = new Event();
         e1.setCreator(u2);
         cm.save(e3);
-        nm.sendAnInvite(e3,u1);
-        
-        cm.removeInvitation(e1,u1);
-        List<Event> events=(List<Event>) cm.getEventsByCreator(u1);
-        assertTrue(!(events.contains(e1)));
+        nm.sendAnInvite(e3, u1);
+
+        cm.removeInvitation(e2, u1);
+        List<User> users = cm.getEventParticipant(e2);
+        assertTrue(!(users.contains(u1)));
     }
 }
