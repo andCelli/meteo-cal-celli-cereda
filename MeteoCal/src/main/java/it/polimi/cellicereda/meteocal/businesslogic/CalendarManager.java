@@ -215,6 +215,7 @@ public class CalendarManager {
         event.setEndDate(newEnding);
 
         if (eventIsChanged(old, event)) {
+            nm.deleteForecastRelatedNotifications(event);
             fm.saveNewForecastForecastForEvent(event);
             nm.generateEventChangedNotifications(event);
         }
@@ -235,6 +236,7 @@ public class CalendarManager {
         event.setEventLocation(newPlace);
 
         if (eventIsChanged(old, event)) {
+            nm.deleteForecastRelatedNotifications(event);
             fm.saveNewForecastForecastForEvent(event);
             nm.generateEventChangedNotifications(event);
         }
