@@ -44,7 +44,7 @@ This is the logged-user homepage.
                  <p:panel id="forecastDet" style="border:none;"  rendered="#{detailsEventBean.hasPrediction()}">
                      <img src="#{detailsEventBean.getForecastIcon()}"/>
                  </p:panel> 
-                 <h:outputLabel for="partecipants" value="Partecipants: "/>
+                 <h:outputLabel for="partecipants" value="Participants: "/>
                  <p:dataScroller id="partecipants" value="#{detailsEventBean.participants}" var="user" chunkSize="10"
                                   style="border:none;">
                      <p:outputLabel value="#{user.username}"/>
@@ -56,7 +56,7 @@ This is the logged-user homepage.
                                  onclick="PF('eventDetailsDialog').hide()" oncomplete="PF('myschedule').update();" 
                                  rendered="#{detailsEventBean.isCreator}"
                                  update=":notificationForm:notificationsGrid" />
-                <p:commandButton id="removePartecipation" value="Remove partecipation" action="#{detailsEventBean.removeFromPartecipants()}"
+                <p:commandButton id="removePartecipation" value="Remove participation" action="#{detailsEventBean.removeFromPartecipants()}"
                                  onclick="PF('eventDetailsDialog').hide();"  rendered="#{!detailsEventBean.isCreator}"
                                  oncomplete="PF('myschedule').update()"
                                  update=":notificationForm:notificationsGrid"/>
