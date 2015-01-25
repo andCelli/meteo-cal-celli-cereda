@@ -186,14 +186,14 @@ public class CalendarManager {
     }
 
     private boolean eventIsChanged(Event old, Event event) {
-        return (isChanged(old.getDescription(), event.getDescription())
-                || isChanged(old.getEndDate(), event.getEndDate())
-                || isChanged(old.getEventLocation(), event.getEventLocation())
-                || isChanged(old.getStartDate(), event.getStartDate())
-                || isChanged(old.getTitle(), event.getTitle()));
+        return !(isEqual(old.getDescription(), event.getDescription())
+                && isEqual(old.getEndDate(), event.getEndDate())
+                && isEqual(old.getEventLocation(), event.getEventLocation())
+                && isEqual(old.getStartDate(), event.getStartDate())
+                && isEqual(old.getTitle(), event.getTitle()));
     }
 
-    private boolean isChanged(Object o1, Object o2) {
+    private boolean isEqual(Object o1, Object o2) {
         try {
             if (o1 instanceof String) {
                 return ((String) o1).contentEquals((String) o2);
@@ -202,7 +202,7 @@ public class CalendarManager {
                 return (((Date) o1).compareTo((Date) o2) == 0);
             }
             if (o1 instanceof Place) {
-                return ((Place) o1).equals((Place) o2);
+                return ((Place) o1).equals(o2);
             }
         } catch (Exception e) {
             return false;
