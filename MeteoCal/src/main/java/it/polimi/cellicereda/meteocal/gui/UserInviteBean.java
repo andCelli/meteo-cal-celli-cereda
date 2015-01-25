@@ -5,8 +5,6 @@
  */
 package it.polimi.cellicereda.meteocal.gui;
 
-
-import it.polimi.cellicereda.meteocal.businesslogic.NotificationManager;
 import it.polimi.cellicereda.meteocal.businesslogic.UserProfileManager;
 import it.polimi.cellicereda.meteocal.entities.Event;
 import it.polimi.cellicereda.meteocal.entities.User;
