@@ -1,0 +1,57 @@
+\documentclass[10pt,a4paper,titlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage[hidelinks]{hyperref}
+
+%this is a command used in the title template
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+%questo fa in modo che le liste numerate siano allineate come le altre
+\setenumerate{leftmargin=*, labelindent=\parindent}
+
+%questo genera il toc, ricorda di eseguire due volte
+\makeindex
+
+\begin{document}
+\input{title.tex}
+
+\tableofcontents
+
+\pagebreak
+\part{Introduction}
+The assigned project is \url{https://code.google.com/p/meteocal-iodicefinardi/}.
+
+In this document we will start describing what, in our opinion, does not match the project assignment and then we will document the various phases of the acceptance testing.
+
+\pagebreak
+\part{RASD}
+\section{Weather forecast}
+In the RASD (page 4 section 1.1 for the first time) it's stated that the user can choose a kind of weather, while the project assignment clearly states that the system has to handle \emph{bad} weather forecast. This is a problem because it's impossible to obtain a behavior that matches the one of the assigned system, suppose a scenario like this:\\
+\begin{tabular}{|c|c|c|c|}
+\hline 
+Event weather & assigned behavior & wanted=sunny & wanted=cloudy \\ 
+\hline 
+sunny & good & good & bad \\ 
+\hline 
+cloudy & good & bad & good \\ 
+\hline 
+\end{tabular}\\
+This is assuming that cloudy is not a bad weather. The only situation where the two behavior matches is when we consider only sunny to be a good weather, but we think that this is a great limitation, because in most of the cases we don't reschedule our appointments only because the weather is partially cloud. A more reasonable approach is to consider sunny,partially cloud and cloud as good weather and everything else as bad weather. 
+
+This approach is reflected in the domain assumptions (page 6 2.2) where it's stated that "A person desires at most one type of weather for an event.". 
+
+The real problem is how the partially cloud forecast is handled, and that's not clearly stated in any part of the rasd.
+\section{Bad weather alert for the event creator}
+The RASD states (page 10 section 3.2.1) that registered users should "Be notified (one day before the event) whenever an outdoor event they accepted an invitation for has an unfavourable weather forecast."
+
+We don't think that this is the assigned behavior. The assignment states that the first type of notification should be sent to all the event's participant, but we think that even the event's creator should be considered a participant. This project does not consider the event creator as an event participant, so the first type of notification is sent only to the users that received and accepted an event invite.
+
+
+PER ANDRE, AVREI ANCHE DA RIDIRE SUL FATTO CHE NELLO USE CASE DI DELETE EVENT NON DICONO ESPLICITAMENTE CHE VIENE RIMOSSO DAL CALENDARIO DEGLI INVITATI, MA MI PARE DI CAGARE IL CAZZO TROPPO
+\end{document}
