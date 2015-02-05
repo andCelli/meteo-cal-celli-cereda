@@ -54,4 +54,12 @@ We don't think that this is the assigned behavior. The assignment states that th
 
 
 PER ANDRE, AVREI ANCHE DA RIDIRE SUL FATTO CHE NELLO USE CASE DI DELETE EVENT NON DICONO ESPLICITAMENTE CHE VIENE RIMOSSO DAL CALENDARIO DEGLI INVITATI, MA MI PARE DI CAGARE IL CAZZO TROPPO
+
+\part{Design document}
+\section{Date of birth and city}
+In the dd (page 7 section 3.1.1-User) it's stated that a user should insert his date of birth and the city where he lives. These attributes are not necessary for any of the requirements in the rasd. Moreover, using the application we noticed that a user cannot be younger than 10 (forbidden during the registration). This is a constraint that is not explained in any document.
+
+\section{Closest day with expected weather}
+The dd assumes (page 7 section 3.1.1-WeatherNotification) that a WeatherNotification (the one sent three days in advance to the event organizer) should contain an information about the closest day with the expected weather.
+We don't think this is a good choice, because from the time when the notification is created to the time when the notification is visualized the forecast could change, making the notification incorrect. We think that the closest good day should be searched when the notification is visualized from the user.
 \end{document}
