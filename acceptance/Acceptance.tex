@@ -44,17 +44,15 @@ cloudy & good & bad & good \\
 \end{tabular}\\
 This is assuming that cloudy is not a bad weather. The only situation where the two behavior matches is when we consider only sunny to be a good weather, but we think that this is a great limitation, because in most of the cases we don't reschedule our appointments only because the weather is partially cloud. A more reasonable approach is to consider sunny,partially cloud and cloud as good weather and everything else as bad weather. 
 
-This approach is reflected in the domain assumptions (page 6 2.2) where it's stated that "A person desires at most one type of weather for an event.". 
+This approach is reflected in the domain assumptions (page 6 2.2) where it's stated that ``A person desires at most one type of weather for an event.''
 
 The real problem is how the partially cloud forecast is handled, and that's not clearly stated in any part of the rasd.
 \section{Bad weather alert for the event creator}
-The RASD states (page 10 section 3.2.1) that registered users should "Be notified (one day before the event) whenever an outdoor event they accepted an invitation for has an unfavourable weather forecast."
+The RASD states (page 10 section 3.2.1) that registered users should ``Be notified (one day before the event) whenever an outdoor event they accepted an invitation for has an unfavourable weather forecast.''
 
 We don't think that this is the assigned behavior. The assignment states that the first type of notification should be sent to all the event's participant, but we think that even the event's creator should be considered a participant. This project does not consider the event creator as an event participant, so the first type of notification is sent only to the users that received and accepted an event invite.
 
-
-PER ANDRE, AVREI ANCHE DA RIDIRE SUL FATTO CHE NELLO USE CASE DI DELETE EVENT NON DICONO ESPLICITAMENTE CHE VIENE RIMOSSO DAL CALENDARIO DEGLI INVITATI, MA MI PARE DI CAGARE IL CAZZO TROPPO
-
+\pagebreak
 \part{Design document}
 \section{Date of birth and city}
 In the dd (page 7 section 3.1.1-User) it's stated that a user should insert his date of birth and the city where he lives. These attributes are not necessary for any of the requirements in the rasd. Moreover, using the application we noticed that a user cannot be younger than 10 (forbidden during the registration). This is a constraint that is not explained in any document.
