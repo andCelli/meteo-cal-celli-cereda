@@ -50,14 +50,21 @@ The real problem is how the partially cloud forecast is handled, and that's not 
 \section{Bad weather alert for the event creator}
 The RASD states (page 10 section 3.2.1) that registered users should ``Be notified (one day before the event) whenever an outdoor event they accepted an invitation for has an unfavourable weather forecast.''
 
-We don't think that this is the assigned behavior. The assignment states that the first type of notification should be sent to all the event's participant, but we think that even the event's creator should be considered a participant. This project does not consider the event creator as an event participant, so the first type of notification is sent only to the users that received and accepted an event invite.
+We don't think that this is the assigned behavior. The assignment states that the first type of notification should be sent to all the event's participant, but we think that even the event's creator should be considered a participant.
 
 \pagebreak
 \part{Design document}
 \section{Date of birth and city}
-In the dd (page 7 section 3.1.1-User) it's stated that a user should insert his date of birth and the city where he lives. These attributes are not necessary for any of the requirements in the rasd. Moreover, using the application we noticed that a user cannot be younger than 10 (forbidden during the registration). This is a constraint that is not explained in any document.
+In the dd (page 7 section 3.1.1-User) it's stated that a user should insert his date of birth and the city where he lives. These attributes are not necessary for any of the requirements in the rasd. Moreover, using the application we noticed that a user can only be older than 10 or without a date of birth (during the registration the date of birth is not mandatory but if present can only be set prior to 10 years ago). We think that this makes no sense.
 
 \section{Closest day with expected weather}
 The dd assumes (page 7 section 3.1.1-WeatherNotification) that a WeatherNotification (the one sent three days in advance to the event organizer) should contain an information about the closest day with the expected weather.
 We don't think this is a good choice, because from the time when the notification is created to the time when the notification is visualized the forecast could change, making the notification incorrect. We think that the closest good day should be searched when the notification is visualized from the user.
+
+\pagebreak
+\part{Automated test}
+The unit and integration automated test does not raise any problem. Their code seems correct.
+
+\part{Manual test}
+Going though the manual tests proposed in the testing document and trying with some strange inputs we didn't notice any problem.
 \end{document}
