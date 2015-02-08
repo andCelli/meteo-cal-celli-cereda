@@ -76,7 +76,12 @@ The system retrieves the forecasts via a call to \url{http://api.openweathermap.
 \part{Project testing}
 \label{part3}
 \section{Automated tests}
-The unit and integration automated test does not raise any problem. Their code seems correct.
+Here we will describe only the automated tests with some problems.
+
+\subsection{SetDate instead of SetHours}
+The two tests \texttt{EventManagerTest.newEventShouldBeSavedOnce} and\\ \texttt{CalendarManagerIT.eventsGetAddedToCalendarOfCreator} fail when executed after 12.00 a.m. with this error: \texttt{You have inserted a not feasible interval time.}
+
+That's due to an error at lines 55 and 119 (respectively) where instead of \texttt{startingTime.setDate(8);} there should be \texttt{startingTime.setHours(8);}.
 
 \section{Manual test}
 We tried the manual tests proposed in the System Testing document and we also tried all the rasd's requirements with strange input. Here we will report only the things that don't work as expected, everything that is not stated works well.
