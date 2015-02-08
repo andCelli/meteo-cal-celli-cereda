@@ -33,7 +33,7 @@ In this document we will describe the issues we found in the project. We will st
 \part{Requirements}
 \label{part1}
 \section{Different cities with the same name}
-The rasd does not clarify how the system will deal will different cities that have the same name (for example \url{http://openweathermap.org/help/city_list.txt} contains 7 different Dublin). Neither the DD explains this issue.
+The rasd does not clarify how the system will deal with different cities that have the same name (for example \url{http://openweathermap.org/help/city_list.txt} contains 7 different Dublin). Neither the DD explains this issue.
 
 Looking at the code of WeatherHttpClient.java we saw that the meteo is obtained passing the direct name of the city. Therefore if the user inserts Dublin as event location the forecast will be downloaded for Dublin, US (it comes first in the city list) instead of the more reasonable Dublin, IE. The user could overcome that by inserting ``Dublin, IE'' as location, but that's not stated anywhere and the application does not specify in any way which is the picked city, so the user can't be aware of the error.
 
