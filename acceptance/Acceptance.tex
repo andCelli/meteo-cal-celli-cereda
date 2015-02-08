@@ -27,10 +27,16 @@
 \part{Introduction}
 The assigned project is \url{https://code.google.com/p/meteocal-iodicefinardi/}.
 
-In this document we will start describing what, in our opinion, does not match the project assignment and then we will document the various phases of the acceptance testing.
+In this document we will describe the issues we found in the project. We will start by describing the behavior that does not match with the assigned project, or at least with what we think to be the most rational behavior (\ref{part1}). Then we will discuss some design problems (\ref{part2}) and we will conclude with a report on the test (\ref{part3}) and with a quick comment on code and documentation quality(\ref{part4}).
 
 \pagebreak
-\part{RASD}
+\part{Requirements}
+\label{part1}
+\section{Different cities with the same name}
+The rasd does not clarify how the system will deal will different cities that have the same name (for example \url{http://openweathermap.org/help/city_list.txt} contains 7 different Dublin). Neither the DD explains this issue.
+
+Looking at the code of WeatherHttpClient.java we saw that the meteo is obtained passing the direct name of the city. Therefore if the user inserts Dublin as event location the forecast will be downloaded for Dublin, US (it comes first in the city list) instead of the more reasonable Dublin, IE. The user could overcome that by inserting ``Dublin, IE'' as location, but that's not stated anywhere and the application does not specify in any way which is the picked city, so the user can't be aware of the error.
+
 \section{Weather forecast}
 In the RASD (page 4 section 1.1 for the first time) it's stated that the user can choose a kind of weather, while the project assignment clearly states that the system has to handle \emph{bad} weather forecast. This is a problem because it's impossible to obtain a behavior that matches the one of the assigned system, suppose a scenario like this:\\
 \begin{tabular}{|c|c|c|c|}
@@ -53,13 +59,9 @@ The RASD states (page 10 section 3.2.1) that registered users should ``Be notifi
 
 We don't think that this is the assigned behavior. The assignment states that the first type of notification should be sent to all the event's participant, but we think that even the event's creator should be considered a participant.
 
-\section{Different cities with the same name}
-The document does not clarify how the system will deal will different cities that have the same name (for example \url{http://openweathermap.org/help/city_list.txt} contains 7 different Dublin). Neither the DD explains this issue.
-
-Looking at the code of WeatherHttpClient.java we saw that the meteo is obtained passing the direct name of the city. Therefore if the user inserts Dublin as event location the forecast will be downloaded for Dublin, US (it comes first in the city list) instead of the more reasonable Dublin, IE. The user could overcome that by inserting ``Dublin, IE'' as location, but that's not stated anywhere and the application does not specify in any way which is the picked city, so the user can't be aware of the error.
-
 \pagebreak
-\part{Design document}
+\part{Design}
+\label{part2}
 \section{Date of birth and city}
 In the dd (page 7 section 3.1.1-User) it's stated that a user should insert his date of birth and the city where he lives. These attributes are not necessary for any of the requirements in the rasd. Moreover, using the application we noticed that a user can only be older than 10 or without a date of birth (during the registration the date of birth is not mandatory but if present can only be set prior to 10 years ago). We think that this makes no sense.
 
@@ -67,13 +69,29 @@ In the dd (page 7 section 3.1.1-User) it's stated that a user should insert his 
 The dd assumes (page 7 section 3.1.1-WeatherNotification) that a WeatherNotification (the one sent three days in advance to the event organizer) should contain an information about the closest day with the expected weather.
 We don't think this is a good choice, because from the time when the notification is created to the time when the notification is visualized the forecast could change, making the notification incorrect. We think that the closest good day should be searched when the notification is visualized from the user.
 
+\section{Limited forecasts}
+The system retrieves the forecasts via a call to \url{http://api.openweathermap.org/data/2.5/forecast/daily?q=[city]}, obtaining daily forecasts that cover 10 days. OpenWeatherMap also offers forecasts with a time coverage of 3 hours that are much more accurate for the purpose of such a system. Furthermore the daily forecasts are available for up to 16 days, so we think that a better solution is to use the 3 hours forecasts when possible (up to 5 days) and the daily forecasts for the remaining days.
+
 \pagebreak
-\part{Automated test}
+\part{Project testing}
+\label{part3}
+\section{Automated tests}
 The unit and integration automated test does not raise any problem. Their code seems correct.
 
-\part{Manual test}
-We tried the manual tests proposed in the System Testing document and we also tried all the rasd's requirements with "strange" input. Here we will report only the things that don't work as expected, everything that is not stated works well.
+\section{Manual test}
+We tried the manual tests proposed in the System Testing document and we also tried all the rasd's requirements with strange input. Here we will report only the things that don't work as expected, everything that is not stated works well.
 
-\section{Registration}
+\subsection{Registration}
 After completing the registration the browser proposes to save the login credentials, but for username it takes the date of birth instead of the email.
+
+\subsection{Incorrect forecasts notifications during updates}
+During the periodical update (done automatically every 10 minutes) the system downloads the wrong forecast, getting the one for the following day even for events that are scheduled in three days.
+
+We think that's due to a bug in WeatherChecker.java at line 89, where a String is compared with == instead of using .equals().
+
+\pagebreak
+\part{Code and documentation quality}
+\label{part4}
+
+
 \end{document}
