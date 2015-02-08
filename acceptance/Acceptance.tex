@@ -84,7 +84,7 @@ The two tests \texttt{EventManagerTest.newEventShouldBeSavedOnce} and\\ \texttt{
 That's due to an error at lines 55 and 119 (respectively) where instead of \texttt{startingTime.setDate(8);} there should be \texttt{startingTime.setHours(8);}.
 
 \section{Manual test}
-We tried the manual tests proposed in the System Testing document and we also tried all the rasd's requirements with strange input. Here we will report only the things that don't work as expected, everything that is not stated works well.
+We tried the manual tests proposed in the System Testing document and we also tried all the rasd's requirements with strange input. Here we will report only the things that does not work as expected, everything that is not stated works well.
 
 \subsection{Registration}
 After completing the registration the browser proposes to save the login credentials, but for username it takes the date of birth instead of the email.
@@ -99,5 +99,7 @@ We think that's due to a bug in WeatherChecker.java at line 89, where a String i
 \label{part4}
 Some methods are missing the javadoc documentation, even though they are the most simple and straightforward.
 
-The documentation rate is pretty low (21\% on the Java classes according to \url{http://cloc.sourceforge.net/}) and this will affect the maintainability of the software since the mechanisms of some classes are not so clear to someone who did not write them.
+The documentation rate (according to \url{http://cloc.sourceforge.net/}) is a little low (30\% on the Java classes, 11\% on the test classes and 6\% in the xhtml files).
+
+We would have liked more meaningful comments (especially in the javadoc, where many methods have as comment something like \emph{method\_x(p) does x on the given parameter x}). This will influence the maintainability of the software product, since the mechanisms of the most complex classes are not so clear for someone who did not write them.
 \end{document}
