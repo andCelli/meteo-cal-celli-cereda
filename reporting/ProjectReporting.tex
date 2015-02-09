@@ -264,7 +264,7 @@ Each scale factors has a range of rating levels, from Very Low to Extra High. Ea
 
 We used the following table to retrieve weights:
 
-\noindent\begin{tabular}{|p{0.15\linewidth}|p{0.15\linewidth}|p{0.15\linewidth}|p{0.15\linewidth}|p{0.15\linewidth}|p{0.15\linewidth}|p{0.15\linewidth}|}
+\noindent\hspace*{-50pt}\begin{tabular}{|p{0.15\linewidth}|p{0.15\linewidth}|p{0.15\linewidth}|p{0.15\linewidth}|p{0.15\linewidth}|p{0.15\linewidth}|p{0.15\linewidth}|}
 \hline 
 Scale Factors & Very Low & Low & Nominal & High & Very High  & Extra High \\ 
 \hline 
@@ -332,5 +332,171 @@ Having chosen the rating levels for each scale factor we can now calculate the e
 The exponent shows that economies and dis-economies of scales are almost in balance. This is mainly due to the fact that, despite the lack of previous experience, the team was small and easy to organize.
 
 \section{Effort Adjustment Factor}
+The seventeen effort multipliers (EM) are used in the COCOMO II model to adjust the nominal effort, Person-Months, to reflect the software product under development.
+ 
+Each multiplicative cost driver is defined below by a rating level and a corresponding  effort multiplier (the values are taken from the document referenced at the beginning of this part).  
+ 
+\begin{enumerate}
+\item Required Software Reliability (RELY)
+
+Rating level: \textit{low}
+
+Effort multiplier: 0.92
+
+Software failures give rise to easily recoverable losses. There are neither financial losses nor risk for human life.
+
+\item Data Base Size (DATA) 
+Rating level: \textit{low}
+
+Effort multiplier: 0,9 
+ 
+We tested the system without the need of huge testing data sets.
+
+\item Product Complexity (CPLX) 
+Rating level: \textit{low}
+
+Effort multiplier: 0,87 
+ 
+Considering all the different parts of the system (including the gui and the data management system) the overall complexity was modest if compared with industry standards. 
+ 
+\item Developed for Reusability (RUSE)
+
+Rating level: \textit{nominal}
+
+Effort multiplier: 1,00 
+ 
+The reusability focus was across project. We designed project's components to be easily reusable.  
+
+\item Documentation match to lifecycle needs (DOCU)
+
+Rating level: \textit{nominal}
+
+Effort multiplier: 1,00 
+ 
+The documentation covers the basic needs of the project. The requirements analysis and the design document are complete and detailed. 
+ 
+\item Execution Time Constraint (TIME)  
+
+Rating level: \textit{nominal}
+
+Effort multiplier: 1,00 
+ 
+The system didn't require high execution time to perform complex tasks. 
+ 
+\item Main Storage Constraint (STOR) 
+
+Rating level: \textit{nominal}
+
+Effort multiplier: 1,00 
+ 
+The system used less (way less) of the 50\% of available storage space. 
+ 
+\item Platform Volatility (PVOL)
+
+Rating level: \textit{low}
+
+Effort multiplier: 0,87 
+ 
+The development environment and the used tools didn’t change significantly 
+during our work. 
+ 
+\item Analyst Capability (ACAP) 
+
+Rating level: \textit{high}
+
+Effort multiplier: 0,85 
+ 
+The team had good design ability and was able to efficiently cooperate in the analysis of the project. 
+ 
+\item Programmer Capability (PCAP) 
+
+Rating level: \textit{high}
+
+Effort multiplier: 0,88 
+ 
+The team was able to efficiently make use of members' programming skills with a good organization of the work. 
+
+\item Personnel Continuity (PCON) 
+
+Rating level: \textit{very high}
+
+Effort multiplier: 0,81 
+ 
+The team didn't undergo any personnel turnover. 
+ 
+\item Applications Experience (APEX) 
+
+Rating level: \textit{very low}
+
+Effort multiplier: 1,22 
+
+The team experience in developing applications of this kind was less than 2 month (this type of application was completely new to us). 
+ 
+\item Platform Experience (PLEX) 
+
+Rating level: \textit{very low}
+
+Effort multiplier: 1,19 
+ 
+The considered platform was completely new to the team. 
+
+\item Language and Tool Experience (LTEX) 
+
+Rating level: \textit{nominal}
+
+Effort multiplier: 1,00 
+ 
+The programming language that has been mainly used is Java. Both team members have an experience with this programming language that is between 1 and 2 years. 
+ 
+\item Use of Software Tools (TOOL) 
+
+Rating level: \textit{nominal}
+
+Effort multiplier: 1,00 
+ 
+The team utilized basic lifecycle tools with which was already experienced (we used similar tools in the Software Engineering 1 course the last year). 
+
+\item Multisite Development (SITE) 
+
+Rating level: \textit{low}
+
+Effort multiplier: 1,09 
+ 
+The team members live in different cities and, during the project, had to communicate using individual phones or Social Networks. 
+ 
+\item Required Development Schedule (SCED) 
+
+Rating level: \textit{nominal}
+
+Effort multiplier: 1,00 
+ 
+The time scheduled for planning activities has been fully used in order to develop the RASD and the Design Document.
+\end{enumerate}
+
+We define the Effort Adjustment Factor (EAF) as the product of the effort multipliers corresponding to each of the cost drivers for the project. Given the previous cost drivers analysis we can calculate it:
+
+\[EAF= 0.92 * 0.9 * 0.87 * 1 * 1 * 1 * 1 * 0.87 * 0.85 * 0.88 * 0.81 * 1.22 * 1.19 * 1 * 1 * 1.09 * 1 = 0.601\]
+ 
+\section{Effort computation}
+ In order to compute the effort we need to know the KSLOC. This is a rather trivial computation since we already know the actual size of the project (see section 2). 
+\[KSLOC = \frac{SLOC}{1000} = \frac{4372}{1000} = 4.372\]
+ 
+From the previous sections we know:
+\[A=2.94; E=1.0677; EAF=0.601\]
+
+We can now compute the effort as:
+\[PM = A * EAF * (KSLOC)E = 2.94 * 0.601 * 4.372^{1.0677} \approx 8,5 (person-month)\]
+
+\section{Effort comparison}
+ 
+COCOMO II treats the number of person-hours per person-month, PH/PM, as an adjustable factor with a nominal value of 152 hours per Person-Month. This number excludes time typically devoted to holidays, vacations, and weekend time off.
+
+If we compute the number of \textit{person-hours} corresponding to the computed effort we obtain:
+
+\[PH = 152 * 8.5 = 1292(person-hours)\]
+
+The time the team actually devoted to the project is 425 hours.
+The estimation is three times the real time. This may be due to the fact that COCOMO II has been developed to deal with big projects and teams. In this case, given that the team was made of just two members, we could avoid all the time required to cooperate with many other people. The avoidance of this overhead made the process quicker and can partially explain the overestimation. 
+
 
 \end{document}
