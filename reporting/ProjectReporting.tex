@@ -220,9 +220,7 @@ $\textbf{UFP} = 27+15+24+0+14 = 90 {FPs}$
 
 In order to obtain the estimation of the lines of code we have to use the following simple formula:
 
-\begin{center}
-$LOC= AVG * UFP$
-\end{center}
+\[LOC= AVG * UFP\]
  
 Where AVG is a language dependent factor.
 We use the AVG specific for J2EE, which is the programming language mainly used to develop the project. The coefficient was taken from: \url{http://www.qsm.com/resources/function-point-languages-table} (we used the value in the Avg column) 
@@ -230,14 +228,109 @@ We use the AVG specific for J2EE, which is the programming language mainly used 
  
 The final estimation turns out to be: 
 
-\begin{center}
-$LOC = 46*90=4140$ 
-\end{center}
-
+\[LOC = 46*90=4140\]
  
 Given an actual size of 4372 LOC the estimation turns out to be really precise.  
 There is a difference of just 232 lines, which is the 5,3\% of the total real size. 
 
 \pagebreak
 \part{COCOMO II}
+(For this analysis we referred to the “COCOMO II Model Definition Manual” (version 2.1) available at: \url{http://csse.usc.edu/csse/research/COCOMOII/cocomo_downloads.html})
+
+In COCOMO II effort is expressed as Person-Months (PM). The effort is computed as follows:
+
+\[PM = A * Size^E * \prod\limits_{i=1}^n {EM_i}\]
+\begin{center}where $A=2.94$ (for COCOMO II.2000\end{center}
+
+The Size is expressed in KSLOC. This is derived from estimating the size of software modules that will constitute the application program.  
+ 
+The way in which the exponent E and the effort multipliers (EM) are calculated and their meaning are explained in the following sections. 
+
+\section{Exponent}
+The exponent E is an aggregation of five scale factors (SF) that account for the relative economies or diseconomies of scale encountered for software projects of different sizes:
+\begin{itemize}
+\item If $E < 1.0$, the project exhibits economies of scale.
+\item If $E = 1.0$, the economies and diseconomies of scale are in balance.
+\item If $E > 1.0$, the project exhibits diseconomies of scale.
+\end{itemize}
+
+The exponent E is calculated as follows:
+\[E = B + 0.01 * \sum\limits_{j=1}^5{SF_j}\]
+\begin{center}
+where $B=0.91$ (for COCOMO II.2000)
+\end{center}
+
+Each scale factors has a range of rating levels, from Very Low to Extra High. Each rating level has a weight. The specific value of the weight is called a scale factor (SF). The project's scale factors, the selected scale factors ratings, are summed and used to determine a scale exponent.
+
+We used the following table to retrieve weights:
+
+\noindent\begin{tabular}{|p{0.15\linewidth}|p{0.15\linewidth}|p{0.15\linewidth}|p{0.15\linewidth}|p{0.15\linewidth}|p{0.15\linewidth}|p{0.15\linewidth}|}
+\hline 
+Scale Factors & Very Low & Low & Nominal & High & Very High  & Extra High \\ 
+\hline 
+PREC & thoroughly unprecedented & largely unprecedented & somewhat unprecedented & generally familiar & largely familiar & thoroughly familiar \\ 
+$SF_i$ & 6.20 & 4.96 & 3.72 & 2.48 & 1.24 & 0.00 \\
+
+\hline 
+FLEX & rigorous & occasional relaxation & some relaxation & general conformity & some conformity & general goals \\ 
+$SF_i$ & 5.07 & 4.05 & 3.04 & 2.03 & 1.01 & 0.00 \\ 
+
+\hline 
+RESL & little (20\%) & some (40\%) & often (60\%) & generally (75\%) & mostly (90\%) & full (100\%) \\ 
+$SF_i$ & 7.07 & 5.65 & 4.24 & 2.83 & 1.41 & 0.00 \\
+
+\hline 
+TEAM & very difficult interactions & some difficult interactions & basically cooperative interactions & largely cooperative & highly cooperative & seamless interactions \\ 
+$SF_i$ & 5.48 & 4.38 & 3.29 & 2.19 & 1.10 & 0.00 \\
+
+\hline 
+PMAT & \multicolumn{6}{|c|}{The estimated Process Maturity Level (EPML) or:}\\
+\cline{2-7}
+ & SW-CMM Level 1 Lower & SW-CMM Level 1 Upper & SW-CMM Level 2 & SW-CMM Level 3 & SW-CMM Level 4 & SW-CMM Level 5 \\
+$SF_i$ & 7.80 & 6.24 & 4.68 & 3.12 & 1.56 & 0.00 \\
+\hline 
+\end{tabular}
+
+\vspace{10pt}
+This is the list of appropriate scale factors rating levels for our project:
+\begin{enumerate}
+\item Precedentedness (PREC)
+
+Rating level: \textit{nominal}
+
+The team never developed a web-based project and did not have any experience with the J2EE environment, but had some previous experience on Java developing.
+
+\item Development Flexibility (FLEX)
+
+rating Level: \textit{high}
+
+The only constraints we had were on the language to be used and on functional requirement that the system had to fulfill. 
+
+\item Architecture / Risk Resolution (RESL)
+
+Rating level: \textit{nominal}
+
+We devoted quite a lot of time to establish the system architecture given the general product objective. Nevertheless it was difficult to predict risks since the environment was new and we couldn't rely on previous experience.
+
+\item Team Cohesion (TEAM)
+
+Rating level: \textit{very high}
+
+Stakeholders had shared objectives and were committed to reach them. The team had already worked on other projects and so it was rather easy to organize the work. We only had some minor ``communication issues'', for this reason the lever is \textit{very high} and not \textit{extra high}.
+
+\item Process Maturity (PMAT)
+
+Rating level: \textit{nominal}
+
+We chose level 2 because processes have been planned and documented at the project level.
+\end{enumerate}
+
+Having chosen the rating levels for each scale factor we can now calculate the exponent:
+
+\[E=0.91+0.01*(3.72+2.03+4.24+1.1+4.68)=1.0677\]
+
+The exponent shows that economies and dis-economies of scales are almost in balance. This is mainly due to the fact that, despite the lack of previous experience, the team was small and easy to organize.
+
+\section{Effort Adjustment Factor}
+
 \end{document}
