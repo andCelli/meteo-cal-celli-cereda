@@ -1,0 +1,243 @@
+\documentclass[10pt,a4paper,titlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage[hidelinks]{hyperref}
+
+%this is a command used in the title template
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+%questo fa in modo che le liste numerate siano allineate come le altre
+\setenumerate{leftmargin=*, labelindent=\parindent}
+
+%questo genera il toc, ricorda di eseguire due volte
+\makeindex
+
+\begin{document}
+\input{title.tex}
+
+\tableofcontents
+
+\pagebreak
+\part{Introduction}
+In the following document we analyze our project using two different approaches.  
+In the first part we apply the Function Point approach in order to check whether the result is 
+similar to the actual size of the project. 
+In the second part we apply COCOMO formulas and compare the results with the the ``real'' 
+effort spent to develop the project.  
+
+\section{Size of the project}
+To perform the mentioned analysis we need to know the actual size of the project.  
+In order to compute the number of lines of code (LOC) we used a plugin for NetBeans called 
+Simple Code Metrics. 
+Using this tool we computed an actual size of 4372 LOC. 
+This number does not take into account the xhtml pages. Obviously we didn't take into consideration the lines of comments and testdrivers.
+ 
+\section{Overall project time}
+COCOMO II provides an estimation of the overall effort needed to develop the project.  
+We want to make a comparison between the estimation and the actual time needed by the 
+team to accomplish the task. 
+In order to do so we kept track of the time each member of the team spent on the project. 
+\begin{enumerate}
+\item $T_{RASD} = 30h+30h=60h$
+\item $T_{DD} = 30h+35h=65h$
+\item $T_{DEV} = 150h+150h=300h$
+\end{enumerate}
+The overall time spent by the two members of the team on the project turns out to be:
+
+$T_{TOT} = T_{RASD}+T_{DD}+T_{DEV} = 60h+65h+300h = 425h$
+ 
+\pagebreak
+\part{Function point}
+In order to determine the number of LOC (lines of code) of the project we first have to find out 
+the number of Functions Points (FP) that have to be addressed.  
+
+\begin{enumerate}
+\item Internal Logical Files (ILF)
+
+\begin{enumerate}
+\item  The system has to store information about the user and his/her participations.
+
+Weight: \textit{medium}
+
+The complexity is medium for the following reasons:
+\begin{itemize}
+\item The ``users'' table contains several fields
+\item The system has to manage security settings for the account (i.e. passwords have to be encrypted and stored securely)  
+\item A user calendar may contain a high number of events 
+\end{itemize}
+
+\item The system has to store events
+
+Weight: \textit{medium}
+
+The medium weight has been chosen because the ``event'' table has to contain several different fields. 
+
+\item The system has to store notification 
+
+Weight: \textit{simple }
+
+The simple weight has been chosen because notifications are quite simple entities (with a small number of parameters). 
+\end{enumerate}
+
+\item External Interface Files (EIF)
+\begin{enumerate}
+\item The system has to retrieve and store forecast's data 
+ 
+Weight: \textit{complex }
+ 
+The weight is complex because the management of external forecasts' data requires parsing information coming from the external service and the handling of two different kind of forecasts: daily and 3 hours.
+ 
+\item The system has to store a list of available places and their information 
+ 
+Weight: \textit{simple }
+ 
+The system has just to download the list of places at the startup of the server. 
+\end{enumerate}
+
+\item External Inputs (EI)
+\begin{enumerate}
+\item Login and Logout 
+ 
+Weight: \textit{simple}
+ 
+These operations are very straightforward. They only involve checking the correspondence between username and password and eventually shutting down the session. 
+ 
+\item Registration 
+ 
+Weight: \textit{simple}
+ 
+These operation consists only in inserting a new tuple in the user table while performing some basic checks on the input values. 
+
+\item Change personal settings 
+ 
+Weight: \textit{simple}
+
+These operation consists only in updating a tuple in the user table while performing some basic checks on the input values. 
+ 
+\item Event creation, modification
+
+Weight: \textit{complex}
+
+These operations involves the insert/update of a tuple in the event
+table. Quite complex issues arise because the system has to take care 
+of different roles of users (i.e. When the creator of an event modifies it 
+all the participants has to be informed of that and their calendar have to 
+be updated) 
+ 
+\item  Search users 
+ 
+Weight: \textit{simple }
+
+The system has just to perform some queries (addressing the user 
+table) to retrieve the list of users corresponding to the specified 
+search key. 
+ 
+\item Answer to notifications 
+
+Weight: \textit{complex}
+
+After the user answers a notification the system has to take care of the 
+update of several different tables. 
+\end{enumerate}
+
+\item External Inquiries (EI)
+\begin{enumerate}
+\item Show ``about page''
+ 
+Weight: \textit{simple}
+
+The system has only to display a description of MeteoCal in order to 
+inform a new user of its functionalities. 
+ 
+\item Browse personal calendar 
+ 
+Weight: \textit{simple}
+
+The system retrieves events in which the user will take part and 
+displays them.  
+ 
+\item Browse external calendars 
+Weight: \textit{medium}
+ 
+The system has to take care of privacy settings for both users' calendar 
+and their events. It has to display the ``external'' calendar and its events 
+according to the user's settings. 
+\end{enumerate}
+
+\item External Outputs (EO)
+\begin{enumerate}
+\item Display weather forecasts 
+ 
+Weight: \textit{complex}
+
+The system has to manage the interaction with the external service 
+providing the forecasts. Moreover it has to periodically update them. 
+ 
+\item Display notifications 
+
+Weight: \textit{complex}
+
+The system has to detect various types of changes in the events details 
+and generate notifications for the interested users accordingly. Thus 
+several tables of the database are involved. 
+\end{enumerate}
+\end{enumerate}
+
+ 
+To calculate the LOC estimate we will use the following table of weights:
+
+\begin{center}\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{Function types} & \multicolumn{3}{|c|}{\textbf{Weights}} \\
+\hline				&	Simple	&	Medium	& Complex	\\
+\hline	N.Inputs	&	3		&	4		&	6		\\
+\hline	N.Outputs	&	4		&	5		&	7		\\
+\hline	N.Inquiry	&	3		&	4		&	6		\\
+\hline	N.ILF		&	7		&	10		&	15		\\
+\hline	N.EIF		&	5		&	7		&	10		\\
+\hline\end{tabular}\end{center}
+
+The Unadjust Function Point (UFP) is the result of the following contributes: 
+\begin{itemize}
+\item $\textbf{ILF} = 1*simple+2*medium=7+10+10=27$
+
+\item $\textbf{EIF} = 1*simple+1*complex=5+10=15$
+
+\item $\textbf{EI\hspace{7pt}} = 4*simple+2*complex=4*3+2*6=24$
+
+\item $\textbf{EIQ} = 2*simple+1*medium=2*3+1*4=10$
+
+\item $\textbf{EO\hspace{5pt}} = 2*complex=2*7=14$
+\end{itemize}
+
+$\textbf{UFP} = 27+15+24+0+14 = 90 {FPs}$
+
+In order to obtain the estimation of the lines of code we have to use the following simple formula:
+
+\begin{center}
+$LOC= AVG * UFP$
+\end{center}
+ 
+Where AVG is a language dependent factor.
+We use the AVG specific for J2EE, which is the programming language mainly used to develop the project. The coefficient was taken from: \url{http://www.qsm.com/resources/function-point-languages-table} (we used the value in the Avg column) 
+ 
+ 
+The final estimation turns out to be: 
+
+\begin{center}
+$LOC = 46*90=4140$ 
+\end{center}
+
+ 
+Given an actual size of 4372 LOC the estimation turns out to be really precise.  
+There is a difference of just 232 lines, which is the 5,3\% of the total real size. 
+
+\pagebreak
+\part{COCOMO II}
+\end{document}
