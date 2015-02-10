@@ -485,10 +485,21 @@ From the previous sections we know:
 \[A=2.94; E=1.0677; EAF=0.601\]
 
 We can now compute the effort as:
-\[PM = A * EAF * (KSLOC)E = 2.94 * 0.601 * 4.372^{1.0677} \approx 8,5 (person-month)\]
+\[PM = A * EAF * (KSLOC)E = 2.94 * 0.601 * 4.372^{1.0677} \approx 8.5 (personMonths)\]
 
-\section{Effort comparison}
- 
+\section{Schedule estimation}
+COCOMOII compute the time to develop the project as:
+\[TDEV = [C * (PM_{NS})^{D+0.2*(E-B)}] * \frac{SCED\%}{100} \]
+\begin{center}
+where $C=3.67; D=0.28; B=0.91; PM_{NS}$ is the estimated PM excluding the SCED effort multipliers
+\end{center}
+
+With our values it turns out to be:
+\[TDEV = [3.67 * (8.5)^{0.28+0.2*(1.0677-0.91)}]*1 \approx 7.15 (Months)\]
+
+Therefore, the number of people that should have worked to the project is $\frac{8.5 (personMonths)}{7.15 (Months)} = 1.19 (Persons) \approx 1$
+
+\section{Schedule comparison}
 COCOMO II treats the number of person-hours per person-month, PH/PM, as an adjustable factor with a nominal value of 152 hours per Person-Month. This number excludes time typically devoted to holidays, vacations, and weekend time off.
 
 If we compute the number of \textit{person-hours} corresponding to the computed effort we obtain:
@@ -496,7 +507,5 @@ If we compute the number of \textit{person-hours} corresponding to the computed 
 \[PH = 152 * 8.5 = 1292(person-hours)\]
 
 The time the team actually devoted to the project is 425 hours.
-The estimation is three times the real time. This may be due to the fact that COCOMO II has been developed to deal with big projects and teams. In this case, given that the team was made of just two members, we could avoid all the time required to cooperate with many other people. The avoidance of this overhead made the process quicker and can partially explain the overestimation. 
-
-
+The estimation is three times the real time. This may be due to the fact that COCOMO II has been developed to deal with big projects and teams. In this case, given that the team was made of just two members, we could avoid all the time required to cooperate with many other people. The avoidance of this overhead made the process quicker and can partially explain the overestimation.
 \end{document}
