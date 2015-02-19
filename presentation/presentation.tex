@@ -1,0 +1,303 @@
+\documentclass[professionalfont]{beamer}
+
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{tikz}
+
+\title{Project Presentation}
+\author{Andrea Celli, Stefano Cereda}
+\institute[PoliMi]{Politecnico di Milano}
+\logo{\includegraphics[width=15mm]{images/logo.png}}
+
+\usetheme{POLIMI}
+\setbeamercolor{alerted text}{fg=POLIMIblue}
+
+\makeindex
+
+\begin{document}
+
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}
+\frametitle{Overview}
+\begin{itemize}
+\item \hyperref[part:RASD]{Requirements and goals}
+\item \hyperref[part:Design]{Design}
+\item \hyperref[part:Code]{Code}
+\item \hyperref[part:demo]{Project demo}
+\item \hyperref[part:Reporting]{Project reporting}
+\item \hyperref[part:Acceptance]{Acceptance}
+\item \hyperref[part:questions]{Questions}
+\end{itemize}
+\end{frame}
+
+\part{Requirements and goals}
+\label{part:RASD}
+\section{Main functionalities}
+\begin{frame}
+\frametitle{Main functionalities}
+\begin{itemize}
+\item An on-line calendar
+\item A system to manage activities according to weather forecasts
+\end{itemize}
+More specifically: \alert{3 main ''families'' of functionalities}. For each of them we specified requirements
+\end{frame}
+
+\section{Requirements}
+\begin{frame}
+\frametitle{Managing users}
+\begin{columns}[c]
+\column{.5\textwidth}
+Functional requirements:
+\begin{itemize}
+\item Register to system
+\item Login/Logout
+\item Modify password
+\item Update personal info
+\end{itemize}
+\column{.5\textwidth}
+Non-functional-requirements:
+\begin{itemize}
+\item Password must be stored securely
+\item System must support high numbers of users
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Managing calendars}
+\begin{columns}[c]
+\column{.5\textwidth}
+Functional requirements:
+\begin{itemize}
+\item Add new events
+\item Modify/delete an existing event
+\item View personal schedule
+\item View event details
+\item Send invitations
+\item Reply to invitations
+\item See other users' schedule (if possible)
+\item See other users' public events details
+\item Receive ''event changed'' notification
+\end{itemize}
+\column{.5\textwidth}
+Non-functional requirements
+\begin{itemize}
+\item None
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Managing forecasts}
+\begin{columns}[c]
+\column{0.5\textwidth}
+Functional requirements:
+\begin{itemize}
+\item Send a notification the day before an event in case of bad weather to all the event's participants
+\item Propose an alternative schedule three days before an event in case of bad weather to the event creator
+\item Show the weather forecasts for the scheduled events
+\end{itemize}
+\column{0.5\textwidth}
+Non-functional requirements:
+\begin{itemize}
+\item The displayed forecasts should be updated every 24 hours
+\item The system has to interface with a meteo service to collect forecasts
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\section{Goals}
+\begin{frame}
+\frametitle{Goals}
+\begin{itemize}
+\item Allow the registration of new users
+\item Allow users to view, create, update and delete events
+\item Allow users to invite other users to their events
+\item Allow invited users to accept or decline invitations
+\item Allow users to see other users' public calendar
+\item Allow users to see other users public events details
+\item Send a notification to all the participants one day in advance in case of bad weather
+\item Propose an alternative schedule to the event creator three day in advance in case of bad weather
+\item Notify all the event's participants if the creator changed its details
+\item Allow users to modify their data
+\end{itemize}
+\end{frame}
+
+\part{Design}
+\label{part:Design}
+\section{Design overview}
+\begin{frame}
+\frametitle{Design overview}
+\onslide<1>{We followed the usual 4 tier JEE architecture}
+\includegraphics<2>[height=0.8\textheight]{images/JEE-arch}
+\includegraphics<3>[height=0.8\textheight]{images/general_architecture_design}
+\end{frame}
+
+\section{Subsystems}
+\begin{frame}
+\frametitle{Subsystems}
+Our system can be easily divided into smaller subsystems with a high cohesion:
+\begin{itemize}
+\item Event managing
+\item Forecast managing
+\item Notifications managing
+\item User managing
+\end{itemize}
+The subsystems access each other through a little number of public methods
+\end{frame}
+
+\section{BCE}
+\begin{frame}
+\frametitle{BCE}
+\onslide<1>{The system can be divided in three areas according to an MVC pattern}
+\includegraphics<2>[height=0.7\textheight]{images/global_bce}
+\end{frame}
+
+\part{Code}
+\label{part:Code}
+\section{Design principles}
+\begin{frame}
+\frametitle{Design principles}
+\begin{itemize}
+\item<1-> Good days searched in daily forecast and returned as a list (design for flexibility)
+\item<2-> One parser for both 3-hours/daily (design for re-usability)
+\item<2-> JSON objects downloaded accordingly (design for re-usability)
+\item<3-> The passed events are searched in the db (design defensively)
+\end{itemize}
+\end{frame}
+
+\part{Demo}
+\label{part:demo}
+\begin{frame}{MeteoCal demo}
+\centering\alert{Let's try it!}
+\end{frame}
+
+\part{Project reporting}
+\label{part:reporting}
+
+\section{Overall project time}
+\begin{frame}
+\frametitle{Overall project time}
+\begin{columns}[c]
+\column{0.5\textwidth}
+\includegraphics[width=0.4\textwidth]{images/andrea}
+\begin{itemize}
+\item RASD: 30h
+\item DD: 30h
+\item DEV: 150h (front-end)
+\end{itemize}
+
+\column{0.5\textwidth}
+\includegraphics[width=0.4\textwidth]{images/stefano}
+\begin{itemize}
+\item RASD: 30h
+\item DD: 35h
+\item DEV: 150h (front-end)
+\end{itemize}
+\end{columns}
+\begin{center}
+$\Downarrow$\\
+TOT = 425h
+\end{center}
+\end{frame}
+
+\section{Lines of code}
+\begin{frame}
+\frametitle{Function point}
+\begin{itemize}
+\item<1-> $UFP = 90 FPs$
+\item<1-> $LOC = AVG*UFP = 46*90 = 4140$
+\item<2-> Actual size = 4372 LOC
+\item<2-> Difference of 5,5\%
+\item<2-> \alert{Pretty good estimation} 
+\end{itemize}
+\end{frame}
+
+\section{COCOMO II}
+\begin{frame}{COCOMO II}
+\begin{itemize}
+\item Effort estimation
+\begin{itemize}
+\item PM = 8.5 person-months
+\end{itemize}
+\item Schedule estimation
+\begin{itemize}
+\item TDEV = 7.5 months
+\item Number of people = 2 (approximately)
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\part{Acceptance}
+\label{part:Acceptance}
+\section{Requirements}
+\begin{frame}
+\frametitle{Requirements}
+\begin{itemize}
+\item Dublin IE or Dublin US
+\item Good weather vs Desired weather
+\item Bad weather alert: is the creator a participant?
+\end{itemize}
+\end{frame}
+
+\section{Design}
+\begin{frame}
+\frametitle{Design}
+\begin{itemize}
+\item Date of birth and city: useless and wrong
+\item Closest day with good weather: embed in the notification or not?
+\item Forecast: daily vs 3-hours
+\end{itemize}
+\end{frame}
+
+\section{Bugs}
+
+\begin{frame}[fragile]
+\frametitle{Failing tests}
+\onslide<1>{The two tests EventManagerTest.newEventShouldBeSavedOnce and CalendarManagerIT.eventsGetAddedToCalendarOfCreator fail when executed after 12.00 a.m.}
+
+\onslide<2>\begin{verbatim}
+//Creating event
+Calendar calendar = Calendar.getInstance();
+Date date = calendar.getTime();
+Date startingTime = new Date();
+startingTime.setDate(8);
+startingTime.setMinutes(00);
+Date finishingTime = new Date();
+finishingTime.setHours(12);
+finishingTime.setMinutes(00);
+\end{verbatim}
+\end{frame}
+
+\begin{frame}
+\frametitle{Credentials}
+The browser proposes to save the date of birth as username
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Wrong forecast}
+\onslide<1>{During the periodical update the system downloads the forecast for the following day even for three days events}
+\onslide<2>\begin{verbatim}
+String[] forecastDownloaded;
+int daysFromCurrentDateOfEvent;
+if(recipient=="creator") {
+    daysFromCurrentDateOfEvent=3;
+} else {
+    daysFromCurrentDateOfEvent=1; 
+}
+\end{verbatim}
+\end{frame}
+
+\part{Questions}
+\label{part:questions}
+\begin{frame}{Questions}
+\centering\alert{Questions time!}
+\end{frame}
+
+\end{document}

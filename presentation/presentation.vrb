@@ -1,0 +1,11 @@
+\frametitle{Wrong forecast}
+\onslide<1>{During the periodical update the system downloads the forecast for the following day even for three days events}
+\onslide<2>\begin{verbatim}
+String[] forecastDownloaded;
+int daysFromCurrentDateOfEvent;
+if(recipient=="creator") {
+    daysFromCurrentDateOfEvent=3;
+} else {
+    daysFromCurrentDateOfEvent=1;
+}
+\end{verbatim}

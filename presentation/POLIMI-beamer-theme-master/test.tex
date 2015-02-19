@@ -1,0 +1,76 @@
+\documentclass[professionalfont]{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{tikz}
+ 
+% usage: \tikzpic{<x percent>}{<y percent>}{<image size>}{<image name>}
+\newcommand*{\tikzpic}[4]{%
+\begin{tikzpicture}[remember picture,overlay]
+\node at (current page.south west) [xshift=#1\paperwidth,yshift=#2\paperheight] {\includegraphics[width=#3\linewidth]{#4}};
+\end{tikzpicture}%
+}
+
+\title[test]%
+{this is a test\\on two lines}
+\author[A. Cervone]{\underline{Antonio Cervone}\\
+{\small \href{mailto:antonio.cervone@polimi.it}{\nolinkurl{antonio.cervone@polimi.it}}}}
+\date[Torino, 18-06-2012]{Torino June 18th, 2012}
+\institute[POLIMI]{Politecnico di Milano}
+
+\usetheme{POLIMI}
+
+\begin{document}
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+\begin{frame}{Table of contents}
+\tableofcontents
+\end{frame}
+
+\begin{frame}{block}
+\begin{block}{title}
+bla bla bla
+\end{block}
+\end{frame}
+
+\section{A}
+
+\subsection{1}
+\begin{frame}
+\frametitle{title}
+\begin{itemize}
+\item 1
+\item 2
+\end{itemize}
+\end{frame}
+
+\subsection{2}
+\begin{frame}
+\frametitle{title}
+\end{frame}
+
+\section{B}
+
+\subsection{1}
+\begin{frame}
+\frametitle{title}
+\begin{enumerate}[i)]
+\item 1
+\item 2
+\end{enumerate}
+\end{frame}
+
+\subsection{2}
+\begin{frame}
+\frametitle{title}
+\POLIMItitle{POLIMI Title}
+\end{frame}
+
+\begin{frame}
+\frametitle{title}
+\end{frame}
+\end{document}
