@@ -9,6 +9,6 @@
 \beamer@sectionintoc {8}{Overall project time}{18}{5}{8}
 \beamer@sectionintoc {9}{Lines of code}{19}{5}{9}
 \beamer@sectionintoc {10}{COCOMO II}{21}{5}{10}
-\beamer@sectionintoc {11}{Requirements}{22}{6}{11}
-\beamer@sectionintoc {12}{Design}{23}{6}{12}
-\beamer@sectionintoc {13}{Bugs}{24}{6}{13}
+\beamer@sectionintoc {11}{Requirements}{23}{6}{11}
+\beamer@sectionintoc {12}{Design}{24}{6}{12}
+\beamer@sectionintoc {13}{Bugs}{25}{6}{13}
