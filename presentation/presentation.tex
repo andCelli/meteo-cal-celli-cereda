@@ -264,9 +264,9 @@ Acceptance testing of \url{https://code.google.com/p/meteocal-iodicefinardi/}
 
 \begin{frame}[fragile]
 \frametitle{Failing tests}
-\onslide<1>{The two tests EventManagerTest.newEventShouldBeSavedOnce and CalendarManagerIT.eventsGetAddedToCalendarOfCreator fail when executed after 12.00 a.m.}
+\onslide<1->{The two tests EventManagerTest.newEventShouldBeSavedOnce and CalendarManagerIT.eventsGetAddedToCalendarOfCreator fail when executed after 12.00 a.m.}
 
-\onslide<2>\begin{verbatim}
+\onslide<2->\begin{verbatim}
 //Creating event
 Calendar calendar = Calendar.getInstance();
 Date date = calendar.getTime();
@@ -286,8 +286,8 @@ The browser proposes to save the date of birth as username
 
 \begin{frame}[fragile]
 \frametitle{Wrong forecast}
-\onslide<1>{During the periodical update the system downloads the forecast for the following day even for three days events}
-\onslide<2>\begin{verbatim}
+\onslide<1->{During the periodical update the system downloads the forecast for the following day even for three days events}
+\onslide<2->\begin{verbatim}
 String[] forecastDownloaded;
 int daysFromCurrentDateOfEvent;
 if(recipient=="creator") {
